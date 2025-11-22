@@ -1,34 +1,30 @@
 ---
 layout: step
-title: Collections
+title: Bộ sưu tập
 position: 9
 ---
-Let's look at fleshing out authors so each author has their own page with a
-blurb and the posts they've published.
+Hãy xem xét việc bổ sung các tác giả để mỗi tác giả có trang riêng của họ với một đoạn giới thiệu và các bài đăng họ đã xuất bản.
 
-To do this you'll use collections. Collections are similar to posts except the
-content doesn't have to be grouped by date.
+Để làm điều này, bạn sẽ sử dụng các bộ sưu tập. Các bộ sưu tập tương tự như các bài đăng ngoại trừ việc nội dung không cần phải được nhóm theo ngày.
 
-## Configuration
+## Cấu hình
 
-To set up a collection you need to tell Jekyll about it. Jekyll configuration
-happens in a file called `_config.yml` (by default).
+Để thiết lập một bộ sưu tập, bạn cần nói với Jekyll về nó. Cấu hình Jekyll xảy ra trong một tệp có tên `_config.yml` (theo mặc định).
 
-Create `_config.yml` in the root with the following:
+Tạo `_config.yml` trong thư mục gốc với nội dung sau:
 
 ```yaml
 collections:
   authors:
 ```
 
-To (re)load the configuration, restart the jekyll server. Press `Ctrl`+`C` in your terminal to stop the server, and then `jekyll serve` to restart it.
+Để (tải lại) cấu hình, hãy khởi động lại máy chủ jekyll. Nhấn `Ctrl`+`C` trong thiết bị đầu cuối của bạn để dừng máy chủ, và sau đó `jekyll serve` để khởi động lại nó.
 
-## Add authors
+## Thêm tác giả
 
-Documents (the items in a collection) live in a folder in the root of the site
-named  `_*collection_name*`. In this case, `_authors`.
+Tài liệu (các mục trong một bộ sưu tập) sống trong một thư mục ở thư mục gốc của trang web có tên `_*collection_name*`. Trong trường hợp này, `_authors`.
 
-Create a document for each author:
+Tạo một tài liệu cho mỗi tác giả:
 
 `_authors/jill.md`:
 
@@ -52,20 +48,20 @@ position: Writer
 Ted has been eating fruit since he was baby.
 ```
 
-## Staff page
+## Trang nhân viên
 
-Let's add a page which lists all the authors on the site. Jekyll makes the
-collection available at `site.authors`.
+Hãy thêm một trang liệt kê tất cả các tác giả trên trang web. Jekyll làm cho bộ sưu tập có sẵn tại `site.authors`.
 
-Create `staff.html` in the root directory and iterate over `site.authors` to output all the staff:
+Tạo `staff.html` trong thư mục gốc và lặp lại `site.authors` để xuất tất cả nhân viên:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
-title: Staff
+title: Nhân viên
 ---
-<h1>Staff</h1>
+<h1>Nhân viên</h1>
 
 <ul>
   {% for author in site.authors %}
@@ -77,34 +73,29 @@ title: Staff
   {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-Since the content is markdown, you need to run it through the
-`markdownify` filter. This happens automatically when outputting using
-{% raw %}`{{ content }}`{% endraw %} in a layout.
+Vì nội dung là markdown, bạn cần chạy nó qua bộ lọc `markdownify`. Điều này xảy ra tự động khi xuất bằng cách sử dụng {% raw %}`{{ content }}`{% endraw %} trong một bố cục.
 
-You also need a way to navigate to this page through the main navigation. Open
-`_data/navigation.yml` and add an entry for the staff page:
+Bạn cũng cần một cách để điều hướng đến trang này thông qua điều hướng chính. Mở `_data/navigation.yml` và thêm một mục nhập cho trang nhân viên:
 
 ```yaml
-- name: Home
+- name: Trang chủ
   link: /
-- name: About
+- name: Giới thiệu
   link: /about.html
 - name: Blog
   link: /blog.html
-- name: Staff
+- name: Nhân viên
   link: /staff.html
 ```
 
-## Output a page
+## Xuất một trang
 
-By default, collections do not output a page for documents. In this case we
-want each author to have their own page so let's tweak the collection
-configuration.
+Theo mặc định, các bộ sưu tập không xuất một trang cho các tài liệu. Trong trường hợp này, chúng tôi muốn mỗi tác giả có trang riêng của họ vì vậy hãy điều chỉnh cấu hình bộ sưu tập.
 
-Open `_config.yml` and add `output: true` to the author collection
-configuration:
+Mở `_config.yml` và thêm `output: true` vào cấu hình bộ sưu tập tác giả:
 
 ```yaml
 collections:
@@ -112,19 +103,20 @@ collections:
     output: true
 ```
 
-Restart the jekyll server once more for the configuration changes to take effect. 
+Khởi động lại máy chủ jekyll một lần nữa để các thay đổi cấu hình có hiệu lực.
 
-You can link to the output page using `author.url`.
+Bạn có thể liên kết đến trang đầu ra bằng cách sử dụng `author.url`.
 
-Add the link to the `staff.html` page:
+Thêm liên kết vào trang `staff.html`:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
-title: Staff
+title: Nhân viên
 ---
-<h1>Staff</h1>
+<h1>Nhân viên</h1>
 
 <ul>
   {% for author in site.authors %}
@@ -136,13 +128,15 @@ title: Staff
   {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-Just like posts you'll need to create a layout for authors.
+Giống như các bài đăng, bạn sẽ cần tạo một bố cục cho các tác giả.
 
-Create `_layouts/author.html` with the following content:
+Tạo `_layouts/author.html` với nội dung sau:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
@@ -152,22 +146,18 @@ layout: default
 
 {{ content }}
 ```
+
 {% endraw %}
 
-## Front matter defaults
+## Mặc định front matter
 
-Now you need to configure the author documents to use the `author` layout. You
-could do this in the front matter like we have previously but that's getting
-repetitive.
+Bây giờ bạn cần cấu hình các tài liệu tác giả để sử dụng bố cục `author`. Bạn có thể làm điều này trong front matter như chúng ta đã làm trước đây nhưng điều đó đang trở nên lặp đi lặp lại.
 
-What you really want is all posts to automatically have the post
-layout, authors to have author and everything else to use the default.
+Những gì bạn thực sự muốn là tất cả các bài đăng tự động có bố cục bài đăng, tác giả có tác giả và mọi thứ khác sử dụng mặc định.
 
-You can achieve this by using [front matter defaults](/docs/configuration/front-matter-defaults/)
-in `_config.yml`. You set a scope of what the default applies to, then the
-default front matter you'd like.
+Bạn có thể đạt được điều này bằng cách sử dụng [mặc định front matter](/docs/configuration/front-matter-defaults/) trong `_config.yml`. Bạn đặt phạm vi của những gì mặc định áp dụng cho, sau đó là front matter mặc định bạn muốn.
 
-Add defaults for layouts to your `_config.yml`,
+Thêm mặc định cho các bố cục vào `_config.yml` của bạn,
 
 ```yaml
 collections:
@@ -191,20 +181,16 @@ defaults:
       layout: "default"
 ```
 
-Now you can remove layout from the front matter of all pages and posts. Note
-that any time you update `_config.yml` you'll need to restart Jekyll for the
-changes to take effect.
+Bây giờ bạn có thể xóa bố cục khỏi front matter của tất cả các trang và bài đăng. Lưu ý rằng bất cứ khi nào bạn cập nhật `_config.yml`, bạn sẽ cần khởi động lại Jekyll để các thay đổi có hiệu lực.
 
-## List author's posts
+## Liệt kê các bài đăng của tác giả
 
-Let's list the posts an author has published on their page. To do
-this you need to match the author `short_name` to the post `author`. You
-use this to filter the posts by author.
+Hãy liệt kê các bài đăng mà một tác giả đã xuất bản trên trang của họ. Để làm điều này, bạn cần khớp `short_name` của tác giả với `author` của bài đăng. Bạn sử dụng điều này để lọc các bài đăng theo tác giả.
 
-Iterate over this filtered list in `_layouts/author.html` to output the
-author's posts:
+Lặp lại danh sách đã lọc này trong `_layouts/author.html` để xuất các bài đăng của tác giả:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
@@ -214,7 +200,7 @@ layout: default
 
 {{ content }}
 
-<h2>Posts</h2>
+<h2>Bài đăng</h2>
 <ul>
   {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
   {% for post in filtered_posts %}
@@ -222,14 +208,15 @@ layout: default
   {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-## Link to authors page
+## Liên kết đến trang tác giả
 
-The posts have a reference to the author so let's link it to the author's page.
-You can do this using a similar filtering technique in `_layouts/post.html`:
+Các bài đăng có tham chiếu đến tác giả vì vậy hãy liên kết nó với trang của tác giả. Bạn có thể làm điều này bằng cách sử dụng một kỹ thuật lọc tương tự trong `_layouts/post.html`:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
@@ -246,11 +233,9 @@ layout: default
 
 {{ content }}
 ```
+
 {% endraw %}
 
-Open up <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> and
-have a look at the staff page and the author links on posts to check everything
-is linked together correctly.
+Mở <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> và xem trang nhân viên và các liên kết tác giả trên các bài đăng để kiểm tra xem mọi thứ có được liên kết với nhau chính xác không.
 
-In the next and final step of this tutorial, we'll add polish to the site and
-get it ready for a production deployment.
+Trong bước tiếp theo và cuối cùng của hướng dẫn này, chúng tôi sẽ thêm sự hoàn thiện cho trang web và chuẩn bị sẵn sàng cho việc triển khai sản xuất.

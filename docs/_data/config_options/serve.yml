@@ -1,35 +1,36 @@
+# Tùy chọn cấu hình cho lệnh 'serve'.
 - name: Local server port
-  description: Listen on the given port. The default is `4000`.
+  description: Lắng nghe trên cổng đã cho. Mặc định là `4000`.
   option: "port: PORT"
   flag: "-P, --port PORT"
 
 
 - name: Local server hostname
-  description: Listen at the given hostname. The default is `localhost`.
+  description: Lắng nghe tại tên máy chủ đã cho. Mặc định là `localhost`.
   option: "host: HOSTNAME"
   flag: "-H, --host HOSTNAME"
 
 
 - name: Live reload
-  description: Reload a page automatically on the browser when its content is edited.
+  description: Tải lại trang tự động trên trình duyệt khi nội dung của nó được chỉnh sửa.
   option: "livereload: BOOL"
   flag: "-l, --livereload"
 
 
 - name: Live reload ignore
   description: >-
-    File glob patterns for LiveReload to ignore.<br /><br />
-    Ensure that patterns are quoted when passed via the command-line to deter your shell from
-    expanding them.<br /><br /><strong>Note:</strong> The given glob patterns are matched against
-    the <code>relative_path</code> attribute of the processed resource. In the event Jekyll
-    reloads a <em>relative_path</em> matching the pattern in spite of being quoted, try listing
-    the pattern(s) under the config file option key.
+    Các mẫu glob tệp để LiveReload bỏ qua.<br /><br />
+    Đảm bảo rằng các mẫu được trích dẫn khi được truyền qua dòng lệnh để ngăn shell của bạn
+    mở rộng chúng.<br /><br /><strong>Lưu ý:</strong> Các mẫu glob đã cho được khớp với
+    thuộc tính <code>relative_path</code> của tài nguyên đã xử lý. Trong trường hợp Jekyll
+    tải lại một <em>relative_path</em> khớp với mẫu mặc dù đã được trích dẫn, hãy thử liệt kê
+    (các) mẫu dưới khóa tùy chọn tệp cấu hình.
   option: "livereload_ignore: [ GLOB1,... ]"
   flag: "--livereload-ignore GLOB1[,GLOB2,...]"
 
 
 - name: Live reload min/max delay
-  description: Minimum/Maximum delay before automatically reloading page.
+  description: Độ trễ tối thiểu/tối đa trước khi tự động tải lại trang.
   options:
     - "livereload_min_delay: SECONDS"
     - "livereload_max_delay: SECONDS"
@@ -40,41 +41,41 @@
 
 - name: Live reload port
   description: >-
-    Port for LiveReload to listen on.<br/><em>Ability to override via config file introduced in
+    Cổng để LiveReload lắng nghe.<br/><em>Khả năng ghi đè qua tệp cấu hình được giới thiệu trong
     <span class="version-badge">4.4.0</span></em>.
   option: "livereload_port: PORT"
   flag: "--livereload-port PORT"
 
 
 - name: Open URL
-  description: Open the site's URL in the browser.
+  description: Mở URL của trang web trong trình duyệt.
   option: "open_url: BOOL"
   flag: "-o, --open-url"
 
 
 - name: Detach
-  description: Detach the server from the terminal.
+  description: Tách máy chủ khỏi terminal.
   option: "detach: BOOL"
   flag: "-B, --detach"
 
 
 - name: Skips the initial site build
-  description: Skips the initial site build which occurs before the server is started.
+  description: Bỏ qua việc xây dựng trang web ban đầu xảy ra trước khi máy chủ được khởi động.
   option: "skip_initial_build: BOOL"
   flag: "--skip-initial-build"
 
 
 - name: Show directory listing
-  description: Show a directory listing instead of loading your index file.
+  description: Hiển thị danh sách thư mục thay vì tải tệp chỉ mục của bạn.
   option: "show_dir_listing: BOOL"
   flag: "--show-dir-listing"
 
 
 - name: X.509 (SSL) private key
-  description: "SSL Private Key, stored or symlinked in the site source."
+  description: "Khóa riêng SSL, được lưu trữ hoặc liên kết tượng trưng trong nguồn trang web."
   flag: "--ssl-key"
 
 
 - name: X.509 (SSL) certificate
-  description: "SSL Public certificate, stored or symlinked in the site source."
+  description: "Chứng chỉ công khai SSL, được lưu trữ hoặc liên kết tượng trưng trong nguồn trang web."
   flag: "--ssl-cert"

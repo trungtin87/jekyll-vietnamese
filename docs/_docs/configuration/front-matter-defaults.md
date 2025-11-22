@@ -1,55 +1,55 @@
 ---
-title: Front Matter Defaults
+title: Mặc định Front Matter (Front Matter Defaults)
 permalink: "/docs/configuration/front-matter-defaults/"
 ---
 
-Using [front matter](/docs/front-matter/) is one way that you can specify configuration in the pages and posts for your site. Setting things like a default layout, or customizing the title, or specifying a more precise date/time for the post can all be added to your page or post front matter.
+Sử dụng [front matter](/docs/front-matter/) là một cách mà bạn có thể chỉ định cấu hình trong các trang và bài đăng cho trang web của mình. Việc thiết lập những thứ như bố cục mặc định, hoặc tùy chỉnh tiêu đề, hoặc chỉ định ngày/giờ chính xác hơn cho bài đăng đều có thể được thêm vào front matter của trang hoặc bài đăng của bạn.
 
-Often times, you will find that you are repeating a lot of configuration options. Setting the same layout in each file, adding the same category - or categories - to a post, etc. You can even add custom variables like author names, which might be the same for the majority of posts on your blog.
+Thông thường, bạn sẽ thấy rằng bạn đang lặp lại rất nhiều tùy chọn cấu hình. Thiết lập cùng một bố cục trong mỗi tệp, thêm cùng một danh mục - hoặc các danh mục - vào một bài đăng, v.v. Bạn thậm chí có thể thêm các biến tùy chỉnh như tên tác giả, có thể giống nhau cho phần lớn các bài đăng trên blog của bạn.
 
-Instead of repeating this configuration each time you create a new post or page, Jekyll provides a way to set these defaults in the site configuration. To do this, you can specify site-wide defaults using the `defaults` key in the `_config.yml` file in your project's root directory.
+Thay vì lặp lại cấu hình này mỗi khi bạn tạo một bài đăng hoặc trang mới, Jekyll cung cấp một cách để thiết lập các mặc định này trong cấu hình trang web. Để làm điều này, bạn có thể chỉ định các mặc định toàn trang web bằng cách sử dụng khóa `defaults` trong tệp `_config.yml` trong thư mục gốc của dự án của bạn.
 
-The `defaults` key holds an array of scope/values pairs that define what defaults should be set for a particular file path, and optionally, a file type in that path.
+Khóa `defaults` chứa một mảng các cặp phạm vi/giá trị (scope/values) xác định những mặc định nào nên được thiết lập cho một đường dẫn tệp cụ thể, và tùy chọn, một loại tệp trong đường dẫn đó.
 
-Let's say that you want to add a default layout to all pages and posts in your site. You would add this to your `_config.yml` file:
+Giả sử rằng bạn muốn thêm một bố cục mặc định cho tất cả các trang và bài đăng trong trang web của mình. Bạn sẽ thêm điều này vào tệp `_config.yml` của mình:
 
 ```yaml
 defaults:
   -
     scope:
-      path: "" # an empty string here means all files in the project
+      path: "" # một chuỗi trống ở đây có nghĩa là tất cả các tệp trong dự án
     values:
       layout: "default"
 ```
 
 <div class="note info">
-  <h5>Stop and rerun `jekyll serve` command.</h5>
+  <h5>Dừng và chạy lại lệnh `jekyll serve`.</h5>
   <p>
-    The <code>_config.yml</code> master configuration file contains global configurations
-    and variable definitions that are read once at execution time. Changes made to <code>_config.yml</code>
-    during automatic regeneration are not loaded until the next execution.
+    Tệp cấu hình chính <code>_config.yml</code> chứa các cấu hình toàn cục
+    và các định nghĩa biến được đọc một lần tại thời điểm thực thi. Các thay đổi được thực hiện đối với <code>_config.yml</code>
+    trong quá trình tái tạo tự động sẽ không được tải cho đến lần thực thi tiếp theo.
   </p>
   <p>
-    Note <a href="{{ '/docs/datafiles/' | relative_url }}">Data Files</a> are included and reloaded during automatic regeneration.
+    Lưu ý <a href="{{ '/docs/datafiles/' | relative_url }}">Tệp Dữ liệu</a> được bao gồm và tải lại trong quá trình tái tạo tự động.
   </p>
 </div>
 
-Here, we are scoping the `values` to any file that exists in the path `scope`. Since the path is set as an empty string, it will apply to **all files** in your project. You probably don't want to set a layout on every file in your project - like css files, for example - so you can also specify a `type` value under the `scope` key.
+Ở đây, chúng tôi đang xác định phạm vi `values` cho bất kỳ tệp nào tồn tại trong đường dẫn `scope`. Vì đường dẫn được đặt là một chuỗi trống, nó sẽ áp dụng cho **tất cả các tệp** trong dự án của bạn. Bạn có thể không muốn đặt một bố cục trên mọi tệp trong dự án của mình - ví dụ như các tệp css - vì vậy bạn cũng có thể chỉ định một giá trị `type` dưới khóa `scope`.
 
 ```yaml
 defaults:
   -
     scope:
-      path: "" # an empty string here means all files in the project
-      type: "posts" # previously `post` in Jekyll 2.2.
+      path: "" # một chuỗi trống ở đây có nghĩa là tất cả các tệp trong dự án
+      type: "posts" # trước đây là `post` trong Jekyll 2.2.
     values:
       layout: "default"
 ```
 
-Now, this will only set the layout for files where the type is `posts`.
-The different types that are available to you are `pages`, `posts`, `drafts` or any collection in your site. While `type` is optional, you must specify a value for `path` when creating a `scope/values` pair.
+Bây giờ, điều này sẽ chỉ đặt bố cục cho các tệp có loại là `posts`.
+Các loại khác nhau có sẵn cho bạn là `pages`, `posts`, `drafts` hoặc bất kỳ bộ sưu tập nào trong trang web của bạn. Trong khi `type` là tùy chọn, bạn phải chỉ định một giá trị cho `path` khi tạo một cặp `scope/values`.
 
-As mentioned earlier, you can set multiple scope/values pairs for `defaults`.
+Như đã đề cập trước đó, bạn có thể đặt nhiều cặp phạm vi/giá trị cho `defaults`.
 
 ```yaml
 defaults:
@@ -62,15 +62,14 @@ defaults:
   -
     scope:
       path: "projects"
-      type: "pages" # previously `page` in Jekyll 2.2.
+      type: "pages" # trước đây là `page` trong Jekyll 2.2.
     values:
-      layout: "project" # overrides previous default layout
+      layout: "project" # ghi đè bố cục mặc định trước đó
       author: "Mr. Hyde"
 ```
 
-With these defaults, all pages would use the `my-site` layout. Any html files that exist in the `projects/`
-folder will use the `project` layout, if it exists. Those files will also have the `page.author`
-[liquid variable]({{ '/docs/variables/' | relative_url }}) set to `Mr. Hyde`.
+Với các mặc định này, tất cả các trang sẽ sử dụng bố cục `my-site`. Bất kỳ tệp html nào tồn tại trong thư mục `projects/`
+sẽ sử dụng bố cục `project`, nếu nó tồn tại. Những tệp đó cũng sẽ có [biến liquid]({{ '/docs/variables/' | relative_url }}) `page.author` được đặt thành `Mr. Hyde`.
 
 ```yaml
 collections:
@@ -81,17 +80,17 @@ defaults:
   -
     scope:
       path: ""
-      type: "my_collection" # a collection in your site, in plural form
+      type: "my_collection" # một bộ sưu tập trong trang web của bạn, ở dạng số nhiều
     values:
       layout: "default"
 ```
 
-In this example, the `layout` is set to `default` inside the
-[collection]({{ '/docs/collections/' | relative_url }}) with the name `my_collection`.
+Trong ví dụ này, `layout` được đặt thành `default` bên trong
+[bộ sưu tập]({{ '/docs/collections/' | relative_url }}) với tên `my_collection`.
 
-### Glob patterns in Front Matter defaults
+### Mẫu Glob trong mặc định Front Matter
 
-It is also possible to use glob patterns (currently limited to patterns that contain `*`) when matching defaults. For example, it is possible to set specific layout for each `special-page.html` in any subfolder of `section` folder. {%- include docs_version_badge.html version="3.7.0" -%}
+Cũng có thể sử dụng các mẫu glob (hiện bị giới hạn ở các mẫu có chứa `*`) khi khớp các mặc định. Ví dụ, có thể đặt bố cục cụ thể cho mỗi `special-page.html` trong bất kỳ thư mục con nào của thư mục `section`. {%- include docs_version_badge.html version="3.7.0" -%}
 
 ```yaml
 collections:
@@ -107,22 +106,22 @@ defaults:
 ```
 
 <div class="note warning">
-  <h5>Globbing and Performance</h5>
+  <h5>Globbing và Hiệu suất</h5>
   <p>
-    Please note that globbing a path is known to have a negative effect on
-    performance and is currently not optimized, especially on Windows.
-    Globbing a path will increase your build times in proportion to the size
-    of the associated collection directory.
+    Xin lưu ý rằng việc globbing một đường dẫn được biết là có tác động tiêu cực đến
+    hiệu suất và hiện không được tối ưu hóa, đặc biệt là trên Windows.
+    Globbing một đường dẫn sẽ làm tăng thời gian xây dựng của bạn tỷ lệ thuận với kích thước
+    của thư mục bộ sưu tập liên quan.
   </p>
 </div>
 
-### Precedence
+### Thứ tự ưu tiên (Precedence)
 
-Jekyll will apply all of the configuration settings you specify in the `defaults` section of your `_config.yml` file. You can choose to override settings from other scope/values pair by specifying a more specific path for the scope.
+Jekyll sẽ áp dụng tất cả các cài đặt cấu hình bạn chỉ định trong phần `defaults` của tệp `_config.yml` của bạn. Bạn có thể chọn ghi đè các cài đặt từ cặp phạm vi/giá trị khác bằng cách chỉ định một đường dẫn cụ thể hơn cho phạm vi.
 
-You can see that in the second to last example above. First, we set the default page layout to `my-site`. Then, using a more specific path, we set the default layout for pages in the `projects/` path to `project`. This can be done with any value that you would set in the page or post front matter.
+Bạn có thể thấy điều đó trong ví dụ áp chót ở trên. Đầu tiên, chúng tôi đặt bố cục trang mặc định thành `my-site`. Sau đó, sử dụng một đường dẫn cụ thể hơn, chúng tôi đặt bố cục mặc định cho các trang trong đường dẫn `projects/` thành `project`. Điều này có thể được thực hiện với bất kỳ giá trị nào mà bạn sẽ đặt trong front matter của trang hoặc bài đăng.
 
-Finally, if you set defaults in the site configuration by adding a `defaults` section to your `_config.yml` file, you can override those settings in a post or page file. All you need to do is specify the settings in the post or page front matter. For example:
+Cuối cùng, nếu bạn đặt các mặc định trong cấu hình trang web bằng cách thêm một phần `defaults` vào tệp `_config.yml` của bạn, bạn có thể ghi đè các cài đặt đó trong một tệp bài đăng hoặc trang. Tất cả những gì bạn cần làm là chỉ định các cài đặt trong front matter của bài đăng hoặc trang. Ví dụ:
 
 ```yaml
 # In _config.yml
@@ -148,6 +147,6 @@ layout: "foobar"
 The post text goes here...
 ```
 
-The `projects/foo_project.md` would have the `layout` set to `foobar` instead
-of `project` and the `author` set to `John Smith` instead of `Mr. Hyde` when
-the site is built.
+`projects/foo_project.md` sẽ có `layout` được đặt thành `foobar` thay vì
+`project` và `author` được đặt thành `John Smith` thay vì `Mr. Hyde` khi
+trang web được xây dựng.

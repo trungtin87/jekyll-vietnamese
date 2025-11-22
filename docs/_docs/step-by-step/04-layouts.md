@@ -1,31 +1,24 @@
 ---
 layout: step
-title: Layouts
+title: Bố cục
 position: 4
 ---
-Jekyll supports [Markdown](https://daringfireball.net/projects/markdown/syntax)
-in addition to HTML when building pages. Markdown is a great choice for pages with a simple
-content structure (just paragraphs, headings and images), as it's less verbose
-than raw HTML. 
+Jekyll hỗ trợ [Markdown](https://daringfireball.net/projects/markdown/syntax) ngoài HTML khi xây dựng các trang. Markdown là một lựa chọn tuyệt vời cho các trang có cấu trúc nội dung đơn giản (chỉ các đoạn văn, tiêu đề và hình ảnh), vì nó ít dài dòng hơn HTML thô.
 
-Create a new Markdown file named `about.md` in your site's root folder. 
+Tạo một tệp Markdown mới có tên `about.md` trong thư mục gốc trang web của bạn.
 
-You could copy the contents of `index` and modify it for the About page. However,
-this creates duplicate code that has to be customized for each new page you add
-to your site. 
+Bạn có thể sao chép nội dung của `index` và sửa đổi nó cho trang Giới thiệu. Tuy nhiên, điều này tạo ra mã trùng lặp phải được tùy chỉnh cho mỗi trang mới bạn thêm vào trang web của mình.
 
-For example, adding a new stylesheet to your site would involve adding the link
-to the stylesheet to the `<head>` of each page. For sites with many pages, this
-is a waste of time.
+Ví dụ, việc thêm một bảng định kiểu mới vào trang web của bạn sẽ liên quan đến việc thêm liên kết đến bảng định kiểu vào `<head>` của mỗi trang. Đối với các trang web có nhiều trang, đây là một sự lãng phí thời gian.
 
-## Creating a layout
+## Tạo một bố cục
 
-Layouts are templates that can be used by any page in your site and wrap around page content.
-They are stored in a directory called `_layouts`.
+Bố cục là các mẫu có thể được sử dụng bởi bất kỳ trang nào trong trang web của bạn và bao quanh nội dung trang. Chúng được lưu trữ trong một thư mục có tên `_layouts`.
 
-Create the `_layouts` directory in your site's root folder and create a new `default.html` file with the following content:
+Tạo thư mục `_layouts` trong thư mục gốc trang web của bạn và tạo một tệp `default.html` mới với nội dung sau:
 
 {% raw %}
+
 ```liquid
 <!doctype html>
 <html>
@@ -38,52 +31,49 @@ Create the `_layouts` directory in your site's root folder and create a new `def
   </body>
 </html>
 ```
+
 {% endraw %}
 
-This HTML is almost identical to `index.html` except there's
-no front matter and the content of the page is replaced by a `content`
-variable. 
+HTML này gần như giống hệt với `index.html` ngoại trừ việc không có front matter và nội dung của trang được thay thế bằng một biến `content`.
 
-`content` is a special variable that returns the rendered
-content of the page on which it's called.
+`content` là một biến đặc biệt trả về nội dung được hiển thị của trang mà nó được gọi.
 
-## Use layouts
+## Sử dụng bố cục
 
-To make `index.html` use your new layout, set the `layout` variable in the front
-matter. The file should look like this:
+Để làm cho `index.html` sử dụng bố cục mới của bạn, hãy đặt biến `layout` trong front matter. Tệp sẽ trông như thế này:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
-title: Home
+title: Trang chủ
 ---
 <h1>{{ "Hello World!" | downcase }}</h1>
 ```
+
 {% endraw %}
 
-When you reload the site, the output remains the same.
+Khi bạn tải lại trang web, đầu ra vẫn giữ nguyên.
 
-Since the layout wraps around the content on the page, you can call front matter like `page` 
-in the layout file. When you apply the layout to a page, it uses the front matter on that page.
+Vì bố cục bao quanh nội dung trên trang, bạn có thể gọi front matter giống như `page` trong tệp bố cục. Khi bạn áp dụng bố cục cho một trang, nó sử dụng front matter trên trang đó.
 
-## Build the About page
+## Xây dựng trang Giới thiệu
 
-Add the following to `about.md` to use your new layout in the About page:
+Thêm phần sau vào `about.md` để sử dụng bố cục mới của bạn trong trang Giới thiệu:
 
 ```markdown
 ---
 layout: default
-title: About
+title: Giới thiệu
 ---
-# About page
+# Trang giới thiệu
 
-This page tells you a little bit about me.
+Trang này cho bạn biết một chút về tôi.
 ```
 
-Open <a href="http://localhost:4000/about.html" target="_blank" data-proofer-ignore>http://localhost:4000/about.html</a>
-in your browser and view your new page.
+Mở <a href="http://localhost:4000/about.html" target="_blank" data-proofer-ignore>http://localhost:4000/about.html</a> trong trình duyệt của bạn và xem trang mới của bạn.
 
-Congratulations, you now have a two page website!
+Chúc mừng, bây giờ bạn đã có một trang web hai trang!
 
-Next, you'll learn about navigating from page to page in your site. 
+Tiếp theo, bạn sẽ tìm hiểu về điều hướng từ trang này sang trang khác trong trang web của mình.

@@ -1,11 +1,11 @@
 ---
-title: Deployment
+title: Triển khai
 permalink: /docs/deployment/
 redirect_from: "/docs/deployment-methods/index.html"
 ---
 
-Sites built using Jekyll can be deployed in a large number of ways due to the static nature of the generated output. Here's some of the most common ways:
+Các trang web được xây dựng bằng Jekyll có thể được triển khai theo rất nhiều cách do tính chất tĩnh của đầu ra được tạo ra. Dưới đây là một số cách phổ biến nhất:
 
-* [Manually]({{ '/docs/deployment/manual/' | relative_url }})
-* [Automated]({{ '/docs/deployment/automated/' | relative_url }})
-* [Third Party]({{ '/docs/deployment/third-party/' | relative_url }})
+* [Thủ công]({{ '/docs/deployment/manual/' | relative_url }})
+* [Tự động]({{ '/docs/deployment/automated/' | relative_url }})
+* [Bên thứ ba]({{ '/docs/deployment/third-party/' | relative_url }})

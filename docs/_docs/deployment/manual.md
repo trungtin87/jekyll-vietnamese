@@ -1,34 +1,34 @@
 ---
-title: Manual Deployment
+title: Triển khai Thủ công (Manual Deployment)
 permalink: /docs/deployment/manual/
 ---
 
-Jekyll generates your static site to the `_site` directory by default. You can
-transfer the contents of this directory to almost any hosting provider to get
-your site live. Here are some manual ways of achieving this:
+Jekyll tạo trang web tĩnh của bạn vào thư mục `_site` theo mặc định. Bạn có thể
+chuyển nội dung của thư mục này đến hầu hết mọi nhà cung cấp dịch vụ lưu trữ để đưa
+trang web của bạn hoạt động. Dưới đây là một số cách thủ công để đạt được điều này:
 
 ## rsync
 
-Rsync is similar to scp except it can be faster as it will only send changed
-parts of files as opposed to the entire file. You can learn more about using
-rsync in the [Digital Ocean tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps).
+Rsync tương tự như scp ngoại trừ việc nó có thể nhanh hơn vì nó sẽ chỉ gửi các phần
+đã thay đổi của tệp thay vì toàn bộ tệp. Bạn có thể tìm hiểu thêm về cách sử dụng
+rsync trong [hướng dẫn Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps).
 
 ## Amazon S3
 
-If you want to host your site in Amazon S3, you can do so by
-using the AWS cli client and pushing your rendered `_site` directory directly to
-your S3 bucket.
+Nếu bạn muốn lưu trữ trang web của mình trong Amazon S3, bạn có thể làm như vậy bằng cách
+sử dụng ứng dụng khách AWS cli và đẩy thư mục `_site` đã hiển thị của bạn trực tiếp đến
+nhóm S3 của bạn.
 
 `aws s3 sync _site s3://<YOUR DOMAIN>.com --size-only --storage-class REDUCED_REDUNDANCY`
 
 ## FTP
 
-Most traditional web hosting providers let you upload files to their servers over FTP. To upload a Jekyll site to a web host using FTP, run the `jekyll build` command and copy the contents of the generated `_site` folder to the root folder of your hosting account. This is most likely to be the `httpdocs` or `public_html` folder on most hosting providers.
+Hầu hết các nhà cung cấp dịch vụ lưu trữ web truyền thống cho phép bạn tải tệp lên máy chủ của họ qua FTP. Để tải một trang web Jekyll lên máy chủ web bằng FTP, hãy chạy lệnh `jekyll build` và sao chép nội dung của thư mục `_site` đã tạo vào thư mục gốc của tài khoản lưu trữ của bạn. Đây rất có thể là thư mục `httpdocs` hoặc `public_html` trên hầu hết các nhà cung cấp dịch vụ lưu trữ.
 
 ## scp
 
-If you have direct access to the deployment web server, the process is essentially the same, except you might have other methods available to you (such as `scp`, or even direct filesystem access) for transferring the files. Remember to make sure the contents of the generated `_site` folder get placed in the appropriate web root directory for your web server.
+Nếu bạn có quyền truy cập trực tiếp vào máy chủ web triển khai, quy trình về cơ bản là giống nhau, ngoại trừ việc bạn có thể có các phương pháp khác có sẵn cho mình (chẳng hạn như `scp`, hoặc thậm chí truy cập hệ thống tệp trực tiếp) để chuyển các tệp. Hãy nhớ đảm bảo nội dung của thư mục `_site` đã tạo được đặt vào thư mục gốc web thích hợp cho máy chủ web của bạn.
 
 ## Rack-Jekyll
 
-[Rack-Jekyll](https://github.com/adaoraul/rack-jekyll/) allows you to deploy your site on any Rack server such as Amazon EC2, Slicehost, Heroku, and so forth. It also can run with [shotgun](https://github.com/rtomayko/shotgun/), [rackup](https://github.com/rack/rack), [mongrel](https://github.com/mongrel/mongrel), [unicorn](https://github.com/defunkt/unicorn/), and [others](https://github.com/adaoraul/rack-jekyll#readme).
+[Rack-Jekyll](https://github.com/adaoraul/rack-jekyll/) cho phép bạn triển khai trang web của mình trên bất kỳ máy chủ Rack nào như Amazon EC2, Slicehost, Heroku, v.v. Nó cũng có thể chạy với [shotgun](https://github.com/rtomayko/shotgun/), [rackup](https://github.com/rack/rack), [mongrel](https://github.com/mongrel/mongrel), [unicorn](https://github.com/defunkt/unicorn/), và [những cái khác](https://github.com/adaoraul/rack-jekyll#readme).

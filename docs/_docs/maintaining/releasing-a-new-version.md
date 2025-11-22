@@ -1,76 +1,70 @@
 ---
-title: "Releasing a new version"
+title: "Phát hành phiên bản mới"
 ---
 
-**This guide is for maintainers.** These special people have **write access** to one or more of Jekyll's repositories and help merge the
-contributions of others. You may find what is written here interesting, but it's definitely not for everyone.
+**Hướng dẫn này dành cho những người duy trì.** Những người đặc biệt này có **quyền ghi** vào một hoặc nhiều kho lưu trữ của Jekyll và giúp hợp nhất các đóng góp của người khác. Bạn có thể thấy những gì được viết ở đây thú vị, nhưng nó chắc chắn không dành cho tất cả mọi người.
 {: .note .info}
 
-The most important thing to understand before making a release is that there's no need to feel nervous. Most things are revertable, and even if
-you do publish an incomplete gem version, we can always skip that one. Don't hesitate to contact the other maintainers if you feel unsure or
-don't know what to do next.
+Điều quan trọng nhất cần hiểu trước khi thực hiện phát hành là không cần phải cảm thấy lo lắng. Hầu hết mọi thứ đều có thể hoàn tác, và ngay cả khi bạn xuất bản một phiên bản gem không hoàn chỉnh, chúng tôi luôn có thể bỏ qua phiên bản đó. Đừng ngần ngại liên hệ với những người duy trì khác nếu bạn cảm thấy không chắc chắn hoặc không biết phải làm gì tiếp theo.
 
-### Bump the version
+### Tăng phiên bản
 
-The only important place you need to manually bump the version is in `lib/jekyll/version.rb`. Adjust that, and everything else should work fine.
+Nơi quan trọng duy nhất bạn cần tăng phiên bản thủ công là trong `lib/jekyll/version.rb`. Điều chỉnh nó, và mọi thứ khác sẽ hoạt động tốt.
 
-The version will mostly be of the format `"major.minor.patch"`. At times, we may decide to ship pre-releases which will be in the format
-`"major.minor.patch.suffix"`. `suffix` is not standardized and may be anything like `pre.alpha1`, `pre.rc2`, or simply `beta3`, etc.
+Phiên bản chủ yếu sẽ có định dạng `"major.minor.patch"`. Đôi khi, chúng tôi có thể quyết định gửi các bản phát hành trước sẽ có định dạng `"major.minor.patch.suffix"`. `suffix` không được chuẩn hóa và có thể là bất cứ thứ gì như `pre.alpha1`, `pre.rc2`, hoặc đơn giản là `beta3`, v.v.
 
-To determine the correct version, consult the `## HEAD` section of our history document, `History.markdown`, first.
+Để xác định phiên bản chính xác, hãy tham khảo phần `## HEAD` của tài liệu lịch sử của chúng tôi, `History.markdown`, trước tiên.
 
-- If there's a subsection titled `Major Enhancements`
-  - Increment the `major` component of the version string and reset both `minor` and `patch` components to `0`.
-  - Add `suffix` if applicable.
-  - For example, `"3.9.1" => "4.0.0"` or, `"3.9.1 => "4.0.0.alpha1"`.
-  - Skip to next step in the release process.
+- Nếu có một tiểu mục có tiêu đề `Major Enhancements`
+  - Tăng thành phần `major` của chuỗi phiên bản và đặt lại cả hai thành phần `minor` và `patch` về `0`.
+  - Thêm `suffix` nếu có.
+  - Ví dụ, `"3.9.1" => "4.0.0"` hoặc, `"3.9.1 => "4.0.0.alpha1"`.
+  - Chuyển sang bước tiếp theo trong quy trình phát hành.
 
-- If there's a subsection titled `Minor Enhancements`
-  - Increment just the `minor` component and reset the patch component to `0`.
-  - Add `suffix` if applicable.
-  - For example, `"4.0.2" => "4.1.0"` or `"4.1.0" => "4.2.0.pre"`.
-  - Skip to next step in the release process.
+- Nếu có một tiểu mục có tiêu đề `Minor Enhancements`
+  - Chỉ tăng thành phần `minor` và đặt lại thành phần vá về `0`.
+  - Thêm `suffix` nếu có.
+  - Ví dụ, `"4.0.2" => "4.1.0"` hoặc `"4.1.0" => "4.2.0.pre"`.
+  - Chuyển sang bước tiếp theo trong quy trình phát hành.
 
-- For anything else, increment just the `patch` component or `suffix` component as applicable. For example, `"4.0.2" => "4.0.3"` or
-  `"4.1.0.beta3" => "4.1.0.rc"`.
+- Đối với bất kỳ điều gì khác, chỉ tăng thành phần `patch` hoặc thành phần `suffix` nếu có. Ví dụ, `"4.0.2" => "4.0.3"` hoặc `"4.1.0.beta3" => "4.1.0.rc"`.
 
-### Write a release post
+### Viết bài đăng phát hành
 
-In case this wasn't done already, you can generate a new release post scaffold using the included `rake` command:
+Trong trường hợp điều này chưa được thực hiện, bạn có thể tạo một khung bài đăng phát hành mới bằng cách sử dụng lệnh `rake` đi kèm:
 
 ```sh
 bundle exec rake site:releases:new[3.8.0]
 ```
 
-where `3.8.0` should be replaced with the new version.
+trong đó `3.8.0` nên được thay thế bằng phiên bản mới.
 
-Then, write the post. Be sure to thank all of the collaborators and maintainers who have contributed since the last release. You can generate
-a log of their names using the following command:
+Sau đó, viết bài đăng. Hãy chắc chắn cảm ơn tất cả các cộng tác viên và người duy trì đã đóng góp kể từ lần phát hành cuối cùng. Bạn có thể tạo nhật ký tên của họ bằng lệnh sau:
 
 ```sh
 git shortlog -sn master...v3.7.2
 ```
 
-where `v3.7.2` is the git tag for the previous release. In case the tag doesn't exist in your repository, run:
+trong đó `v3.7.2` là thẻ git cho bản phát hành trước đó. Trong trường hợp thẻ không tồn tại trong kho lưu trữ của bạn, hãy chạy:
 
 ```sh
 git pull
 ```
 
-Be sure to open a pull request for your release post once its finished.
+Hãy chắc chắn mở một yêu cầu kéo cho bài đăng phát hành của bạn sau khi hoàn thành.
 
-### Update the History document
+### Cập nhật tài liệu Lịch sử
 
-Replace the first header of `History.markdown` with a version milestone. This looks like the following:
+Thay thế tiêu đề đầu tiên của `History.markdown` bằng một cột mốc phiên bản. Điều này trông giống như sau:
 
 ```diff
 - ## HEAD
 + ## 3.7.1 / 2018-01-25
 ```
 
-Adjust the version number and the date. The `## HEAD` heading will be regenerated the next time a pull request is merged.
+Điều chỉnh số phiên bản và ngày tháng. Tiêu đề `## HEAD` sẽ được tạo lại vào lần tới khi một yêu cầu kéo được hợp nhất.
 
-Rearrange the subsections (as a whole) based on decreasing priorities as illustrated below:
+Sắp xếp lại các tiểu mục (như một tổng thể) dựa trên mức độ ưu tiên giảm dần như minh họa bên dưới:
 
 ```
 ## 4.2.0 / 2020-12-14
@@ -104,59 +98,53 @@ Rearrange the subsections (as a whole) based on decreasing priorities as illustr
 ...
 ```
 
-Once you've done this, update the website by running the following command:
+Khi bạn đã làm điều này, hãy cập nhật trang web bằng cách chạy lệnh sau:
 
 ```sh
 bundle exec rake site:generate
 ```
 
-This updates the website's changelog, and pushes the versions in various other places.
+Điều này cập nhật nhật ký thay đổi của trang web, và đẩy các phiên bản ở nhiều nơi khác.
 
-It's recommended that you go over the `History.markdown` file manually one more time, in case there are any spelling errors or such. Feel free
-to fix those manually, and after you're done generating the website changelog, commit your changes.
+Bạn nên xem lại tệp `History.markdown` thủ công một lần nữa, trong trường hợp có bất kỳ lỗi chính tả hoặc tương tự. Hãy thoải mái sửa những lỗi đó thủ công, và sau khi bạn hoàn tất việc tạo nhật ký thay đổi trang web, hãy cam kết các thay đổi của bạn.
 
-### Push the version
+### Đẩy phiên bản
 
-Before you do this step, make sure the following things are done:
+Trước khi bạn thực hiện bước này, hãy đảm bảo những điều sau đã được thực hiện:
 
-- A release post has been prepared, and is ideally already live via a prior pull request.
-- All of the prior steps are done, especially the change to `lib/jekyll/version.rb` has been staged for commit.
-- Commit staged changes to the local `master` branch preferably with commit message `"Release :gem: v[CURRENT_VERSION]"`.
+- Một bài đăng phát hành đã được chuẩn bị, và lý tưởng nhất là đã hoạt động thông qua một yêu cầu kéo trước đó.
+- Tất cả các bước trước đó đã được thực hiện, đặc biệt là thay đổi đối với `lib/jekyll/version.rb` đã được dàn dựng để cam kết.
+- Cam kết các thay đổi đã dàn dựng vào nhánh `master` cục bộ tốt nhất là với thông điệp cam kết `"Release :gem: v[CURRENT_VERSION]"`.
 
-The only thing left to do now is to run this command:
+Điều duy nhất còn lại phải làm bây giờ là chạy lệnh này:
 
 ```sh
 git push upstream master
 ```
 
-where `upstream` references `git@github.com:jekyll/jekyll.git`.
+trong đó `upstream` tham chiếu đến `git@github.com:jekyll/jekyll.git`.
 
-This will trigger a GitHub Actions workflow that will automatically build the new gem, tag the release commit, push the tag to GitHub and
-then finally, push the new gem to RubyGems. Don't worry about creating a GitHub release either, @jekyllbot will take care of that when the
-release workflow publishes the new tag.
+Điều này sẽ kích hoạt quy trình làm việc GitHub Actions sẽ tự động xây dựng gem mới, gắn thẻ cam kết phát hành, đẩy thẻ lên GitHub và sau đó cuối cùng, đẩy gem mới lên RubyGems. Đừng lo lắng về việc tạo bản phát hành GitHub, @jekyllbot sẽ lo việc đó khi quy trình làm việc phát hành xuất bản thẻ mới.
 
-And then, if the workflow has completed successfully, you're done! :tada:
-Feel free to celebrate!
+Và sau đó, nếu quy trình làm việc đã hoàn thành thành công, bạn đã hoàn tất! :tada:
+Hãy thoải mái ăn mừng!
 
-If you have access to the [@jekyllrb](https://twitter.com/jekyllrb) Twitter account, you should tweet the release post from there. If not, just
-ask another maintainer to do it or to give you access.
+Nếu bạn có quyền truy cập vào tài khoản Twitter [@jekyllrb](https://twitter.com/jekyllrb), bạn nên tweet bài đăng phát hành từ đó. Nếu không, chỉ cần nhờ người duy trì khác làm việc đó hoặc cấp cho bạn quyền truy cập.
 
-### Build the docs
+### Xây dựng tài liệu
 
-We package our documentation as a :gem: Gem for offline use.
+Chúng tôi đóng gói tài liệu của mình dưới dạng :gem: Gem để sử dụng ngoại tuyến.
 
-This is done with the [**jekyll-docs**](https://github.com/jekyll/jekyll-docs#building) repository, and more detailed instructions are
-provided there.
+Điều này được thực hiện với kho lưu trữ [**jekyll-docs**](https://github.com/jekyll/jekyll-docs#building), và các hướng dẫn chi tiết hơn được cung cấp ở đó.
 
-## For non-core gems
+## Đối với các gem không phải cốt lõi
 
-If you're not a maintainer for `jekyll/jekyll`, the procedure is much simpler in a lot of cases. Generally, the procedure still looks like
-this:
+Nếu bạn không phải là người duy trì cho `jekyll/jekyll`, quy trình đơn giản hơn nhiều trong rất nhiều trường hợp. Nói chung, quy trình vẫn trông giống như thế này:
 
-- Bump the gem version manually, usually in `lib/<plugin_name>/version.rb`
-- Adjust the history file
-- Commit changes to default branch preferably with message `"Release :gem: v[CURRENT_VERSION]"`
-- Push to remote repository
-- Rejoice
+- Tăng phiên bản gem thủ công, thường là trong `lib/<plugin_name>/version.rb`
+- Điều chỉnh tệp lịch sử
+- Cam kết thay đổi vào nhánh mặc định tốt nhất là với thông điệp `"Release :gem: v[CURRENT_VERSION]"`
+- Đẩy lên kho lưu trữ từ xa
+- Vui mừng
 
-Be sure to ask your project's maintainers if you're unsure!
+Hãy chắc chắn hỏi những người duy trì dự án của bạn nếu bạn không chắc chắn!

@@ -3,10 +3,9 @@ layout: step
 title: Front Matter
 position: 3
 ---
-Front matter is a snippet of [YAML](http://yaml.org/) placed between two
-triple-dashed lines at the start of a file.
+Front matter là một đoạn mã [YAML](http://yaml.org/) được đặt giữa hai dòng gạch ngang ba ở đầu tệp.
 
-You can use front matter to set variables for the page:
+Bạn có thể sử dụng front matter để đặt biến cho trang:
 
 ```yaml
 ---
@@ -14,23 +13,25 @@ my_number: 5
 ---
 ```
 
-You can call front matter variables in Liquid using the `page` variable. For
-example, to output the value of the `my_number` variable above:
+Bạn có thể gọi các biến front matter trong Liquid bằng cách sử dụng biến `page`. Ví dụ, để xuất giá trị của biến `my_number` ở trên:
 
 {% raw %}
+
 ```liquid
 {{ page.my_number }}
 ```
+
 {% endraw %}
 
-## Use front matter
+## Sử dụng front matter
 
-Change the `<title>` on your site to use front matter:
+Thay đổi `<title>` trên trang web của bạn để sử dụng front matter:
 
 {% raw %}
+
 ```liquid
 ---
-title: Home
+title: Trang chủ
 ---
 <!doctype html>
 <html>
@@ -43,16 +44,17 @@ title: Home
   </body>
 </html>
 ```
+
 {% endraw %}
 
 {: .note .info }
-You _must_ include front matter on the page for Jekyll to process any Liquid tags on it. 
+Bạn _phải_ bao gồm front matter trên trang để Jekyll xử lý bất kỳ thẻ Liquid nào trên đó.
 
-To make Jekyll process a page without defining variables in the front matter, use:
+Để làm cho Jekyll xử lý một trang mà không xác định các biến trong front matter, hãy sử dụng:
 
 ```yaml
 ---
 ---
 ```
 
-Next, you'll learn more about layouts and why your pages use more source code than plain HTML.
+Tiếp theo, bạn sẽ tìm hiểu thêm về bố cục và lý do tại sao các trang của bạn sử dụng nhiều mã nguồn hơn HTML thuần tú.

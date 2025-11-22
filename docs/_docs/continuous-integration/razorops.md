@@ -2,35 +2,35 @@
 title: "Razorops"
 ---
 
-[Razorops][razorops-homepage] is a complete container native CI/CD solution handling all aspects of the software lifecycle from the moment a commit is created until it is deployed to production.
-Razorops has all the capabilities that you would expect from a CI/CD platform such as
-1. Code compilation/build
-2. Artifact packaging
-3. Testing Automation(unit, integration, acceptance etc.)
-4. Faster builds and shipping to production
+[Razorops][razorops-homepage] là một giải pháp CI/CD gốc container hoàn chỉnh xử lý tất cả các khía cạnh của vòng đời phần mềm từ thời điểm một cam kết được tạo cho đến khi nó được triển khai vào sản xuất.
+Razorops có tất cả các khả năng mà bạn mong đợi từ một nền tảng CI/CD như
 
-Razorops is a single solution that implements the whole pipeline from start to deployment.
+1. Biên dịch/xây dựng mã
+2. Đóng gói tạo tác
+3. Tự động hóa kiểm tra (đơn vị, tích hợp, chấp nhận, v.v.)
+4. Xây dựng nhanh hơn và vận chuyển đến sản xuất
 
-With [Razorops][razorops-homepage] you can set up your Jekyll websites project's build, test, and deploy steps just in 15 min. It supports [GitHub][github-homepage], [Bitbucket][bitbucket-homepage], and [GitLab][gitlab-homepage] repositories. The following guide will show you how to set up a free environment to build, test and deploy your Jekyll project.
+Razorops là một giải pháp duy nhất thực hiện toàn bộ đường ống từ khi bắt đầu đến khi triển khai.
+
+Với [Razorops][razorops-homepage], bạn có thể thiết lập các bước xây dựng, kiểm tra và triển khai dự án trang web Jekyll của mình chỉ trong 15 phút. Nó hỗ trợ các kho lưu trữ [GitHub][github-homepage], [Bitbucket][bitbucket-homepage], và [GitLab][gitlab-homepage]. Hướng dẫn sau đây sẽ chỉ cho bạn cách thiết lập một môi trường miễn phí để xây dựng, kiểm tra và triển khai dự án Jekyll của bạn.
 
 [razorops-homepage]: https://razorops.com/
-[docker-homepage]: https://www.docker.com/
 [github-homepage]: https://github.com
 [bitbucket-homepage]: https://bitbucket.org/
 [gitlab-homepage]: https://gitlab.com
 [deploy-s3]: https://razorops.com/blog/how-to-deploy-a-static-website-to-aws-s3-with-razorops-ci-cd/
 
-## 1. Getting started
+## 1. Bắt đầu
 
-1. Log in at [https://razorops.com/][razorops-homepage] with your GitHub/Bitbucket or GitLab account
-2. Create a pipeline, choose your Git provider and select your Jekyll Project
-3. Add .razorops.yaml file in your root directory of your project
-4. Add environment var and your deployment is ready
-5. Add build and deployment steps as shown in this post [How to Deploy a Static Website to AWS S3 with Razorops CI/CD][deploy-s3]
+1. Đăng nhập tại [https://razorops.com/][razorops-homepage] bằng tài khoản GitHub/Bitbucket hoặc GitLab của bạn
+2. Tạo một đường ống, chọn nhà cung cấp Git của bạn và chọn Dự án Jekyll của bạn
+3. Thêm tệp .razorops.yaml vào thư mục gốc của dự án của bạn
+4. Thêm biến môi trường và việc triển khai của bạn đã sẵn sàng
+5. Thêm các bước xây dựng và triển khai như được hiển thị trong bài đăng này [Cách triển khai trang web tĩnh lên AWS S3 với Razorops CI/CD][deploy-s3]
 
-## 2. How it works
+## 2. Cách thức hoạt động
 
-Whenever you make a push to the selected branch, your steps auto runs as defined in .razorops.yaml file 
+Bất cứ khi nào bạn thực hiện đẩy đến nhánh đã chọn, các bước của bạn sẽ tự động chạy như được xác định trong tệp .razorops.yaml
 
 ```yaml
   tasks:
@@ -42,8 +42,8 @@ Whenever you make a push to the selected branch, your steps auto runs as defined
         - bundle install
         - JEKYLL_ENV=production bundle exec jekyll build
       # Commands to upload static pages folder to AWS S3 or ftp
-      # Set AWS access key & secrets environment variables under 
-      # Razorops dashboard project pipelines 
+      # Set AWS access key & secrets environment variables under
+      # Razorops dashboard project pipelines
       - commands:
         - aws s3 rm s3://$AWS_S3_BUCKET --recursive
         - aws s3 cp _site s3://$AWS_S3_BUCKET --recursive
@@ -51,11 +51,7 @@ Whenever you make a push to the selected branch, your steps auto runs as defined
 
 ```
 
+ Bước xây dựng tạo thư mục _site theo mặc định của Jekyll và trong quá trình triển khai, bạn sẽ có thể vận chuyển mã đến s3 hoặc bất kỳ máy chủ ftp nào, bạn có thể xác định bất kỳ lệnh nào để vận chuyển mã trang web của mình đến máy chủ.
 
-
- Build step generates _site folder as Jekyll default and during deploy you will able to ship code to s3 or any ftp server you can define any command to ship your website code to server.
-
-Razorops is FREE for opensource projects, Try it Now
+Razorops MIỄN PHÍ cho các dự án mã nguồn mở, Hãy thử ngay
 [https://razorops.com/][razorops-homepage]
-
-

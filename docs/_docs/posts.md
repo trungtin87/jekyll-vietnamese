@@ -1,105 +1,106 @@
 ---
-title: Posts
+title: Bài viết (Posts)
 permalink: /docs/posts/
 redirect_from:
   - /docs/drafts/
 ---
 
-Blogging is baked into Jekyll. You write blog posts as text files and Jekyll
-provides everything you need to turn it into a blog.
+Viết blog được tích hợp sẵn trong Jekyll. Bạn viết các bài đăng blog dưới dạng tệp văn bản và Jekyll
+cung cấp mọi thứ bạn cần để biến nó thành một blog.
 
-## The Posts Folder
+## Thư mục Bài viết
 
-The `_posts` folder is where your blog posts live. You typically write posts
-in [Markdown](https://daringfireball.net/projects/markdown/), HTML is
-also supported.
+Thư mục `_posts` là nơi các bài đăng blog của bạn sinh sống. Bạn thường viết các bài đăng
+bằng [Markdown](https://daringfireball.net/projects/markdown/), HTML cũng
+được hỗ trợ.
 
-## Creating Posts
+## Tạo Bài viết
 
-To create a post, add a file to your `_posts` directory with the following
-format:
+Để tạo một bài viết, hãy thêm một tệp vào thư mục `_posts` của bạn với định dạng
+sau:
 
 ```
 YEAR-MONTH-DAY-title.MARKUP
 ```
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit
-numbers, and `MARKUP` is the file extension representing the format used in the
-file. For example, the following are examples of valid post filenames:
+Trong đó `YEAR` là một số có bốn chữ số, `MONTH` và `DAY` đều là số có hai chữ số,
+và `MARKUP` là phần mở rộng tệp đại diện cho định dạng được sử dụng trong
+tệp. Ví dụ, sau đây là các ví dụ về tên tệp bài viết hợp lệ:
 
 ```
 2011-12-31-new-years-eve-is-awesome.md
 2012-09-12-how-to-write-a-blog.md
 ```
 
-All blog post files must begin with [front matter](/docs/front-matter/) which is
-typically used to set a [layout](/docs/layouts/) or other meta data. For a simple
-example this can just be empty:
+Tất cả các tệp bài đăng blog phải bắt đầu bằng [front matter](/docs/front-matter/) thường
+được sử dụng để đặt [bố cục](/docs/layouts/) hoặc dữ liệu meta khác. Đối với một ví dụ
+đơn giản, nó có thể chỉ để trống:
 
 ```markdown
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Chào mừng đến với Jekyll!"
 ---
 
-# Welcome
+# Chào mừng
 
-**Hello world**, this is my first Jekyll blog post.
+**Xin chào thế giới**, đây là bài đăng blog Jekyll đầu tiên của tôi.
 
-I hope you like it!
+Tôi hy vọng bạn thích nó!
 ```
 
 <div class="note">
-  <h5>ProTip™: Link to other posts</h5>
+  <h5>Mẹo chuyên nghiệp™: Liên kết đến các bài viết khác</h5>
   <p>
-    Use the <a href="/docs/liquid/tags/#linking-to-posts"><code>post_url</code></a>
-    tag to link to other posts without having to worry about the URLs
-    breaking when the site permalink style changes.
+    Sử dụng thẻ <a href="/docs/liquid/tags/#linking-to-posts"><code>post_url</code></a>
+    để liên kết đến các bài viết khác mà không phải lo lắng về việc các URL
+    bị hỏng khi kiểu liên kết tĩnh của trang web thay đổi.
   </p>
 </div>
 
 <div class="note info">
-  <h5>Be aware of character sets</h5>
+  <h5>Hãy chú ý đến bộ ký tự</h5>
   <p>
-    Content processors can modify certain characters to make them look nicer.
-    For example, the <code>smart</code> extension in Redcarpet converts standard,
-    ASCII quotation characters to curly, Unicode ones. In order for the browser
-    to display those characters properly, define the charset meta value by
-    including <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code> in the
-    <code>&lt;head&gt;</code> of your layout.
+    Các bộ xử lý nội dung có thể sửa đổi một số ký tự nhất định để làm cho chúng trông đẹp hơn.
+    Ví dụ, phần mở rộng <code>smart</code> trong Redcarpet chuyển đổi các ký tự trích dẫn ASCII
+    tiêu chuẩn thành các ký tự Unicode cong. Để trình duyệt
+    hiển thị các ký tự đó đúng cách, hãy xác định giá trị meta charset bằng cách
+    bao gồm <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code> trong
+    <code>&lt;head&gt;</code> của bố cục của bạn.
   </p>
 </div>
 
-## Including images and resources
+## Bao gồm hình ảnh và tài nguyên
 
-At some point, you'll want to include images, downloads, or other
-digital assets along with your text content. One common solution is to create
-a folder in the root of the project directory called something like `assets`,
-into which any images, files or other resources are placed. Then, from within
-any post, they can be linked to using the site’s root as the path for the asset
-to include. The best way to do this depends on the way your site’s (sub)domain
-and path are configured, but here are some simple examples in Markdown:
+Tại một số điểm, bạn sẽ muốn bao gồm hình ảnh, tệp tải xuống hoặc các
+tài sản kỹ thuật số khác cùng với nội dung văn bản của bạn. Một giải pháp phổ biến là tạo
+một thư mục trong thư mục gốc của thư mục dự án được gọi là một cái gì đó như `assets`,
+vào đó bất kỳ hình ảnh, tệp hoặc tài nguyên nào khác được đặt. Sau đó, từ bên trong
+bất kỳ bài viết nào, chúng có thể được liên kết đến bằng cách sử dụng thư mục gốc của trang web làm đường dẫn cho tài sản
+cần bao gồm. Cách tốt nhất để làm điều này phụ thuộc vào cách (tên miền phụ) và đường dẫn
+của trang web của bạn được cấu hình, nhưng đây là một số ví dụ đơn giản trong Markdown:
 
-Including an image asset in a post:
-
-```markdown
-... which is shown in the screenshot below:
-![My helpful screenshot](/assets/screenshot.jpg)
-```
-
-Linking to a PDF for readers to download:
+Bao gồm một tài sản hình ảnh trong một bài viết:
 
 ```markdown
-... you can [get the PDF](/assets/mydoc.pdf) directly.
+... được hiển thị trong ảnh chụp màn hình bên dưới:
+![Ảnh chụp màn hình hữu ích của tôi](/assets/screenshot.jpg)
 ```
 
-## Displaying an index of posts
+Liên kết đến một tệp PDF để người đọc tải xuống:
 
-Creating an index of posts on another page should be easy thanks to
-[Liquid](https://shopify.github.io/liquid/) and its tags. Here’s a
-simple example of how to create a list of links to your blog posts:
+```markdown
+... bạn có thể [lấy tệp PDF](/assets/mydoc.pdf) trực tiếp.
+```
+
+## Hiển thị chỉ mục các bài viết
+
+Tạo một chỉ mục các bài viết trên một trang khác sẽ dễ dàng nhờ vào
+[Liquid](https://shopify.github.io/liquid/) và các thẻ của nó. Đây là một
+ví dụ đơn giản về cách tạo danh sách các liên kết đến các bài đăng blog của bạn:
 
 {% raw %}
+
 ```liquid
 <ul>
   {% for post in site.posts %}
@@ -109,40 +110,42 @@ simple example of how to create a list of links to your blog posts:
   {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-You have full control over how (and where) you display your posts,
-and how you structure your site. You should read more about [how templates
-work](/docs/templates/) with Jekyll if you want to know more.
+Bạn có toàn quyền kiểm soát cách (và nơi) bạn hiển thị các bài viết của mình,
+và cách bạn cấu trúc trang web của mình. Bạn nên đọc thêm về [cách các mẫu
+hoạt động](/docs/templates/) với Jekyll nếu bạn muốn biết thêm.
 
-Note that the `post` variable only exists inside the `for` loop above. If
-you wish to access the currently-rendering page/posts's variables (the
-variables of the post/page that has the `for` loop in it), use the `page`
-variable instead.
+Lưu ý rằng biến `post` chỉ tồn tại bên trong vòng lặp `for` ở trên. Nếu
+bạn muốn truy cập các biến của trang/bài viết đang hiển thị (các
+biến của bài viết/trang có vòng lặp `for` trong đó), hãy sử dụng biến `page`
+thay thế.
 
-## Tags and Categories
+## Thẻ và Danh mục
 
-Jekyll has first class support for *tags* and *categories* in blog posts.
+Jekyll có hỗ trợ hạng nhất cho *thẻ* và *danh mục* trong các bài đăng blog.
 
-### Tags
+### Thẻ (Tags)
 
-Tags for a post are defined in the post's front matter using either the key
-`tag` for a single entry or `tags` for multiple entries. <br/> Since Jekyll
-expects multiple items mapped to the key `tags`, it will automatically *split*
-a string entry if it contains whitespace. For example, while front matter
-`tag: classic hollywood` will be processed into a singular entity
-`"classic hollywood"`, front matter `tags: classic hollywood` will be processed
-into an array of entries `["classic", "hollywood"]`.
+Thẻ cho một bài viết được định nghĩa trong front matter của bài viết bằng cách sử dụng khóa
+`tag` cho một mục nhập duy nhất hoặc `tags` cho nhiều mục nhập. <br/> Vì Jekyll
+mong đợi nhiều mục được ánh xạ tới khóa `tags`, nó sẽ tự động *tách*
+một mục nhập chuỗi nếu nó chứa khoảng trắng. Ví dụ, trong khi front matter
+`tag: classic hollywood` sẽ được xử lý thành một thực thể duy nhất
+`"classic hollywood"`, front matter `tags: classic hollywood` sẽ được xử lý
+thành một mảng các mục nhập `["classic", "hollywood"]`.
 
-Irrespective of the front matter key chosen, Jekyll stores the metadata mapped
-to the plural key which is exposed to Liquid templates.
+Bất kể khóa front matter được chọn là gì, Jekyll lưu trữ siêu dữ liệu được ánh xạ
+tới khóa số nhiều được hiển thị cho các mẫu Liquid.
 
-All tags registered in the current site are exposed to Liquid templates via
-`site.tags`. Iterating over `site.tags` on a page will yield another array with
-two items, where the first item is the name of the tag and the second item being
-*an array of posts* with that tag.
+Tất cả các thẻ được đăng ký trong trang web hiện tại được hiển thị cho các mẫu Liquid thông qua
+`site.tags`. Lặp lại `site.tags` trên một trang sẽ tạo ra một mảng khác với
+hai mục, trong đó mục đầu tiên là tên của thẻ và mục thứ hai là
+*một mảng các bài viết* có thẻ đó.
 
 {% raw %}
+
 ```liquid
 {% for tag in site.tags %}
   <h3>{{ tag[0] }}</h3>
@@ -153,45 +156,43 @@ two items, where the first item is the name of the tag and the second item being
   </ul>
 {% endfor %}
 ```
+
 {% endraw %}
 
+### Danh mục (Categories)
 
-### Categories
+Danh mục của một bài viết hoạt động tương tự như các thẻ ở trên:
 
-Categories of a post work similar to the tags above:
-  * They can be defined via the front matter using keys `category` or
-    `categories` (that follow the same logic as for tags)
-  * All categories registered in the site are exposed to Liquid templates via
-    `site.categories` which can be iterated over (similar to the loop for tags
-    above.)
+* Chúng có thể được định nghĩa thông qua front matter bằng cách sử dụng các khóa `category` hoặc
+    `categories` (tuân theo logic tương tự như đối với thẻ)
+* Tất cả các danh mục được đăng ký trong trang web được hiển thị cho các mẫu Liquid thông qua
+    `site.categories` có thể được lặp lại (tương tự như vòng lặp cho thẻ
+    ở trên.)
 
-*The similarity between categories and tags however, ends there.*
+*Tuy nhiên, sự tương đồng giữa danh mục và thẻ kết thúc ở đó.*
 
-Unlike tags, categories for posts can also be defined by a post's file path.
-Any directory above `_posts` will be read-in as a category. For example,
-if a post is at path `movies/horror/_posts/2019-05-21-bride-of-chucky.markdown`,
-then `movies` and `horror` are automatically registered as categories for that
-post.
+Không giống như thẻ, danh mục cho các bài viết cũng có thể được định nghĩa bởi đường dẫn tệp của bài viết.
+Bất kỳ thư mục nào phía trên `_posts` sẽ được đọc vào như một danh mục. Ví dụ,
+nếu một bài viết ở đường dẫn `movies/horror/_posts/2019-05-21-bride-of-chucky.markdown`,
+thì `movies` và `horror` được tự động đăng ký là danh mục cho bài viết đó.
 
-When the post also has front matter defining categories, they just get added to
-the existing list if not present already.
+Khi bài viết cũng có front matter định nghĩa danh mục, chúng chỉ được thêm vào
+danh sách hiện có nếu chưa có sẵn.
 
-The hallmark difference between categories and tags is that categories of a post
-may be incorporated into [the generated URL](/docs/permalinks/#global) for the
-post, while tags cannot be.
+Sự khác biệt đặc trưng giữa danh mục và thẻ là danh mục của một bài viết
+có thể được tích hợp vào [URL được tạo](/docs/permalinks/#global) cho bài viết,
+trong khi thẻ thì không thể.
 
-Therefore, depending on whether front matter has `category: classic hollywood`,
-or `categories: classic hollywood`, the example post above would have the URL as
-either
-`movies/horror/classic%20hollywood/2019/05/21/bride-of-chucky.html` or
-`movies/horror/classic/hollywood/2019/05/21/bride-of-chucky.html` respectively.
+Do đó, tùy thuộc vào việc front matter có `category: classic hollywood`,
+hay `categories: classic hollywood`, bài viết ví dụ ở trên sẽ có URL là
+`movies/horror/classic%20hollywood/2019/05/21/bride-of-chucky.html` hoặc
+`movies/horror/classic/hollywood/2019/05/21/bride-of-chucky.html` tương ứng.
 
+## Trích dẫn bài viết
 
-## Post excerpts
-
-You can access a snippet of a posts's content by using `excerpt` variable on a
-post. By default this is the first paragraph of content in the post, however it
-can be customized by setting a `excerpt_separator` variable in front matter or
+Bạn có thể truy cập một đoạn trích nội dung của bài viết bằng cách sử dụng biến `excerpt` trên một
+bài viết. Theo mặc định, đây là đoạn văn đầu tiên của nội dung trong bài viết, tuy nhiên nó
+có thể được tùy chỉnh bằng cách đặt biến `excerpt_separator` trong front matter hoặc
 `_config.yml`.
 
 ```markdown
@@ -199,16 +200,17 @@ can be customized by setting a `excerpt_separator` variable in front matter or
 excerpt_separator: <!--more-->
 ---
 
-Excerpt with multiple paragraphs
+Trích dẫn với nhiều đoạn văn
 
-Here's another paragraph in the excerpt.
+Đây là một đoạn văn khác trong trích dẫn.
 <!--more-->
-Out-of-excerpt
+Ngoài trích dẫn
 ```
 
-Here's an example of outputting a list of blog posts with an excerpt:
+Đây là một ví dụ về việc xuất danh sách các bài đăng blog với một trích dẫn:
 
 {% raw %}
+
 ```liquid
 <ul>
   {% for post in site.posts %}
@@ -219,13 +221,14 @@ Here's an example of outputting a list of blog posts with an excerpt:
   {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-## Drafts
+## Bản nháp (Drafts)
 
-Drafts are posts without a date in the filename. They're posts you're still
-working on and don't want to publish yet. To get up and running with drafts,
-create a `_drafts` folder in your site's root and create your first draft:
+Bản nháp là các bài viết không có ngày tháng trong tên tệp. Chúng là các bài viết bạn vẫn đang
+làm việc và chưa muốn xuất bản. Để bắt đầu và chạy với bản nháp,
+hãy tạo một thư mục `_drafts` trong thư mục gốc của trang web của bạn và tạo bản nháp đầu tiên của bạn:
 
 ```
 .
@@ -234,7 +237,7 @@ create a `_drafts` folder in your site's root and create your first draft:
 ...
 ```
 
-To preview your site with drafts, run `jekyll serve` or `jekyll build`
-with the `--drafts` switch. Each will be assigned the value modification time
-of the draft file for its date, and thus you will see currently edited drafts
-as the latest posts.
+Để xem trước trang web của bạn với các bản nháp, hãy chạy `jekyll serve` hoặc `jekyll build`
+với công tắc `--drafts`. Mỗi bản nháp sẽ được gán thời gian sửa đổi giá trị
+của tệp bản nháp cho ngày của nó, và do đó bạn sẽ thấy các bản nháp đang được chỉnh sửa hiện tại
+là các bài viết mới nhất.

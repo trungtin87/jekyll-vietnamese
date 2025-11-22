@@ -4,16 +4,16 @@ permalink: /docs/liquid/
 redirect_from: "/docs/templates/"
 ---
 
-Jekyll uses the [Liquid](https://shopify.github.io/liquid/) templating language
-to process templates.
+Jekyll sử dụng ngôn ngữ mẫu [Liquid](https://shopify.github.io/liquid/)
+để xử lý các mẫu.
 
-Generally in Liquid you output content using two curly braces e.g.
-{% raw %}`{{ variable }}`{% endraw %} and perform logic statements by
-surrounding them in a curly brace percentage sign e.g.
-{% raw %}`{% if statement %}`{% endraw %}. To learn more about Liquid, check
-out the [official Liquid Documentation](https://shopify.github.io/liquid/).
+Nói chung trong Liquid, bạn xuất nội dung bằng cách sử dụng hai dấu ngoặc nhọn, ví dụ:
+{% raw %}`{{ variable }}`{% endraw %} và thực hiện các câu lệnh logic bằng cách
+bao quanh chúng trong dấu ngoặc nhọn và dấu phần trăm, ví dụ:
+{% raw %}`{% if statement %}`{% endraw %}. Để tìm hiểu thêm về Liquid, hãy xem
+[Tài liệu Liquid chính thức](https://shopify.github.io/liquid/).
 
-Jekyll provides a number of useful Liquid additions to help you build your site:
+Jekyll cung cấp một số bổ sung Liquid hữu ích để giúp bạn xây dựng trang web của mình:
 
-* [Filters]({{ '/docs/liquid/filters/' | relative_url }})
-* [Tags]({{ '/docs/liquid/tags/' | relative_url }})
+* [Bộ lọc (Filters)]({{ '/docs/liquid/filters/' | relative_url }})
+* [Thẻ (Tags)]({{ '/docs/liquid/tags/' | relative_url }})

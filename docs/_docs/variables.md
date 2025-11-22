@@ -1,44 +1,45 @@
 ---
-title: Variables
+title: Biến (Variables)
 permalink: /docs/variables/
 ---
 
-Jekyll traverses your site looking for files to process. Any files with
-[front matter](/docs/front-matter/) are subject to processing. For each of these
-files, Jekyll makes a variety of data available via [Liquid](/docs/liquid/).
-The following is a reference of the available data.
+Jekyll duyệt qua trang web của bạn để tìm các tệp cần xử lý. Bất kỳ tệp nào có
+[front matter](/docs/front-matter/) đều phải chịu sự xử lý. Đối với mỗi tệp này,
+Jekyll cung cấp nhiều dữ liệu khác nhau thông qua [Liquid](/docs/liquid/).
+Dưới đây là tài liệu tham khảo về dữ liệu có sẵn.
 
-## Global Variables
+## Biến Toàn cục (Global Variables)
 
 {% include docs_variables_table.html scope=site.data.jekyll_variables.global %}
 
-## Site Variables
+## Biến Trang web (Site Variables)
 
 {% include docs_variables_table.html scope=site.data.jekyll_variables.site %}
 
-## Page Variables
+## Biến Trang (Page Variables)
 
 {% include docs_variables_table.html scope=site.data.jekyll_variables.page %}
 
 <div class="note">
-  <h5>ProTip™: Use Custom Front Matter</h5>
+  <h5>Mẹo chuyên nghiệp™: Sử dụng Front Matter Tùy chỉnh</h5>
   <p>
-    Any custom front matter that you specify will be available under
-    <code>page</code>. For example, if you specify <code>custom_css: true</code>
-    in a page’s front matter, that value will be available as <code>page.custom_css</code>.
+    Bất kỳ front matter tùy chỉnh nào mà bạn chỉ định sẽ có sẵn dưới
+    <code>page</code>. Ví dụ, nếu bạn chỉ định <code>custom_css: true</code>
+    trong front matter của một trang, giá trị đó sẽ có sẵn dưới dạng <code>page.custom_css</code>.
   </p>
   <p>
-    If you specify front matter in a layout, access that via <code>layout</code>.
-    For example, if you specify <code>class: full_page</code> in a layout’s front matter,
-    that value will be available as <code>layout.class</code> in the layout and its parents.
+    Nếu bạn chỉ định front matter trong một bố cục, hãy truy cập nó qua <code>layout</code>.
+    Ví dụ, nếu bạn chỉ định <code>class: full_page</code> trong front matter của một bố cục,
+    giá trị đó sẽ có sẵn dưới dạng <code>layout.class</code> trong bố cục và các cha của nó.
   </p>
 </div>
 
-## Jekyll Variables
+## Biến Jekyll (Jekyll Variables)
 
 {% include docs_variables_table.html scope=site.data.jekyll_variables.jekyll %}
 
-## Theme Variables {%- include docs_version_badge.html version="4.3.0" -%}
+## Biến Chủ đề (Theme Variables) {%- include docs_version_badge.html version="4.3.0" -%}
+
 {: #theme-variables }
 
 {% include docs_variables_table.html scope=site.data.jekyll_variables.theme %}
@@ -48,9 +49,9 @@ The following is a reference of the available data.
 {% include docs_variables_table.html scope=site.data.jekyll_variables.paginator %}
 
 <div class="note info">
-  <h5>Paginator variable availability</h5>
+  <h5>Tính khả dụng của biến Paginator</h5>
   <p>
-    These are only available in index files, however they can be located in a subdirectory,
-    such as <code>/blog/index.html</code>.
+    Những biến này chỉ có sẵn trong các tệp chỉ mục (index files), tuy nhiên chúng có thể nằm trong một thư mục con,
+    chẳng hạn như <code>/blog/index.html</code>.
   </p>
 </div>

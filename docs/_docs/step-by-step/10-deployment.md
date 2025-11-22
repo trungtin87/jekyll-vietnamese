@@ -1,26 +1,24 @@
 ---
 layout: step
-title: Deployment
+title: Triển khai
 position: 10
 ---
-In this final step we'll get the site ready for production.
+Trong bước cuối cùng này, chúng tôi sẽ chuẩn bị trang web sẵn sàng cho sản xuất.
 
 ## Gemfile
 
-It's good practice to have a [Gemfile](/docs/ruby-101/#gemfile) for your site.
-This ensures the version of Jekyll and other gems remains consistent across
-different environments.
+Thực hành tốt là có một [Gemfile](/docs/ruby-101/#gemfile) cho trang web của bạn. Điều này đảm bảo phiên bản của Jekyll và các gem khác vẫn nhất quán trên các môi trường khác nhau.
 
-If you completed step one in this tutorial, you have already created a Gemfile. If you skipped step one, create a `Gemfile` in the root. 
-The file should be called 'Gemfile' and should *not* have any extension. 
-You can create a Gemfile with Bundler and then add the `jekyll` gem:
+Nếu bạn đã hoàn thành bước một trong hướng dẫn này, bạn đã tạo một Gemfile. Nếu bạn đã bỏ qua bước một, hãy tạo một `Gemfile` trong thư mục gốc.
+Tệp nên được gọi là 'Gemfile' và *không* nên có bất kỳ phần mở rộng nào.
+Bạn có thể tạo một Gemfile bằng Bundler và sau đó thêm gem `jekyll`:
 
 ```sh
 bundle init
 bundle add jekyll
 ```
 
-Your `Gemfile` should look something like:
+`Gemfile` của bạn sẽ trông giống như:
 
 ```ruby
 # frozen_string_literal: true
@@ -29,41 +27,29 @@ source "https://rubygems.org"
 gem "jekyll"
 ```
 
-Bundler installs the gems and creates a `Gemfile.lock` which locks the current 
-gem versions for a future `bundle install`. If you ever want to update your gem 
-versions you can run `bundle update`.
+Bundler cài đặt các gem và tạo một `Gemfile.lock` khóa các phiên bản gem hiện tại cho một `bundle install` trong tương lai. Nếu bạn muốn cập nhật các phiên bản gem của mình, bạn có thể chạy `bundle update`.
 
-When using a `Gemfile`, you'll run commands like `jekyll serve` with
-`bundle exec` prefixed. So the full command is:
+Khi sử dụng một `Gemfile`, bạn sẽ chạy các lệnh như `jekyll serve` với `bundle exec` được thêm vào trước. Vì vậy, lệnh đầy đủ là:
 
 ```sh
 bundle exec jekyll serve
 ```
 
-This restricts your Ruby environment to only use gems set in your `Gemfile`.
+Điều này hạn chế môi trường Ruby của bạn chỉ sử dụng các gem được đặt trong `Gemfile` của bạn.
 
-Note: if publishing your site with GitHub Pages, you can match production
-version of Jekyll by using the `github-pages` gem instead of `jekyll`
-in your `Gemfile`. In this scenario you may also want to exclude `Gemfile.lock`
-from your repository because GitHub Pages ignores that file.
+Lưu ý: nếu xuất bản trang web của bạn với GitHub Pages, bạn có thể khớp phiên bản sản xuất của Jekyll bằng cách sử dụng gem `github-pages` thay vì `jekyll` trong `Gemfile` của bạn. Trong kịch bản này, bạn cũng có thể muốn loại trừ `Gemfile.lock` khỏi kho lưu trữ của mình vì GitHub Pages bỏ qua tệp đó.
 
-## Plugins
+## Plugin
 
-Jekyll plugins allow you to create custom generated content specific to your
-site. There are many [plugins](/docs/plugins/) available or you can even
-write your own.
+Các plugin Jekyll cho phép bạn tạo nội dung được tạo tùy chỉnh cụ thể cho trang web của bạn. Có nhiều [plugin](/docs/plugins/) có sẵn hoặc bạn thậm chí có thể viết plugin của riêng mình.
 
-There are three official plugins which are useful on almost any Jekyll site:
+Có ba plugin chính thức hữu ích trên hầu hết mọi trang web Jekyll:
 
-* [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap) - Creates a sitemap
-file to help search engines index content
-* [jekyll-feed](https://github.com/jekyll/jekyll-feed) - Creates an RSS feed for
-your posts
-* [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) - Adds meta tags to help
-with SEO
+* [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap) - Tạo tệp sơ đồ trang web để giúp các công cụ tìm kiếm lập chỉ mục nội dung
+* [jekyll-feed](https://github.com/jekyll/jekyll-feed) - Tạo nguồn cấp dữ liệu RSS cho các bài đăng của bạn
+* [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) - Thêm các thẻ meta để giúp SEO
 
-To use these first you need to add them to your `Gemfile`. If you put them
-in a `jekyll_plugins` group they'll automatically be required into Jekyll:
+Để sử dụng những thứ này trước tiên bạn cần thêm chúng vào `Gemfile` của mình. Nếu bạn đặt chúng trong một nhóm `jekyll_plugins`, chúng sẽ tự động được yêu cầu vào Jekyll:
 
 ```ruby
 source 'https://rubygems.org'
@@ -77,7 +63,7 @@ group :jekyll_plugins do
 end
 ```
 
-Then add these lines to your `_config.yml`:
+Sau đó thêm các dòng này vào `_config.yml` của bạn:
 
 ```yaml
 plugins:
@@ -86,14 +72,14 @@ plugins:
   - jekyll-seo-tag
 ```
 
-Now install them by running a `bundle update`.
+Bây giờ hãy cài đặt chúng bằng cách chạy `bundle update`.
 
-`jekyll-sitemap` doesn't need any setup, it will create your sitemap on build.
+`jekyll-sitemap` không cần bất kỳ thiết lập nào, nó sẽ tạo sơ đồ trang web của bạn khi xây dựng.
 
-For `jekyll-feed` and `jekyll-seo-tag` you need to add tags to
-`_layouts/default.html`:
+Đối với `jekyll-feed` và `jekyll-seo-tag`, bạn cần thêm các thẻ vào `_layouts/default.html`:
 
 {% raw %}
+
 ```liquid
 <!doctype html>
 <html>
@@ -110,68 +96,59 @@ For `jekyll-feed` and `jekyll-seo-tag` you need to add tags to
   </body>
 </html>
 ```
+
 {% endraw %}
 
-Restart your Jekyll server and check these tags are added to the `<head>`.
+Khởi động lại máy chủ Jekyll của bạn và kiểm tra các thẻ này được thêm vào `<head>`.
 
-## Environments
+## Môi trường
 
-Sometimes you might want to output something in production but not
-in development. Analytics scripts are the most common example of this.
+Đôi khi bạn có thể muốn xuất một cái gì đó trong sản xuất nhưng không phải trong phát triển. Các tập lệnh phân tích là ví dụ phổ biến nhất về điều này.
 
-To do this you can use [environments](/docs/configuration/environments/). You
-can set the environment by using the `JEKYLL_ENV` environment variable when
-running a command. For example:
+Để làm điều này, bạn có thể sử dụng [môi trường](/docs/configuration/environments/). Bạn có thể đặt môi trường bằng cách sử dụng biến môi trường `JEKYLL_ENV` khi chạy một lệnh. Ví dụ:
 
 ```sh
 JEKYLL_ENV=production bundle exec jekyll build
 ```
 
-By default `JEKYLL_ENV` is development. The `JEKYLL_ENV` is available to you
-in liquid using `jekyll.environment`. So to only output the analytics script
-on production you would do the following:
+Theo mặc định `JEKYLL_ENV` là development. `JEKYLL_ENV` có sẵn cho bạn trong liquid bằng cách sử dụng `jekyll.environment`. Vì vậy, để chỉ xuất tập lệnh phân tích trên sản xuất, bạn sẽ làm như sau:
 
 {% raw %}
+
 ```liquid
 {% if jekyll.environment == "production" %}
   <script src="my-analytics-script.js"></script>
 {% endif %}
 ```
+
 {% endraw %}
 
-## Deployment
+## Triển khai
 
-The final step is to get the site onto a production server. The most basic way
-to do this is to run a production build:
+Bước cuối cùng là đưa trang web lên máy chủ sản xuất. Cách cơ bản nhất để làm điều này là chạy bản dựng sản xuất:
 
 ```sh
 JEKYLL_ENV=production bundle exec jekyll build
 ```
 
-And then copy the contents of `_site` to your server.
+Và sau đó sao chép nội dung của `_site` vào máy chủ của bạn.
 
 <div class="note warning">
-  <h5>Destination folders are cleaned on site builds</h5>
+  <h5>Thư mục đích được làm sạch khi xây dựng trang web</h5>
   <p>
-    The contents of <code>_site</code> are automatically cleaned, by default, when
-    the site is built. Files or folders that are not created by your site's build
-    process will be removed.
+    Nội dung của <code>_site</code> được tự động làm sạch, theo mặc định, khi trang web được xây dựng. Các tệp hoặc thư mục không được tạo bởi quy trình xây dựng trang web của bạn sẽ bị xóa.
   </p>
   <p>
-    Some files could be retained by specifying them within the <code>keep_files</code>
-    configuration directive. Other files could be retained by keeping them in your
-    assets directory.
+    Một số tệp có thể được giữ lại bằng cách chỉ định chúng trong chỉ thị cấu hình <code>keep_files</code>. Các tệp khác có thể được giữ lại bằng cách giữ chúng trong thư mục tài sản của bạn.
   </p>
 </div>
 
-A better way is to automate this process using a [CI](/docs/deployment/automated/)
-or [3rd party](/docs/deployment/third-party/).
+Một cách tốt hơn là tự động hóa quy trình này bằng cách sử dụng [CI](/docs/deployment/automated/) hoặc [bên thứ 3](/docs/deployment/third-party/).
 
-## Wrap up
+## Tổng kết
 
-That brings us to the end of this step-by-step tutorial and the beginning of
-your Jekyll journey!
+Điều đó đưa chúng ta đến cuối hướng dẫn từng bước này và bắt đầu hành trình Jekyll của bạn!
 
-* Come say hi to the [community forums](https://talk.jekyllrb.com)
-* Help us make Jekyll better by [contributing](/docs/contributing/)
-* Keep building Jekyll sites!
+* Hãy đến chào hỏi tại [diễn đàn cộng đồng](https://talk.jekyllrb.com)
+* Giúp chúng tôi làm cho Jekyll tốt hơn bằng cách [đóng góp](/docs/contributing/)
+* Tiếp tục xây dựng các trang web Jekyll!

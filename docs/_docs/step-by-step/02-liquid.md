@@ -3,27 +3,26 @@ layout: step
 title: Liquid
 position: 2
 ---
-Liquid is where Jekyll starts to get more interesting. It is a templating
-language which has three main components: 
-  * [objects](#objects)
-  * [tags](#tags) 
-  * [filters](#filters)
+Liquid là nơi Jekyll bắt đầu trở nên thú vị hơn. Nó là một ngôn ngữ tạo mẫu có ba thành phần chính:
 
-## Objects
+* [đối tượng](#objects)
+* [thẻ](#tags)
+* [bộ lọc](#filters)
 
-Objects tell Liquid to output predefined [variables](../../variables/) as content on a page. Use double curly braces for objects: {% raw %}`{{`{% endraw %} and {% raw %}`}}`{% endraw %}. 
+## Đối tượng
 
-For example, {% raw %}`{{ page.title }}`{% endraw %} displays the `page.title` variable.
+Các đối tượng bảo Liquid xuất các [biến](../../variables/) được xác định trước dưới dạng nội dung trên một trang. Sử dụng dấu ngoặc nhọn kép cho các đối tượng: {% raw %}`{{`{% endraw %} và {% raw %}`}}`{% endraw %}.
 
-## Tags
+Ví dụ, {% raw %}`{{ page.title }}`{% endraw %} hiển thị biến `page.title`.
 
-Tags define the logic and control flow for templates. Use curly
-braces and percent signs for tags: {% raw %}`{%`{% endraw %} and
-{% raw %}`%}`{% endraw %}. 
+## Thẻ
 
-For example:
+Các thẻ xác định logic và luồng điều khiển cho các mẫu. Sử dụng dấu ngoặc nhọn và dấu phần trăm cho các thẻ: {% raw %}`{%`{% endraw %} và {% raw %}`%}`{% endraw %}.
+
+Ví dụ:
 
 {% raw %}
+
 ```liquid
 {% if page.show_sidebar %}
   <div class="sidebar">
@@ -31,42 +30,46 @@ For example:
   </div>
 {% endif %}
 ```
+
 {% endraw %}
 
-This displays the sidebar if the value of the `show_sidebar` page variable is true. 
+Điều này hiển thị thanh bên nếu giá trị của biến trang `show_sidebar` là đúng.
 
-Learn more about the tags available in Jekyll [here](/docs/liquid/tags/).
+Tìm hiểu thêm về các thẻ có sẵn trong Jekyll [tại đây](/docs/liquid/tags/).
 
-## Filters
+## Bộ lọc
 
-Filters change the output of a Liquid object. They are used within an output
-and are separated by a `|`. 
+Bộ lọc thay đổi đầu ra của một đối tượng Liquid. Chúng được sử dụng trong một đầu ra và được phân tách bằng dấu `|`.
 
-For example:
+Ví dụ:
 
 {% raw %}
+
 ```liquid
 {{ "hi" | capitalize }}
 ```
+
 {% endraw %}
 
-This displays `Hi` instead of `hi`. 
+Điều này hiển thị `Hi` thay vì `hi`.
 
-[Learn more about the filters](/docs/liquid/filters/) available.
+[Tìm hiểu thêm về các bộ lọc](/docs/liquid/filters/) có sẵn.
 
-## Use Liquid
+## Sử dụng Liquid
 
-Now, use Liquid to make your `Hello World!` text from [Setup](../01-setup/) lowercase:
+Bây giờ, hãy sử dụng Liquid để làm cho văn bản `Hello World!` của bạn từ [Thiết lập](../01-setup/) thành chữ thường:
 
 {% raw %}
+
 ```liquid
 ...
 <h1>{{ "Hello World!" | downcase }}</h1>
 ...
 ```
+
 {% endraw %}
 
-To make Jekyll process your changes, add [front matter](../03-front-matter/) to the top of the page:
+Để làm cho Jekyll xử lý các thay đổi của bạn, hãy thêm [front matter](../03-front-matter/) vào đầu trang:
 
 ```yaml
 ---
@@ -74,9 +77,10 @@ To make Jekyll process your changes, add [front matter](../03-front-matter/) to 
 ---
 ```
 
-Your HTML document should look like this:
+Tài liệu HTML của bạn sẽ trông như thế này:
 
 {% raw %}
+
 ```html
 ---
 ---
@@ -92,10 +96,11 @@ Your HTML document should look like this:
   </body>
 </html>
 ```
+
 {% endraw %}
 
-When you reload your browser, you should see `hello world!`. 
+Khi bạn tải lại trình duyệt của mình, bạn sẽ thấy `hello world!`.
 
-Much of Jekyll's power comes from combining Liquid with other features. Add frontmatter to pages to make Jekyll process the Liquid on those pages.
+Phần lớn sức mạnh của Jekyll đến từ việc kết hợp Liquid với các tính năng khác. Thêm frontmatter vào các trang để làm cho Jekyll xử lý Liquid trên các trang đó.
 
-Next, you'll learn more about frontmatter.
+Tiếp theo, bạn sẽ tìm hiểu thêm về frontmatter.

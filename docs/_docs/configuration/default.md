@@ -1,16 +1,16 @@
 ---
-title: Default Configuration
+title: Cấu hình Mặc định (Default Configuration)
 permalink: "/docs/configuration/default/"
 ---
 
-Jekyll runs with the following configuration options by default. Alternative
-settings for these options can be explicitly specified in the configuration
-file or on the command-line.
+Jekyll chạy với các tùy chọn cấu hình sau theo mặc định. Các cài đặt thay thế
+cho các tùy chọn này có thể được chỉ định rõ ràng trong tệp cấu hình
+hoặc trên dòng lệnh.
 
 <div class="note info">
-  <h5>Be aware of directory paths</h5>
+  <h5>Hãy chú ý đến đường dẫn thư mục</h5>
   <p>
-    In general, make directory path values in configuration keys like <code>plugins_dir</code> relative to the current working directory, not the site source. The <code>sass</code> configuration key is an exception, where values must be relative to the site source.
+    Nói chung, hãy đặt các giá trị đường dẫn thư mục trong các khóa cấu hình như <code>plugins_dir</code> tương đối với thư mục làm việc hiện tại, không phải nguồn trang web. Khóa cấu hình <code>sass</code> là một ngoại lệ, trong đó các giá trị phải tương đối với nguồn trang web.
   </p>
 </div>
 

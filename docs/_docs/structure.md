@@ -1,8 +1,8 @@
 ---
-title: Directory Structure
+title: Cấu trúc Thư mục
 permalink: /docs/structure/
 ---
-A basic Jekyll site usually looks something like this:
+Một trang Jekyll cơ bản thường trông giống như thế này:
 
 ```
 .
@@ -30,28 +30,28 @@ A basic Jekyll site usually looks something like this:
 │       └── Cache
 │           └── [...]
 ├── .jekyll-metadata
-└── index.html # can also be an 'index.md' with valid front matter
+└── index.html # cũng có thể là 'index.md' với front matter hợp lệ
 ```
 
 <div class="note">
-  <h5>Directory structure of Jekyll sites using gem-based themes</h5>
+  <h5>Cấu trúc thư mục của các trang Jekyll sử dụng giao diện dựa trên gem</h5>
   <p>
-    Since version {% include docs_version_badge.html version="3.2"%}, a new Jekyll project bootstrapped with <code>jekyll new</code> uses <a href="/docs/themes/">gem-based themes</a> to define the look of the site. This results in a lighter default directory structure: <code>_layouts</code>, <code>_includes</code> and <code>_sass</code> are stored in the theme-gem, by default.
+    Kể từ phiên bản {% include docs_version_badge.html version="3.2"%}, một dự án Jekyll mới được khởi tạo bằng <code>jekyll new</code> sử dụng <a href="/docs/themes/">giao diện dựa trên gem</a> để xác định giao diện của trang web. Điều này dẫn đến cấu trúc thư mục mặc định nhẹ hơn: <code>_layouts</code>, <code>_includes</code> và <code>_sass</code> được lưu trữ trong theme-gem theo mặc định.
   </p>
   <br />
   <p>
-     <a href="https://github.com/jekyll/minima">minima</a> is the current default theme, and <code>bundle info minima</code> will show you where minima theme's files are stored on your computer.
+     <a href="https://github.com/jekyll/minima">minima</a> là giao diện mặc định hiện tại, và <code>bundle info minima</code> sẽ hiển thị cho bạn nơi các tệp của giao diện minima được lưu trữ trên máy tính của bạn.
   </p>
 </div>
 
-An overview of what each of these does:
+Tổng quan về chức năng của từng thành phần:
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>File / Directory</th>
-      <th>Description</th>
+      <th>Tệp / Thư mục</th>
+      <th>Mô tả</th>
     </tr>
   </thead>
   <tbody>
@@ -61,9 +61,7 @@ An overview of what each of these does:
       </td>
       <td>
         <p>
-          Stores <a href="/docs/configuration/">configuration</a> data. Many of
-          these options can be specified from the command line executable but
-          it’s easier to specify them here so you don’t have to remember them.
+          Lưu trữ dữ liệu <a href="/docs/configuration/">cấu hình</a>. Nhiều tùy chọn trong số này có thể được chỉ định từ dòng lệnh thực thi nhưng dễ dàng hơn để chỉ định chúng ở đây để bạn không phải nhớ chúng.
         </p>
       </td>
     </tr>
@@ -73,9 +71,7 @@ An overview of what each of these does:
       </td>
       <td>
         <p>
-          Drafts are unpublished posts. The format of these files is without a
-          date: <code>title.MARKUP</code>. Learn how to <a href="/docs/posts/#drafts">
-          work with drafts</a>.
+          Bản nháp là các bài đăng chưa được xuất bản. Định dạng của các tệp này không có ngày tháng: <code>title.MARKUP</code>. Tìm hiểu cách <a href="/docs/posts/#drafts">làm việc với bản nháp</a>.
         </p>
       </td>
     </tr>
@@ -85,11 +81,7 @@ An overview of what each of these does:
       </td>
       <td>
         <p>
-          These are the partials that can be mixed and matched by your layouts
-          and posts to facilitate reuse. The liquid tag
-          <code>{% raw %}{% include file.ext %}{% endraw %}</code>
-          can be used to include the partial in
-          <code>_includes/file.ext</code>.
+          Đây là các thành phần (partials) có thể được trộn và kết hợp bởi các bố cục và bài đăng của bạn để tạo điều kiện tái sử dụng. Thẻ liquid <code>{% raw %}{% include file.ext %}{% endraw %}</code> có thể được sử dụng để bao gồm thành phần trong <code>_includes/file.ext</code>.
         </p>
       </td>
     </tr>
@@ -99,12 +91,7 @@ An overview of what each of these does:
       </td>
       <td>
         <p>
-          These are the templates that wrap posts. Layouts are chosen on a
-          post-by-post basis in the
-          <a href="/docs/front-matter/">front matter</a>,
-          which is described in the next section. The liquid tag
-          <code>{% raw %}{{ content }}{% endraw %}</code>
-          is used to inject content into the web page.
+          Đây là các mẫu bao bọc các bài đăng. Các bố cục được chọn trên cơ sở từng bài đăng trong <a href="/docs/front-matter/">front matter</a>, được mô tả trong phần tiếp theo. Thẻ liquid <code>{% raw %}{{ content }}{% endraw %}</code> được sử dụng để đưa nội dung vào trang web.
         </p>
       </td>
     </tr>
@@ -114,12 +101,7 @@ An overview of what each of these does:
       </td>
       <td>
         <p>
-          Your dynamic content, so to speak. The naming convention of these
-          files is important, and must follow the format:
-          <code>YEAR-MONTH-DAY-title.MARKUP</code>.
-          The <a href="/docs/permalinks/">permalinks</a> can be customized for
-          each post, but the date and markup language are determined solely by
-          the file name.
+          Nội dung động của bạn. Quy ước đặt tên của các tệp này rất quan trọng và phải tuân theo định dạng: <code>YEAR-MONTH-DAY-title.MARKUP</code>. Các <a href="/docs/permalinks/">liên kết tĩnh (permalinks)</a> có thể được tùy chỉnh cho từng bài đăng, nhưng ngày tháng và ngôn ngữ đánh dấu được xác định hoàn toàn bởi tên tệp.
         </p>
       </td>
     </tr>
@@ -129,13 +111,7 @@ An overview of what each of these does:
       </td>
       <td>
         <p>
-          Well-formatted site data should be placed here. The Jekyll engine
-          will autoload all data files (using either the <code>.yml</code>,
-          <code>.yaml</code>, <code>.json</code>, <code>.csv</code> or
-          <code>.tsv</code> formats and extensions) in this directory,
-          and they will be accessible via `site.data`. If there's a file
-          <code>members.yml</code> under the directory, then you can access
-          contents of the file through <code>site.data.members</code>.
+          Dữ liệu trang web được định dạng tốt nên được đặt ở đây. Công cụ Jekyll sẽ tự động tải tất cả các tệp dữ liệu (sử dụng các định dạng và phần mở rộng <code>.yml</code>, <code>.yaml</code>, <code>.json</code>, <code>.csv</code> hoặc <code>.tsv</code>) trong thư mục này, và chúng sẽ có thể truy cập được qua `site.data`. Nếu có một tệp <code>members.yml</code> trong thư mục, thì bạn có thể truy cập nội dung của tệp thông qua <code>site.data.members</code>.
         </p>
       </td>
     </tr>
@@ -145,10 +121,7 @@ An overview of what each of these does:
       </td>
       <td>
         <p>
-          These are sass partials that can be imported into your <code>main.scss</code>
-          which will then be processed into a single stylesheet
-          <code>main.css</code> that defines the styles to be used by your site.
-          Learn <a href="{{ '/docs/assets/' | relative_url }}">how to work with assets</a>. 
+          Đây là các thành phần sass có thể được nhập vào <code>main.scss</code> của bạn, sau đó sẽ được xử lý thành một bảng kiểu (stylesheet) duy nhất <code>main.css</code> xác định các kiểu sẽ được sử dụng bởi trang web của bạn. Tìm hiểu <a href="{{ '/docs/assets/' | relative_url }}">cách làm việc với tài sản (assets)</a>.
         </p>
       </td>
     </tr>
@@ -158,9 +131,7 @@ An overview of what each of these does:
       </td>
       <td>
         <p>
-          This is where the generated site will be placed (by default) once
-          Jekyll is done transforming it. It’s probably a good idea to add this
-          to your <code>.gitignore</code> file.
+          Đây là nơi trang web được tạo sẽ được đặt (theo mặc định) sau khi Jekyll hoàn tất việc chuyển đổi nó. Có lẽ là một ý tưởng tốt để thêm thư mục này vào tệp <code>.gitignore</code> của bạn.
         </p>
       </td>
     </tr>
@@ -170,13 +141,7 @@ An overview of what each of these does:
       </td>
       <td>
         <p>
-          Keeps a copy of the generated pages and markup (e.g.: markdown) for
-          faster serving. Created when using e.g.: <code>jekyll serve</code>.
-          Can be disabled with
-          <a href="/docs/configuration/options/">an option and/or flag</a>.
-          This directory will not be included in the generated site. It’s
-          probably a good idea to add this to your <code>.gitignore</code>
-          file.
+          Giữ một bản sao của các trang và đánh dấu (ví dụ: markdown) đã tạo để phục vụ nhanh hơn. Được tạo khi sử dụng ví dụ: <code>jekyll serve</code>. Có thể bị vô hiệu hóa với <a href="/docs/configuration/options/">một tùy chọn và/hoặc cờ</a>. Thư mục này sẽ không được bao gồm trong trang web được tạo. Có lẽ là một ý tưởng tốt để thêm thư mục này vào tệp <code>.gitignore</code> của bạn.
         </p>
       </td>
     </tr>
@@ -186,43 +151,27 @@ An overview of what each of these does:
       </td>
       <td>
         <p>
-          This helps Jekyll keep track of which files have not been modified
-          since the site was last built, and which files will need to be
-          regenerated on the next build. Only created when using
-          <a href="/docs/configuration/incremental-regeneration/">
-          incremental regeneration</a> (e.g.: with <code>jekyll serve -I</code>).
-          This file will not be included in the generated site. It’s probably
-          a good idea to add this to your <code>.gitignore</code> file.
+          Tệp này giúp Jekyll theo dõi các tệp nào chưa được sửa đổi kể từ lần cuối cùng trang web được xây dựng, và các tệp nào sẽ cần được tạo lại trong lần xây dựng tiếp theo. Chỉ được tạo khi sử dụng <a href="/docs/configuration/incremental-regeneration/">tái tạo gia tăng</a> (ví dụ: với <code>jekyll serve -I</code>). Tệp này sẽ không được bao gồm trong trang web được tạo. Có lẽ là một ý tưởng tốt để thêm tệp này vào tệp <code>.gitignore</code> của bạn.
         </p>
       </td>
     </tr>
     <tr>
       <td>
-        <p><code>index.html</code> or <code>index.md</code> and other HTML,
-        Markdown files</p>
+        <p><code>index.html</code> hoặc <code>index.md</code> và các tệp HTML, Markdown khác</p>
       </td>
       <td>
         <p>
-          Provided that the file has a <a href="/docs/front-matter/">front
-          matter</a> section, it will be transformed by Jekyll. The same will
-          happen for any <code>.html</code>, <code>.markdown</code>,
-          <code>.md</code>, or <code>.textile</code> file in your site’s root
-          directory or directories not listed above.
+          Miễn là tệp có phần <a href="/docs/front-matter/">front matter</a>, nó sẽ được chuyển đổi bởi Jekyll. Điều tương tự cũng sẽ xảy ra đối với bất kỳ tệp <code>.html</code>, <code>.markdown</code>, <code>.md</code>, hoặc <code>.textile</code> nào trong thư mục gốc của trang web của bạn hoặc các thư mục không được liệt kê ở trên.
         </p>
       </td>
     </tr>
     <tr>
       <td>
-        <p>Other Files/Folders</p>
+        <p>Các Tệp/Thư mục Khác</p>
       </td>
       <td>
         <p>
-          Except for the special cases listed above, every other directory and 
-          file—such as <code>css</code> and <code>images</code> folders,
-          <code>favicon.ico</code> files, and so forth—will be copied verbatim
-          to the generated site. There are plenty of <a href="/showcase/">sites
-          already using Jekyll</a> if you’re curious to see how they’re laid
-          out.
+          Ngoại trừ các trường hợp đặc biệt được liệt kê ở trên, mọi thư mục và tệp khác—chẳng hạn như các thư mục <code>css</code> và <code>images</code>, tệp <code>favicon.ico</code>, v.v.—sẽ được sao chép nguyên văn sang trang web được tạo. Có rất nhiều <a href="/showcase/">trang web đã sử dụng Jekyll</a> nếu bạn tò mò muốn xem cách chúng được bố trí.
         </p>
       </td>
     </tr>
@@ -230,7 +179,7 @@ An overview of what each of these does:
 </table>
 </div>
 
-Every file or directory beginning with the following characters: `.`, `_ `, `#` or `~` in the `source` directory will not be included in the `destination` folder. Such paths will have to be explicitly specified via the config file in the `include` directive to make sure they're copied over:
+Mọi tệp hoặc thư mục bắt đầu bằng các ký tự sau: `.`, `_`, `#` hoặc `~` trong thư mục `source` sẽ không được bao gồm trong thư mục `destination`. Các đường dẫn như vậy sẽ phải được chỉ định rõ ràng qua tệp cấu hình trong chỉ thị `include` để đảm bảo chúng được sao chép qua:
 
 ```yaml
 include:

@@ -1,5 +1,5 @@
 ---
-title: Liquid Filters
+title: Bộ lọc Liquid (Liquid Filters)
 permalink: "/docs/liquid/filters/"
 shopify_filter_url: https://shopify.github.io/liquid/filters/
 shopify_filters:
@@ -52,18 +52,18 @@ shopify_filters:
 - url_encode
 ---
 
-All of the standard Liquid [filters](#standard-liquid-filters) are supported (see below).
+Tất cả các [bộ lọc](#standard-liquid-filters) Liquid tiêu chuẩn đều được hỗ trợ (xem bên dưới).
 
-To make common tasks easier, Jekyll even adds a few handy filters of its own,
-all of which you can find on this page. You can also create your own filters
-using [plugins](/docs/plugins/).
+Để thực hiện các tác vụ phổ biến dễ dàng hơn, Jekyll thậm chí còn thêm một vài bộ lọc tiện dụng của riêng mình,
+tất cả đều có thể tìm thấy trên trang này. Bạn cũng có thể tạo bộ lọc của riêng mình
+bằng cách sử dụng [plugins](/docs/plugins/).
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Description</th>
-      <th><span class="filter">Filter</span> and <span class="output">Output</span></th>
+      <th>Mô tả</th>
+      <th><span class="filter">Bộ lọc</span> và <span class="output">Đầu ra</span></th>
     </tr>
   </thead>
   <tbody>
@@ -92,63 +92,72 @@ using [plugins](/docs/plugins/).
 </table>
 </div>
 
-### Options for the `slugify` filter
+### Tùy chọn cho bộ lọc `slugify`
 
-The `slugify` filter accepts an option, each specifying what to filter.
-The default is `default`. They are as follows (with what they filter):
+Bộ lọc `slugify` chấp nhận một tùy chọn, mỗi tùy chọn chỉ định những gì cần lọc.
+Mặc định là `default`. Chúng như sau (với những gì chúng lọc):
 
-- `none`: no characters
-- `raw`: spaces
-- `default`: spaces and non-alphanumeric characters
-- `pretty`: spaces and non-alphanumeric characters except for `._~!$&'()+,;=@`
-- `ascii`: spaces, non-alphanumeric, and non-ASCII characters
-- `latin`: like `default`, except Latin characters are first transliterated (e.g. `àèïòü` to `aeiou`) {%- include docs_version_badge.html version="3.7.0" -%}.
+- `none`: không có ký tự nào
+- `raw`: khoảng trắng
+- `default`: khoảng trắng và các ký tự không phải chữ và số
+- `pretty`: khoảng trắng và các ký tự không phải chữ và số ngoại trừ `._~!$&'()+,;=@`
+- `ascii`: khoảng trắng, không phải chữ và số, và các ký tự không phải ASCII
+- `latin`: giống như `default`, ngoại trừ các ký tự Latinh được chuyển ngữ trước (ví dụ: `àèïòü` thành `aeiou`) {%- include docs_version_badge.html version="3.7.0" -%}.
 
-### Detecting `nil` values with `where` filter {%- include docs_version_badge.html version="4.0" -%}
+### Phát hiện giá trị `nil` với bộ lọc `where` {%- include docs_version_badge.html version="4.0" -%}
 
-You can use the `where` filter to detect documents and pages with properties that are `nil` or `""`. For example,
+Bạn có thể sử dụng bộ lọc `where` để phát hiện các tài liệu và trang có thuộc tính là `nil` hoặc `""`. Ví dụ,
 
 {% raw %}
+
 ```liquid
 // Using `nil` to select posts that either do not have `my_prop`
 // defined or `my_prop` has been set to `nil` explicitly.
 {% assign filtered_posts = site.posts | where: 'my_prop', nil %}
 ```
+
 {% endraw %}
 
 {% raw %}
+
 ```liquid
 // Using Liquid's special literal `empty` or `blank` to select
 // posts that have `my_prop` set to an empty value.
 {% assign filtered_posts = site.posts | where: 'my_prop', empty %}
 ```
+
 {% endraw %}
 
-### Binary operators in `where_exp` filter {%- include docs_version_badge.html version="4.0" -%}
+### Toán tử nhị phân trong bộ lọc `where_exp` {%- include docs_version_badge.html version="4.0" -%}
 
-You can use Liquid binary operators `or` and `and` in the expression passed to the `where_exp` filter to employ multiple
-conditionals in the operation.
+Bạn có thể sử dụng các toán tử nhị phân Liquid `or` và `and` trong biểu thức được truyền cho bộ lọc `where_exp` để sử dụng nhiều
+điều kiện trong hoạt động.
 
-For example, to get a list of documents on English horror flicks, one could use the following snippet:
+Ví dụ: để lấy danh sách các tài liệu về phim kinh dị tiếng Anh, người ta có thể sử dụng đoạn mã sau:
 
 {% raw %}
+
 ```liquid
 {{ site.movies | where_exp: "item", "item.genre == 'horror' and item.language == 'English'" }}
 ```
+
 {% endraw %}
 
-Or to get a list of comic-book based movies, one may use the following:
+Hoặc để lấy danh sách các bộ phim dựa trên truyện tranh, người ta có thể sử dụng như sau:
 
 {% raw %}
+
 ```liquid
 {{ site.movies | where_exp: "item", "item.sub_genre == 'MCU' or item.sub_genre == 'DCEU'" }}
 ```
+
 {% endraw %}
 
-### Standard Liquid Filters
+### Bộ lọc Liquid Tiêu chuẩn
 
-For your convenience, here is the list of all [Liquid filters]({{ page.shopify_filter_url }}) with links to examples in the official Liquid documentation.
+Để thuận tiện cho bạn, đây là danh sách tất cả [các bộ lọc Liquid]({{ page.shopify_filter_url }}) với các liên kết đến các ví dụ trong tài liệu Liquid chính thức.
 
 {% for filter in page.shopify_filters %}
+
 - [{{ filter }}]({{ filter | prepend: page.shopify_filter_url | append: '/' }})
 {% endfor %}

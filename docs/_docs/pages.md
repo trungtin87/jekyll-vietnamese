@@ -1,17 +1,17 @@
 ---
-title: Pages
+title: Trang (Pages)
 permalink: /docs/pages/
 ---
 
-Pages are the most basic building block for content. They're useful for standalone
-content (content which is not date based or is not a group of content such as staff
-members or recipes).
+Trang là khối xây dựng cơ bản nhất cho nội dung. Chúng hữu ích cho nội dung độc lập
+(nội dung không dựa trên ngày tháng hoặc không phải là một nhóm nội dung như thành viên
+nhân viên hoặc công thức nấu ăn).
 
-The simplest way of adding a page is to add an HTML file in the root
-directory with a suitable filename. You can also write a page in Markdown using
-a `.md` extension and front matter which converts to HTML on build. For a site with
-a homepage, an about page, and a contact page, here’s what the root directory
-and associated URLs might look like:
+Cách đơn giản nhất để thêm một trang là thêm một tệp HTML vào thư mục gốc
+với tên tệp phù hợp. Bạn cũng có thể viết một trang bằng Markdown sử dụng
+phần mở rộng `.md` và front matter, nó sẽ chuyển đổi thành HTML khi xây dựng. Đối với một trang web có
+trang chủ, trang giới thiệu và trang liên hệ, đây là những gì thư mục gốc
+và các URL liên quan có thể trông như thế nào:
 
 ```
 .
@@ -20,21 +20,21 @@ and associated URLs might look like:
 └── contact.html  # => http://example.com/contact.html
 ```
 
-If you have a lot of pages, you can organize them into subfolders. The same subfolders that are used to group your pages in your project's source will then exist in the `_site` folder when your site builds. However, when a page has a *different* permalink set in the front matter, the subfolder at `_site` changes accordingly.
+Nếu bạn có nhiều trang, bạn có thể tổ chức chúng vào các thư mục con. Các thư mục con tương tự được sử dụng để nhóm các trang của bạn trong mã nguồn dự án sau đó sẽ tồn tại trong thư mục `_site` khi trang web của bạn được xây dựng. Tuy nhiên, khi một trang có một liên kết tĩnh *khác* được đặt trong front matter, thư mục con tại `_site` sẽ thay đổi tương ứng.
 
 ```
 .
 ├── about.md          # => http://example.com/about.html
-├── documentation     # folder containing pages
+├── documentation     # thư mục chứa các trang
 │   └── doc1.md       # => http://example.com/documentation/doc1.html
-├── design            # folder containing pages
+├── design            # thư mục chứa các trang
 │   └── draft.md      # => http://example.com/design/draft.html
 ```
 
-## Changing the output URL
+## Thay đổi URL đầu ra
 
-You might want to have a particular folder structure for your source files that changes for the built site. With [permalinks](/docs/permalinks/) you have full control of the output URL.
+Bạn có thể muốn có một cấu trúc thư mục cụ thể cho các tệp nguồn của mình nhưng thay đổi đối với trang web đã xây dựng. Với [liên kết tĩnh](/docs/permalinks/) bạn có toàn quyền kiểm soát URL đầu ra.
 
-## Excerpts for pages {%- include docs_version_badge.html version="4.1.1" -%}
+## Trích dẫn cho trang {%- include docs_version_badge.html version="4.1.1" -%}
 
-One can *choose* to generate excerpts for their pages by setting `page_excerpts` to `true` in their config file.
+Người ta có thể *chọn* tạo trích dẫn cho các trang của họ bằng cách đặt `page_excerpts` thành `true` trong tệp cấu hình của họ.

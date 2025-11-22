@@ -3,85 +3,95 @@ title: Includes
 permalink: /docs/includes/
 ---
 
-The `include` tag allows you to include the content from another file stored in the `_includes` folder:
+Thẻ `include` cho phép bạn bao gồm nội dung từ một tệp khác được lưu trữ trong thư mục `_includes`:
 
 {% raw %}
+
 ```liquid
 {% include footer.html %}
 ```
+
 {% endraw %}
 
-Jekyll will look for the referenced file (in this case, `footer.html`) in the `_includes` directory at the root of your source directory and insert its contents.
+Jekyll sẽ tìm tệp được tham chiếu (trong trường hợp này là `footer.html`) trong thư mục `_includes` tại thư mục gốc của thư mục nguồn của bạn và chèn nội dung của nó.
 
-### Including files relative to another file
+### Bao gồm tệp tương đối với tệp khác
 
-You can choose to include file fragments relative to the current file by using the `include_relative` tag:
+Bạn có thể chọn bao gồm các đoạn tệp tương đối với tệp hiện tại bằng cách sử dụng thẻ `include_relative`:
 
 {% raw %}
+
 ```liquid
 {% include_relative somedir/footer.html %}
 ```
+
 {% endraw %}
 
-You won't need to place your included content within the `_includes` directory. Instead,
-the inclusion is specifically relative to the file where the tag is being used. For example,
-if `_posts/2014-09-03-my-file.markdown` uses the `include_relative` tag, the included file
-must be within the `_posts` directory or one of its subdirectories.
+Bạn sẽ không cần đặt nội dung được bao gồm của mình trong thư mục `_includes`. Thay vào đó,
+việc bao gồm là cụ thể tương đối với tệp nơi thẻ đang được sử dụng. Ví dụ,
+nếu `_posts/2014-09-03-my-file.markdown` sử dụng thẻ `include_relative`, tệp được bao gồm
+phải nằm trong thư mục `_posts` hoặc một trong các thư mục con của nó.
 
-Note that you cannot use the `../` syntax to specify an include location that refers to a higher-level directory.
+Lưu ý rằng bạn không thể sử dụng cú pháp `../` để chỉ định vị trí bao gồm tham chiếu đến thư mục cấp cao hơn.
 
-All the other capabilities of the `include` tag are available to the `include_relative` tag,
-such as variables.
+Tất cả các khả năng khác của thẻ `include` đều có sẵn cho thẻ `include_relative`,
+chẳng hạn như các biến.
 
-### Using variables names for the include file
+### Sử dụng tên biến cho tệp bao gồm
 
-The name of the file you want to embed can be specified as a variable instead of an actual file name. For example, suppose you defined a variable in your page's front matter like this:
+Tên của tệp bạn muốn nhúng có thể được chỉ định dưới dạng một biến thay vì tên tệp thực tế. Ví dụ, giả sử bạn đã xác định một biến trong front matter của trang của mình như thế này:
 
 ```yaml
 ---
-title: My page
+title: Trang của tôi
 my_variable: footer_company_a.html
 ---
 ```
 
-You could then reference that variable in your include:
+Sau đó, bạn có thể tham chiếu biến đó trong thẻ include của mình:
 
 {% raw %}
+
 ```liquid
 {% if page.my_variable %}
   {% include {{ page.my_variable }} %}
 {% endif %}
 ```
+
 {% endraw %}
 
-In this example, the include would insert the file `footer_company_a.html` from the `_includes/footer_company_a.html` directory.
+Trong ví dụ này, thẻ include sẽ chèn tệp `footer_company_a.html` từ thư mục `_includes/footer_company_a.html`.
 
-### Passing parameters to includes
+### Truyền tham số cho includes
 
-You can also pass parameters to an include. For example, suppose you have a file called `note.html` in your `_includes` folder that contains this formatting:
+Bạn cũng có thể truyền tham số cho một thẻ include. Ví dụ, giả sử bạn có một tệp tên là `note.html` trong thư mục `_includes` của bạn chứa định dạng này:
 
 {% raw %}
+
 ```liquid
 <div markdown="span" class="alert alert-info" role="alert">
-<i class="fa fa-info-circle"></i> <b>Note:</b>
+<i class="fa fa-info-circle"></i> <b>Lưu ý:</b>
 {{ include.content }}
 </div>
 ```
+
 {% endraw %}
 
-The {% raw %}`{{ include.content }}`{% endraw %} is a parameter that gets populated when you call the include and specify a value for that parameter, like this:
+{% raw %}`{{ include.content }}`{% endraw %} là một tham số được điền khi bạn gọi thẻ include và chỉ định giá trị cho tham số đó, như thế này:
 
 {% raw %}
+
 ```liquid
-{% include note.html content="This is my sample note." %}
+{% include note.html content="Đây là ghi chú mẫu của tôi." %}
 ```
+
 {% endraw %}
 
-The value of `content` (which is `This is my sample note`) will be inserted into the {% raw %}`{{ include.content }}`{% endraw %} parameter.
+Giá trị của `content` (là `Đây là ghi chú mẫu của tôi.`) sẽ được chèn vào tham số {% raw %}`{{ include.content }}`{% endraw %}.
 
-Passing parameters to includes is especially helpful when you want to hide away complex formatting from your Markdown content.
+Truyền tham số cho includes đặc biệt hữu ích khi bạn muốn ẩn định dạng phức tạp khỏi nội dung Markdown của mình.
 
-For example, suppose you have a special image syntax with complex formatting, and you don't want your authors to remember the complex formatting. As a result, you decide to simplify the formatting by using an include with parameters. Here's an example of the special image syntax you might want to populate with an include:
+Ví dụ, giả sử bạn có một cú pháp hình ảnh đặc biệt với định dạng phức tạp, và bạn không muốn các tác giả của mình phải nhớ định dạng phức tạp đó. Kết quả là, bạn quyết định đơn giản hóa định dạng bằng cách sử dụng một thẻ include với các tham số. Dưới đây là một ví dụ về cú pháp hình ảnh đặc biệt mà bạn có thể muốn điền bằng một thẻ include:
 
 ```html
 <figure>
@@ -89,13 +99,14 @@ For example, suppose you have a special image syntax with complex formatting, an
    <img src="logo.png" style="max-width: 200px;"
       alt="Jekyll logo" />
    </a>
-   <figcaption>This is the Jekyll logo</figcaption>
+   <figcaption>Đây là logo Jekyll</figcaption>
 </figure>
 ```
 
-You could templatize this content in your include and make each value available as a parameter, like this:
+Bạn có thể tạo mẫu cho nội dung này trong thẻ include của mình và làm cho mỗi giá trị có sẵn dưới dạng một tham số, như thế này:
 
 {% raw %}
+
 ```liquid
 <figure>
    <a href="{{ include.url }}">
@@ -105,9 +116,10 @@ You could templatize this content in your include and make each value available 
    <figcaption>{{ include.caption }}</figcaption>
 </figure>
 ```
+
 {% endraw %}
 
-This include contains 5 parameters:
+Thẻ include này chứa 5 tham số:
 
 * `url`
 * `max-width`
@@ -115,42 +127,49 @@ This include contains 5 parameters:
 * `alt`
 * `caption`
 
-Here's an example that passes all the parameters to this include (the include file is named `image.html`):
+Dưới đây là một ví dụ truyền tất cả các tham số cho thẻ include này (tệp include được đặt tên là `image.html`):
 
 {% raw %}
+
 ```liquid
 {% include image.html url="http://jekyllrb.com"
-max-width="200px" file="logo.png" alt="Jekyll logo"
-caption="This is the Jekyll logo." %}
+max-width="200px" file="logo.png" alt="Logo Jekyll"
+caption="Đây là logo Jekyll." %}
 ```
+
 {% endraw %}
 
-The result is the original HTML code shown earlier.
+Kết quả là mã HTML gốc được hiển thị trước đó.
 
 To safeguard situations where users don't supply a value for the parameter, you can use [Liquid's default filter](https://shopify.github.io/liquid/filters/default/).
+Để bảo vệ các tình huống mà người dùng không cung cấp giá trị cho tham số, bạn có thể sử dụng [bộ lọc default của Liquid](https://shopify.github.io/liquid/filters/default/).
 
-Overall, you can create includes that act as templates for a variety of uses &mdash; inserting audio or video clips, alerts, special formatting, and more. Note that you should avoid using too many includes, as this will slow down the build time of your site. For example, don't use includes every time you insert an image. (The above technique shows a use case for special images.)
+Nhìn chung, bạn có thể tạo các thẻ include hoạt động như các mẫu cho nhiều mục đích sử dụng &mdash; chèn clip âm thanh hoặc video, cảnh báo, định dạng đặc biệt, và nhiều hơn nữa. Lưu ý rằng bạn nên tránh sử dụng quá nhiều thẻ include, vì điều này sẽ làm chậm thời gian xây dựng trang web của bạn. Ví dụ, đừng sử dụng thẻ include mỗi khi bạn chèn một hình ảnh. (Kỹ thuật trên cho thấy một trường hợp sử dụng cho các hình ảnh đặc biệt.)
 
-### Passing parameter variables to includes
+### Truyền biến tham số cho includes
 
-Suppose the parameter you want to pass to the include is a variable rather than a string. For example, you might be using {% raw %}`{{ site.product_name }}`{% endraw %} to refer to every instance of your product rather than the actual hard-coded name. (In this case, your `_config.yml` file would have a key called `product_name` with a value of your product's name.)
+Giả sử tham số bạn muốn truyền cho thẻ include là một biến thay vì một chuỗi. Ví dụ, bạn có thể đang sử dụng {% raw %}`{{ site.product_name }}`{% endraw %} để tham chiếu đến mọi phiên bản của sản phẩm của bạn thay vì tên được mã hóa cứng thực tế. (Trong trường hợp này, tệp `_config.yml` của bạn sẽ có một khóa gọi là `product_name` với giá trị là tên sản phẩm của bạn.)
 
-The string you pass to your include parameter can't contain curly braces. For example, you can't pass a parameter that contains this: {% raw %}`"The latest version of {{ site.product_name }} is now available."`{% endraw %}
+Chuỗi bạn truyền cho tham số include của mình không thể chứa dấu ngoặc nhọn. Ví dụ, bạn không thể truyền một tham số chứa điều này: {% raw %}`"Phiên bản mới nhất của {{ site.product_name }} hiện đã có sẵn."`{% endraw %}
 
-If you want to include this variable in your parameter that you pass to an include, you need to store the entire parameter as a variable before passing it to the include. You can use `capture` tags to create the variable:
+Nếu bạn muốn bao gồm biến này trong tham số mà bạn truyền cho một thẻ include, bạn cần lưu trữ toàn bộ tham số dưới dạng một biến trước khi truyền nó cho thẻ include. Bạn có thể sử dụng thẻ `capture` để tạo biến:
 
 {% raw %}
+
 ```liquid
 {% capture download_note %}
-The latest version of {{ site.product_name }} is now available.
+Phiên bản mới nhất của {{ site.product_name }} hiện đã có sẵn.
 {% endcapture %}
 ```
+
 {% endraw %}
 
-Then pass this captured variable into the parameter for the include. Omit the quotation marks around the parameter content because it's no longer a string (it's a variable):
+Sau đó truyền biến đã chụp này vào tham số cho thẻ include. Bỏ qua dấu ngoặc kép xung quanh nội dung tham số vì nó không còn là một chuỗi nữa (nó là một biến):
 
 {% raw %}
+
 ```liquid
 {% include note.html content=download_note %}
 ```
+
 {% endraw %}

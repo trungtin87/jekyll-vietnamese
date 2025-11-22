@@ -1,20 +1,20 @@
 ---
-title: Jekyll on Ubuntu
+title: Jekyll trên Ubuntu (Jekyll on Ubuntu)
 permalink: /docs/installation/ubuntu/
 ---
 
-## Install dependencies
+## Cài đặt các phụ thuộc
 
-Install Ruby and other [prerequisites]({{ '/docs/installation/#requirements' | relative_url }}):
+Cài đặt Ruby và các [điều kiện tiên quyết]({{ '/docs/installation/#requirements' | relative_url }}) khác:
 
 ```sh
 sudo apt-get install ruby-full build-essential zlib1g-dev
 ```
 
-Avoid installing RubyGems packages (called gems) as the root user. Instead, 
-set up a gem installation directory for your user account. The following
-commands will add environment variables to your `~/.bashrc` file to configure
-the gem installation path:
+Tránh cài đặt các gói RubyGems (được gọi là gems) với tư cách là người dùng root. Thay vào đó,
+thiết lập một thư mục cài đặt gem cho tài khoản người dùng của bạn. Các lệnh sau
+sẽ thêm các biến môi trường vào tệp `~/.bashrc` của bạn để cấu hình
+đường dẫn cài đặt gem:
 
 ```sh
 echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
@@ -23,10 +23,10 @@ echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Finally, install Jekyll and Bundler:
+Cuối cùng, cài đặt Jekyll và Bundler:
 
 ```sh
 gem install jekyll bundler
 ```
 
-That's it! You're ready to start using Jekyll.
+Vậy là xong! Bạn đã sẵn sàng để bắt đầu sử dụng Jekyll.

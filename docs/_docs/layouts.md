@@ -1,36 +1,37 @@
 ---
-title: Layouts
+title: Bố cục (Layouts)
 description: placeholder
 permalink: /docs/layouts/
 ---
-Layouts are templates that wrap around your content. They allow you to have the
-source code for your template in one place so you don't have to repeat things
-like your navigation and footer on every page.
+Bố cục là các mẫu bao bọc nội dung của bạn. Chúng cho phép bạn có
+mã nguồn cho mẫu của mình ở một nơi để bạn không phải lặp lại những thứ
+như điều hướng và chân trang trên mỗi trang.
 
-Layouts live in the `_layouts` directory. The convention is to have a base
-template called `default.html` and have other layouts [inherit](#inheritance)
-from this as needed.
+Các bố cục nằm trong thư mục `_layouts`. Quy ước là có một mẫu cơ sở
+được gọi là `default.html` và có các bố cục khác [kế thừa](#inheritance)
+từ nó khi cần thiết.
 
 <div class="note">
-  <h5>Layouts Directory</h5>
+  <h5>Thư mục Bố cục</h5>
   <p>
-    Jekyll looks for the <code>_layouts</code> directory either at the root of
-    your site's <code>source</code> or at the root of your theme.
+    Jekyll tìm thư mục <code>_layouts</code> tại thư mục gốc của
+    <code>source</code> trang web của bạn hoặc tại thư mục gốc của giao diện (theme) của bạn.
   </p>
   <p>
-    While you can configure the directory name in which your layouts can reside by
-    setting the <code>layouts_dir</code> key in your config file, the directory
-    itself should be located at the root of your site's <code>source</code> directory.
+    Mặc dù bạn có thể cấu hình tên thư mục chứa các bố cục của mình bằng cách
+    đặt khóa <code>layouts_dir</code> trong tệp cấu hình của bạn, nhưng thư mục
+    đó vẫn nên được đặt tại thư mục gốc của thư mục <code>source</code> trang web của bạn.
   </p>
 </div>
 
-## Usage
+## Sử dụng
 
-The first step is to put the template source code in `default.html`. `content`
-is a special variable, the value is the rendered content of the post or page
-being wrapped.
+Bước đầu tiên là đặt mã nguồn mẫu vào `default.html`. `content`
+là một biến đặc biệt, giá trị là nội dung được hiển thị của bài viết hoặc trang
+đang được bao bọc.
 
 {% raw %}
+
 ```liquid
 <!doctype html>
 <html lang="en">
@@ -41,7 +42,7 @@ being wrapped.
   </head>
   <body>
     <nav>
-      <a href="/">Home</a>
+      <a href="/">Trang chủ</a>
       <a href="/blog/">Blog</a>
     </nav>
     <h1>{{ page.title }}</h1>
@@ -54,43 +55,44 @@ being wrapped.
   </body>
 </html>
 ```
+
 {% endraw %}
 
-You have full access to the front matter of the origin. In the
-example above, `page.title` comes from the page front matter.
+Bạn có toàn quyền truy cập vào front matter của nguồn gốc. Trong
+ví dụ trên, `page.title` đến từ front matter của trang.
 
-Next you need to specify what layout you're using in your page's front matter.
-You can also use
-[front matter defaults](/docs/configuration/front-matter-defaults/) to save you
-from having to set this on every page.
+Tiếp theo, bạn cần chỉ định bố cục bạn đang sử dụng trong front matter của trang.
+Bạn cũng có thể sử dụng
+[mặc định front matter](/docs/configuration/front-matter-defaults/) để giúp bạn
+không phải thiết lập điều này trên mỗi trang.
 
 ```markdown
 ---
-title: My First Page
+title: Trang đầu tiên của tôi
 layout: default
 ---
 
-This is the content of my page
+Đây là nội dung trang của tôi
 ```
 
-The rendered output of this page is:
+Đầu ra được hiển thị của trang này là:
 
 ```html
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>My First Page</title>
+    <title>Trang đầu tiên của tôi</title>
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     <nav>
-      <a href="/">Home</a>
+      <a href="/">Trang chủ</a>
       <a href="/blog/">Blog</a>
     </nav>
-    <h1>My First Page</h1>
+    <h1>Trang đầu tiên của tôi</h1>
     <section>
-      This is the content of my page
+      Đây là nội dung trang của tôi
     </section>
     <footer>
       &copy; to me
@@ -99,37 +101,39 @@ The rendered output of this page is:
 </html>
 ```
 
-## Inheritance
+## Kế thừa
 
-Layout inheritance is useful when you want to add something to an existing
-layout for a portion of documents on your site. A common example of this is
-blog posts, you might want a post to display the date and author but otherwise
-be identical to your base layout.
+Kế thừa bố cục rất hữu ích khi bạn muốn thêm một cái gì đó vào một bố cục hiện có
+cho một phần tài liệu trên trang web của bạn. Một ví dụ phổ biến về điều này là
+các bài viết blog, bạn có thể muốn một bài viết hiển thị ngày và tác giả nhưng mặt khác
+giống hệt với bố cục cơ sở của bạn.
 
-To achieve this you need to create another layout which specifies your original
-layout in front matter. For example this layout will live at
+Để đạt được điều này, bạn cần tạo một bố cục khác chỉ định bố cục gốc của bạn
+trong front matter. Ví dụ bố cục này sẽ nằm tại
 `_layouts/post.html`:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
 ---
-<p>{{ page.date }} - Written by {{ page.author }}</p>
+<p>{{ page.date }} - Được viết bởi {{ page.author }}</p>
 
 {{ content }}
 ```
+
 {% endraw %}
 
-Now posts can use this layout while the rest of the pages use the default.
+Bây giờ các bài viết có thể sử dụng bố cục này trong khi các trang còn lại sử dụng mặc định.
 
-## Variables
+## Biến
 
-You can set front matter in layouts, the only difference is when you're
-using in Liquid, you need to use the `layout` variable instead of `page`. For
-example:
+Bạn có thể đặt front matter trong các bố cục, sự khác biệt duy nhất là khi bạn
+đang sử dụng trong Liquid, bạn cần sử dụng biến `layout` thay vì `page`. Ví dụ:
 
 {% raw %}
+
 ```liquid
 ---
 city: San Francisco
@@ -138,4 +142,5 @@ city: San Francisco
 
 {{ content }}
 ```
+
 {% endraw %}

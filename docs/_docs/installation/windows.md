@@ -1,58 +1,58 @@
 ---
-title: Jekyll on Windows
+title: Jekyll trên Windows (Jekyll on Windows)
 permalink: /docs/installation/windows/
 redirect_from:
   - /docs/windows/
 ---
 
-While Windows is not an officially-supported platform, it can be used to run Jekyll with the proper tweaks.
+Mặc dù Windows không phải là nền tảng được hỗ trợ chính thức, nó có thể được sử dụng để chạy Jekyll với các tinh chỉnh thích hợp.
 
-## Installing Ruby and Jekyll
+## Cài đặt Ruby và Jekyll
 
-### Installation via RubyInstaller
+### Cài đặt qua RubyInstaller
 
-The easiest way to install Ruby and Jekyll is by using the [RubyInstaller](https://rubyinstaller.org/) for Windows.
+Cách dễ nhất để cài đặt Ruby và Jekyll là sử dụng [RubyInstaller](https://rubyinstaller.org/) cho Windows.
 
-RubyInstaller is a self-contained Windows-based installer that includes the Ruby language, an execution environment,
-important documentation, and more.
+RubyInstaller là một trình cài đặt dựa trên Windows độc lập bao gồm ngôn ngữ Ruby, môi trường thực thi,
+tài liệu quan trọng, và nhiều hơn nữa.
 
-We only cover RubyInstaller-2.4 and newer here. Older versions need to
-[install the Devkit](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit) manually.
+Chúng tôi chỉ đề cập đến RubyInstaller-2.4 và mới hơn ở đây. Các phiên bản cũ hơn cần
+[cài đặt Devkit](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit) thủ công.
 
-1. Download and install a **Ruby+Devkit** version from [RubyInstaller Downloads](https://rubyinstaller.org/downloads/).
-   Use default options for installation.
-2. Run the `ridk install` step on the last stage of the installation wizard. This is needed for installing gems with native
-   extensions. You can find additional information regarding this in the
-   [RubyInstaller Documentation](https://github.com/oneclick/rubyinstaller2#using-the-installer-on-a-target-system).
-   From the options choose `MSYS2 and MINGW development toolchain`.
-3. Open a new command prompt window from the start menu, so that changes to the `PATH` environment variable becomes effective.
-   Install Jekyll and Bundler using `gem install jekyll bundler`
-4. Check if Jekyll has been installed properly: `jekyll -v`
-
-{: .note .info}
-You may receive an error when checking if Jekyll has not been installed properly. Reboot your system and run `jekyll -v` again.
-If the error persists, please open a [RubyInstaller issue](https://github.com/oneclick/rubyinstaller2/issues/new).
-
-That's it, you're ready to use Jekyll!
-
-### Installation via Bash on Windows 10
-
-If you are using Windows 10 version 1607 or later, another option to run Jekyll is by
-[installing](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) the Windows Subsystem for Linux.
+1. Tải xuống và cài đặt phiên bản **Ruby+Devkit** từ [RubyInstaller Downloads](https://rubyinstaller.org/downloads/).
+   Sử dụng các tùy chọn mặc định cho cài đặt.
+2. Chạy bước `ridk install` ở giai đoạn cuối của trình hướng dẫn cài đặt. Điều này là cần thiết để cài đặt các gem với các phần mở rộng
+   gốc (native extensions). Bạn có thể tìm thêm thông tin liên quan đến điều này trong
+   [Tài liệu RubyInstaller](https://github.com/oneclick/rubyinstaller2#using-the-installer-on-a-target-system).
+   Từ các tùy chọn, chọn `MSYS2 and MINGW development toolchain`.
+3. Mở một cửa sổ nhắc lệnh (command prompt) mới từ menu bắt đầu, để các thay đổi đối với biến môi trường `PATH` có hiệu lực.
+   Cài đặt Jekyll và Bundler bằng cách sử dụng `gem install jekyll bundler`
+4. Kiểm tra xem Jekyll đã được cài đặt đúng chưa: `jekyll -v`
 
 {: .note .info}
-You must have [Windows Subsystem for Linux](https://msdn.microsoft.com/en-us/commandline/wsl/about) enabled.
+Bạn có thể nhận được lỗi khi kiểm tra nếu Jekyll chưa được cài đặt đúng cách. Khởi động lại hệ thống của bạn và chạy lại `jekyll -v`.
+Nếu lỗi vẫn còn, vui lòng mở một [vấn đề RubyInstaller](https://github.com/oneclick/rubyinstaller2/issues/new).
 
-Make sure all your packages and repositories are up to date. Open a new Command Prompt or PowerShell window and type `bash`.
+Vậy là xong, bạn đã sẵn sàng sử dụng Jekyll!
 
-Your terminal should now be a Bash instance. Next, update your repository lists and packages:
+### Cài đặt qua Bash trên Windows 10
+
+Nếu bạn đang sử dụng Windows 10 phiên bản 1607 hoặc mới hơn, một tùy chọn khác để chạy Jekyll là bằng cách
+[cài đặt](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) Windows Subsystem for Linux.
+
+{: .note .info}
+Bạn phải bật [Windows Subsystem for Linux](https://msdn.microsoft.com/en-us/commandline/wsl/about).
+
+Đảm bảo tất cả các gói và kho lưu trữ của bạn đều được cập nhật. Mở cửa sổ Command Prompt hoặc PowerShell mới và nhập `bash`.
+
+Terminal của bạn bây giờ sẽ là một phiên bản Bash. Tiếp theo, cập nhật danh sách kho lưu trữ và các gói của bạn:
 
 ```sh
 sudo apt-get update -y && sudo apt-get upgrade -y
 ```
 
-Next, install Ruby. To do this, let's use a repository from [BrightBox](https://www.brightbox.com/docs/ruby/ubuntu/),
-which hosts optimized versions of Ruby for Ubuntu.
+Tiếp theo, cài đặt Ruby. Để làm điều này, hãy sử dụng kho lưu trữ từ [BrightBox](https://www.brightbox.com/docs/ruby/ubuntu/),
+nơi lưu trữ các phiên bản Ruby được tối ưu hóa cho Ubuntu.
 
 ```sh
 sudo apt-add-repository ppa:brightbox/ruby-ng
@@ -60,66 +60,66 @@ sudo apt-get update
 sudo apt-get install ruby2.5 ruby2.5-dev build-essential dh-autoreconf
 ```
 
-Next, update your Ruby gems:
+Tiếp theo, cập nhật các Ruby gems của bạn:
 
 ```sh
 gem update
 ```
 
-Install Jekyll:
+Cài đặt Jekyll:
 
 ```sh
 gem install jekyll bundler
 ```
 
 {: .note .info}
-  No `sudo` here.
+  Không có `sudo` ở đây.
 
-Check your Jekyll version:
+Kiểm tra phiên bản Jekyll của bạn:
 
 ```sh
 jekyll -v
 ```
 
-That's it! You're ready to start using Jekyll. 
+Vậy là xong! Bạn đã sẵn sàng để bắt đầu sử dụng Jekyll.
 
-You can make sure time management is working properly by inspecting your `_posts` folder. You should see a markdown file
-with the current date in the filename.
+Bạn có thể đảm bảo quản lý thời gian hoạt động bình thường bằng cách kiểm tra thư mục `_posts` của mình. Bạn sẽ thấy một tệp markdown
+với ngày hiện tại trong tên tệp.
 
 <div class="note info">
-  <h5>Non-superuser account issues</h5>
-  <p>If the `jekyll new` command prints the error "Your user account isn't allowed to install to the system RubyGems", see
-  the "Running Jekyll as Non-Superuser" instructions in
-  <a href="{{ '/docs/troubleshooting/#no-sudo' | relative_url }}">Troubleshooting</a>.</p>
+  <h5>Vấn đề tài khoản không phải siêu người dùng (Non-superuser)</h5>
+  <p>Nếu lệnh `jekyll new` in ra lỗi "Your user account isn't allowed to install to the system RubyGems", hãy xem
+  hướng dẫn "Running Jekyll as Non-Superuser" trong
+  <a href="{{ '/docs/troubleshooting/#no-sudo' | relative_url }}">Khắc phục sự cố</a>.</p>
 </div>
 
 {: .note .info}
-Bash on Ubuntu on Windows is still under development, so you may run into issues.
+Bash trên Ubuntu trên Windows vẫn đang được phát triển, vì vậy bạn có thể gặp sự cố.
 
-## Encoding
+## Mã hóa (Encoding)
 
-If you use UTF-8 encoding, Jekyll will break if a file starts with characters representing a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark#UTF-8). Therefore, remove this sequence of bytes if it appears at the beginning of your file.
+Nếu bạn sử dụng mã hóa UTF-8, Jekyll sẽ bị lỗi nếu một tệp bắt đầu bằng các ký tự đại diện cho [BOM](https://en.wikipedia.org/wiki/Byte_order_mark#UTF-8). Do đó, hãy xóa chuỗi byte này nếu nó xuất hiện ở đầu tệp của bạn.
 
-Additionally, you might need to change the code page of the console window to UTF-8 in case you get a
-`Liquid Exception: Incompatible character encoding` error during the site generation process. Run the following:
+Ngoài ra, bạn có thể cần thay đổi trang mã (code page) của cửa sổ bảng điều khiển sang UTF-8 trong trường hợp bạn gặp lỗi
+`Liquid Exception: Incompatible character encoding` trong quá trình tạo trang web. Chạy lệnh sau:
 
 ```sh
 chcp 65001
 ```
 
-## Time Zone Management
+## Quản lý Múi giờ
 
-Since Windows doesn't have a native source of zoneinfo data, the Ruby Interpreter doesn't understand IANA Timezones.
-Using them had the `TZ` environment variable default to UTC/GMT 00:00.
+Vì Windows không có nguồn dữ liệu zoneinfo gốc, Trình thông dịch Ruby không hiểu Múi giờ IANA.
+Sử dụng chúng có biến môi trường `TZ` mặc định là UTC/GMT 00:00.
 
-Though Windows users could alternatively define their blog's timezone by setting the key to use the POSIX format of defining
-timezones, it wasn't as user-friendly when it came to having the clock altered to changing DST-rules.
+Mặc dù người dùng Windows có thể xác định múi giờ blog của họ bằng cách đặt khóa sử dụng định dạng POSIX để xác định
+múi giờ, nhưng nó không thân thiện với người dùng khi thay đổi đồng hồ theo quy tắc DST.
 
-Jekyll now uses a rubygem to internally configure Timezone based on established
-[IANA Timezone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+Jekyll hiện sử dụng rubygem để cấu hình nội bộ Múi giờ dựa trên
+[Cơ sở dữ liệu Múi giờ IANA](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) đã được thiết lập.
 
-While 'new' blogs created with Jekyll v3.4 and greater, will have the following added to their `Gemfile` by default, existing
-sites *will* have to update their `Gemfile` (and installed gems) to enable development on Windows:
+Trong khi các blog 'mới' được tạo bằng Jekyll v3.4 trở lên sẽ có những thứ sau được thêm vào `Gemfile` của họ theo mặc định, các trang web hiện có
+*sẽ* phải cập nhật `Gemfile` của họ (và các gem đã cài đặt) để cho phép phát triển trên Windows:
 
 ```ruby
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -130,16 +130,16 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
 end
 ```
 
-## Auto Regeneration
+## Tự động Tái tạo (Auto Regeneration)
 
-Jekyll uses the `listen` gem to watch for changes when the `--watch` switch is specified during a build or serve.
-While `listen` has built-in support for UNIX systems, it may require an extra gem for compatibility with Windows.
+Jekyll sử dụng gem `listen` để theo dõi các thay đổi khi công tắc `--watch` được chỉ định trong quá trình build hoặc serve.
+Trong khi `listen` có hỗ trợ tích hợp cho các hệ thống UNIX, nó có thể yêu cầu thêm một gem để tương thích với Windows.
 
-Add the following to the `Gemfile` for your site if you have issues with auto-regeneration on Windows alone:
+Thêm phần sau vào `Gemfile` cho trang web của bạn nếu bạn gặp sự cố với tự động tái tạo trên Windows:
 
 ```ruby
 gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 ```
 
-You have to use a [Ruby+Devkit](https://rubyinstaller.org/downloads/) version of the RubyInstaller and install
-the MSYS2 build tools to successfully install the `wdm` gem.
+Bạn phải sử dụng phiên bản [Ruby+Devkit](https://rubyinstaller.org/downloads/) của RubyInstaller và cài đặt
+các công cụ xây dựng MSYS2 để cài đặt thành công gem `wdm`.

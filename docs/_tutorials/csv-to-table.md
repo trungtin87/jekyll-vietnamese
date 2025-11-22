@@ -1,29 +1,28 @@
 ---
-title: Tabulate CSV Data
+title: Tạo Bảng từ Dữ liệu CSV
 author: MichaelCurrin
 date: 2020-04-01 20:30:00 +0200
 ---
 
-This tutorial shows how to use Jekyll to read a CSV and render the data as an HTML table.
+Hướng dẫn này chỉ cho bạn cách sử dụng Jekyll để đọc CSV và hiển thị dữ liệu dưới dạng bảng HTML.
 
-This approach will:
+Cách tiếp cận này sẽ:
 
-- use the CSV's first row as the HTML table header.
-- use remaining rows for the body of the table.
-- preserve the order of the columns from the original CSV.
-- be flexible enough to work with _any_ valid CSV that is referenced.
+- sử dụng hàng đầu tiên của CSV làm tiêu đề bảng HTML.
+- sử dụng các hàng còn lại cho phần thân của bảng.
+- giữ nguyên thứ tự các cột từ CSV gốc.
+- đủ linh hoạt để hoạt động với _bất kỳ_ CSV hợp lệ nào được tham chiếu.
 
-There is no need to specify what the names of the columns are, or how many columns there are.
-The trick to this tutorial is that, when we iterate over the row data, we pick up the _first row_
-and unpack that so we can get the header names.
+Không cần chỉ định tên các cột là gì, hoặc có bao nhiêu cột.
+Thủ thuật của hướng dẫn này là, khi chúng ta lặp qua dữ liệu hàng, chúng ta chọn _hàng đầu tiên_
+và giải nén nó để chúng ta có thể lấy tên tiêu đề.
 
-Follow the steps below to convert a sample CSV of authors into an HTML table.
+Làm theo các bước bên dưới để chuyển đổi một CSV mẫu của các tác giả thành một bảng HTML.
 
+## 1. Tạo một CSV
 
-## 1. Create a CSV
-
-Create a CSV file in your [Data files]({{ '/docs/datafiles/' | relative_url }}) directory so
-that Jekyll will pick it up. A sample path and CSV data are shown below:
+Tạo một tệp CSV trong thư mục [Tệp dữ liệu]({{ '/docs/datafiles/' | relative_url }}) của bạn để
+Jekyll sẽ nhận nó. Một đường dẫn mẫu và dữ liệu CSV được hiển thị bên dưới:
 
 `_data/authors.csv`
 
@@ -34,40 +33,42 @@ Jane,Doe,29,France
 Jack,Hill,25,Australia
 ```
 
-That data file will now be available in Jekyll like this:
+Tệp dữ liệu đó bây giờ sẽ có sẵn trong Jekyll như thế này:
 
 {% raw %}
+
 ```liquid
 {{ site.data.authors }}
 ```
+
 {% endraw %}
 
+## 2. Thêm một bảng
 
-## 2. Add a table
+Chọn một tệp HTML hoặc markdown nơi bạn muốn bảng của mình được hiển thị.
 
-Choose an HTML or markdown file where you want your table to be shown.
-
-For example: `table_test.md`
+Ví dụ: `table_test.md`
 
 ```yaml
 ---
-title: Table test
+title: Kiểm tra bảng
 ---
 ```
 
-### Inspect a row
+### Kiểm tra một hàng
 
-Grab the first row and see what it looks like using the `inspect` filter.
+Lấy hàng đầu tiên và xem nó trông như thế nào bằng cách sử dụng bộ lọc `inspect`.
 
 {% raw %}
+
 ```liquid
 {% assign row = site.data.authors[0] %}
 {{ row | inspect }}
 ```
+
 {% endraw %}
 
-
-The result will be a _hash_ (an object consisting of key-value pairs) which looks like this:
+Kết quả sẽ là một _hash_ (một đối tượng bao gồm các cặp khóa-giá trị) trông như thế này:
 
 ```ruby
 {
@@ -78,34 +79,37 @@ The result will be a _hash_ (an object consisting of key-value pairs) which look
 }
 ```
 
-Note that Jekyll _does_ in fact preserve the order here, based on the original CSV.
+Lưu ý rằng Jekyll _thực sự_ giữ nguyên thứ tự ở đây, dựa trên CSV gốc.
 
+### Giải nén một hàng
 
-### Unpack a row
-
-A simple solution would be to hardcode the field names when looking up the row values by key.
+Một giải pháp đơn giản sẽ là mã hóa cứng tên trường khi tra cứu giá trị hàng theo khóa.
 
 {% raw %}
+
 ```liquid
 {{ row["First name"] }}
 {{ row["Last name"] }}
 ```
+
 {% endraw %}
 
-But we prefer a solution that will work for _any_ CSV, without specifying the column names upfront.
-So we iterate over the `row` object using a `for` loop:
+Nhưng chúng tôi thích một giải pháp sẽ hoạt động cho _bất kỳ_ CSV nào, mà không cần chỉ định tên cột trước.
+Vì vậy, chúng ta lặp qua đối tượng `row` bằng vòng lặp `for`:
 
 {% raw %}
+
 ```liquid
 {% assign row = site.data.authors[0] %}
 {% for pair in row %}
   {{ pair | inspect }}
 {% endfor %}
 ```
+
 {% endraw %}
 
-This produces the following. Note the first item in each pair is the _key_ and the second will be
-the _value_.
+Điều này tạo ra như sau. Lưu ý mục đầu tiên trong mỗi cặp là _khóa_ và mục thứ hai sẽ là
+_giá trị_.
 
 ```
 ["First name", "John"]
@@ -114,13 +118,14 @@ the _value_.
 ["Location", "United States"]
 ```
 
-### Create a table header row
+### Tạo hàng tiêu đề bảng
 
-Here we make a table with a single table row (`tr`), made up of table header (`th`) tags. We find
-the header name by getting the first element (at index `0`) from `pair`. We ignore the second
-element as we don't need the value yet.
+Ở đây chúng ta tạo một bảng với một hàng bảng duy nhất (`tr`), được tạo thành từ các thẻ tiêu đề bảng (`th`). Chúng ta tìm
+tên tiêu đề bằng cách lấy phần tử đầu tiên (tại chỉ mục `0`) từ `pair`. Chúng ta bỏ qua phần tử thứ hai
+vì chúng ta chưa cần giá trị.
 
 {% raw %}
+
 ```liquid
 <table>
   {% for row in site.data.authors %}
@@ -136,23 +141,23 @@ element as we don't need the value yet.
 {% endraw %}
 ```
 
-For now, we do not display any content from the second row onwards. We achieve this by using
-`forloop.first`, since this will return true for the _first_ row and false otherwise.
+Hiện tại, chúng ta không hiển thị bất kỳ nội dung nào từ hàng thứ hai trở đi. Chúng ta đạt được điều này bằng cách sử dụng
+`forloop.first`, vì điều này sẽ trả về true cho hàng _đầu tiên_ và false nếu không.
 
+### Thêm các hàng dữ liệu bảng
 
-### Add table data rows
+Trong phần này, chúng ta thêm các hàng dữ liệu vào bảng. Bây giờ, chúng ta sử dụng phần tử thứ hai của `pair`
+để tìm giá trị.
 
-In this section we add the data rows to the table. Now, we use the second element of `pair`
-to find the value.
-
-For convenience, we render using the `tablerow` tag - this works like a `for` loop, but the inner
-data will be rendered with `tr` and `td` HTML tags for us. Unfortunately, there is no equivalent for
-the header row, so we must write that out in full, as in the previous section.
+Để thuận tiện, chúng ta hiển thị bằng thẻ `tablerow` - điều này hoạt động giống như vòng lặp `for`, nhưng
+dữ liệu bên trong sẽ được hiển thị với các thẻ HTML `tr` và `td` cho chúng ta. Thật không may, không có tương đương cho
+hàng tiêu đề, vì vậy chúng ta phải viết ra đầy đủ, như trong phần trước.
 
 {% raw %}
+
 ```liquid
 ---
-title: Table test
+title: Kiểm tra bảng
 ---
 
 <table>
@@ -171,10 +176,10 @@ title: Table test
   {% endfor %}
 </table>
 ```
+
 {% endraw %}
 
-
-With the code above, the complete table would look like this:
+Với mã ở trên, bảng hoàn chỉnh sẽ trông như thế này:
 
 <table>
   <tr>
@@ -203,11 +208,11 @@ With the code above, the complete table would look like this:
   </tr>
 </table>
 
-That's it - you can now turn a CSV into an HTML table using Jekyll.
+Vậy là xong - bây giờ bạn có thể chuyển CSV thành bảng HTML bằng Jekyll.
 
-## Next steps
+## Các bước tiếp theo
 
-- Change the field names in the CSV.
-- Choose a different CSV.
-- Add CSS styling to your table.
-- Render the table using a JSON or YAML input file.
+- Thay đổi tên trường trong CSV.
+- Chọn một CSV khác.
+- Thêm kiểu CSS vào bảng của bạn.
+- Hiển thị bảng bằng tệp đầu vào JSON hoặc YAML.

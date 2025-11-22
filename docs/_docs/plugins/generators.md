@@ -1,23 +1,23 @@
 ---
-title: Generators
+title: Bộ tạo (Generators)
 permalink: /docs/plugins/generators/
 ---
 
-You can create a generator when you need Jekyll to create additional content based on your own rules.
+Bạn có thể tạo một bộ tạo khi bạn cần Jekyll tạo thêm nội dung dựa trên các quy tắc của riêng bạn.
 
-A generator is a subclass of `Jekyll::Generator` that defines a `generate` method, which receives an instance of
-[`Jekyll::Site`]({{ site.repository }}/blob/master/lib/jekyll/site.rb). The return value of `generate` is ignored.
+Một bộ tạo là một lớp con của `Jekyll::Generator` định nghĩa một phương thức `generate`, nhận một thể hiện của
+[`Jekyll::Site`]({{ site.repository }}/blob/master/lib/jekyll/site.rb). Giá trị trả về của `generate` bị bỏ qua.
 
-Generators run after Jekyll has made an inventory of the existing content, and before the site is generated. Pages with
-front matter are stored as instances of [`Jekyll::Page`]({{ site.repository }}/blob/master/lib/jekyll/page.rb) and are
-available via `site.pages`. Static files become instances of
+Các bộ tạo chạy sau khi Jekyll đã kiểm kê nội dung hiện có, và trước khi trang web được tạo. Các trang có
+front matter được lưu trữ dưới dạng các thể hiện của [`Jekyll::Page`]({{ site.repository }}/blob/master/lib/jekyll/page.rb) và
+có sẵn thông qua `site.pages`. Các tệp tĩnh trở thành các thể hiện của
 [`Jekyll::StaticFile`]({{ site.repository }}/blob/master/lib/jekyll/static_file.rb)
-and are available via `site.static_files`. See [the Variables documentation page](/docs/variables/) and
-[`Jekyll::Site`]({{ site.repository }}/blob/master/lib/jekyll/site.rb) for details.
+và có sẵn thông qua `site.static_files`. Xem [trang tài liệu Biến](/docs/variables/) và
+[`Jekyll::Site`]({{ site.repository }}/blob/master/lib/jekyll/site.rb) để biết chi tiết.
 
-In the following example, the generator will inject values computed at build time for template variables. The template
-named `reading.html` has two undefined variables `ongoing` and `done` that will be defined or assigned a value when
-the generator runs:
+Trong ví dụ sau, bộ tạo sẽ tiêm các giá trị được tính toán tại thời điểm xây dựng cho các biến mẫu. Mẫu
+có tên `reading.html` có hai biến chưa được định nghĩa `ongoing` và `done` sẽ được định nghĩa hoặc gán một giá trị khi
+bộ tạo chạy:
 
 ```ruby
 module Reading
@@ -38,14 +38,15 @@ module Reading
 end
 ```
 
-The following example is a more complex generator that generates new pages.
+Ví dụ sau là một bộ tạo phức tạp hơn tạo ra các trang mới.
 
-In this example, the aim of the generator is to create a page for each category registered in the `site`. The pages are
-created at runtime, so their contents, front matter and other attributes need to be designed by the plugin itself.
-* The pages are intended to render a list of all documents under a given category. So the basename of the rendered file
-would be better as `index.html`.
-* Having the ability to configure the pages via [front matter defaults](/docs/configuration/front-matter-defaults/)
-would be awesome! So assigning a particular `type` to these pages would be beneficial.
+Trong ví dụ này, mục đích của bộ tạo là tạo một trang cho mỗi danh mục được đăng ký trong `site`. Các trang được
+tạo tại thời gian chạy, vì vậy nội dung, front matter và các thuộc tính khác của chúng cần được thiết kế bởi chính plugin.
+
+* Các trang được dự định để hiển thị danh sách tất cả các tài liệu thuộc một danh mục nhất định. Vì vậy, tên cơ sở của tệp được hiển thị
+sẽ tốt hơn là `index.html`.
+* Có khả năng cấu hình các trang thông qua [mặc định front matter](/docs/configuration/front-matter-defaults/)
+sẽ rất tuyệt vời! Vì vậy, việc gán một `type` cụ thể cho các trang này sẽ có lợi.
 
 ```ruby
 module SamplePlugin
@@ -97,8 +98,8 @@ module SamplePlugin
 end
 ```
 
-The generated pages can now be set up to use a particular layout or output at a particular path in the destination
-directory all via the config file using front matter defaults. For example:
+Các trang được tạo bây giờ có thể được thiết lập để sử dụng một bố cục cụ thể hoặc đầu ra tại một đường dẫn cụ thể trong thư mục
+đích tất cả thông qua tệp cấu hình sử dụng mặc định front matter. Ví dụ:
 
 ```yaml
 # _config.yml
@@ -111,16 +112,16 @@ defaults:
       permalink: categories/:category/
 ```
 
-## Technical Aspects
+## Các khía cạnh kỹ thuật
 
-Generators need to implement only one method:
+Các bộ tạo cần triển khai chỉ một phương thức:
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Method</th>
-      <th>Description</th>
+      <th>Phương thức</th>
+      <th>Mô tả</th>
     </tr>
   </thead>
   <tbody>
@@ -129,17 +130,17 @@ Generators need to implement only one method:
         <p><code>generate</code></p>
       </td>
       <td>
-        <p>Generates content as a side-effect.</p>
+        <p>Tạo nội dung như một tác dụng phụ.</p>
       </td>
     </tr>
   </tbody>
 </table>
 </div>
 
-If your generator is contained within a single file, it can be named whatever you want but it should have an `.rb`
-extension. If your generator is split across multiple files, it should be packaged as a Rubygem to be published at
-https://rubygems.org/. In this case, the name of the gem depends on the availability of the name at that site because
-no two gems can have the same name.
+Nếu bộ tạo của bạn được chứa trong một tệp duy nhất, nó có thể được đặt tên bất cứ thứ gì bạn muốn nhưng nó nên có phần mở rộng `.rb`.
+Nếu bộ tạo của bạn được chia thành nhiều tệp, nó nên được đóng gói dưới dạng Rubygem để được xuất bản tại
+<https://rubygems.org/>. Trong trường hợp này, tên của gem phụ thuộc vào tính khả dụng của tên tại trang web đó vì
+không có hai gem nào có thể có cùng tên.
 
-By default, Jekyll looks for generators in the `_plugins` directory. However, you can change the default directory by
-assigning the desired name to the key `plugins_dir` in the config file.
+Theo mặc định, Jekyll tìm kiếm các bộ tạo trong thư mục `_plugins`. Tuy nhiên, bạn có thể thay đổi thư mục mặc định bằng cách
+gán tên mong muốn cho khóa `plugins_dir` trong tệp cấu hình.

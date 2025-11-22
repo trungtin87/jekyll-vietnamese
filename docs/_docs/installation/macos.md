@@ -1,92 +1,92 @@
 ---
-title: Jekyll on macOS
+title: Jekyll trên macOS (Jekyll on macOS)
 permalink: /docs/installation/macos/
 ---
 
-## Supported macOS versions
+## Các phiên bản macOS được hỗ trợ
 
-We match [Homebrew's macOS requirements](https://docs.brew.sh/Installation#macos-requirements), which typically support the last 2 or 3 macOS versions.
+Chúng tôi khớp với [yêu cầu macOS của Homebrew](https://docs.brew.sh/Installation#macos-requirements), thường hỗ trợ 2 hoặc 3 phiên bản macOS gần nhất.
 
-Older macOS versions might work, but we don't officially support them.
+Các phiên bản macOS cũ hơn có thể hoạt động, nhưng chúng tôi không chính thức hỗ trợ chúng.
 
-## Install Ruby
+## Cài đặt Ruby
 
-To install Jekyll on macOS, you need a proper Ruby development environment. 
-While macOS comes preinstalled with Ruby, we don't recommend using that version 
-to install Jekyll. This external article goes over the various reasons 
-[why you shouldn't use the system Ruby](https://www.moncefbelyamani.com/why-you-shouldn-t-use-the-system-ruby-to-install-gems-on-a-mac/).
+Để cài đặt Jekyll trên macOS, bạn cần một môi trường phát triển Ruby thích hợp.
+Mặc dù macOS được cài đặt sẵn Ruby, chúng tôi không khuyên bạn nên sử dụng phiên bản đó
+để cài đặt Jekyll. Bài viết bên ngoài này đi qua các lý do khác nhau
+[tại sao bạn không nên sử dụng Ruby hệ thống](https://www.moncefbelyamani.com/why-you-shouldn-t-use-the-system-ruby-to-install-gems-on-a-mac/).
 
-Instead, you'll need to install a separate and newer version of Ruby using a 
-version manager such as [asdf], [chruby], [rbenv], or [rvm]. Version managers 
-allow you to easily install multiple versions of Ruby, and switch between them.
+Thay vào đó, bạn sẽ cần cài đặt một phiên bản Ruby riêng biệt và mới hơn bằng cách sử dụng một
+trình quản lý phiên bản như [asdf], [chruby], [rbenv], hoặc [rvm]. Các trình quản lý phiên bản
+cho phép bạn dễ dàng cài đặt nhiều phiên bản Ruby và chuyển đổi giữa chúng.
 
-We recommend `chruby` because it's the simplest and least likely to cause issues. 
+Chúng tôi khuyên dùng `chruby` vì nó đơn giản nhất và ít có khả năng gây ra sự cố nhất.
 
-The instructions below are an excerpt from this detailed external guide to 
-[install Ruby on Mac]. They work best if you're setting up development tools 
-for the first time on your Mac. If you've already tried to install Ruby or 
-Jekyll on your Mac, or if you run into any issues, read that guide. 
+Các hướng dẫn bên dưới là trích đoạn từ hướng dẫn bên ngoài chi tiết này để
+[cài đặt Ruby trên Mac]. Chúng hoạt động tốt nhất nếu bạn đang thiết lập các công cụ phát triển
+lần đầu tiên trên máy Mac của mình. Nếu bạn đã thử cài đặt Ruby hoặc
+Jekyll trên máy Mac của mình, hoặc nếu bạn gặp bất kỳ vấn đề nào, hãy đọc hướng dẫn đó.
 
 [asdf]: https://asdf-vm.com/
 [chruby]: https://github.com/postmodern/chruby
 [rbenv]: https://github.com/rbenv/rbenv
 [rvm]: https://rvm.io/
-[install Ruby on Mac]: https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/
+[cài đặt Ruby trên Mac]: https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/
 
-### Step 1: Install Homebrew
+### Bước 1: Cài đặt Homebrew
 
-[Homebrew](https://brew.sh/) makes it easy to install development tools on a Mac.
+[Homebrew](https://brew.sh/) giúp dễ dàng cài đặt các công cụ phát triển trên máy Mac.
 
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### Step 2: Install chruby and the latest Ruby with ruby-install
+### Bước 2: Cài đặt chruby và Ruby mới nhất với ruby-install
 
-Install `chruby` and `ruby-install` with Homebrew:
+Cài đặt `chruby` và `ruby-install` với Homebrew:
 
 ```sh
 brew install chruby ruby-install
 ```
 
-Install the latest stable version of Ruby (supported by Jekyll):
+Cài đặt phiên bản ổn định mới nhất của Ruby (được Jekyll hỗ trợ):
 
 ```sh
 ruby-install ruby {{ site.data.ruby.current_version }}
 ```
 
-This will take a few minutes, and once it's done, configure your shell to 
-automatically use `chruby`:
+Việc này sẽ mất vài phút, và sau khi hoàn tất, hãy cấu hình shell của bạn để
+tự động sử dụng `chruby`:
 
 ```sh
 echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
 echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
-echo "chruby ruby-{{ site.data.ruby.current_version }}" >> ~/.zshrc # run 'chruby' to see actual version
+echo "chruby ruby-{{ site.data.ruby.current_version }}" >> ~/.zshrc # chạy 'chruby' để xem phiên bản thực tế
 ```
 
-If you're using Bash, replace `.zshrc` with `.bash_profile`. If you're not sure, 
-read this external guide to 
-[find out which shell you're using](https://www.moncefbelyamani.com/which-shell-am-i-using-how-can-i-switch/).
+Nếu bạn đang sử dụng Bash, hãy thay thế `.zshrc` bằng `.bash_profile`. Nếu bạn không chắc chắn,
+hãy đọc hướng dẫn bên ngoài này để
+[tìm ra shell nào bạn đang sử dụng](https://www.moncefbelyamani.com/which-shell-am-i-using-how-can-i-switch/).
 
-Quit and relaunch Terminal, then check that everything is working:
+Thoát và khởi chạy lại Terminal, sau đó kiểm tra xem mọi thứ có hoạt động không:
 
 ```sh
 ruby -v
 ```
 
-It should show {{ site.data.ruby.current_version_output }} or a newer version.
+Nó sẽ hiển thị {{ site.data.ruby.current_version_output }} hoặc một phiên bản mới hơn.
 
-Next, read that same external guide for important notes about 
-[setting and switching between Ruby versions with chruby](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/#how-to-install-different-versions-of-ruby-and-switch-between-them).
+Tiếp theo, hãy đọc cùng hướng dẫn bên ngoài đó để biết các ghi chú quan trọng về
+[thiết lập và chuyển đổi giữa các phiên bản Ruby với chruby](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/#how-to-install-different-versions-of-ruby-and-switch-between-them).
 
-## Install Jekyll
+## Cài đặt Jekyll
 
-After installing Ruby with chruby, install the latest Jekyll gem:
+Sau khi cài đặt Ruby với chruby, hãy cài đặt gem Jekyll mới nhất:
 
 ```sh
 gem install jekyll
 ```
 
-## Troubleshooting
+## Khắc phục sự cố
 
-See [Troubleshooting]({{ '/docs/troubleshooting/' | relative_url }}) or [ask for help on our forum](https://talk.jekyllrb.com).
+Xem [Khắc phục sự cố]({{ '/docs/troubleshooting/' | relative_url }}) hoặc [yêu cầu trợ giúp trên diễn đàn của chúng tôi](https://talk.jekyllrb.com).

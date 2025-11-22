@@ -1,94 +1,95 @@
+# Các biến giữ chỗ (placeholders) và định dạng cho permalinks
 placeholders:
   - name: year
     desc: >-
-      Year from the post's filename with four digits. May be overridden via the document's
-      <code>date</code> front matter.
+      Năm từ tên tệp của bài đăng với bốn chữ số. Có thể được ghi đè qua
+      front matter <code>date</code> của tài liệu.
   - name: short_year
     desc: >-
-      Year from the post's filename without the century. (00..99) May be overridden via the
-      document's <code>date</code> front matter.
+      Năm từ tên tệp của bài đăng không có thế kỷ. (00..99) Có thể được ghi đè qua
+      front matter <code>date</code> của tài liệu.
   - name: month
     desc: >-
-      Month from the post's filename. (01..12) May be overridden via the document's
-      <code>date</code> front matter.
+      Tháng từ tên tệp của bài đăng. (01..12) Có thể được ghi đè qua
+      front matter <code>date</code> của tài liệu.
   - name: i_month
     desc: >-
-      Month without leading zeros from the post's filename. May be overridden via the document's
-      <code>date</code> front matter.
+      Tháng không có số 0 ở đầu từ tên tệp của bài đăng. Có thể được ghi đè qua
+      front matter <code>date</code> của tài liệu.
   - name: short_month
     desc: >-
-      Three-letter month abbreviation, e.g. "Jan".
+      Viết tắt tháng ba chữ cái, ví dụ: "Jan".
   - name: long_month
     intro_ver: "4.0"
     desc: >-
-      Full month name, e.g. "January".
+      Tên tháng đầy đủ, ví dụ: "January".
   - name: day
     desc: >-
-      Day of the month from the post's filename. (01..31) May be overridden via the document's
-      <code>date</code> front matter.
+      Ngày trong tháng từ tên tệp của bài đăng. (01..31) Có thể được ghi đè qua
+      front matter <code>date</code> của tài liệu.
   - name: i_day
     desc: >-
-      Day of the month without leading zeros from the post's filename. May be overridden via the
-      document's <code>date</code> front matter.
+      Ngày trong tháng không có số 0 ở đầu từ tên tệp của bài đăng. Có thể được ghi đè qua
+      front matter <code>date</code> của tài liệu.
   - name: y_day
     desc: >-
-      Ordinal day of the year from the post's filename, with leading zeros. (001..366)
+      Ngày thứ tự trong năm từ tên tệp của bài đăng, có số 0 ở đầu. (001..366)
   - name: w_year
     intro_ver: "4.0"
     desc: >-
-      Week year which may differ from the month year for up to three days at the start of January
-      and end of December
+      Năm tuần có thể khác với năm tháng tối đa ba ngày vào đầu tháng Giêng
+      và cuối tháng Mười Hai
   - name: week
     intro_ver: "4.0"
     desc: >-
-      Week number of the current year, starting with the first week having a majority of its days
-      in January. (01..53)
+      Số tuần của năm hiện tại, bắt đầu với tuần đầu tiên có phần lớn các ngày
+      trong tháng Giêng. (01..53)
   - name: w_day
     intro_ver: "4.0"
     desc: >-
-      Day of the week, starting with Monday. (1..7)
+      Ngày trong tuần, bắt đầu với Thứ Hai. (1..7)
   - name: short_day
     intro_ver: "4.0"
     desc: >-
-      Three-letter weekday abbreviation, e.g. "Sun".
+      Viết tắt ngày trong tuần ba chữ cái, ví dụ: "Sun".
   - name: long_day
     intro_ver: "4.0"
     desc: >-
-      Weekday name, e.g. "Sunday".
+      Tên ngày trong tuần, ví dụ: "Sunday".
   - name: hour
     desc: >-
-      Hour of the day, 24-hour clock, zero-padded from the post's <code>date</code> front matter. (00..23)
+      Giờ trong ngày, đồng hồ 24 giờ, có số 0 ở đầu từ front matter <code>date</code> của bài đăng. (00..23)
   - name: minute
     desc: >-
-      Minute of the hour from the post's <code>date</code> front matter. (00..59)
+      Phút trong giờ từ front matter <code>date</code> của bài đăng. (00..59)
   - name: second
     desc: >-
-      Second of the minute from the post's <code>date</code> front matter. (00..59)
+      Giây trong phút từ front matter <code>date</code> của bài đăng. (00..59)
   - name: title
     desc: >-
-      Title from the document's filename. May be overridden via the document's
-      <code>slug</code> front matter. Preserves case from the source.
+      Tiêu đề từ tên tệp của tài liệu. Có thể được ghi đè qua
+      front matter <code>slug</code> của tài liệu. Giữ nguyên chữ hoa chữ thường từ nguồn.
   - name: slug
     desc: >-
-      Slugified title from the document's filename (any character except numbers and letters is
-      replaced as hyphen). May be overridden via the document's <code>slug</code> front matter.
+      Tiêu đề được slugified từ tên tệp của tài liệu (bất kỳ ký tự nào ngoại trừ số và chữ cái được
+      thay thế bằng dấu gạch ngang). Có thể được ghi đè qua front matter <code>slug</code> của tài liệu.
   - name: categories
     desc: >-
-      The specified categories for this post. If a post has multiple categories, Jekyll will create
-      a hierarchy (e.g. <code>/category1/category2</code>). Also Jekyll automatically parses out
-      double slashes in the URLs, so if no categories are present, it will ignore this.
+      Các danh mục được chỉ định cho bài đăng này. Nếu một bài đăng có nhiều danh mục, Jekyll sẽ tạo
+      một hệ thống phân cấp (ví dụ: <code>/category1/category2</code>). Ngoài ra Jekyll tự động phân tích
+      các dấu gạch chéo kép trong URL, vì vậy nếu không có danh mục nào, nó sẽ bỏ qua điều này.
   - name: slugified_categories
     intro_ver: "4.1"
     desc: >-
-      The specified categories for this post but <em>slugified</em>. If a category is a composite of
-      multiple words, Jekyll will downcase all alphabets and replace any non-alphanumeric character
-      with a hyphen. (e.g. <code>"Work 2 Progress"</code> will be converted into
-      <code>"work-2-progress"</code>). If a post has multiple categories, Jekyll will create
-      a hierarchy (e.g. <code>/work-2-progress/category2</code>). Also Jekyll automatically parses
-      out double slashes in the URLs, so if no categories are present, it will ignore this.
+      Các danh mục được chỉ định cho bài đăng này nhưng <em>được slugified</em>. Nếu một danh mục là hợp chất của
+      nhiều từ, Jekyll sẽ chuyển tất cả các chữ cái thành chữ thường và thay thế bất kỳ ký tự không phải chữ và số nào
+      bằng dấu gạch ngang. (ví dụ: <code>"Work 2 Progress"</code> sẽ được chuyển đổi thành
+      <code>"work-2-progress"</code>). Nếu một bài đăng có nhiều danh mục, Jekyll sẽ tạo
+      một hệ thống phân cấp (ví dụ: <code>/work-2-progress/category2</code>). Ngoài ra Jekyll tự động phân tích
+      các dấu gạch chéo kép trong URL, vì vậy nếu không có danh mục nào, nó sẽ bỏ qua điều này.
   - name: output_ext
     desc: >-
-      Extension of the output file. (Included by default and usually unnecessary.)
+      Phần mở rộng của tệp đầu ra. (Được bao gồm theo mặc định và thường không cần thiết.)
 
 builtin_formats:
   - name: date
@@ -100,7 +101,7 @@ builtin_formats:
   - name: weekdate
     intro_ver: "4.0"
     format: "/:categories/:year/W:week/:short_day/:title:output_ext"
-    note: "<code>W</code> will be prefixed to the value of <code>:week</code>"
+    note: "<code>W</code> sẽ được thêm tiền tố vào giá trị của <code>:week</code>"
   - name: none
     format: "/:categories/:title:output_ext"
 
@@ -108,32 +109,32 @@ types:
   documents:
     - name: collection
       desc: >-
-        Label of the containing collection.
+        Nhãn của bộ sưu tập chứa.
     - name: path
       desc: >-
-        Path to the document relative to the collection's directory, including base filename of the document.
-        However, does not include the file extension.
+        Đường dẫn đến tài liệu tương đối với thư mục của bộ sưu tập, bao gồm tên tệp cơ sở của tài liệu.
+        Tuy nhiên, không bao gồm phần mở rộng tệp.
     - name: name
       desc: >-
-        The document's base filename but slugified: downcased and every sequence of non-alphanumeric character
-        (including spaces) replaced by a hyphen.
+        Tên tệp cơ sở của tài liệu nhưng được slugified: chuyển thành chữ thường và mọi chuỗi ký tự không phải chữ và số
+        (bao gồm cả khoảng trắng) được thay thế bằng dấu gạch ngang.
     - name: title
       desc: >-
-        Takes on the value of front matter key <code>slug</code> if defined for the document. Otherwise takes
-        on the string value generated from the document's base filename by piping through the <code>slugify</code>
-        filter method with <code>pretty</code> option.<br/>
-        Regardless of the value taken, the case of the alphabets are preserved instead of being replaced with
-        lowercase counterparts.
+        Nhận giá trị của khóa front matter <code>slug</code> nếu được định nghĩa cho tài liệu. Nếu không, nhận
+        giá trị chuỗi được tạo từ tên tệp cơ sở của tài liệu bằng cách chuyển qua phương thức bộ lọc <code>slugify</code>
+        với tùy chọn <code>pretty</code>.<br/>
+        Bất kể giá trị nào được nhận, chữ hoa chữ thường của các chữ cái được giữ nguyên thay vì được thay thế bằng
+        các chữ cái thường tương ứng.
     - name: output_ext
       desc: >-
-        Extension of the output file. (Included by default and usually unnecessary.)
+        Phần mở rộng của tệp đầu ra. (Được bao gồm theo mặc định và thường không cần thiết.)
   pages:
     - name: path
       desc: >-
-        Path between the source directory and the base filename of the page.
+        Đường dẫn giữa thư mục nguồn và tên tệp cơ sở của trang.
     - name: basename
       desc: >-
-        The page's base filename.
+        Tên tệp cơ sở của trang.
     - name: output_ext
       desc: >-
-        Extension of the output file. (Included by default and usually unnecessary.)
+        Phần mở rộng của tệp đầu ra. (Được bao gồm theo mặc định và thường không cần thiết.)

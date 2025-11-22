@@ -1,103 +1,103 @@
 ---
-title: Pagination
+title: Phân trang (Pagination)
 permalink: /docs/pagination/
 ---
 
-With many websites &mdash; especially blogs &mdash; it’s very common to
-break the main listing of posts up into smaller lists and display them over
-multiple pages. Jekyll offers a pagination plugin, so you can automatically
-generate the appropriate files and folders you need for paginated listings.
+Với nhiều trang web &mdash; đặc biệt là blog &mdash; rất phổ biến để
+chia danh sách bài viết chính thành các danh sách nhỏ hơn và hiển thị chúng trên
+nhiều trang. Jekyll cung cấp một plugin phân trang, vì vậy bạn có thể tự động
+tạo các tệp và thư mục thích hợp bạn cần cho danh sách được phân trang.
 
-For Jekyll 3 or higher, include the `jekyll-paginate` plugin in your
-Gemfile and in your `_config.yml` under `plugins`. For Jekyll 2, this is
-standard.
+Đối với Jekyll 3 hoặc cao hơn, hãy bao gồm plugin `jekyll-paginate` trong
+Gemfile của bạn và trong `_config.yml` của bạn dưới `plugins`. Đối với Jekyll 2, điều này là
+tiêu chuẩn.
 
 <div class="note info">
-  <h5>Pagination only works within HTML files</h5>
+  <h5>Phân trang chỉ hoạt động trong các tệp HTML</h5>
   <p>
-    Pagination does not work from within Markdown files from
-    your Jekyll site. Pagination works when called from within the HTML
-    file, named <code>index.html</code>, which optionally may reside in and
-    produce pagination from within a subdirectory, via the
-    <code>paginate_path</code> configuration value.
+    Phân trang không hoạt động từ bên trong các tệp Markdown của
+    trang web Jekyll của bạn. Phân trang hoạt động khi được gọi từ bên trong tệp HTML,
+    được đặt tên là <code>index.html</code>, tệp này tùy chọn có thể nằm trong và
+    tạo phân trang từ bên trong một thư mục con, thông qua giá trị cấu hình
+    <code>paginate_path</code>.
   </p>
 </div>
 
-## Enable pagination
+## Kích hoạt phân trang
 
-To enable pagination for posts on your blog, add a line to the `_config.yml` file that
-specifies how many items should be displayed per page:
+Để kích hoạt phân trang cho các bài viết trên blog của bạn, hãy thêm một dòng vào tệp `_config.yml`
+chỉ định bao nhiêu mục sẽ được hiển thị trên mỗi trang:
 
 ```yaml
 paginate: 5
 ```
 
-The number should be the maximum number of Posts you’d like to be displayed
-per-page in the generated site.
+Con số này phải là số lượng Bài viết tối đa bạn muốn hiển thị
+trên mỗi trang trong trang web được tạo.
 
-You may also specify the destination of the pagination pages:
+Bạn cũng có thể chỉ định đích của các trang phân trang:
 
 ```yaml
 paginate_path: "/blog/page:num/"
 ```
 
-This will read in `blog/index.html`, send it each pagination page in Liquid as
-`paginator` and write the output to `blog/page:num/`, where `:num` is the
-pagination page number, starting with `2`. <br/>
-If a site has 12 posts and specifies `paginate: 5`, Jekyll will write `blog/index.html`
-with the first 5 posts, `blog/page2/index.html` with the next 5 posts and
-`blog/page3/index.html` with the last 2 posts into the destination directory.
+Điều này sẽ đọc trong `blog/index.html`, gửi cho nó mỗi trang phân trang trong Liquid dưới dạng
+`paginator` và ghi đầu ra vào `blog/page:num/`, trong đó `:num` là
+số trang phân trang, bắt đầu bằng `2`. <br/>
+Nếu một trang web có 12 bài viết và chỉ định `paginate: 5`, Jekyll sẽ ghi `blog/index.html`
+với 5 bài viết đầu tiên, `blog/page2/index.html` với 5 bài viết tiếp theo và
+`blog/page3/index.html` với 2 bài viết cuối cùng vào thư mục đích.
 
 <div class="note warning">
-  <h5>Don't set a permalink</h5>
+  <h5>Đừng đặt liên kết tĩnh (permalink)</h5>
   <p>
-    Setting a permalink in the front matter of your blog page will cause
-    pagination to break. Just omit the permalink.
+    Đặt liên kết tĩnh trong front matter của trang blog của bạn sẽ khiến
+    phân trang bị hỏng. Chỉ cần bỏ qua liên kết tĩnh.
   </p>
 </div>
 
 <div class="note info">
-  <h5>Pagination for categories, tags and collections</h5>
+  <h5>Phân trang cho danh mục, thẻ và bộ sưu tập</h5>
   <p>
-    The more recent <a href="https://github.com/sverrirs/jekyll-paginate-v2">
-    jekyll-paginate-v2</a> plugin supports more features. See the
+    Plugin <a href="https://github.com/sverrirs/jekyll-paginate-v2">
+    jekyll-paginate-v2</a> gần đây hơn hỗ trợ nhiều tính năng hơn. Xem
     <a href="https://github.com/sverrirs/jekyll-paginate-v2/tree/master/examples">
-    pagination examples</a> in the repository. <strong>This plugin is not
-    supported by GitHub Pages</strong>.
+    các ví dụ phân trang</a> trong kho lưu trữ. <strong>Plugin này không được
+    hỗ trợ bởi GitHub Pages</strong>.
   </p>
 </div>
 
-## Liquid Attributes Available
+## Các thuộc tính Liquid có sẵn
 
-The pagination plugin exposes the `paginator` liquid object with the following
-attributes:
+Plugin phân trang hiển thị đối tượng liquid `paginator` với các thuộc tính sau:
 
 {% include docs_variables_table.html scope=site.data.jekyll_variables.paginator %}
 
 <div class="note info">
-  <h5>Pagination does not support tags or categories</h5>
-  <p>Pagination pages through every post in the <code>posts</code>
-  variable unless a post has <code>hidden: true</code> in its front matter.
-  It does not currently allow paging over groups of posts linked
-  by a common tag or category. It cannot include any collection of
-  documents because it is restricted to posts.</p>
+  <h5>Phân trang không hỗ trợ thẻ hoặc danh mục</h5>
+  <p>Phân trang duyệt qua mọi bài viết trong biến <code>posts</code>
+  trừ khi một bài viết có <code>hidden: true</code> trong front matter của nó.
+  Nó hiện không cho phép phân trang qua các nhóm bài viết được liên kết
+  bởi một thẻ hoặc danh mục chung. Nó không thể bao gồm bất kỳ bộ sưu tập
+  tài liệu nào vì nó bị giới hạn ở các bài viết.</p>
 </div>
 
-## Render the paginated Posts
+## Hiển thị các Bài viết được phân trang
 
-The next thing you need to do is to actually display your posts in a list using
-the `paginator` variable that will now be available to you. You’ll probably
-want to do this in one of the main pages of your site. Here’s one example of a
-simple way of rendering paginated Posts in a HTML file:
+Điều tiếp theo bạn cần làm là thực sự hiển thị các bài viết của mình trong một danh sách sử dụng
+biến `paginator` hiện sẽ có sẵn cho bạn. Bạn có thể sẽ
+muốn làm điều này trong một trong những trang chính của trang web của bạn. Đây là một ví dụ về
+cách đơn giản để hiển thị các Bài viết được phân trang trong một tệp HTML:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
-title: My Blog
+title: Blog của tôi
 ---
 
-<!-- This loops through the paginated posts -->
+<!-- Vòng lặp này duyệt qua các bài viết được phân trang -->
 {% for post in paginator.posts %}
   <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
   <p class="author">
@@ -108,47 +108,49 @@ title: My Blog
   </div>
 {% endfor %}
 
-<!-- Pagination links -->
+<!-- Liên kết phân trang -->
 <div class="pagination">
   {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path }}" class="previous">
-      Previous
+      Trước
     </a>
   {% else %}
-    <span class="previous">Previous</span>
+    <span class="previous">Trước</span>
   {% endif %}
   <span class="page_number ">
-    Page: {{ paginator.page }} of {{ paginator.total_pages }}
+    Trang: {{ paginator.page }} trên {{ paginator.total_pages }}
   </span>
   {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+    <a href="{{ paginator.next_page_path }}" class="next">Tiếp</a>
   {% else %}
-    <span class="next ">Next</span>
+    <span class="next ">Tiếp</span>
   {% endif %}
 </div>
 ```
+
 {% endraw %}
 
 <div class="note warning">
-  <h5>Beware the page one edge-case</h5>
+  <h5>Cẩn thận với trường hợp biên trang một</h5>
   <p>
-    Jekyll does not generate a ‘page1’ folder, so the above code will not work
-    when a <code>/page1</code> link is produced. See below for a way to handle
-    this if it’s a problem for you.
+    Jekyll không tạo thư mục ‘page1’, vì vậy mã trên sẽ không hoạt động
+    khi liên kết <code>/page1</code> được tạo ra. Xem bên dưới để biết cách xử lý
+    điều này nếu nó là vấn đề đối với bạn.
   </p>
 </div>
 
-The following HTML snippet should handle page one, and render a list of each
-page with links to all but the current page.
+Đoạn mã HTML sau sẽ xử lý trang một, và hiển thị danh sách của mỗi
+trang với các liên kết đến tất cả trừ trang hiện tại.
 
 {% raw %}
+
 ```liquid
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
   {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a>
+    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Trước</a>
   {% else %}
-    <span>&laquo; Prev</span>
+    <span>&laquo; Trước</span>
   {% endif %}
 
   {% for page in (1..paginator.total_pages) %}
@@ -162,11 +164,12 @@ page with links to all but the current page.
   {% endfor %}
 
   {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+    <a href="{{ paginator.next_page_path | relative_url }}">Tiếp &raquo;</a>
   {% else %}
-    <span>Next &raquo;</span>
+    <span>Tiếp &raquo;</span>
   {% endif %}
 </div>
 {% endif %}
 ```
+
 {% endraw %}

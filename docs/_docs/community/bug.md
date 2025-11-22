@@ -1,8 +1,8 @@
 ---
-title: Report a bug
+title: Báo cáo lỗi
 permalink: "/docs/community/bug/"
 ---
 
-If you think you've found a bug within a Jekyll plugin, open an issue in that plugin's repository &mdash; First [look for the plugin on rubygems](https://rubygems.org/) then click on the `Homepage` link to access the plugin repository.
+Nếu bạn nghĩ rằng bạn đã tìm thấy một lỗi trong một plugin Jekyll, hãy mở một vấn đề trong kho lưu trữ của plugin đó &mdash; Đầu tiên [tìm plugin trên rubygems](https://rubygems.org/) sau đó nhấp vào liên kết `Homepage` để truy cập kho lưu trữ plugin.
 
-If you think you've found a bug within Jekyll itself, [open an issue](https://github.com/jekyll/jekyll/issues/new).
+Nếu bạn nghĩ rằng bạn đã tìm thấy một lỗi trong chính Jekyll, [hãy mở một vấn đề](https://github.com/jekyll/jekyll/issues/new).

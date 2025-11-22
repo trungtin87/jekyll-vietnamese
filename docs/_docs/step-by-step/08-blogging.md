@@ -1,18 +1,15 @@
 ---
 layout: step
-title: Blogging
+title: Viết blog
 position: 8
 ---
-You might be wondering how you can have a blog without a database. In true
-Jekyll style, blogging is powered by text files only.
+Bạn có thể tự hỏi làm thế nào bạn có thể có một blog mà không có cơ sở dữ liệu. Theo phong cách Jekyll thực sự, việc viết blog chỉ được cung cấp bởi các tệp văn bản.
 
-## Posts
+## Bài đăng
 
-Blog posts live in a folder called `_posts`. The filename for posts have a
-special format: the publish date, then a title, followed by an extension.
+Các bài đăng trên blog sống trong một thư mục có tên `_posts`. Tên tệp cho các bài đăng có định dạng đặc biệt: ngày xuất bản, sau đó là tiêu đề, theo sau là phần mở rộng.
 
-Create your first post at `_posts/2018-08-20-bananas.md` with the
-following content:
+Tạo bài đăng đầu tiên của bạn tại `_posts/2018-08-20-bananas.md` với nội dung sau:
 
 ```markdown
 ---
@@ -30,16 +27,14 @@ flesh rich in starch covered with a rind, which may be green, yellow,
 red, purple, or brown when ripe.
 ```
 
-This is like the `about.md` you created before except it has an author and
-a different layout. `author` is a custom variable, it's not required and could
-have been named something like `creator`.
+Điều này giống như `about.md` bạn đã tạo trước đó ngoại trừ việc nó có tác giả và bố cục khác. `author` là một biến tùy chỉnh, nó không bắt buộc và có thể được đặt tên giống như `creator`.
 
-## Layout
+## Bố cục
 
-The `post` layout doesn't exist so you'll need to create it at
-`_layouts/post.html` with the following content:
+Bố cục `post` không tồn tại vì vậy bạn sẽ cần tạo nó tại `_layouts/post.html` với nội dung sau:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
@@ -49,29 +44,29 @@ layout: default
 
 {{ content }}
 ```
+
 {% endraw %}
 
-This is an example of layout inheritance. The post layout outputs the title,
-date, author and content body which is wrapped by the default layout.
+Đây là một ví dụ về kế thừa bố cục. Bố cục bài đăng xuất tiêu đề, ngày tháng, tác giả và nội dung chính được bao bọc bởi bố cục mặc định.
 
-Also note the `date_to_string` filter, this formats a date into a nicer format.
+Cũng lưu ý bộ lọc `date_to_string`, bộ lọc này định dạng ngày tháng thành định dạng đẹp hơn.
 
-## List posts
+## Liệt kê các bài đăng
 
-There's currently no way to navigate to the blog post. Typically a blog has a
-page which lists all the posts, let's do that next.
+Hiện tại không có cách nào để điều hướng đến bài đăng trên blog. Thông thường, một blog có một trang liệt kê tất cả các bài đăng, hãy làm điều đó tiếp theo.
 
-Jekyll makes posts available at `site.posts`.
+Jekyll làm cho các bài đăng có sẵn tại `site.posts`.
 
-Create `blog.html` in your root (`/blog.html`) with the following content:
+Tạo `blog.html` trong thư mục gốc của bạn (`/blog.html`) với nội dung sau:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
 title: Blog
 ---
-<h1>Latest Posts</h1>
+<h1>Bài đăng mới nhất</h1>
 
 <ul>
   {% for post in site.posts %}
@@ -82,30 +77,29 @@ title: Blog
   {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-There's a few things to note with this code:
+Có một vài điều cần lưu ý với mã này:
 
-* `post.url` is automatically set by Jekyll to the output path of the post
-* `post.title` is pulled from the post filename and can be overridden by
-setting `title` in front matter
-* `post.excerpt` is the first paragraph of content by default
+* `post.url` được Jekyll tự động đặt thành đường dẫn đầu ra của bài đăng
+* `post.title` được lấy từ tên tệp bài đăng và có thể bị ghi đè bằng cách đặt `title` trong front matter
+* `post.excerpt` là đoạn nội dung đầu tiên theo mặc định
 
-You also need a way to navigate to this page through the main navigation. Open
-`_data/navigation.yml` and add an entry for the blog page:
+Bạn cũng cần một cách để điều hướng đến trang này thông qua điều hướng chính. Mở `_data/navigation.yml` và thêm một mục nhập cho trang blog:
 
 ```yaml
-- name: Home
+- name: Trang chủ
   link: /
-- name: About
+- name: Giới thiệu
   link: /about.html
 - name: Blog
   link: /blog.html
 ```
 
-## More posts
+## Thêm bài đăng
 
-A blog isn't very exciting with a single post. Add a few more:
+Một blog không thú vị lắm với một bài đăng duy nhất. Thêm một vài bài nữa:
 
 `_posts/2018-08-21-apples.md`:
 
@@ -140,7 +134,6 @@ and bright green or golden flesh with rows of tiny, black, edible
 seeds. The fruit has a soft texture, with a sweet and unique flavor.
 ```
 
-Open <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a>
-and have a look through your blog posts.
+Mở <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> và xem qua các bài đăng trên blog của bạn.
 
-Next we'll focus on creating a page for each post author.
+Tiếp theo, chúng ta sẽ tập trung vào việc tạo một trang cho mỗi tác giả bài đăng.

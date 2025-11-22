@@ -2,26 +2,26 @@
 title: "CircleCI"
 ---
 
-Building, testing, and deploying your Jekyll-generated website can quickly be done with [CircleCI][0], a continuous integration & delivery tool. CircleCI supports [GitHub][1] and [Bitbucket][2], and you can get started for free using an open-source or private repository.
+Việc xây dựng, kiểm tra và triển khai trang web do Jekyll tạo ra của bạn có thể được thực hiện nhanh chóng với [CircleCI][0], một công cụ tích hợp & phân phối liên tục. CircleCI hỗ trợ [GitHub][1] và [Bitbucket][2], và bạn có thể bắt đầu miễn phí bằng cách sử dụng kho lưu trữ mã nguồn mở hoặc riêng tư.
 
 [0]: https://circleci.com/
 [1]: https://github.com/
 [2]: https://bitbucket.org/
 
-## 1. Follow Your Project on CircleCI
+## 1. Theo dõi Dự án của bạn trên CircleCI
 
-To start building your project on CircleCI, all you need to do is 'follow' your project from CircleCI's website:
+Để bắt đầu xây dựng dự án của bạn trên CircleCI, tất cả những gì bạn cần làm là 'theo dõi' dự án của mình từ trang web của CircleCI:
 
-1. Visit the 'Add Projects' page
-1. From the GitHub or Bitbucket tab on the left, choose a user or organization.
-1. Find your project in the list and click 'Build project' on the right.
-1. The first build will start on its own. You can start telling CircleCI how to build your project by creating a [.circleci/config.yml][3] file in the root of your repository.
+1. Truy cập trang 'Add Projects' (Thêm Dự án)
+1. Từ tab GitHub hoặc Bitbucket ở bên trái, chọn một người dùng hoặc tổ chức.
+1. Tìm dự án của bạn trong danh sách và nhấp vào 'Build project' (Xây dựng dự án) ở bên phải.
+1. Bản dựng đầu tiên sẽ tự khởi động. Bạn có thể bắt đầu cho CircleCI biết cách xây dựng dự án của mình bằng cách tạo tệp [.circleci/config.yml][3] trong thư mục gốc của kho lưu trữ của bạn.
 
 [3]: https://circleci.com/docs/2.0/configuration-reference/
 
-## 2. Dependencies
+## 2. Các phụ thuộc
 
-The easiest way to manage dependencies for a Jekyll project (with or without CircleCI) is via a [Gemfile][4]. You'd want to have Jekyll, any Jekyll plugins, [HTML Proofer](#html-proofer), and any other gems that you are using in the `Gemfile`. Don't forget to version `Gemfile.lock` as well. Here's an example `Gemfile`:
+Cách dễ nhất để quản lý các phụ thuộc cho một dự án Jekyll (có hoặc không có CircleCI) là thông qua một [Gemfile][4]. Bạn sẽ muốn có Jekyll, bất kỳ plugin Jekyll nào, [HTML Proofer](#html-proofer), và bất kỳ gem nào khác mà bạn đang sử dụng trong `Gemfile`. Đừng quên tạo phiên bản `Gemfile.lock` nữa. Dưới đây là một ví dụ `Gemfile`:
 
 [4]: http://bundler.io/gemfile.html
 
@@ -39,9 +39,9 @@ gem "html-proofer"
        run: bundle install
 ```
 
-## 3. Testing
+## 3. Kiểm tra
 
-The most basic test that can be run is seeing if `jekyll build` actually works. This is a blocker, a dependency if you will, for other tests you might run on the generate site. So we'll run Jekyll, via Bundler, in the `dependencies` phase.
+Bài kiểm tra cơ bản nhất có thể chạy là xem liệu `jekyll build` có thực sự hoạt động hay không. Đây là một trình chặn, một phụ thuộc nếu bạn muốn, cho các bài kiểm tra khác mà bạn có thể chạy trên trang web đã tạo. Vì vậy, chúng tôi sẽ chạy Jekyll, thông qua Bundler, trong giai đoạn `dependencies`.
 
 ```yaml
     - step:
@@ -50,7 +50,7 @@ The most basic test that can be run is seeing if `jekyll build` actually works. 
 
 ### HTML Proofer
 
-With your site built, it's useful to run tests to check for valid HTML, broken links, etc. There's a few tools out there but [HTML Proofer][5] is popular amongst Jekyll users. We'll run it in the `test` phase with a few preferred flags. Check out the `html-proofer` [README][6] for all available flags, or run `htmlproofer --help` locally.
+Với trang web của bạn đã được xây dựng, thật hữu ích khi chạy các bài kiểm tra để kiểm tra HTML hợp lệ, các liên kết bị hỏng, v.v. Có một vài công cụ ngoài kia nhưng [HTML Proofer][5] phổ biến trong số những người dùng Jekyll. Chúng tôi sẽ chạy nó trong giai đoạn `test` với một vài cờ ưa thích. Kiểm tra [README][6] của `html-proofer` để biết tất cả các cờ có sẵn, hoặc chạy `htmlproofer --help` cục bộ.
 
 [5]: https://github.com/gjtorikian/html-proofer
 [6]: https://github.com/gjtorikian/html-proofer/blob/master/README.md#configuration
@@ -60,11 +60,11 @@ With your site built, it's useful to run tests to check for valid HTML, broken l
         run: bundle exec htmlproofer ./_site --check-html --disable-external
 ```
 
-## Complete Example .circleci/config.yml File
+## Ví dụ hoàn chỉnh về tệp .circleci/config.yml
 
-The example `.circleci/config.yml` below demonstrates how to
-deploy your Jekyll project to AWS. In order for this to work you would first have to set the
-`S3_BUCKET_NAME` [environment variable](https://circleci.com/docs/2.0/env-vars/).
+Ví dụ `.circleci/config.yml` dưới đây minh họa cách
+triển khai dự án Jekyll của bạn lên AWS. Để điều này hoạt động, trước tiên bạn sẽ phải đặt
+[biến môi trường](https://circleci.com/docs/2.0/env-vars/) `S3_BUCKET_NAME`.
 
 ```yaml
 workflows:
@@ -128,9 +128,9 @@ jobs:
           command: ~/.local/bin/aws s3 sync ./_site s3://$S3_BUCKET_NAME/ --delete --acl public-read
 ```
 
-## Questions?
+## Câu hỏi?
 
-This entire guide is open-source. Go ahead and [edit it][7] if you have a fix or [ask for help][8] if you run into trouble and need some help. CircleCI also has an [online community][9] for help.
+Toàn bộ hướng dẫn này là mã nguồn mở. Hãy tiếp tục và [chỉnh sửa nó][7] nếu bạn có bản sửa lỗi hoặc [yêu cầu trợ giúp][8] nếu bạn gặp sự cố và cần một số trợ giúp. CircleCI cũng có một [cộng đồng trực tuyến][9] để trợ giúp.
 
 [7]: https://github.com/jekyll/jekyll/edit/master/docs/_docs/continuous-integration/circleci.md
 [8]: https://jekyllrb.com/help/

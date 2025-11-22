@@ -1,33 +1,32 @@
 ---
-title: Data Files
+title: Tệp Dữ liệu
 permalink: /docs/datafiles/
 ---
 
-In addition to the [built-in variables]({{'/docs/variables/' | relative_url }}) available from Jekyll,
-you can specify your own custom data that can be accessed via the [Liquid
-templating system](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+Ngoài các [biến tích hợp]({{'/docs/variables/' | relative_url }}) có sẵn từ Jekyll,
+bạn có thể chỉ định dữ liệu tùy chỉnh của riêng mình để truy cập qua [hệ thống mẫu Liquid](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
 
-Jekyll supports loading data from [YAML](https://yaml.org), [JSON](https://www.json.org/json-en.html), [CSV](https://en.wikipedia.org/wiki/Comma-separated_values), and [TSV](https://en.wikipedia.org/wiki/Tab-separated_values) files located in the `_data` directory.
-Note that CSV and TSV files *must* contain a header row.
+Jekyll hỗ trợ tải dữ liệu từ các tệp [YAML](https://yaml.org), [JSON](https://www.json.org/json-en.html), [CSV](https://en.wikipedia.org/wiki/Comma-separated_values), và [TSV](https://en.wikipedia.org/wiki/Tab-separated_values) nằm trong thư mục `_data`.
+Lưu ý rằng các tệp CSV và TSV *phải* chứa một hàng tiêu đề.
 
-This powerful feature allows you to avoid repetition in your templates and to
-set site specific options without changing `_config.yml`.
+Tính năng mạnh mẽ này cho phép bạn tránh lặp lại trong các mẫu của mình và
+đặt các tùy chọn cụ thể cho trang web mà không cần thay đổi `_config.yml`.
 
-Plugins/themes can also leverage Data Files to set configuration variables.
+Các plugin/giao diện (themes) cũng có thể tận dụng Tệp Dữ liệu để đặt các biến cấu hình.
 
-## The Data Folder
+## Thư mục Dữ liệu
 
-The `_data` folder is where you can store additional data for Jekyll to use when
-generating your site. These files must be YAML, JSON, TSV or CSV files (using either
-the `.yml`, `.yaml`, `.json`, `.tsv`, or `.csv` extension), and they will be
-accessible via `site.data`.
+Thư mục `_data` là nơi bạn có thể lưu trữ dữ liệu bổ sung để Jekyll sử dụng khi
+tạo trang web của bạn. Các tệp này phải là tệp YAML, JSON, TSV hoặc CSV (sử dụng
+phần mở rộng `.yml`, `.yaml`, `.json`, `.tsv`, hoặc `.csv`), và chúng sẽ
+có thể truy cập được qua `site.data`.
 
-## Example: List of members
+## Ví dụ: Danh sách thành viên
 
-Here is a basic example of using Data Files to avoid copy-pasting large chunks
-of code in your Jekyll templates:
+Dưới đây là một ví dụ cơ bản về việc sử dụng Tệp Dữ liệu để tránh sao chép-dán các đoạn mã lớn
+trong các mẫu Jekyll của bạn:
 
-In `_data/members.yml`:
+Trong `_data/members.yml`:
 
 ```yaml
 - name: Eric Mill
@@ -40,7 +39,7 @@ In `_data/members.yml`:
   github: liufengyun
 ```
 
-Or `_data/members.csv`:
+Hoặc `_data/members.csv`:
 
 ```
 name,github
@@ -49,12 +48,13 @@ Parker Moore,parkr
 Liu Fengyun,liufengyun
 ```
 
-This data can be accessed via `site.data.members` (notice that the file's *basename* determines the variable name and
-therefore one should avoid having data files with the same basename but different extensions, in the same directory).
+Dữ liệu này có thể được truy cập qua `site.data.members` (lưu ý rằng *tên cơ sở* (basename) của tệp xác định tên biến và
+do đó, người ta nên tránh có các tệp dữ liệu có cùng tên cơ sở nhưng khác phần mở rộng trong cùng một thư mục).
 
-You can now render the list of members in a template:
+Bây giờ bạn có thể hiển thị danh sách các thành viên trong một mẫu:
 
 {% raw %}
+
 ```liquid
 <ul>
 {% for member in site.data.members %}
@@ -66,42 +66,43 @@ You can now render the list of members in a template:
 {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-## Subfolders
+## Thư mục con
 
-Data files can also be placed in sub-folders of the `_data` folder. Each folder
-level will be added to a variable's namespace. The example below shows how
-GitHub organizations could be defined separately in a file under the `orgs`
-folder:
+Các tệp dữ liệu cũng có thể được đặt trong các thư mục con của thư mục `_data`. Mỗi cấp thư mục
+sẽ được thêm vào không gian tên của một biến. Ví dụ dưới đây cho thấy cách
+các tổ chức GitHub có thể được định nghĩa riêng biệt trong một tệp dưới thư mục `orgs`:
 
-In `_data/orgs/jekyll.yml`:
+Trong `_data/orgs/jekyll.yml`:
 
 ```yaml
 username: jekyll
 name: Jekyll
 members:
   - name: Tom Preston-Werner
-    github: mojombo
+     github: mojombo
 
   - name: Parker Moore
-    github: parkr
+     github: parkr
 ```
 
-In `_data/orgs/doeorg.yml`:
+Trong `_data/orgs/doeorg.yml`:
 
 ```yaml
 username: doeorg
 name: Doe Org
 members:
   - name: John Doe
-    github: jdoe
+     github: jdoe
 ```
 
-The organizations can then be accessed via `site.data.orgs`, followed by the
-file name:
+Các tổ chức sau đó có thể được truy cập qua `site.data.orgs`, theo sau là
+tên tệp:
 
 {% raw %}
+
 ```liquid
 <ul>
 {% for org_hash in site.data.orgs %}
@@ -115,11 +116,12 @@ file name:
 {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-## Example: Accessing a specific author
+## Ví dụ: Truy cập một tác giả cụ thể
 
-Pages and posts can also access a specific data item. The example below shows how to access a specific item:
+Các trang và bài viết cũng có thể truy cập một mục dữ liệu cụ thể. Ví dụ dưới đây cho thấy cách truy cập một mục cụ thể:
 
 `_data/people.yml`:
 
@@ -129,9 +131,10 @@ dave:
     twitter: DavidSilvaSmith
 ```
 
-The author can then be specified as a page variable in a post's front matter:
+Tác giả sau đó có thể được chỉ định là một biến trang trong front matter của bài viết:
 
 {% raw %}
+
 ```liquid
 ---
 title: sample post
@@ -145,23 +148,24 @@ author: dave
     {{ author.name }}
 </a>
 ```
+
 {% endraw %}
 
-For information on how to build robust navigation for your site (especially if you have a documentation website or another type of Jekyll site with a lot of pages to organize), see [Navigation]({{ '/tutorials/navigation/' | relative_url }}).
+Để biết thông tin về cách xây dựng điều hướng mạnh mẽ cho trang web của bạn (đặc biệt nếu bạn có một trang web tài liệu hoặc một loại trang web Jekyll khác với nhiều trang cần tổ chức), hãy xem [Điều hướng]({{ '/tutorials/navigation/' | relative_url }}).
 
-## CSV/TSV Parse Options
+## Tùy chọn Phân tích cú pháp CSV/TSV
 
-The way Ruby parses CSV and TSV files can be customized with the `csv_reader` and `tsv_reader`
-configuration options. Each configuration key exposes the same options:
+Cách Ruby phân tích cú pháp các tệp CSV và TSV có thể được tùy chỉnh với các tùy chọn cấu hình `csv_reader` và `tsv_reader`.
+Mỗi khóa cấu hình hiển thị các tùy chọn giống nhau:
 
-`converters`: What [CSV converters](https://ruby-doc.org/stdlib-2.5.0/libdoc/csv/rdoc/CSV.html#Converters) should be
-              used when parsing the file. Available options are `integer`, `float`, `numeric`, `date`, `date_time` and
-              `all`. By default, this list is empty.
-`encoding`:   What encoding the files are in. Defaults to the site `encoding` configuration option.
-`headers`:    Boolean field for whether to parse the first line of the file as headers. When `false`, it treats the
-              first row as data. Defaults to `true`.
+`converters`: Những [bộ chuyển đổi CSV](https://ruby-doc.org/stdlib-2.5.0/libdoc/csv/rdoc/CSV.html#Converters) nào nên được
+              sử dụng khi phân tích cú pháp tệp. Các tùy chọn có sẵn là `integer`, `float`, `numeric`, `date`, `date_time` và
+              `all`. Theo mặc định, danh sách này trống.
+`encoding`:   Mã hóa của các tệp. Mặc định là tùy chọn cấu hình `encoding` của trang web.
+`headers`:    Trường Boolean cho biết có phân tích dòng đầu tiên của tệp làm tiêu đề hay không. Khi `false`, nó coi
+              hàng đầu tiên là dữ liệu. Mặc định là `true`.
 
-Examples:
+Ví dụ:
 
 ```yaml
 csv_reader:

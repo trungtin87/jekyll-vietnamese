@@ -1,44 +1,44 @@
 ---
-title: Community
+title: Cộng đồng
 permalink: /docs/community/
 redirect_from: "/help/index.html"
 ---
 
-## Jekyll Contributor Code of Conduct
+## Quy tắc ứng xử của người đóng góp Jekyll
 
-As contributors and maintainers of this project, and in the interest of fostering an open and welcoming community, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests or patches, and other activities.
+Là những người đóng góp và duy trì dự án này, và vì lợi ích của việc thúc đẩy một cộng đồng cởi mở và chào đón, chúng tôi cam kết tôn trọng tất cả những người đóng góp thông qua việc báo cáo vấn đề, đăng yêu cầu tính năng, cập nhật tài liệu, gửi yêu cầu kéo hoặc bản vá, và các hoạt động khác.
 
-Read the full [code of conduct]({{ '/docs/conduct/' | relative_url }})
+Đọc toàn bộ [quy tắc ứng xử]({{ '/docs/conduct/' | relative_url }})
 
-## Reporting Security Vulnerabilities
+## Báo cáo các lỗ hổng bảo mật
 
-Find something in our codebase that could be exploited by malicious elements?
+Tìm thấy điều gì đó trong cơ sở mã của chúng tôi có thể bị khai thác bởi các phần tử độc hại?
 
-Consult our [Security Policy]({{ '/docs/security/' | relative_url }}) to see if a product version is considered *outdated* and how to report
-the situation responsibly.
+Tham khảo [Chính sách bảo mật]({{ '/docs/security/' | relative_url }}) của chúng tôi để xem liệu phiên bản sản phẩm có được coi là *lỗi thời* hay không và cách báo cáo
+tình huống một cách có trách nhiệm.
 
-## Where to get support
+## Nơi nhận hỗ trợ
 
-If you're looking for support for Jekyll, there are a lot of options:
+Nếu bạn đang tìm kiếm sự hỗ trợ cho Jekyll, có rất nhiều lựa chọn:
 
-* Read the [Jekyll Documentation]({{ '/docs/' | relative_url }})
-* If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/) or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll)
-* Chat with Jekyllers &mdash; Join our [Gitter channel](https://gitter.im/jekyll/jekyll) or our IRC channel #jekyll on [Libera](irc://irc.libera.chat/#jekyll).
+* Đọc [Tài liệu Jekyll]({{ '/docs/' | relative_url }})
+* Nếu bạn có câu hỏi về việc sử dụng Jekyll, hãy bắt đầu một cuộc thảo luận trên [Diễn đàn Jekyll](https://talk.jekyllrb.com/) hoặc [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll)
+* Trò chuyện với các Jekyller &mdash; Tham gia [kênh Gitter](https://gitter.im/jekyll/jekyll) của chúng tôi hoặc kênh IRC #jekyll của chúng tôi trên [Libera](irc://irc.libera.chat/#jekyll).
 
-There are a bunch of helpful community members on these services who are willing to point you in the right direction.
+Có rất nhiều thành viên cộng đồng hữu ích trên các dịch vụ này sẵn sàng chỉ cho bạn đi đúng hướng.
 
-**Reminder: Jekyll's issue tracker is not a support forum.**
+**Nhắc nhở: Trình theo dõi vấn đề của Jekyll không phải là một diễn đàn hỗ trợ.**
 
-## Ways to contribute
+## Các cách để đóng góp
 
-* [How to Contribute]({{ '/docs/contributing/' | relative_url }})
-* [How to file a bug]({{ '/docs/community/bug/' | relative_url }})
-* [Guide for maintaining Jekyll]({{ '/docs/maintaining/' | relative_url }})
+* [Cách đóng góp]({{ '/docs/contributing/' | relative_url }})
+* [Cách gửi báo cáo lỗi]({{ '/docs/community/bug/' | relative_url }})
+* [Hướng dẫn duy trì Jekyll]({{ '/docs/maintaining/' | relative_url }})
 
 ## Jekyllconf
 
-[Watch videos]({{ '/jekyllconf/' | relative_url }}) from members of the Jekyll community speak about interesting use cases, tricks they’ve learned or meta Jekyll topics.
+[Xem video]({{ '/jekyllconf/' | relative_url }}) từ các thành viên của cộng đồng Jekyll nói về các trường hợp sử dụng thú vị, các thủ thuật họ đã học được hoặc các chủ đề meta Jekyll.
 
-## Jekyll on Twitter
+## Jekyll trên Twitter
 
-The [official Jekyll Twitter account](https://twitter.com/jekyllrb).
+[Tài khoản Twitter chính thức của Jekyll](https://twitter.com/jekyllrb).

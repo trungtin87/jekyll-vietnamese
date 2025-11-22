@@ -1,44 +1,44 @@
 ---
-title: Using Jekyll with Bundler
+title: Sử dụng Jekyll với Bundler
 author: mkasberg
 date: 2018-03-06 21:33:25 -0700
 ---
 
-> Bundler provides a consistent environment for Ruby projects by tracking and
-> installing the exact gems and versions that are needed.
+> Bundler cung cấp một môi trường nhất quán cho các dự án Ruby bằng cách theo dõi và
+> cài đặt chính xác các gem và phiên bản cần thiết.
 
-[Bundler](https://bundler.io) can be a great tool to use with Jekyll. Because it
-tracks dependencies on a per-project basis, it is particularly useful if you
-need to run different versions of Jekyll in different projects.
+[Bundler](https://bundler.io) có thể là một công cụ tuyệt vời để sử dụng với Jekyll. Bởi vì nó
+theo dõi các phụ thuộc trên cơ sở từng dự án, nó đặc biệt hữu ích nếu bạn
+cần chạy các phiên bản Jekyll khác nhau trong các dự án khác nhau.
 
-In addition, because it can (optionally) install dependencies in the project
-folder, it can help you avoid permissions issues you might otherwise run into.
-The usual way to use Jekyll is to install Jekyll to the system's default gem
-installation directory and then run `jekyll new`. In this tutorial, we'll show
-you how to create a new Jekyll project using Bundler and without installing gems
-outside the project directory.
+Ngoài ra, vì nó có thể (tùy chọn) cài đặt các phụ thuộc trong thư mục dự án,
+nó có thể giúp bạn tránh các vấn đề về quyền mà bạn có thể gặp phải.
+Cách thông thường để sử dụng Jekyll là cài đặt Jekyll vào thư mục cài đặt gem mặc định của hệ thống
+và sau đó chạy `jekyll new`. Trong hướng dẫn này, chúng tôi sẽ chỉ cho
+bạn cách tạo một dự án Jekyll mới bằng Bundler và không cài đặt gem
+bên ngoài thư mục dự án.
 
 <div class="note info">
-  <h5>This is not the simplest way to start using Jekyll</h5>
+  <h5>Đây không phải là cách đơn giản nhất để bắt đầu sử dụng Jekyll</h5>
   <p>
-    This tutorial helps you get Jekyll set up using Bundler, and optionally
-    without any system-wide gem installations. If prefer installing the jekyll
-    command to your default gem installation directory, you might want the
-    <a href="{% link _docs/index.md %}">Quickstart</a>.
+    Hướng dẫn này giúp bạn thiết lập Jekyll bằng Bundler, và tùy chọn
+    không có bất kỳ cài đặt gem toàn hệ thống nào. Nếu bạn thích cài đặt lệnh jekyll
+    vào thư mục cài đặt gem mặc định của bạn, bạn có thể muốn
+    <a href="{% link _docs/index.md %}">Bắt đầu nhanh</a>.
   </p>
 </div>
 
-## Before You Begin
+## Trước khi Bạn Bắt đầu
 
-To complete this tutorial, you'll need to have
-[Ruby](https://www.ruby-lang.org/en/) and [Bundler](https://bundler.io/)
-installed. You can find the installation instructions on their websites.
+Để hoàn thành hướng dẫn này, bạn sẽ cần
+[Ruby](https://www.ruby-lang.org/en/) và [Bundler](https://bundler.io/)
+đã được cài đặt. Bạn có thể tìm hướng dẫn cài đặt trên trang web của họ.
 
-## Initialize Bundler
+## Khởi tạo Bundler
 
-The first thing to do is create a new directory for your project and run
-`bundle init`. This creates a new Bundler project (by creating an empty
-Gemfile).
+Điều đầu tiên cần làm là tạo một thư mục mới cho dự án của bạn và chạy
+`bundle init`. Điều này tạo một dự án Bundler mới (bằng cách tạo một
+Gemfile trống).
 
 ```sh
 mkdir my-jekyll-website
@@ -46,69 +46,68 @@ cd my-jekyll-website
 bundle init
 ```
 
-## Configure Bundler Install Path
+## Cấu hình Đường dẫn Cài đặt Bundler
 
-This step is optional. In this step, we're going to configure Bundler to install
-gems in the `./vendor/bundle/` project subdirectory. The advantage of doing this
-is that bundler will install gems within your project folder instead of the
-location used by `gem install`. This can help you avoid permissions errors you
-might otherwise get during gem installation, depending how you installed Ruby.
-If you skip this step, Bundler will install your dependencies to the location
-used by `gem install`.
-
+Bước này là tùy chọn. Trong bước này, chúng ta sẽ cấu hình Bundler để cài đặt
+các gem trong thư mục con dự án `./vendor/bundle/`. Lợi thế của việc làm điều này
+là bundler sẽ cài đặt các gem trong thư mục dự án của bạn thay vì
+vị trí được sử dụng bởi `gem install`. Điều này có thể giúp bạn tránh các lỗi quyền bạn
+có thể gặp phải trong quá trình cài đặt gem, tùy thuộc vào cách bạn cài đặt Ruby.
+Nếu bạn bỏ qua bước này, Bundler sẽ cài đặt các phụ thuộc của bạn vào vị trí
+được sử dụng bởi `gem install`.
 
 ```sh
 bundle config set --local path 'vendor/bundle'
 ```
 
 <div class="note info">
-  <h5>Bundler Config is Persistent</h5>
+  <h5>Cấu hình Bundler là Lâu dài</h5>
   <p>
-    This step is only required once per project. Bundler saves your config in
-    <code>./.bundle/config</code>, so future gems will be installed to the same
-    location.
+    Bước này chỉ cần thực hiện một lần cho mỗi dự án. Bundler lưu cấu hình của bạn trong
+    <code>./.bundle/config</code>, vì vậy các gem trong tương lai sẽ được cài đặt vào cùng
+    vị trí.
   </p>
 </div>
 
-## Add Jekyll
+## Thêm Jekyll
 
-Now, we're going to use Bundler to add Jekyll as a dependency of our new
-project. This command will add the Jekyll gem to our Gemfile and install it to
-the `./vendor/bundle/` folder (or your default gem installation directory if you
-didn't set a custom path).
+Bây giờ, chúng ta sẽ sử dụng Bundler để thêm Jekyll làm phụ thuộc của dự án mới
+của chúng ta. Lệnh này sẽ thêm gem Jekyll vào Gemfile của chúng ta và cài đặt nó vào
+thư mục `./vendor/bundle/` (hoặc thư mục cài đặt gem mặc định của bạn nếu bạn
+không đặt đường dẫn tùy chỉnh).
 
 ```sh
 bundle add jekyll
 ```
 
-## Create A Jekyll Scaffold
+## Tạo Khung Jekyll
 
-Now that Jekyll is installed, we can use it to create the scaffolding for our
-site. We need the `--force` parameter because our folder isn't empty - it
-already has some Bundler files in it. We run the `bundle install` separately
-because Jekyll gets confused if the Gemfile already exists.
+Bây giờ Jekyll đã được cài đặt, chúng ta có thể sử dụng nó để tạo khung cho
+trang web của chúng ta. Chúng ta cần tham số `--force` vì thư mục của chúng ta không trống - nó
+đã có một số tệp Bundler trong đó. Chúng ta chạy `bundle install` riêng
+vì Jekyll bị nhầm lẫn nếu Gemfile đã tồn tại.
 
 ```sh
 bundle exec jekyll new --force --skip-bundle .
 bundle install
 ```
 
-## Serve the Site
+## Phục vụ Trang web
 
-Your new website is ready! You can serve the website with
-`bundle exec jekyll serve` and visit it at
-[http://127.0.0.1:4000](http://127.0.0.1:4000). From here, you're ready to
-continue developing the site on your own. All of the normal Jekyll commands are
-available to you, but you should prefix them with `bundle exec` so that Bundler
-runs the version of Jekyll that is installed in your project folder.
+Trang web mới của bạn đã sẵn sàng! Bạn có thể phục vụ trang web với
+`bundle exec jekyll serve` và truy cập nó tại
+[http://127.0.0.1:4000](http://127.0.0.1:4000). Từ đây, bạn đã sẵn sàng để
+tiếp tục phát triển trang web của riêng bạn. Tất cả các lệnh Jekyll thông thường đều
+có sẵn cho bạn, nhưng bạn nên thêm tiền tố `bundle exec` để Bundler
+chạy phiên bản Jekyll được cài đặt trong thư mục dự án của bạn.
 
-## Commit to Source Control
+## Commit vào Source Control
 
-If you're storing your new site in version control, you'll want to ignore the
-`./vendor/` and `./.bundle/` folders since they contain user- or
-platform-specific information. New users will be able to install the correct
-dependencies based on `Gemfile` and `Gemfile.lock`, which should both be checked
-in. You can use this `.gitignore` to get started, if you want.
+Nếu bạn đang lưu trữ trang web mới của mình trong kiểm soát phiên bản, bạn sẽ muốn bỏ qua
+các thư mục `./vendor/` và `./.bundle/` vì chúng chứa thông tin
+cụ thể của người dùng hoặc nền tảng. Người dùng mới sẽ có thể cài đặt các
+phụ thuộc chính xác dựa trên `Gemfile` và `Gemfile.lock`, cả hai đều nên được kiểm tra
+vào. Bạn có thể sử dụng `.gitignore` này để bắt đầu, nếu bạn muốn.
 
 **.gitignore**
 

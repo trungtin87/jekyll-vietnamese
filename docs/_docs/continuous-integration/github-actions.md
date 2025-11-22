@@ -2,53 +2,53 @@
 title: GitHub Actions
 ---
 
-When building a Jekyll site with GitHub Pages, Jekyll runs in an environment restricted for security
-reasons, yet containing numerous [whitelisted plugins and themes][ghp-whitelist] to make it simpler
-to get a site set up.
+Khi xây dựng một trang web Jekyll với GitHub Pages, Jekyll chạy trong một môi trường bị hạn chế vì lý do
+bảo mật, nhưng chứa nhiều [plugin và chủ đề được đưa vào danh sách trắng][ghp-whitelist] để làm cho việc
+thiết lập một trang web trở nên đơn giản hơn.
 
-The only workaround to have control over the build environment and gemset yet use GitHub Pages to
-host the site was previously by building elsewhere and pushing the built directory contents to the
-`gh-pages` branch on your repository.
+Giải pháp duy nhất để có quyền kiểm soát môi trường xây dựng và gemset nhưng vẫn sử dụng GitHub Pages để
+lưu trữ trang web trước đây là xây dựng ở nơi khác và đẩy nội dung thư mục đã xây dựng đến nhánh
+`gh-pages` trên kho lưu trữ của bạn.
 
-However, GitHub now provides you with the option to use their in-house CI/CD product named
-*GitHub Actions* to *build and deploy (host)* your Jekyll site with complete control over the build
-environment and gemset.
+Tuy nhiên, GitHub hiện cung cấp cho bạn tùy chọn sử dụng sản phẩm CI/CD nội bộ của họ có tên là
+*GitHub Actions* để *xây dựng và triển khai (lưu trữ)* trang web Jekyll của bạn với quyền kiểm soát hoàn toàn đối với môi trường
+xây dựng và gemset.
 
-## Advantages of using Actions
+## Ưu điểm của việc sử dụng Actions
 
-### Control over gemset
+### Kiểm soát gemset
 
-- **Jekyll version** --- Instead of using the classic GitHub Pages-provided version specified in
-  the [Dependency versions][ghp-whitelist] list, you can use any version of Jekyll you want.
-  For example `{{ site.version }}`, or point directly to the repository via the Gemfile.
-- **Plugins** --- You can use any Jekyll plugins irrespective of them being whitelisted by GitHub,
-  including any `*.rb` files placed in the `_plugins` directory of your site.
-- **Themes** --- While using a custom theme is possible without Actions, it is now possible to use
-  themes depending on features introduced in newer versions of Jekyll.
+- **Phiên bản Jekyll** --- Thay vì sử dụng phiên bản do GitHub Pages cung cấp cổ điển được chỉ định trong
+  danh sách [Phiên bản phụ thuộc][ghp-whitelist], bạn có thể sử dụng bất kỳ phiên bản Jekyll nào bạn muốn.
+  Ví dụ `{{ site.version }}`, hoặc trỏ trực tiếp đến kho lưu trữ thông qua Gemfile.
+- **Plugin** --- Bạn có thể sử dụng bất kỳ plugin Jekyll nào bất kể chúng có được GitHub đưa vào danh sách trắng hay không,
+  bao gồm bất kỳ tệp `*.rb` nào được đặt trong thư mục `_plugins` của trang web của bạn.
+- **Chủ đề** --- Mặc dù việc sử dụng chủ đề tùy chỉnh là có thể mà không cần Actions, nhưng giờ đây có thể sử dụng
+  các chủ đề phụ thuộc vào các tính năng được giới thiệu trong các phiên bản mới hơn của Jekyll.
 
 {: .note .info}
-If you are migrating from the classic flow but want to keep using a GitHub-hosted theme, you may use
-the [jekyll-remote-theme][remote-theme] plugin, add any required dependencies of your theme
-(previously bundled by default) into your `_config.yml` and `Gemfile` and set the
-`remote_theme: <owner>/<repo_name>` theme repository slug correctly in your `_config.yml`.
+Nếu bạn đang di chuyển từ luồng cổ điển nhưng muốn tiếp tục sử dụng chủ đề được lưu trữ trên GitHub, bạn có thể sử dụng
+plugin [jekyll-remote-theme][remote-theme], thêm bất kỳ phụ thuộc cần thiết nào của chủ đề của bạn
+(trước đây được đóng gói theo mặc định) vào `_config.yml` và `Gemfile` của bạn và đặt
+slug kho lưu trữ chủ đề `remote_theme: <owner>/<repo_name>` một cách chính xác trong `_config.yml` của bạn.
 
-### Workflow Management
+### Quản lý Quy trình làm việc
 
-- **Customization** --- By creating a workflow file to run Actions, you can specify custom build
-  steps, use environment variables.
-- **Logging** --- The build log is visible and can be tweaked to be verbose, so it is much easier to
-  debug errors using Actions.
-- **Caching** --- The `ruby/setup-ruby` action makes it possible to cache installed gems
-  automatically instead of having to download the bundle on each build.
+- **Tùy chỉnh** --- Bằng cách tạo một tệp quy trình làm việc để chạy Actions, bạn có thể chỉ định các bước xây dựng
+  tùy chỉnh, sử dụng các biến môi trường.
+- **Ghi nhật ký** --- Nhật ký xây dựng có thể nhìn thấy và có thể được điều chỉnh để chi tiết, vì vậy việc gỡ lỗi
+  các lỗi bằng Actions dễ dàng hơn nhiều.
+- **Bộ nhớ đệm** --- Hành động `ruby/setup-ruby` giúp có thể tự động lưu trữ các gem đã cài đặt
+  thay vì phải tải xuống gói trên mỗi bản dựng.
 
-## Workspace setup
+## Thiết lập không gian làm việc
 
-The first and foremost requirement is a Jekyll project hosted at GitHub. Choose an existing Jekyll
-project or follow the [quickstart]({{ '/docs/' | relative_url }}) and push the repository to GitHub
-if it is not hosted there already.
+Yêu cầu đầu tiên và quan trọng nhất là một dự án Jekyll được lưu trữ tại GitHub. Chọn một dự án Jekyll
+hiện có hoặc làm theo [hướng dẫn nhanh]({{ '/docs/' | relative_url }}) và đẩy kho lưu trữ lên GitHub
+nếu nó chưa được lưu trữ ở đó.
 
-The Jekyll site we'll be using for the rest of this page, initially consists of just a `_config.yml`,
-an `index.md` page and a `Gemfile`. The contents are respectively:
+Trang web Jekyll chúng ta sẽ sử dụng cho phần còn lại của trang này, ban đầu chỉ bao gồm một `_config.yml`,
+một trang `index.md` và một `Gemfile`. Nội dung lần lượt là:
 
 ```yaml
 # _config.yml
@@ -85,52 +85,52 @@ end
 ```
 
 {: .note .info}
-The demo site uses Jekyll 4 and a [third-party plugin][timeago-plugin], both of which are currently
-not whitelisted for use on GitHub pages. The plugin will allow us to describe how far back a date
-was from today. e.g. If we give a date as `2016-03-23T10:20:00Z` and the current date is
-`2020-04-13T10:20:00Z`, then the output would be `4 years and 3 weeks ago`.
+Trang web demo sử dụng Jekyll 4 và một [plugin của bên thứ ba][timeago-plugin], cả hai hiện tại
+không được đưa vào danh sách trắng để sử dụng trên GitHub pages. Plugin sẽ cho phép chúng ta mô tả một ngày
+cách ngày hôm nay bao xa. ví dụ: Nếu chúng ta đưa ra một ngày là `2016-03-23T10:20:00Z` và ngày hiện tại là
+`2020-04-13T10:20:00Z`, thì đầu ra sẽ là `4 years and 3 weeks ago`.
 
 {: .note .info}
-The action we're using takes care of installing the Ruby gems and dependencies. While that keeps
-the setup simple for the user, one may encounter issues if they also check-in `Gemfile.lock` if it
-was generated with an old version of Bundler.
+Hành động chúng ta đang sử dụng sẽ lo việc cài đặt các Ruby gem và các phụ thuộc. Mặc dù điều đó giữ cho
+việc thiết lập đơn giản cho người dùng, nhưng người ta có thể gặp sự cố nếu họ cũng check-in `Gemfile.lock` nếu nó
+được tạo bằng phiên bản Bundler cũ.
 
-### Setting up the Action
+### Thiết lập Action
 
-1. Go to the **Settings** tab on your repository.
-    1. Click **Pages** under **Code and automation**.
-    2. Change **Source** under **Build and deployment** from **Deploy from a branch** to **GitHub Actions**.
-2. Go to the **Actions** tab on your repository.
-    1. Start a **New workflow** and search for **Jekyll**.
-    2. Click **Configure** under the **Jekyll** workflow (not **GitHub Pages Jekyll** workflow).
-    3. Review the change and click **Commit changes**.
+1. Đi tới tab **Settings** trên kho lưu trữ của bạn.
+    1. Nhấp vào **Pages** dưới **Code and automation**.
+    2. Thay đổi **Source** dưới **Build and deployment** từ **Deploy from a branch** sang **GitHub Actions**.
+2. Đi tới tab **Actions** trên kho lưu trữ của bạn.
+    1. Bắt đầu một **New workflow** và tìm kiếm **Jekyll**.
+    2. Nhấp vào **Configure** dưới quy trình làm việc **Jekyll** (không phải quy trình làm việc **GitHub Pages Jekyll**).
+    3. Xem lại thay đổi và nhấp vào **Commit changes**.
 
-### Build and deploy
+### Xây dựng và triển khai
 
-On pushing any local changes onto the default branch, the action will be triggered and the build will
-**start**.
+Khi đẩy bất kỳ thay đổi cục bộ nào lên nhánh mặc định, hành động sẽ được kích hoạt và bản dựng sẽ
+**bắt đầu**.
 
-To watch the progress and see any build errors, check on the build **status** using one of the
-following approaches:
+Để xem tiến trình và xem bất kỳ lỗi xây dựng nào, hãy kiểm tra **trạng thái** bản dựng bằng một trong các
+cách tiếp cận sau:
 
-- **View by commit**
-  - Go to the repository level view in GitHub. Under the most recent commit (near the top) you’ll
-    see a **status symbol** next to the commit message as a tick or _X_. Hover over it and click
-    the **details** link.
-- **Actions tab**
-  - Go to the repository's Actions tab. Click on the `jekyll` workflow tab.
+- **Xem theo cam kết**
+  - Đi tới chế độ xem cấp kho lưu trữ trong GitHub. Dưới cam kết gần đây nhất (gần trên cùng), bạn sẽ
+    thấy một **biểu tượng trạng thái** bên cạnh thông báo cam kết dưới dạng dấu tích hoặc *X*. Di chuột qua nó và nhấp vào
+    liên kết **details**.
+- **Tab Actions**
+  - Đi tới tab Actions của kho lưu trữ. Nhấp vào tab quy trình làm việc `jekyll`.
 
-If all goes well, all steps will be green and the built assets will be uploaded to GitHub Pages. 
+Nếu mọi thứ diễn ra tốt đẹp, tất cả các bước sẽ có màu xanh lục và các tài sản đã xây dựng sẽ được tải lên GitHub Pages.
 
-To see the **live site**, go to the **Deployments** tab on your repository, and click on the deployed
-site URL.
+Để xem **trang web trực tiếp**, hãy đi tới tab **Deployments** trên kho lưu trữ của bạn và nhấp vào URL trang web
+đã triển khai.
 
-When you need to make further **changes** to the site, commit to the default branch and push.
-The workflow will build and deploy your site again.
+Khi bạn cần thực hiện thêm **thay đổi** cho trang web, hãy cam kết với nhánh mặc định và đẩy.
+Quy trình làm việc sẽ xây dựng và triển khai lại trang web của bạn.
 
-## External links
+## Liên kết ngoài
 
-- [starter-workflows] is the official repository providing the workflow template used in this guide.
+- [starter-workflows] là kho lưu trữ chính thức cung cấp mẫu quy trình làm việc được sử dụng trong hướng dẫn này.
 
 [ghp-whitelist]: https://pages.github.com/versions/
 [remote-theme]: https://github.com/benbalter/jekyll-remote-theme

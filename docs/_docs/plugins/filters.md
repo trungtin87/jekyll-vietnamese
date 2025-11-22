@@ -1,11 +1,11 @@
 ---
-title: Filters
+title: Bộ lọc (Filters)
 permalink: /docs/plugins/filters/
 ---
 
-Filters are modules that export their methods to liquid.
-All methods will have to take at least one parameter which represents the input
-of the filter. The return value will be the output of the filter.
+Bộ lọc là các mô-đun xuất các phương thức của chúng sang liquid.
+Tất cả các phương thức sẽ phải nhận ít nhất một tham số đại diện cho đầu vào
+của bộ lọc. Giá trị trả về sẽ là đầu ra của bộ lọc.
 
 ```ruby
 module Jekyll
@@ -19,14 +19,14 @@ end
 Liquid::Template.register_filter(Jekyll::AssetFilter)
 ```
 
-For more details on creating custom Liquid Filters, head to the [Liquid docs](https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers#create-your-own-filters).
+Để biết thêm chi tiết về việc tạo Bộ lọc Liquid tùy chỉnh, hãy truy cập [tài liệu Liquid](https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers#create-your-own-filters).
 
 <div class="note">
-  <h5>ProTip™: Access the site object using Liquid</h5>
+  <h5>Mẹo chuyên nghiệp (ProTip™): Truy cập đối tượng site bằng Liquid</h5>
   <p>
-    Jekyll lets you access the <code>site</code> object through the
-    <code>@context.registers</code> feature of Liquid at <code>@context.registers[:site]</code>. For example, you can
-    access the global configuration file <code>_config.yml</code> using
+    Jekyll cho phép bạn truy cập đối tượng <code>site</code> thông qua
+    tính năng <code>@context.registers</code> của Liquid tại <code>@context.registers[:site]</code>. Ví dụ, bạn có thể
+    truy cập tệp cấu hình toàn cầu <code>_config.yml</code> bằng cách sử dụng
     <code>@context.registers[:site].config</code>.
   </p>
 </div>

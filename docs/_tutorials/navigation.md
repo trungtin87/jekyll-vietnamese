@@ -1,54 +1,55 @@
 ---
-title: Navigation
+title: Điều hướng (Navigation)
 author: tomjoht
 date: 2017-01-24 15:38:17 -0800
 ---
 
-If your Jekyll site has a lot of pages, you might want to create navigation for the pages. Instead of hard-coding navigation links, you can programmatically retrieve a list of pages to build the navigation for your site.
+Nếu trang web Jekyll của bạn có nhiều trang, bạn có thể muốn tạo điều hướng cho các trang. Thay vì mã hóa cứng các liên kết điều hướng, bạn có thể lấy danh sách các trang theo chương trình để xây dựng điều hướng cho trang web của mình.
 
-Although there's already information about [interacting with data files]({% link _docs/datafiles.md %}) in other Jekyll docs, this tutorial dives into building more robust navigation for your site.
+Mặc dù đã có thông tin về [tương tác với tệp dữ liệu]({% link _docs/datafiles.md %}) trong tài liệu Jekyll khác, hướng dẫn này đi sâu vào việc xây dựng điều hướng mạnh mẽ hơn cho trang web của bạn.
 
-There are two primary ways of retrieving pages on a Jekyll site:
+Có hai cách chính để lấy các trang trên trang web Jekyll:
 
-* **Retrieve pages listed in a YAML data source**. Store the page data in a YAML (or JSON or CSV) file in the `_data` folder, loop through the YAML properties, and insert the values into your theme.
-* **Retrieve pages by looping through the page front matter**. Look through the front matter of your pages to identify certain properties, return those pages, and insert the pages' front matter values into your theme.
+* **Lấy các trang được liệt kê trong nguồn dữ liệu YAML**. Lưu trữ dữ liệu trang trong tệp YAML (hoặc JSON hoặc CSV) trong thư mục `_data`, lặp qua các thuộc tính YAML và chèn các giá trị vào giao diện của bạn.
+* **Lấy các trang bằng cách lặp qua front matter của trang**. Xem qua front matter của các trang của bạn để xác định các thuộc tính nhất định, trả về các trang đó và chèn các giá trị front matter của trang vào giao diện của bạn.
 
-The examples that follow start with a basic navigation scenario and add more sophisticated elements to demonstrate different ways of returning the pages. In every scenario, you'll see 3 elements:
+Các ví dụ sau đây bắt đầu với một kịch bản điều hướng cơ bản và thêm các yếu tố phức tạp hơn để chứng minh các cách khác nhau để trả về các trang. Trong mọi kịch bản, bạn sẽ thấy 3 yếu tố:
 
 * YAML
 * Liquid
-* Result
+* Kết quả
 
-The YAML file in the `_data` directory is called `samplelist.yml`.
+Tệp YAML trong thư mục `_data` được gọi là `samplelist.yml`.
 
-The scenarios are as follows:
+Các kịch bản như sau:
 
 * TOC
 {:toc}
 
-## Scenario 1: Basic List
+## Kịch bản 1: Danh sách cơ bản
 
-You want to return a basic list of pages.
+Bạn muốn trả về một danh sách cơ bản các trang.
 
 **YAML**
 
 ```yaml
-docs_list_title: ACME Documentation
+docs_list_title: Tài liệu ACME
 docs:
 
-- title: Introduction
+- title: Giới thiệu
   url: introduction.html
 
-- title: Configuration
+- title: Cấu hình
   url: configuration.html
 
-- title: Deployment
+- title: Triển khai
   url: deployment.html
 ```
 
 **Liquid**
 
 {% raw %}
+
 ```liquid
 <h2>{{ site.data.samplelist.docs_list_title }}</h2>
 <ul>
@@ -57,43 +58,45 @@ docs:
    {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-**Result**
+**Kết quả**
 <div class="highlight result" data-proofer-ignore>
-   <h2>ACME Documentation</h2>
+   <h2>Tài liệu ACME</h2>
    <ul>
-      <li><a href="#">Introduction</a></li>
-      <li><a href="#">Configuration</a></li>
-      <li><a href="#">Deployment</a></li>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Cấu hình</a></li>
+      <li><a href="#">Triển khai</a></li>
    </ul>
 </div>
 
 {: .note .info}
-For the results in these fictitious samples, `#` is manually substituted for the actual link value (to avoid 404 errors.)
+Đối với kết quả trong các mẫu hư cấu này, `#` được thay thế thủ công cho giá trị liên kết thực tế (để tránh lỗi 404.)
 
-When you use a `for` loop, you choose how you want to refer to the items you're looping through. The variable you choose (in this case, `item`) becomes how you access the properties of each item in the list. Dot notation is used to get a property of the item (for example, `item.url`).
+Khi bạn sử dụng vòng lặp `for`, bạn chọn cách bạn muốn tham chiếu đến các mục bạn đang lặp qua. Biến bạn chọn (trong trường hợp này là `item`) trở thành cách bạn truy cập các thuộc tính của mỗi mục trong danh sách. Ký hiệu dấu chấm được sử dụng để lấy thuộc tính của mục (ví dụ: `item.url`).
 
-The YAML content has two main types of formats that are relevant here:
+Nội dung YAML có hai loại định dạng chính có liên quan ở đây:
 
-* mapping
-* list
+* ánh xạ (mapping)
+* danh sách (list)
 
-`docs_list_title: ACME Documentation` is a mapping. You access the value with `site.data.samplelist.docs_list_title`.
+`docs_list_title: Tài liệu ACME` là một ánh xạ. Bạn truy cập giá trị bằng `site.data.samplelist.docs_list_title`.
 
-`docs:` is a list. The list begins each item with a hyphen. Unlike with mappings, you usually don't access list properties directly as you do with mappings. If you want to access a specific item in the list, you must identify the position in the list you want, following typical array notation. For example, `site.data.samplelist.docs[0]` would access the first item in the list. However, this is rarely done.
+`docs:` là một danh sách. Danh sách bắt đầu mỗi mục bằng dấu gạch ngang. Không giống như ánh xạ, bạn thường không truy cập trực tiếp các thuộc tính danh sách như bạn làm với ánh xạ. Nếu bạn muốn truy cập một mục cụ thể trong danh sách, bạn phải xác định vị trí trong danh sách mà bạn muốn, theo ký hiệu mảng điển hình. Ví dụ: `site.data.samplelist.docs[0]` sẽ truy cập mục đầu tiên trong danh sách. Tuy nhiên, điều này hiếm khi được thực hiện.
 
-With lists, you usually use `for` loops to cycle through the list of items and do something with each item. With navigation menus, you usually insert each list item into `li` tags based on the navigation structure you're using in your HTML theme.
+Với danh sách, bạn thường sử dụng vòng lặp `for` để lặp qua danh sách các mục và làm điều gì đó với mỗi mục. Với menu điều hướng, bạn thường chèn mỗi mục danh sách vào thẻ `li` dựa trên cấu trúc điều hướng bạn đang sử dụng trong giao diện HTML của mình.
 
-Each hyphen (`-`) indicates another item in the list. This example just has two properties with each list item: `title` and `url`. You can include as many properties as you want for each item. The order of properties at each position in the list doesn't matter.
+Mỗi dấu gạch ngang (`-`) cho biết một mục khác trong danh sách. Ví dụ này chỉ có hai thuộc tính với mỗi mục danh sách: `title` và `url`. Bạn có thể bao gồm bao nhiêu thuộc tính tùy thích cho mỗi mục. Thứ tự của các thuộc tính ở mỗi vị trí trong danh sách không quan trọng.
 
-## Scenario 2: Sorted list
+## Kịch bản 2: Danh sách được sắp xếp
 
-Suppose you wanted to sort the list by the `title`. To do this, convert the reference to the `docs` collection to a variable, and then apply Liquid's `sort` filter to the variable:
+Giả sử bạn muốn sắp xếp danh sách theo `title`. Để làm điều này, hãy chuyển đổi tham chiếu đến bộ sưu tập `docs` thành một biến, sau đó áp dụng bộ lọc `sort` của Liquid cho biến:
 
 **Liquid**
 
 {% raw %}
+
 ```liquid
 {% assign doclist = site.data.samplelist.docs | sort: 'title'  %}
 <ol>
@@ -102,55 +105,58 @@ Suppose you wanted to sort the list by the `title`. To do this, convert the refe
 {% endfor %}
 </ol>
 ```
+
 {% endraw %}
 
-**Result**
+**Kết quả**
 
 <div class="highlight result" data-proofer-ignore>
    <ol>
-      <li><a href="#">Configuration</a></li>
-      <li><a href="#">Deployment</a></li>
-      <li><a href="#">Introduction</a></li>
+      <li><a href="#">Cấu hình</a></li>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Triển khai</a></li>
    </ol>
 </div>
 
-The items now appear in alphabetical order. The `sort` property in the Liquid filter applies to the `title`, which is an actual property in the list. If `title` weren't a property, we would need to sort by another property.
+Các mục bây giờ xuất hiện theo thứ tự bảng chữ cái. Thuộc tính `sort` trong bộ lọc Liquid áp dụng cho `title`, là một thuộc tính thực tế trong danh sách. Nếu `title` không phải là một thuộc tính, chúng ta sẽ cần sắp xếp theo một thuộc tính khác.
 
-See the [Liquid array filter](https://help.shopify.com/themes/liquid/filters/array-filters) for more filter options. Note that you can't simply use this syntax:
+Xem [bộ lọc mảng Liquid](https://help.shopify.com/themes/liquid/filters/array-filters) để biết thêm tùy chọn bộ lọc. Lưu ý rằng bạn không thể chỉ đơn giản sử dụng cú pháp này:
 
 {% raw %}
+
 ```liquid
 {% for item in site.data.samplelist.docs | sort: "title" %}{% endfor %}
 ```
+
 {% endraw %}
 
-You have to convert `site.data.samplelist.docs` to a variable first using either `assign` or `capture` tags.
+Bạn phải chuyển đổi `site.data.samplelist.docs` thành một biến trước bằng cách sử dụng thẻ `assign` hoặc `capture`.
 
-## Scenario 3: Two-level navigation list
+## Kịch bản 3: Danh sách điều hướng hai cấp
 
-Suppose you want a more robust list that incorporates multiple sections of heading titles and subitems. To do this, add an additional level to each list item to store this information:
+Giả sử bạn muốn một danh sách mạnh mẽ hơn kết hợp nhiều phần tiêu đề và các mục con. Để làm điều này, hãy thêm một cấp độ bổ sung cho mỗi mục danh sách để lưu trữ thông tin này:
 
 **YAML**
 
 ```yaml
 toc:
-  - title: Group 1
+  - title: Nhóm 1
     subfolderitems:
-      - page: Thing 1
+      - page: Thứ 1
         url: /thing1.html
-      - page: Thing 2
+      - page: Thứ 2
         url: /thing2.html
-      - page: Thing 3
+      - page: Thứ 3
         url: /thing3.html
-  - title: Group 2
+  - title: Nhóm 2
     subfolderitems:
-      - page: Piece 1
+      - page: Phần 1
         url: /piece1.html
-      - page: Piece 2
+      - page: Phần 2
         url: /piece2.html
-      - page: Piece 3
+      - page: Phần 3
         url: /piece3.html
-  - title: Group 3
+  - title: Nhóm 3
     subfolderitems:
       - page: Widget 1
         url: /widget1.html
@@ -163,6 +169,7 @@ toc:
 **Liquid**
 
 {% raw %}
+
 ```liquid
 {% for item in site.data.samplelist.toc %}
     <h3>{{ item.title }}</h3>
@@ -173,25 +180,26 @@ toc:
       </ul>
   {% endfor %}
 ```
+
 {% endraw %}
 
-**Result**
+**Kết quả**
 <div class="highlight result" data-proofer-ignore>
-    <h3>Group 1</h3>
+    <h3>Nhóm 1</h3>
       <ul>
-          <li><a href="#">Thing 1</a></li>
-          <li><a href="#">Thing 2</a></li>
-          <li><a href="#">Thing 3</a></li>
+          <li><a href="#">Thứ 1</a></li>
+          <li><a href="#">Thứ 2</a></li>
+          <li><a href="#">Thứ 3</a></li>
       </ul>
 
-    <h3>Group 2</h3>
+    <h3>Nhóm 2</h3>
       <ul>
-          <li><a href="#">Piece 1</a></li>
-          <li><a href="#">Piece 2</a></li>
-          <li><a href="#">Piece 3</a></li>
+          <li><a href="#">Phần 1</a></li>
+          <li><a href="#">Phần 2</a></li>
+          <li><a href="#">Phần 3</a></li>
       </ul>
 
-    <h3>Group 3</h3>
+    <h3>Nhóm 3</h3>
       <ul>
           <li><a href="#">Widget 1</a></li>
           <li><a href="#">Widget 2</a></li>
@@ -199,52 +207,52 @@ toc:
       </ul>
 </div>
 
-In this example, `Group 1` is the first list item. Within that list item, its subpages are included as a property that itself contains a list (`subfolderitems`).
+Trong ví dụ này, `Nhóm 1` là mục danh sách đầu tiên. Trong mục danh sách đó, các trang con của nó được bao gồm dưới dạng một thuộc tính tự chứa một danh sách (`subfolderitems`).
 
-The Liquid code looks through the first level with `for item in site.data.samplelist.toc`, and then looks through the second-level property with `for entry in item.subfolderitems`. Just as `item` is an arbitrary name for the items we're looping through, so is `entry`.
+Mã Liquid xem qua cấp độ đầu tiên với `for item in site.data.samplelist.toc`, sau đó xem qua thuộc tính cấp độ thứ hai với `for entry in item.subfolderitems`. Giống như `item` là một tên tùy ý cho các mục chúng ta đang lặp qua, `entry` cũng vậy.
 
-## Scenario 4: Three-level navigation list
+## Kịch bản 4: Danh sách điều hướng ba cấp
 
-Building on the previous section, let's add one more level of depth (`subsubfolderitems`) to the list. The formatting will get more complex here, but the principles are the same.
+Dựa trên phần trước, hãy thêm một cấp độ sâu nữa (`subsubfolderitems`) vào danh sách. Định dạng sẽ phức tạp hơn ở đây, nhưng các nguyên tắc vẫn giống nhau.
 
 **YAML**
 
 ```yaml
 toc2:
-  - title: Group 1
+  - title: Nhóm 1
     subfolderitems:
-      - page: Thing 1
+      - page: Thứ 1
         url: /thing1.html
-      - page: Thing 2
+      - page: Thứ 2
         url: /thing2.html
         subsubfolderitems:
-          - page: Subthing 1
+          - page: Thứ con 1
             url: /subthing1.html
-          - page: Subthing 2
+          - page: Thứ con 2
             url: /subthing2.html
-      - page: Thing 3
+      - page: Thứ 3
         url: /thing3.html
-  - title: Group 2
+  - title: Nhóm 2
     subfolderitems:
-      - page: Piece 1
+      - page: Phần 1
         url: /piece1.html
-      - page: Piece 2
+      - page: Phần 2
         url: /piece2.html
-      - page: Piece 3
+      - page: Phần 3
         url: /piece3.html
         subsubfolderitems:
-          - page: Subpiece 1
+          - page: Phần con 1
             url: /subpiece1.html
-          - page: Subpiece2
+          - page: Phần con 2
             url: /subpiece2.html
-  - title: Group 3
+  - title: Nhóm 3
     subfolderitems:
       - page: Widget 1
         url: /widget1.html
         subsubfolderitems:
-          - page: Subwidget 1
+          - page: Widget con 1
             url: /subwidget1.html
-          - page: Subwidget 2
+          - page: Widget con 2
             url: /subwidget2.html
       - page: Widget 2
         url: /widget2.html
@@ -255,6 +263,7 @@ toc2:
 **Liquid**
 
 {% raw %}
+
 ```liquid
 <div>
 {% if site.data.samplelist.toc2[0] %}
@@ -279,38 +288,39 @@ toc2:
 {% endif %}
 </div>
 ```
+
 {% endraw %}
 
-**Result**
+**Kết quả**
 
 <div class="highlight result" data-proofer-ignore>
    <div>
-      <h3>Group 1</h3>
+      <h3>Nhóm 1</h3>
       <ul>
-         <li><a href="#">Thing 1</a></li>
-         <li><a href="#">Thing 2</a></li>
+         <li><a href="#">Thứ 1</a></li>
+         <li><a href="#">Thứ 2</a></li>
          <ul>
-            <li><a href="#">Subthing 1</a></li>
-            <li><a href="#">Subthing 2</a></li>
+            <li><a href="#">Thứ con 1</a></li>
+            <li><a href="#">Thứ con 2</a></li>
          </ul>
-         <li><a href="#">Thing 3</a></li>
+         <li><a href="#">Thứ 3</a></li>
       </ul>
-      <h3>Group 2</h3>
+      <h3>Nhóm 2</h3>
       <ul>
-         <li><a href="#">Piece 1</a></li>
-         <li><a href="#">Piece 2</a></li>
-         <li><a href="#">Piece 3</a></li>
+         <li><a href="#">Phần 1</a></li>
+         <li><a href="#">Phần 2</a></li>
+         <li><a href="#">Phần 3</a></li>
          <ul>
-            <li><a href="#">Subpiece 1</a></li>
-            <li><a href="#">Subpiece2</a></li>
+            <li><a href="#">Phần con 1</a></li>
+            <li><a href="#">Phần con 2</a></li>
          </ul>
       </ul>
-      <h3>Group 3</h3>
+      <h3>Nhóm 3</h3>
       <ul>
          <li><a href="#">Widget 1</a></li>
          <ul>
-            <li><a href="#">Subwidget 1</a></li>
-            <li><a href="#">Subwidget 2</a></li>
+            <li><a href="#">Widget con 1</a></li>
+            <li><a href="#">Widget con 2</a></li>
          </ul>
          <li><a href="#">Widget 2</a></li>
          <li><a href="#">Widget 3</a></li>
@@ -318,24 +328,24 @@ toc2:
    </div>
 </div>
 
-In this example, `if site.data.samplelist.toc2[0]` is used to ensure that the YAML level actually contains items. If there isn't anything at the `[0]` position, we can skip looking in this level.
+Trong ví dụ này, `if site.data.samplelist.toc2[0]` được sử dụng để đảm bảo rằng cấp độ YAML thực sự chứa các mục. Nếu không có gì ở vị trí `[0]`, chúng ta có thể bỏ qua việc tìm kiếm ở cấp độ này.
 
 <div class="note">
-  <h5>ProTip: Line up <code>for</code> loops and <code>if</code> statements</h5>
-  <p>To keep the code clear, line up the beginning and ending Liquid tags, such as the <code>for</code> loops and <code>if</code> statements. This way you know when the open tags have been closed. If the code will appear in a Markdown page, keep the opening and closing HTML tags flush against the left edge so that the Markdown filter won't treat the content as a code sample. If necessary, you can wrap the entire code sample in a <code>div</code> tag to ensure the code has HTML tags that bookend the code.</p>
+  <h5>Mẹo: Căn chỉnh vòng lặp <code>for</code> và câu lệnh <code>if</code></h5>
+  <p>Để giữ mã rõ ràng, hãy căn chỉnh các thẻ Liquid mở và đóng, chẳng hạn như vòng lặp <code>for</code> và câu lệnh <code>if</code>. Bằng cách này, bạn biết khi nào các thẻ mở đã được đóng. Nếu mã sẽ xuất hiện trong trang Markdown, hãy giữ các thẻ HTML mở và đóng sát với cạnh trái để bộ lọc Markdown không coi nội dung là mẫu mã. Nếu cần, bạn có thể bọc toàn bộ mẫu mã trong thẻ <code>div</code> để đảm bảo mã có các thẻ HTML đánh dấu mã.</p>
 </div>
 
-## Scenario 5: Using a page variable to select the YAML list
+## Kịch bản 5: Sử dụng biến trang để chọn danh sách YAML
 
-Suppose your sidebar will differ based on various documentation sets. You might have 3 different products on your site, and so you want 3 different sidebars &mdash; each unique for that product.
+Giả sử thanh bên của bạn sẽ khác nhau dựa trên các bộ tài liệu khác nhau. Bạn có thể có 3 sản phẩm khác nhau trên trang web của mình và vì vậy bạn muốn 3 thanh bên khác nhau &mdash; mỗi thanh duy nhất cho sản phẩm đó.
 
-You can store the name of the sidebar list in your page front matter and then pass that value into the list dynamically.
+Bạn có thể lưu trữ tên của danh sách thanh bên trong front matter của trang và sau đó chuyển giá trị đó vào danh sách một cách động.
 
-**Page front matter**
+**Front matter của trang**
 
 ```yaml
 ---
-title: My page
+title: Trang của tôi
 sidebar: toc
 ---
 ```
@@ -343,6 +353,7 @@ sidebar: toc
 **Liquid**
 
 {% raw %}
+
 ```liquid
 <ul>
     {% for item in site.data.samplelist[page.sidebar] %}
@@ -350,25 +361,26 @@ sidebar: toc
     {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-**Result**
+**Kết quả**
 
 <div class="highlight result" data-proofer-ignore>
    <ul>
-      <li><a href="#">Introduction</a></li>
-      <li><a href="#">Configuration</a></li>
-      <li><a href="#">Deployment</a></li>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Cấu hình</a></li>
+      <li><a href="#">Triển khai</a></li>
    </ul>
 </div>
 
-In this scenario, we want to pass values from the page's front matter into a `for` loop that contains a variable. When the assigned variable isn't a string but rather a data reference, you must use brackets (instead of curly braces) to refer to the front matter's value.
+Trong kịch bản này, chúng ta muốn chuyển các giá trị từ front matter của trang vào vòng lặp `for` có chứa một biến. Khi biến được gán không phải là một chuỗi mà là một tham chiếu dữ liệu, bạn phải sử dụng dấu ngoặc vuông (thay vì dấu ngoặc nhọn) để tham chiếu đến giá trị của front matter.
 
-For more information, see [Expressions and Variables](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers#expressions-and-variables) in Liquid's documentation. Brackets are used in places where dot notation can't be used. You can also read more details in this [Stack Overflow answer](http://stackoverflow.com/questions/4968406/javascript-property-access-dot-notation-vs-brackets/4968448#4968448).
+Để biết thêm thông tin, hãy xem [Biểu thức và Biến](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers#expressions-and-variables) trong tài liệu của Liquid. Dấu ngoặc vuông được sử dụng ở những nơi mà ký hiệu dấu chấm không thể được sử dụng. Bạn cũng có thể đọc thêm chi tiết trong [câu trả lời Stack Overflow này](http://stackoverflow.com/questions/4968406/javascript-property-access-dot-notation-vs-brackets/4968448#4968448).
 
-## Scenario 6: Applying the active class for the current page
+## Kịch bản 6: Áp dụng lớp active cho trang hiện tại
 
-In addition to inserting items from the YAML data file into your list, you also usually want to highlight the current link if the user is viewing that page. You do this by inserting an `active` class for items that match the current page URL.
+Ngoài việc chèn các mục từ tệp dữ liệu YAML vào danh sách của bạn, bạn cũng thường muốn làm nổi bật liên kết hiện tại nếu người dùng đang xem trang đó. Bạn thực hiện điều này bằng cách chèn một lớp `active` cho các mục khớp với URL trang hiện tại.
 
 **CSS**
 
@@ -382,6 +394,7 @@ In addition to inserting items from the YAML data file into your list, you also 
 **Liquid**
 
 {% raw %}
+
 ```liquid
 {% for item in site.data.samplelist.docs %}
     <li class="{% if item.url == page.url %}active{% endif %}">
@@ -389,9 +402,10 @@ In addition to inserting items from the YAML data file into your list, you also 
     </li>
 {% endfor %}
 ```
+
 {% endraw %}
 
-**Result**
+**Kết quả**
 
 <style>
 .result li.active a {
@@ -402,35 +416,35 @@ In addition to inserting items from the YAML data file into your list, you also 
 
 <div class="highlight result" data-proofer-ignore>
    <ul>
-      <li class=""><a href="#">Introduction</a></li>
-      <li class=""><a href="#">Configuration</a></li>
-      <li class="active"><a href="#">Deployment</a></li>
+      <li class=""><a href="#">Giới thiệu</a></li>
+      <li class=""><a href="#">Cấu hình</a></li>
+      <li class="active"><a href="#">Triển khai</a></li>
    </ul>
 </div>
 
-In this case, assume `Deployment` is the current page.
+Trong trường hợp này, giả sử `Triển khai` là trang hiện tại.
 
-To make sure the `item.url` (stored in the YAML file) matches the `page.url`, it can be helpful to print the {% raw %}`{{ page.url }}`{% endraw %} to the page.
+Để đảm bảo `item.url` (được lưu trữ trong tệp YAML) khớp với `page.url`, có thể hữu ích khi in {% raw %}`{{ page.url }}`{% endraw %} ra trang.
 
-## Scenario 7: Including items conditionally
+## Kịch bản 7: Bao gồm các mục có điều kiện
 
-You might want to include items conditionally in your list. For example, maybe you have multiple site outputs and only want to include the sidebar item for certain outputs. You can add properties in each list item and then use those properties to conditionally include the content.
+Bạn có thể muốn bao gồm các mục có điều kiện trong danh sách của mình. Ví dụ: có thể bạn có nhiều đầu ra trang web và chỉ muốn bao gồm mục thanh bên cho một số đầu ra nhất định. Bạn có thể thêm các thuộc tính trong mỗi mục danh sách và sau đó sử dụng các thuộc tính đó để bao gồm nội dung có điều kiện.
 
 **YAML**
 
 ```yaml
-docs2_list_title: ACME Documentation
+docs2_list_title: Tài liệu ACME
 docs2:
 
-- title: Introduction
+- title: Giới thiệu
   url: introduction.html
   version: 1
 
-- title: Configuration
+- title: Cấu hình
   url: configuration.html
   version: 1
 
-- title: Deployment
+- title: Triển khai
   url: deployment.html
   version: 2
 ```
@@ -438,6 +452,7 @@ docs2:
 **Liquid**
 
 {% raw %}
+
 ```liquid
   <ul>
     {% for item in site.data.samplelist.docs2 %}
@@ -447,56 +462,57 @@ docs2:
     {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-**Result**
+**Kết quả**
 
 <div class="highlight result" data-proofer-ignore>
    <ul>
-      <li><a href="#">Introduction</a></li>
-      <li><a href="#">Configuration</a></li>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Cấu hình</a></li>
    </ul>
 </div>
 
-The `Deployment` page is excluded because its `version` is `2`.
+Trang `Triển khai` bị loại trừ vì `version` của nó là `2`.
 
-## Scenario 8: Retrieving items based on front matter properties
+## Kịch bản 8: Lấy các mục dựa trên thuộc tính front matter
 
-If you don't want to store your navigation items in a YAML file in your `_data` folder, you can use `for` loops to look through the front matter of each page or collection and get the content based on properties in the front matter.
+Nếu bạn không muốn lưu trữ các mục điều hướng của mình trong tệp YAML trong thư mục `_data`, bạn có thể sử dụng vòng lặp `for` để xem qua front matter của mỗi trang hoặc bộ sưu tập và lấy nội dung dựa trên các thuộc tính trong front matter.
 
-In this scenario, suppose we have a collection called `_docs`. Collections are often better than pages because they allow you to narrow the list of what you're looping through. (Try to avoid scenarios where you loop through large numbers of items, since it will increase your build time. [Collections]({% link _docs/collections.md %}) help you narrow the scope.)
+Trong kịch bản này, giả sử chúng ta có một bộ sưu tập có tên `_docs`. Bộ sưu tập thường tốt hơn các trang vì chúng cho phép bạn thu hẹp danh sách những gì bạn đang lặp qua. (Cố gắng tránh các kịch bản mà bạn lặp qua số lượng lớn các mục, vì nó sẽ tăng thời gian xây dựng của bạn. [Bộ sưu tập]({% link _docs/collections.md %}) giúp bạn thu hẹp phạm vi.)
 
-In our scenario, there are 6 docs in the `docs` collection: Sample 1, Sample 2, Topic 1, Topic 2, Widget 1, and Widget 2.
+Trong kịch bản của chúng ta, có 6 tài liệu trong bộ sưu tập `docs`: Mẫu 1, Mẫu 2, Chủ đề 1, Chủ đề 2, Widget 1 và Widget 2.
 
-Each doc in the collection contains at least 3 properties in the front matter:
+Mỗi tài liệu trong bộ sưu tập chứa ít nhất 3 thuộc tính trong front matter:
 
 * `title`
 * `category`
 * `order`
 
-The front matter for each page is as follows (consolidated here for brevity):
+Front matter cho mỗi trang như sau (được hợp nhất ở đây để ngắn gọn):
 
 ```yaml
 ---
-Title: Sample 1
+Title: Mẫu 1
 category: getting-started
 order: 1
 ---
 
 ---
-Title: Sample 2
+Title: Mẫu 2
 category: getting-started
 order: 2
 ---
 
 ---
-Title: Topic 1
+Title: Chủ đề 1
 category: configuration
 order: 1
 ---
 
 ---
-Title: Topic 2
+Title: Chủ đề 2
 category: configuration
 order: 2
 ---
@@ -514,13 +530,14 @@ order: 2
 ---
 ```
 
-Note that even though `category` is used in the doc front matter, `category` is not a built-in variable like it is with posts. In other words, you cannot look directly inside `category` with `site.docs.category`.
+Lưu ý rằng mặc dù `category` được sử dụng trong front matter của tài liệu, `category` không phải là một biến tích hợp như với bài đăng. Nói cách khác, bạn không thể nhìn trực tiếp vào `category` với `site.docs.category`.
 
-If you wanted to simply get all docs in the collection for a specific category, you could use a `for` loop with an `if` condition to check for a specific category:
+Nếu bạn chỉ muốn lấy tất cả các tài liệu trong bộ sưu tập cho một danh mục cụ thể, bạn có thể sử dụng vòng lặp `for` với điều kiện `if` để kiểm tra một danh mục cụ thể:
 
 {% raw %}
+
 ```liquid
-<h3>Getting Started</h3>
+<h3>Bắt đầu</h3>
 <ul>
     {% for doc in site.docs %}
       {% if doc.category == "getting-started" %}
@@ -529,30 +546,32 @@ If you wanted to simply get all docs in the collection for a specific category, 
     {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-The result would be as follows:
+Kết quả sẽ như sau:
 
 <div class="highlight result" data-proofer-ignore>
-   <h3>Getting Started</h3>
+   <h3>Bắt đầu</h3>
    <ul>
-      <li><a href="#">Sample1</a></li>
-      <li><a href="#">Sample2</a></li>
+      <li><a href="#">Mẫu1</a></li>
+      <li><a href="#">Mẫu2</a></li>
    </ul>
 </div>
 
-This might be useful if you're setting up a knowledge base and have dozens of topics in each category, with each category displaying on its own page.
+Điều này có thể hữu ích nếu bạn đang thiết lập một cơ sở kiến thức và có hàng chục chủ đề trong mỗi danh mục, với mỗi danh mục hiển thị trên trang riêng của nó.
 
-But let's say you want to sort the items by category and group them under the category name, without hard-coding the category names. To achieve this, you could use two filters:
+Nhưng giả sử bạn muốn sắp xếp các mục theo danh mục và nhóm chúng dưới tên danh mục, mà không mã hóa cứng tên danh mục. Để đạt được điều này, bạn có thể sử dụng hai bộ lọc:
 
 * `group_by`
 * `sort`
 
-Here's the code for getting lists of pages grouped under their corresponding category headers:
+Đây là mã để lấy danh sách các trang được nhóm dưới các tiêu đề danh mục tương ứng của chúng:
 
 **Liquid**
 
 {% raw %}
+
 ```liquid
 {% assign mydocs = site.docs | group_by: 'category' %}
 {% for cat in mydocs %}
@@ -565,20 +584,21 @@ Here's the code for getting lists of pages grouped under their corresponding cat
     </ul>
 {% endfor %}
 ```
+
 {% endraw %}
 
-**Result**
+**Kết quả**
 
 <div class="highlight result" data-proofer-ignore>
    <h2>Getting-started</h2>
    <ul>
-      <li><a href="#">Sample2</a></li>
-      <li><a href="#">Sample1</a></li>
+      <li><a href="#">Mẫu2</a></li>
+      <li><a href="#">Mẫu1</a></li>
    </ul>
    <h2>Configuration</h2>
    <ul>
-      <li><a href="#">Topic2</a></li>
-      <li><a href="#">Topic1</a></li>
+      <li><a href="#">Chủ đề2</a></li>
+      <li><a href="#">Chủ đề1</a></li>
    </ul>
    <h2>Deployment</h2>
    <ul>
@@ -587,53 +607,54 @@ Here's the code for getting lists of pages grouped under their corresponding cat
    </ul>
 </div>
 
-Let's walk through the code. First, we assign a variable (`mydocs`) to the collection content (`site.docs`).
+Hãy đi qua mã. Đầu tiên, chúng ta gán một biến (`mydocs`) cho nội dung bộ sưu tập (`site.docs`).
 
-The `group_by` filter groups the collection content by `category`. More specifically, the `group_by` filter converts `mydocs` into an array with `name`, `items`, and `size` properties, somewhat like this:
+Bộ lọc `group_by` nhóm nội dung bộ sưu tập theo `category`. Cụ thể hơn, bộ lọc `group_by` chuyển đổi `mydocs` thành một mảng với các thuộc tính `name`, `items` và `size`, giống như thế này:
 
 ```json
 [
-  {"name": "getting-started", "items": [Sample 1, Sample 2],"size": 2},
-  {"name": "configuration", "items": [Topic 1, Topic 2], "size": 2},
+  {"name": "getting-started", "items": [Mẫu 1, Mẫu 2],"size": 2},
+  {"name": "configuration", "items": [Chủ đề 1, Chủ đề 2], "size": 2},
   {"name": "deployment", "items": [Widget 1, Widget 2], "size": 2}
 ]
 ```
 
-Using `for cat in mydocs`, we look through each item in the `mydocs` array and print the category `name`.
+Sử dụng `for cat in mydocs`, chúng ta xem qua từng mục trong mảng `mydocs` và in `name` danh mục.
 
-After getting the category name, we assign the variable `items` for the docs and use the `sort` filter to arrange the docs by their `order` property. The dot notation `cat.items` is used because we're accessing the content in the `items` array. The `sort` filter orders the items by their numbers in ascending order.
+Sau khi lấy tên danh mục, chúng ta gán biến `items` cho các tài liệu và sử dụng bộ lọc `sort` để sắp xếp các tài liệu theo thuộc tính `order` của chúng. Ký hiệu dấu chấm `cat.items` được sử dụng vì chúng ta đang truy cập nội dung trong mảng `items`. Bộ lọc `sort` sắp xếp các mục theo số của chúng theo thứ tự tăng dần.
 
-The `for item in items` loop looks through each `item` and gets the `title` and `url` to form the list item link.
+Vòng lặp `for item in items` xem qua từng `item` và lấy `title` và `url` để tạo liên kết mục danh sách.
 
-For more details on the `group_by` filter, see [Jekyll's Templates documentation](https://jekyllrb.com/docs/templates/) as well as [this Siteleaf tutorial](https://www.siteleaf.com/blog/advanced-liquid-group-by/). For more details on the `sort` filter, see [sort](https://shopify.github.io/liquid/filters/sort/) in Liquid's documentation.
+Để biết thêm chi tiết về bộ lọc `group_by`, hãy xem [Tài liệu Templates của Jekyll](https://jekyllrb.com/docs/templates/) cũng như [hướng dẫn Siteleaf này](https://www.siteleaf.com/blog/advanced-liquid-group-by/). Để biết thêm chi tiết về bộ lọc `sort`, hãy xem [sort](https://shopify.github.io/liquid/filters/sort/) trong tài liệu của Liquid.
 
-Whether you use properties in your doc's front matter to retrieve your pages or a YAML data file, in both cases you can programmatically build a more robust navigation for your site.
+Cho dù bạn sử dụng các thuộc tính trong front matter của tài liệu để lấy các trang của mình hay một tệp dữ liệu YAML, trong cả hai trường hợp, bạn có thể xây dựng điều hướng mạnh mẽ hơn theo chương trình cho trang web của mình.
 
-## Scenario 9: Nested tree navigation with recursion
+## Kịch bản 9: Điều hướng cây lồng nhau với đệ quy
 
-Suppose you want a nested tree navigation of any depth. We can achieve this by recursively looping through our tree of navigation links.
+Giả sử bạn muốn một điều hướng cây lồng nhau với độ sâu bất kỳ. Chúng ta có thể đạt được điều này bằng cách lặp đệ quy qua cây liên kết điều hướng của chúng ta.
 
 **YAML**
 
 ```yaml
 nav:
-  - title: Deployment
+  - title: Triển khai
     url: deployment.html
     subnav:
       - title: Heroku
         url: heroku.html
         subnav:
-          - title: Jekyll on Heroku
+          - title: Jekyll trên Heroku
             url: jekyll-on-heroku.html
-  - title: Help
+  - title: Trợ giúp
     url: help.html
 ```
 
 **Liquid**
 
-First, we'll create an include that we can use for rendering the navigation tree. This file would be `_includes/nav.html`
+Đầu tiên, chúng ta sẽ tạo một include mà chúng ta có thể sử dụng để hiển thị cây điều hướng. Tệp này sẽ là `_includes/nav.html`
 
 {% raw %}
+
 ```liquid
 <ul>
   {% for item in include.nav %}
@@ -645,28 +666,31 @@ First, we'll create an include that we can use for rendering the navigation tree
   {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-To render this in your layout or pages, you would simply include the template and pass in the `nav` parameter. In this case, we'll use the `page.nav` to grab it from the yaml frontmatter.
+Để hiển thị điều này trong bố cục hoặc trang của bạn, bạn chỉ cần bao gồm template và chuyển tham số `nav`. Trong trường hợp này, chúng ta sẽ sử dụng `page.nav` để lấy nó từ yaml frontmatter.
 
 {% raw %}
+
 ```liquid
 {% include nav.html nav=page.nav %}
 ```
+
 {% endraw %}
 
-Our include will use this first, then look through each item for a `subnav` property to recursively render the nested lists.
+Include của chúng ta sẽ sử dụng cái này trước, sau đó xem qua từng mục để tìm thuộc tính `subnav` để hiển thị đệ quy các danh sách lồng nhau.
 
-**Result**
+**Kết quả**
 <div class="highlight result" data-proofer-ignore>
    <ul>
-      <li><a href="#">Deployment</a></li>
+      <li><a href="#">Triển khai</a></li>
       <ul>
         <li><a href="#">Heroku</a></li>
         <ul>
-          <li><a href="#">Jekyll On Heroku</a></li>
+          <li><a href="#">Jekyll Trên Heroku</a></li>
         </ul>
       </ul>
-      <li><a href="#">Help</a></li>
+      <li><a href="#">Trợ giúp</a></li>
    </ul>
 </div>

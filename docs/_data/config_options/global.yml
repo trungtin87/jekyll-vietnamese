@@ -1,18 +1,19 @@
+# Các tùy chọn cấu hình toàn cục.
 - name: Site source
-  description: Change the directory where Jekyll will read files
+  description: Thay đổi thư mục nơi Jekyll sẽ đọc các tệp
   option: "source: DIR"
   flag: -s, --source DIR
 
 
 - name: Site destination
-  description: Change the directory where Jekyll will write files
+  description: Thay đổi thư mục nơi Jekyll sẽ ghi các tệp
   option: "destination: DIR"
   flag: -d, --destination DIR
 
 
 - name: Safe
   description: >-
-    Disable <a href="/docs/plugins/">non-whitelisted plugins</a>, caching to disk, and ignore symbolic links.
+    Vô hiệu hóa <a href="/docs/plugins/">các plugin không được đưa vào danh sách trắng</a>, lưu vào bộ nhớ đệm vào đĩa, và bỏ qua các liên kết tượng trưng.
   option: "safe: BOOL"
   flag: --safe
 
@@ -20,9 +21,9 @@
 - name: Disable disk cache
   version-badge: 4.1.0
   description: >-
-    Disable caching of content to disk in order to skip creating a <code>.jekyll-cache</code> or similar directory at
-    the source to avoid interference with virtual environments and third-party directory watchers. Caching to disk is
-    always disabled in <code>safe</code> mode.
+    Vô hiệu hóa việc lưu nội dung vào bộ nhớ đệm vào đĩa để bỏ qua việc tạo thư mục <code>.jekyll-cache</code> hoặc tương tự tại
+    nguồn để tránh can thiệp vào môi trường ảo và trình theo dõi thư mục của bên thứ ba. Việc lưu vào bộ nhớ đệm vào đĩa luôn
+    bị vô hiệu hóa ở chế độ <code>safe</code>.
   option: "disable_disk_cache: BOOL"
   flag: --disable-disk-cache
 
@@ -30,28 +31,28 @@
 - name: Ignore theme configuration
   version-badge: 4.1.0
   description: >-
-    Jekyll 4.0 started allowing themes to bundle a <code>_config.yml</code> to simplify theme-onboarding for new users.
-    In the unfortunate situation that importing a bundled theme configuration messes up the merged site-configuration,
-    the user can configure Jekyll to not import the theme-config entirely.
+    Jekyll 4.0 bắt đầu cho phép các giao diện (themes) đóng gói một <code>_config.yml</code> để đơn giản hóa việc giới thiệu giao diện cho người dùng mới.
+    Trong trường hợp không may là việc nhập cấu hình giao diện đi kèm làm hỏng cấu hình trang web đã hợp nhất,
+    người dùng có thể cấu hình Jekyll để không nhập cấu hình giao diện hoàn toàn.
   option: "ignore_theme_config: BOOL"
 
 
 - name: Exclude
   description: >-
-    Exclude directories and/or files from the conversion. These exclusions are relative to the site's source directory
-    and cannot be outside the source directory.
+    Loại trừ các thư mục và/hoặc tệp khỏi quá trình chuyển đổi. Các loại trừ này tương đối với thư mục nguồn của trang web
+    và không thể nằm ngoài thư mục nguồn.
     <br />
-    This configuration option supports Ruby's <a href="https://ruby-doc.org/3.3.5/File.html#method-c-fnmatch">
-    <code>File.fnmatch</code> filename globbing patterns</a> to match multiple entries to exclude. For example,
-    you can exclude multiple README.md files in your source tree from being included in your site by specifying the
-    following <code>exclude</code> option entries: <code>["README.md", "**/README.md"]</code>.
+    Tùy chọn cấu hình này hỗ trợ <a href="https://ruby-doc.org/3.3.5/File.html#method-c-fnmatch">
+    các mẫu glob tên tệp <code>File.fnmatch</code></a> của Ruby để khớp với nhiều mục cần loại trừ. Ví dụ,
+    bạn có thể loại trừ nhiều tệp README.md trong cây nguồn của mình khỏi việc được đưa vào trang web của mình bằng cách chỉ định
+    các mục nhập tùy chọn <code>exclude</code> sau: <code>["README.md", "**/README.md"]</code>.
     <br />
-    In Jekyll 3, the <code>exclude</code> configuration option replaces the default exclusion list.
+    Trong Jekyll 3, tùy chọn cấu hình <code>exclude</code> thay thế danh sách loại trừ mặc định.
     <br />
-    In Jekyll 4, user-provided entries get added to the default exclusion list instead and the <code>include</code>
-    option can be used to override the default exclusion list entries.
+    Trong Jekyll 4, các mục nhập do người dùng cung cấp được thêm vào danh sách loại trừ mặc định thay vào đó và tùy chọn <code>include</code>
+    có thể được sử dụng để ghi đè các mục nhập danh sách loại trừ mặc định.
     <br />
-    The default exclusions are found in <code>_config.yml</code> as created by <code>jekyll new</code>:
+    Các loại trừ mặc định được tìm thấy trong <code>_config.yml</code> như được tạo bởi <code>jekyll new</code>:
     <ul>
       <li><code>.sass-cache/</code></li>
       <li><code>.jekyll-cache/</code></li>
@@ -69,40 +70,39 @@
 
 - name: Include
   description: >-
-    Force inclusion of directories and/or files in the conversion. <code>.htaccess</code> is a good example since
-    dotfiles are excluded by default.
+    Buộc bao gồm các thư mục và/hoặc tệp trong quá trình chuyển đổi. <code>.htaccess</code> là một ví dụ điển hình vì
+    các tệp chấm (dotfiles) bị loại trừ theo mặc định.
     <br>
-    This configuration option supports Ruby's <a href="https://ruby-doc.org/3.3.5/File.html#method-c-fnmatch-3F">
-    <code>File.fnmatch</code> filename globbing patterns</a> to match multiple entries to include, refer the
-    <code>exclude</code> configuration option for more information.
+    Tùy chọn cấu hình này hỗ trợ <a href="https://ruby-doc.org/3.3.5/File.html#method-c-fnmatch-3F">
+    các mẫu glob tên tệp <code>File.fnmatch</code></a> của Ruby để khớp với nhiều mục cần bao gồm, tham khảo
+    tùy chọn cấu hình <code>exclude</code> để biết thêm thông tin.
     <br>
-    With Jekyll 4, the <code>include</code> configuration option entries override the <code>exclude</code> option
-    entries.
+    Với Jekyll 4, các mục nhập tùy chọn cấu hình <code>include</code> ghi đè các mục nhập tùy chọn <code>exclude</code>.
   option: "include: [DIR, FILE, ...]"
 
 
 - name: Keep files
   description: >-
-    When clobbering the site destination, keep the selected files. Useful for files that are not generated by jekyll;
-    e.g. files or assets that are generated by your build tool. The paths are relative to the <code>destination</code>.
+    Khi ghi đè đích trang web, hãy giữ lại các tệp đã chọn. Hữu ích cho các tệp không được tạo bởi jekyll;
+    ví dụ: các tệp hoặc tài sản được tạo bởi công cụ xây dựng của bạn. Các đường dẫn tương đối với <code>destination</code>.
   option: "keep_files: [DIR, FILE, ...]"
 
 
 - name: Time zone
   description: >-
-    Set the time zone for site generation. This sets the <code>TZ</code> environment variable, which Ruby uses to handle
-    time and date creation and manipulation. Any entry from the
-    <a href="https://en.wikipedia.org/wiki/Tz_database">IANA Time Zone Database</a>
-    is valid, e.g. <code>America/New_York</code>. A list of all available values can be found
-    <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"> here</a>.
-    When serving on a local machine, the default time zone is set by your operating system. But when served on a remote
-    host/server, the default time zone depends on the server's setting or location.
+    Đặt múi giờ cho việc tạo trang web. Điều này đặt biến môi trường <code>TZ</code>, mà Ruby sử dụng để xử lý
+    việc tạo và thao tác thời gian và ngày tháng. Bất kỳ mục nhập nào từ
+    <a href="https://en.wikipedia.org/wiki/Tz_database">Cơ sở dữ liệu Múi giờ IANA</a>
+    đều hợp lệ, ví dụ: <code>America/New_York</code>. Một danh sách tất cả các giá trị có sẵn có thể được tìm thấy
+    <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"> tại đây</a>.
+    Khi phục vụ trên máy cục bộ, múi giờ mặc định được đặt bởi hệ điều hành của bạn. Nhưng khi được phục vụ trên một máy chủ/host từ xa,
+    múi giờ mặc định phụ thuộc vào cài đặt hoặc vị trí của máy chủ.
   option: "timezone: TIMEZONE"
 
 
 - name: Encoding
   description: >-
-    Set the encoding of files by name (only available for Ruby 1.9 or later). The default value is <code>utf-8</code>
-    starting in 2.0.0, and <code>nil</code> before 2.0.0, which will yield the Ruby default of <code>ASCII-8BIT</code>.
-    Available encodings can be shown by the command <code>ruby -e 'puts Encoding::list.join("\n")'</code>.
+    Đặt mã hóa của các tệp theo tên (chỉ khả dụng cho Ruby 1.9 trở lên). Giá trị mặc định là <code>utf-8</code>
+    bắt đầu từ 2.0.0, và <code>nil</code> trước 2.0.0, điều này sẽ mang lại mặc định Ruby là <code>ASCII-8BIT</code>.
+    Các mã hóa có sẵn có thể được hiển thị bằng lệnh <code>ruby -e 'puts Encoding::list.join("\n")'</code>.
   option: "encoding: ENCODING"

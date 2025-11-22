@@ -1,63 +1,67 @@
 ---
-title: Order of interpretation
+title: Thứ tự diễn giải
 author: tomjoht
 date: 2017-01-29 21:45:03 -0800
 ---
 
-Jekyll's main job is to convert your raw text files into a static website. It does this by rendering Liquid, Markdown, and other transforms as it generates the static HTML output.
+Công việc chính của Jekyll là chuyển đổi các tệp văn bản thô của bạn thành một trang web tĩnh. Nó thực hiện điều này bằng cách hiển thị Liquid, Markdown và các biến đổi khác khi nó tạo đầu ra HTML tĩnh.
 
-In this conversion process, it's important to understand Jekyll's order of interpretation. By "order of interpretation," we mean what gets rendered, in what order, and what rules get applied in converting content.
+Trong quá trình chuyển đổi này, điều quan trọng là phải hiểu thứ tự diễn giải của Jekyll. Bằng "thứ tự diễn giải", chúng tôi có nghĩa là cái gì được hiển thị, theo thứ tự nào và các quy tắc nào được áp dụng trong việc chuyển đổi nội dung.
 
-If an element isn't converting, you can troubleshoot the problem by analyzing the order of interpretation.
+Nếu một phần tử không chuyển đổi, bạn có thể khắc phục sự cố bằng cách phân tích thứ tự diễn giải.
 
-## Order of interpretations
+## Thứ tự diễn giải
 
-Jekyll converts your site in the following order:
+Jekyll chuyển đổi trang web của bạn theo thứ tự sau:
 
-1. **Site variables**. Jekyll looks across your files and populates [site variables]({% link _docs/variables.md %}), such as `site`, `page`, `post`, and collection objects. (From these objects, Jekyll determines the values for permalinks, tags, categories, and other details.)
+1. **Biến trang web**. Jekyll xem xét các tệp của bạn và điền [biến trang web]({% link _docs/variables.md %}), chẳng hạn như các đối tượng `site`, `page`, `post` và collection. (Từ các đối tượng này, Jekyll xác định các giá trị cho permalink, thẻ, danh mục và các chi tiết khác.)
 
-2. **Liquid**. Jekyll processes any [Liquid](https://github.com/Shopify/liquid) formatting in pages that contain [front matter]({% link _docs/front-matter.md %}). You can identify Liquid as follows:
-   * **Liquid tags** start with {% raw %}`{%`{% endraw %} and end with a {% raw %}`%}`{% endraw %}. For example: {% raw %}`{% highlight %}`{% endraw %} or {% raw %}`{% seo %}`{% endraw %}. Tags can define blocks or be inline. Block-defining tags will also come with a corresponding end tag &mdash; for example, {% raw %}`{% endhighlight %}`{% endraw %}.
-   * **Liquid variables** start and end with double curly braces. For example: {% raw %}`{{ site.myvariable }}`{% endraw %} or {% raw %}`{{ content }}`{% endraw %}.
-   * **Liquid filters** start with a pipe character (`|`) and can only be used within **Liquid variables** after the variable string. For example: the `relative_url` filter in {% raw %}`{{ "css/main.css" | relative_url }}`{% endraw %}.
+2. **Liquid**. Jekyll xử lý bất kỳ định dạng [Liquid](https://github.com/Shopify/liquid) nào trong các trang có [front matter]({% link _docs/front-matter.md %}). Bạn có thể xác định Liquid như sau:
+   * **Thẻ Liquid** bắt đầu bằng {% raw %}`{%`{% endraw %} và kết thúc bằng {% raw %}`%}`{% endraw %}. Ví dụ: {% raw %}`{% highlight %}`{% endraw %} hoặc {% raw %}`{% seo %}`{% endraw %}. Thẻ có thể định nghĩa khối hoặc nội tuyến. Thẻ định nghĩa khối cũng sẽ đi kèm với thẻ kết thúc tương ứng &mdash; ví dụ: {% raw %}`{% endhighlight %}`{% endraw %}.
+   * **Biến Liquid** bắt đầu và kết thúc bằng dấu ngoặc nhọn kép. Ví dụ: {% raw %}`{{ site.myvariable }}`{% endraw %} hoặc {% raw %}`{{ content }}`{% endraw %}.
+   * **Bộ lọc Liquid** bắt đầu bằng ký tự pipe (`|`) và chỉ có thể được sử dụng trong **biến Liquid** sau chuỗi biến. Ví dụ: bộ lọc `relative_url` trong {% raw %}`{{ "css/main.css" | relative_url }}`{% endraw %}.
 
-3. **Markdown**. Jekyll converts Markdown to HTML using the Markdown filter specified in your config file. Files must have a Markdown file extension and front matter in order for Jekyll to convert them.
+3. **Markdown**. Jekyll chuyển đổi Markdown thành HTML bằng bộ lọc Markdown được chỉ định trong tệp cấu hình của bạn. Các tệp phải có phần mở rộng tệp Markdown và front matter để Jekyll chuyển đổi chúng.
 
-4. **Layout**. Jekyll pushes content into the layouts specified by the page's front matter (or as specified in the config file). The content from each page gets pushed into the {% raw %}`{{ content }}`{% endraw %} tags within the layouts.
+4. **Bố cục**. Jekyll đẩy nội dung vào các bố cục được chỉ định bởi front matter của trang (hoặc như được chỉ định trong tệp cấu hình). Nội dung từ mỗi trang được đẩy vào các thẻ {% raw %}`{{ content }}`{% endraw %} trong các bố cục.
 
-5. **Files**. Jekyll writes the generated content into files in the [directory structure]({% link _docs/structure.md %}) in `_site`. Pages, posts, and collections get structured based on their [permalink]({% link _docs/permalinks.md %}) setting. Directories that begin with `_` (such as `_includes` and `_data`) are usually hidden in the output.
+5. **Tệp**. Jekyll ghi nội dung đã tạo vào các tệp trong [cấu trúc thư mục]({% link _docs/structure.md %}) trong `_site`. Trang, bài đăng và bộ sưu tập được cấu trúc dựa trên cài đặt [permalink]({% link_docs/permalinks.md %}) của chúng. Các thư mục bắt đầu bằng `_` (chẳng hạn như `_includes` và `_data`) thường bị ẩn trong đầu ra.
 
-## Scenarios where incorrect configurations create problems
+## Các tình huống mà cấu hình không chính xác tạo ra vấn đề
 
-For the most part, you don't have to think about the order of interpretation when building your Jekyll site. These details only become important to know when something isn't rendering.
+Phần lớn, bạn không phải nghĩ về thứ tự diễn giải khi xây dựng trang web Jekyll của mình. Những chi tiết này chỉ trở nên quan trọng khi biết khi có gì đó không hiển thị.
 
-The following scenarios highlight potential problems you might encounter. These problems come from misunderstanding the order of interpretation and can be easily fixed.
+Các tình huống sau đây làm nổi bật các vấn đề tiềm ẩn bạn có thể gặp phải. Những vấn đề này đến từ việc hiểu sai thứ tự diễn giải và có thể được sửa chữa dễ dàng.
 
-### Variable on page not rendered because variable is assigned in layout
+### Biến trên trang không được hiển thị vì biến được gán trong bố cục
 
-In your layout file (`_layouts/default.html`), suppose you have a variable assigned:
+Trong tệp bố cục của bạn (`_layouts/default.html`), giả sử bạn có một biến được gán:
 
 {% raw %}
+
 ```liquid
 {% assign myvar = "joe" %}
 ```
+
 {% endraw %}
 
-On a page that uses the layout, you reference that variable:
+Trên một trang sử dụng bố cục, bạn tham chiếu biến đó:
 
 {% raw %}
+
 ```liquid
 {{ myvar }}
 ```
+
 {% endraw %}
 
-The variable won't render because the page's order of interpretation is to render Liquid first and later process the Layout. When the Liquid rendering happens, the variable assignment isn't available.
+Biến sẽ không hiển thị vì thứ tự diễn giải của trang là hiển thị Liquid trước và sau đó xử lý Bố cục. Khi việc hiển thị Liquid xảy ra, việc gán biến không có sẵn.
 
-To make the code work, you could put the variable assignment into the page's front matter.
+Để làm cho mã hoạt động, bạn có thể đặt việc gán biến vào front matter của trang.
 
-### Markdown in include file not processed
+### Markdown trong tệp include không được xử lý
 
-Suppose you have a Markdown file at `_includes/mycontent.md`. In the Markdown file, you have some Markdown formatting:
+Giả sử bạn có một tệp Markdown tại `_includes/mycontent.md`. Trong tệp Markdown, bạn có một số định dạng Markdown:
 
 ```markdown
 This is a list:
@@ -65,37 +69,42 @@ This is a list:
 * second item
 ```
 
-You include the file into an HTML file as follows:
+Bạn bao gồm tệp vào một tệp HTML như sau:
 
 {% raw %}
+
 ```liquid
 {% include mycontent.md %}
 ```
+
 {% endraw %}
 
-The Markdown is not processed because first the Liquid (`include` tag) gets processed, inserting `mycontent.md` into the HTML file. *Then* the Markdown would get processed.
+Markdown không được xử lý vì trước tiên Liquid (thẻ `include`) được xử lý, chèn `mycontent.md` vào tệp HTML. *Sau đó* Markdown sẽ được xử lý.
 
-But because the content is included into an *HTML* page, the Markdown isn't rendered. The Markdown filter processes content only in Markdown files.
+Nhưng vì nội dung được bao gồm vào một trang *HTML*, Markdown không được hiển thị. Bộ lọc Markdown chỉ xử lý nội dung trong các tệp Markdown.
 
-To make the code work, use HTML formatting in includes that are inserted into HTML files.
+Để làm cho mã hoạt động, hãy sử dụng định dạng HTML trong các include được chèn vào các tệp HTML.
 
-Note that `highlight` tags don't require Markdown to process. Suppose your include contains the following:
+Lưu ý rằng các thẻ `highlight` không yêu cầu Markdown để xử lý. Giả sử include của bạn chứa như sau:
 
 {% raw %}
+
 ```liquid
 {% highlight javascript %}
 console.log('alert');
 {% endhighlight %}
 ```
+
 {% endraw %}
 
-The `highlight` tag *is* Liquid. (Liquid passes the content to Rouge for syntax highlighting.) As a result, this code will actually convert to HTML with syntax highlighting. Jekyll does not need the Markdown filter to process `highlight` tags.
+Thẻ `highlight` *là* Liquid. (Liquid chuyển nội dung cho Rouge để làm nổi bật cú pháp.) Kết quả là, mã này sẽ thực sự chuyển đổi thành HTML với làm nổi bật cú pháp. Jekyll không cần bộ lọc Markdown để xử lý các thẻ `highlight`.
 
-### Liquid mixed with JavaScript isn't rendered
+### Liquid trộn với JavaScript không được hiển thị
 
-Suppose you try to mix Liquid's `assign` tag with JavaScript, like this:
+Giả sử bạn cố gắng trộn thẻ `assign` của Liquid với JavaScript, như thế này:
 
 {% raw %}
+
 ```javascript
 <button onclick="someFunction()">Click me</button>
 
@@ -108,13 +117,15 @@ function someFunction() {
 }
 </script>
 ```
+
 {% endraw %}
 
-This won't work because the `assign` tag is only available during the Liquid rendering phase of the site. In this JavaScript example, the script executes when a user clicks a button ("Click me") on the HTML page. At that time, the Liquid logic is no longer available, so the `assign` tag wouldn't return anything.
+Điều này sẽ không hoạt động vì thẻ `assign` chỉ có sẵn trong giai đoạn hiển thị Liquid của trang web. Trong ví dụ JavaScript này, script thực thi khi người dùng nhấp vào nút ("Click me") trên trang HTML. Vào thời điểm đó, logic Liquid không còn khả dụng nữa, vì vậy thẻ `assign` sẽ không trả về gì.
 
-However, you can use Jekyll's site variables or Liquid to *populate* a script that is executed at a later time. For example, suppose you have the following property in your front matter: `someContent: "This is some content"`. You could do this:
+Tuy nhiên, bạn có thể sử dụng các biến trang web của Jekyll hoặc Liquid để *điền* một script được thực thi sau đó. Ví dụ: giả sử bạn có thuộc tính sau trong front matter của mình: `someContent: "This is some content"`. Bạn có thể làm như sau:
 
 {% raw %}
+
 ```javascript
 <button onclick="someFunction()">Click me</button>
 
@@ -127,33 +138,38 @@ function someFunction() {
 }
 </script>
 ```
+
 {% endraw %}
 
-When Jekyll builds the site, this `someContent` property populates the script's values, converting {% raw %}`{{ page.someContent }}`{% endraw %} to `"This is some content"`.
+Khi Jekyll xây dựng trang web, thuộc tính `someContent` này điền các giá trị của script, chuyển đổi {% raw %}`{{ page.someContent }}`{% endraw %} thành `"This is some content"`.
 
-The key to remember is that Liquid renders when Jekyll builds your site. Liquid is not available at run-time in the browser when a user executes an event.
+Điều quan trọng cần nhớ là Liquid hiển thị khi Jekyll xây dựng trang web của bạn. Liquid không có sẵn tại thời gian chạy trong trình duyệt khi người dùng thực thi một sự kiện.
 
-## Note about using Liquid in YAML
+## Lưu ý về việc sử dụng Liquid trong YAML
 
-There's one more detail to remember: Liquid does not render when embedded in YAML files or front matter. (This isn't related to order of interpretation, but it's worth mentioning because it's a common question about element rendering.)
+Có một chi tiết nữa cần nhớ: Liquid không hiển thị khi được nhúng trong các tệp YAML hoặc front matter. (Điều này không liên quan đến thứ tự diễn giải, nhưng đáng đề cập vì đây là một câu hỏi phổ biến về hiển thị phần tử.)
 
-For example, suppose you have a `highlight` tag in your `_data/mydata.yml` file:
+Ví dụ: giả sử bạn có thẻ `highlight` trong tệp `_data/mydata.yml` của mình:
 
 {% raw %}
+
 ```liquid
 myvalue: >
   {% highlight javascript %}
   console.log('alert');
   {% endhighlight %}
 ```
+
 {% endraw %}
 
-On a page, you try to insert the value:
+Trên một trang, bạn cố gắng chèn giá trị:
 
 {% raw %}
+
 ```liquid
 {{ site.data.mydata.myvalue }}
 ```
+
 {% endraw %}
 
-This would render only as a string rather than a code sample with syntax highlighting. To make the code render, consider using an include instead.
+Điều này sẽ chỉ hiển thị dưới dạng chuỗi thay vì một mẫu mã với làm nổi bật cú pháp. Để làm cho mã hiển thị, hãy xem xét sử dụng include thay thế.

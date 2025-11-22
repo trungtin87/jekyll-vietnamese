@@ -1,14 +1,14 @@
 ---
-title: Hooks
+title: Móc (Hooks)
 permalink: /docs/plugins/hooks/
 ---
 
-Using hooks, your plugin can exercise fine-grained control over various aspects of the build process. If your plugin defines any hooks, Jekyll
-will call them at pre-defined points.
+Sử dụng các móc (hooks), plugin của bạn có thể thực hiện kiểm soát chi tiết đối với các khía cạnh khác nhau của quá trình xây dựng. Nếu plugin của bạn định nghĩa bất kỳ móc nào, Jekyll
+sẽ gọi chúng tại các điểm được xác định trước.
 
-Hooks are registered to an owner and an event name. To register one, you call `Jekyll::Hooks.register`, and pass the hook owner, event name,
-and code to call whenever the hook is triggered. For example, if you want to execute some custom functionality every time Jekyll renders a
-page, you could register a hook like this:
+Các móc được đăng ký cho một chủ sở hữu và một tên sự kiện. Để đăng ký một móc, bạn gọi `Jekyll::Hooks.register`, và chuyển chủ sở hữu móc, tên sự kiện,
+và mã để gọi bất cứ khi nào móc được kích hoạt. Ví dụ, nếu bạn muốn thực thi một số chức năng tùy chỉnh mỗi khi Jekyll hiển thị một
+trang, bạn có thể đăng ký một móc như thế này:
 
 ```ruby
 Jekyll::Hooks.register :pages, :post_render do |page|
@@ -16,43 +16,44 @@ Jekyll::Hooks.register :pages, :post_render do |page|
 end
 ```
 
-*Note: The `:post_convert` events mentioned hereafter is a feature introduced in v4.2.0.*
+*Lưu ý: Các sự kiện `:post_convert` được đề cập sau đây là một tính năng được giới thiệu trong v4.2.0.*
 
-Out of the box, Jekyll has pre-defined hook points for owners `:site`, `:pages`, `:documents` and `:clean`. Additionally, the hook points
-defined for `:documents` can be utilized for individual collections only by invoking the collection type instead. i.e. `:posts` for documents
-in collection `_posts` and `:movies` for documents in collection `_movies`. In all cases, Jekyll calls your hooks with the owner object as the
-first callback parameter.
+Ngoài ra, Jekyll có các điểm móc được xác định trước cho các chủ sở hữu `:site`, `:pages`, `:documents` và `:clean`. Ngoài ra, các điểm móc
+được định nghĩa cho `:documents` có thể được sử dụng cho các bộ sưu tập riêng lẻ chỉ bằng cách gọi loại bộ sưu tập thay thế. tức là `:posts` cho các tài liệu
+trong bộ sưu tập `_posts` và `:movies` cho các tài liệu trong bộ sưu tập `_movies`. Trong mọi trường hợp, Jekyll gọi các móc của bạn với đối tượng chủ sở hữu là
+tham số gọi lại đầu tiên.
 
-Every registered hook owner supports the following events &mdash; `:post_init`, `:pre_render`, `:post_convert`, `:post_render`, `:post_write`
-&mdash; however, the `:site` owner is set up to *respond* to *special event names*. Refer to the subsequent section for details.
+Mọi chủ sở hữu móc đã đăng ký đều hỗ trợ các sự kiện sau &mdash; `:post_init`, `:pre_render`, `:post_convert`, `:post_render`, `:post_write`
+&mdash; tuy nhiên, chủ sở hữu `:site` được thiết lập để *phản hồi* các *tên sự kiện đặc biệt*. Tham khảo phần tiếp theo để biết chi tiết.
 
-All `:pre_render` hooks and the `:site, :post_render` hook will also provide a `payload` hash as a second parameter. While in the case of
-`:pre_render` events, the payload gives you full control over the variables that are available during rendering, with the `:site, :post_render`
-event, the payload contains final values after rendering all the site (useful for sitemaps, feeds, etc).
+Tất cả các móc `:pre_render` và móc `:site, :post_render` cũng sẽ cung cấp một hàm băm `payload` làm tham số thứ hai. Trong trường hợp của
+các sự kiện `:pre_render`, payload cung cấp cho bạn toàn quyền kiểm soát các biến có sẵn trong quá trình hiển thị, với sự kiện `:site, :post_render`,
+payload chứa các giá trị cuối cùng sau khi hiển thị tất cả trang web (hữu ích cho sitemaps, feeds, v.v.).
 
-## Built-in Hook Owners and Events
-The complete list of available hooks:
+## Chủ sở hữu Móc và Sự kiện Tích hợp
+
+Danh sách đầy đủ các móc có sẵn:
 
 <div class="mobile-side-scroller">
 <table id="builtin-hooks">
   <thead>
     <tr>
-      <th>Owner</th>
-      <th>Event</th>
-      <th>Triggered at</th>
+      <th>Chủ sở hữu</th>
+      <th>Sự kiện</th>
+      <th>Kích hoạt tại</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td rowspan="6">
         <p><code>:site</code></p>
-        <p>Encompasses the entire site</p>
+        <p>Bao gồm toàn bộ trang web</p>
       </td>
       <td>
         <p><code>:after_init</code></p>
       </td>
       <td>
-        <p>Just after the site initializes. Good for modifying the configuration of the site. Triggered once per build / serve session</p>
+        <p>Ngay sau khi trang web khởi tạo. Tốt cho việc sửa đổi cấu hình của trang web. Được kích hoạt một lần cho mỗi phiên xây dựng / phục vụ</p>
       </td>
     </tr>
     <tr>
@@ -60,7 +61,7 @@ The complete list of available hooks:
         <p><code>:after_reset</code></p>
       </td>
       <td>
-        <p>Just after the site resets during regeneration</p>
+        <p>Ngay sau khi trang web đặt lại trong quá trình tái tạo</p>
       </td>
     </tr>
     <tr>
@@ -68,7 +69,7 @@ The complete list of available hooks:
         <p><code>:post_read</code></p>
       </td>
       <td>
-        <p>After all source files have been read and loaded from disk</p>
+        <p>Sau khi tất cả các tệp nguồn đã được đọc và tải từ đĩa</p>
       </td>
     </tr>
     <tr>
@@ -76,7 +77,7 @@ The complete list of available hooks:
         <p><code>:pre_render</code></p>
       </td>
       <td>
-        <p>Just before rendering the whole site</p>
+        <p>Ngay trước khi hiển thị toàn bộ trang web</p>
       </td>
     </tr>
     <tr>
@@ -84,7 +85,7 @@ The complete list of available hooks:
         <p><code>:post_render</code></p>
       </td>
       <td>
-        <p>After rendering the whole site, but before writing any files</p>
+        <p>Sau khi hiển thị toàn bộ trang web, nhưng trước khi ghi bất kỳ tệp nào</p>
       </td>
     </tr>
     <tr>
@@ -92,19 +93,19 @@ The complete list of available hooks:
         <p><code>:post_write</code></p>
       </td>
       <td>
-        <p>After writing all of the rendered files to disk</p>
+        <p>Sau khi ghi tất cả các tệp đã hiển thị vào đĩa</p>
       </td>
     </tr>
     <tr>
       <td rowspan="5">
         <p><code>:pages</code></p>
-        <p>Allows fine-grained control over all pages in the site</p>
+        <p>Cho phép kiểm soát chi tiết đối với tất cả các trang trong trang web</p>
       </td>
       <td>
         <p><code>:post_init</code></p>
       </td>
       <td>
-        <p>Whenever a page is initialized</p>
+        <p>Bất cứ khi nào một trang được khởi tạo</p>
       </td>
     </tr>
     <tr>
@@ -112,7 +113,7 @@ The complete list of available hooks:
         <p><code>:pre_render</code></p>
       </td>
       <td>
-        <p>Just before rendering a page</p>
+        <p>Ngay trước khi hiển thị một trang</p>
       </td>
     </tr>
     <tr>
@@ -120,7 +121,7 @@ The complete list of available hooks:
         <p><code>:post_convert</code></p>
       </td>
       <td>
-        <p>After converting the page content, but before rendering the page layout</p>
+        <p>Sau khi chuyển đổi nội dung trang, nhưng trước khi hiển thị bố cục trang</p>
       </td>
     </tr>
     <tr>
@@ -128,7 +129,7 @@ The complete list of available hooks:
         <p><code>:post_render</code></p>
       </td>
       <td>
-        <p>After rendering a page, but before writing it to disk</p>
+        <p>Sau khi hiển thị một trang, nhưng trước khi ghi nó vào đĩa</p>
       </td>
     </tr>
     <tr>
@@ -136,19 +137,19 @@ The complete list of available hooks:
         <p><code>:post_write</code></p>
       </td>
       <td>
-        <p>After writing a page to disk</p>
+        <p>Sau khi ghi một trang vào đĩa</p>
       </td>
     </tr>
     <tr>
       <td rowspan="5">
         <p><code>:documents</code></p>
-        <p>Allows fine-grained control over all documents in the site including posts and documents in user-defined collections</p>
+        <p>Cho phép kiểm soát chi tiết đối với tất cả các tài liệu trong trang web bao gồm các bài đăng và tài liệu trong các bộ sưu tập do người dùng định nghĩa</p>
       </td>
       <td>
         <p><code>:post_init</code></p>
       </td>
       <td>
-        <p>Whenever any document is initialized</p>
+        <p>Bất cứ khi nào bất kỳ tài liệu nào được khởi tạo</p>
       </td>
     </tr>
     <tr>
@@ -156,7 +157,7 @@ The complete list of available hooks:
         <p><code>:pre_render</code></p>
       </td>
       <td>
-        <p>Just before rendering a document</p>
+        <p>Ngay trước khi hiển thị một tài liệu</p>
       </td>
     </tr>
     <tr>
@@ -165,8 +166,8 @@ The complete list of available hooks:
       </td>
       <td>
         <p>
-          After converting the document content, but before rendering the document
-          layout
+          Sau khi chuyển đổi nội dung tài liệu, nhưng trước khi hiển thị bố cục
+          tài liệu
         </p>
       </td>
     </tr>
@@ -175,7 +176,7 @@ The complete list of available hooks:
         <p><code>:post_render</code></p>
       </td>
       <td>
-        <p>After rendering a document, but before writing it to disk</p>
+        <p>Sau khi hiển thị một tài liệu, nhưng trước khi ghi nó vào đĩa</p>
       </td>
     </tr>
     <tr>
@@ -183,19 +184,19 @@ The complete list of available hooks:
         <p><code>:post_write</code></p>
       </td>
       <td>
-        <p>After writing a document to disk</p>
+        <p>Sau khi ghi một tài liệu vào đĩa</p>
       </td>
     </tr>
     <tr>
       <td rowspan="5">
         <p><code>:posts</code></p>
-        <p>Allows fine-grained control over all posts in the site without affecting documents in user-defined collections</p>
+        <p>Cho phép kiểm soát chi tiết đối với tất cả các bài đăng trong trang web mà không ảnh hưởng đến các tài liệu trong các bộ sưu tập do người dùng định nghĩa</p>
       </td>
       <td>
         <p><code>:post_init</code></p>
       </td>
       <td>
-        <p>Whenever a post is initialized</p>
+        <p>Bất cứ khi nào một bài đăng được khởi tạo</p>
       </td>
     </tr>
     <tr>
@@ -203,7 +204,7 @@ The complete list of available hooks:
         <p><code>:pre_render</code></p>
       </td>
       <td>
-        <p>Just before rendering a post</p>
+        <p>Ngay trước khi hiển thị một bài đăng</p>
       </td>
     </tr>
     <tr>
@@ -211,7 +212,7 @@ The complete list of available hooks:
         <p><code>:post_convert</code></p>
       </td>
       <td>
-        <p>After converting the post content, but before rendering the post layout</p>
+        <p>Sau khi chuyển đổi nội dung bài đăng, nhưng trước khi hiển thị bố cục bài đăng</p>
       </td>
     </tr>
     <tr>
@@ -219,7 +220,7 @@ The complete list of available hooks:
         <p><code>:post_render</code></p>
       </td>
       <td>
-        <p>After rendering a post, but before writing it to disk</p>
+        <p>Sau khi hiển thị một bài đăng, nhưng trước khi ghi nó vào đĩa</p>
       </td>
     </tr>
     <tr>
@@ -227,31 +228,31 @@ The complete list of available hooks:
         <p><code>:post_write</code></p>
       </td>
       <td>
-        <p>After writing a post to disk</p>
+        <p>Sau khi ghi một bài đăng vào đĩa</p>
       </td>
     </tr>
     <tr>
       <td>
         <p><code>:clean</code></p>
-        <p>Fine-grained control on the list of obsolete files determined to be deleted during the site's cleanup phase.</p>
+        <p>Kiểm soát chi tiết danh sách các tệp lỗi thời được xác định sẽ bị xóa trong giai đoạn dọn dẹp của trang web.</p>
       </td>
       <td>
         <p><code>:on_obsolete</code></p>
       </td>
       <td>
-        <p>During the cleanup of a site's destination before it is built</p>
+        <p>Trong quá trình dọn dẹp đích của một trang web trước khi nó được xây dựng</p>
       </td>
     </tr>
   </tbody>
 </table>
 </div>
 
-## Hooks for custom Jekyll objects
+## Móc cho các đối tượng Jekyll tùy chỉnh
 
-You can also register and trigger hooks for Jekyll objects introduced by your plugin. All it takes is placing `trigger` calls under a suitable
-`owner` name, at positions desired within your custom class and registering the `owner` by your plugin.
+Bạn cũng có thể đăng ký và kích hoạt các móc cho các đối tượng Jekyll được giới thiệu bởi plugin của bạn. Tất cả những gì cần làm là đặt các cuộc gọi `trigger` dưới một tên
+`owner` phù hợp, tại các vị trí mong muốn trong lớp tùy chỉnh của bạn và đăng ký `owner` bởi plugin của bạn.
 
-To illustrate, consider the following plugin that implements custom functionality for every custom `Excerpt` object initialized:
+Để minh họa, hãy xem xét plugin sau triển khai chức năng tùy chỉnh cho mọi đối tượng `Excerpt` tùy chỉnh được khởi tạo:
 
 ```ruby
 module Foobar

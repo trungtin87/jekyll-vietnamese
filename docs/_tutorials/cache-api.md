@@ -1,43 +1,43 @@
 ---
-title: Cache API
+title: API Bộ nhớ đệm (Cache API)
 author: pathawks
 date: 2018-08-17 12:56:24 -0400
 ---
 
-Jekyll includes a caching API, which is used both internally as well as exposed
-for plugins, which can be used to cache the output of deterministic functions to
-speed up site generation. This cache will be persistent across builds, but
-cleared when Jekyll detects any changes to `_config.yml`.
+Jekyll bao gồm một API bộ nhớ đệm, được sử dụng cả nội bộ cũng như được công khai
+cho các plugin, có thể được sử dụng để lưu vào bộ nhớ đệm đầu ra của các hàm xác định để
+tăng tốc độ tạo trang web. Bộ nhớ đệm này sẽ tồn tại qua các lần xây dựng, nhưng
+sẽ bị xóa khi Jekyll phát hiện bất kỳ thay đổi nào đối với `_config.yml`.
 
 ## Jekyll::Cache.new(name) → new_cache
 
-If there has already been a cache created with `name`, this will return a
-reference to that existing Cache. Otherwise, create a new Cache called `name`.
+Nếu đã có một bộ nhớ đệm được tạo với `name`, điều này sẽ trả về một
+tham chiếu đến Cache hiện có đó. Nếu không, tạo một Cache mới có tên `name`.
 
-If this Cache will be used by a Gem-packaged plugin, `name` should either be the
-name of the Gem, or prefixed with the name of the Gem followed by `::` (if a
-plugin expects to use multiple Caches). If this Cache will be used internally by
-Jekyll, `name` should be the name of the class that is using the Cache (ie:
+Nếu Cache này sẽ được sử dụng bởi một plugin được đóng gói Gem, `name` nên là
+tên của Gem, hoặc có tiền tố là tên của Gem theo sau bởi `::` (nếu một
+plugin dự kiến sử dụng nhiều Cache). Nếu Cache này sẽ được sử dụng nội bộ bởi
+Jekyll, `name` nên là tên của lớp đang sử dụng Cache (tức là:
 `"Jekyll::Converters::Markdown"`).
 
-Cached objects are shared between all Caches created with the same `name`, but
-are _not_ shared between Caches with different names. There can be an object
-stored with key `1` in `Jekyll::Cache.new("a")` and an object stored with key
-`1` in `Jekyll::Cache.new("b")` and these will not point to the same cached
-object. This way, you do not need to ensure that keys are globally unique.
+Các đối tượng được lưu trong bộ nhớ đệm được chia sẻ giữa tất cả các Cache được tạo với cùng `name`, nhưng
+_không_ được chia sẻ giữa các Cache có tên khác nhau. Có thể có một đối tượng
+được lưu trữ với khóa `1` trong `Jekyll::Cache.new("a")` và một đối tượng được lưu trữ với khóa
+`1` trong `Jekyll::Cache.new("b")` và những cái này sẽ không trỏ đến cùng một đối tượng
+được lưu trong bộ nhớ đệm. Bằng cách này, bạn không cần đảm bảo rằng các khóa là duy nhất toàn cục.
 
 ## getset(key) {block}
 
-This is the most common way to utilize the Cache.
+Đây là cách phổ biến nhất để sử dụng Cache.
 
-`block` is a bit of code that takes a lot of time to compute, but always
-generates the same output given a particular input (like converting Markdown to
-HTML). `key` is a `String` (or an object with `to_s`) that uniquely identifies
-the input to the function.
+`block` là một đoạn mã mất nhiều thời gian để tính toán, nhưng luôn
+tạo ra cùng một đầu ra cho một đầu vào cụ thể (như chuyển đổi Markdown thành
+HTML). `key` là một `String` (hoặc một đối tượng có `to_s`) xác định duy nhất
+đầu vào cho hàm.
 
-If `key` already exists in the Cache, it will be returned and `block` will never
-be executed. If `key` does not exist in the Cache, `block` will be executed and
-the result will be added to the Cache and returned.
+Nếu `key` đã tồn tại trong Cache, nó sẽ được trả về và `block` sẽ không bao giờ
+được thực thi. Nếu `key` không tồn tại trong Cache, `block` sẽ được thực thi và
+kết quả sẽ được thêm vào Cache và được trả về.
 
 ```ruby
 def cache
@@ -51,36 +51,36 @@ def convert_markdown_to_html(markdown)
 end
 ```
 
-In the above example, `expensive_conversion_method` will only be called once for
-any given `markdown` input. If `convert_markdown_to_html` is called a second
-time with the same input, the cached output will be returned.
+Trong ví dụ trên, `expensive_conversion_method` sẽ chỉ được gọi một lần cho
+bất kỳ đầu vào `markdown` nào. Nếu `convert_markdown_to_html` được gọi lần thứ hai
+với cùng đầu vào, đầu ra được lưu trong bộ nhớ đệm sẽ được trả về.
 
-Because posts will frequently remain unchanged from one build to the next, this
-is an effective way to avoid performing the same computations each time the site
-is built.
+Vì các bài đăng thường sẽ không thay đổi từ lần xây dựng này sang lần xây dựng tiếp theo, đây
+là một cách hiệu quả để tránh thực hiện cùng một phép tính mỗi khi trang web
+được xây dựng.
 
 ## clear
 
-This will clear all cached objects from a particular Cache. The Cache will be
-empty, both in memory and on disk.
+Điều này sẽ xóa tất cả các đối tượng được lưu trong bộ nhớ đệm từ một Cache cụ thể. Cache sẽ
+trống, cả trong bộ nhớ và trên đĩa.
 
-### The following methods will probably only be used in special circumstances
+### Các phương thức sau đây có thể sẽ chỉ được sử dụng trong các trường hợp đặc biệt
 
 ## cache[key] → value
 
-Fetches `key` from Cache and returns its `value`. Raises if `key` does not exist
-in Cache.
+Lấy `key` từ Cache và trả về `value` của nó. Gây ra lỗi nếu `key` không tồn tại
+trong Cache.
 
 ## cache[key] = value
 
-Adds `value` to Cache under `key`.
-Returns nothing.
+Thêm `value` vào Cache dưới `key`.
+Không trả về gì.
 
-## key?(key) → true or false
+## key?(key) → true hoặc false
 
-Returns `true` if `key` already exists in Cache. False otherwise.
+Trả về `true` nếu `key` đã tồn tại trong Cache. False nếu không.
 
 ## delete(key)
 
-Removes `key` from Cache.
-Returns nothing.
+Xóa `key` khỏi Cache.
+Không trả về gì.

@@ -1,30 +1,30 @@
 ---
-title: "Avoiding Burnout"
+title: "Tránh Kiệt sức"
 ---
 
-**This guide is for maintainers.** These special people have **write access** to one or more of Jekyll's repositories and help merge the contributions of others. You may find what is written here interesting, but it’s definitely not for everyone.
+**Hướng dẫn này dành cho những người duy trì.** Những người đặc biệt này có **quyền ghi** vào một hoặc nhiều kho lưu trữ của Jekyll và giúp hợp nhất các đóng góp của người khác. Bạn có thể thấy những gì được viết ở đây thú vị, nhưng nó chắc chắn không dành cho tất cả mọi người.
 {: .note .info}
 
-# 1. Use Jekyll
+# 1. Sử dụng Jekyll
 
-Maintainers of Jekyll should be using it regularly. This is partly because you won't be a good maintainer unless you can put yourself in the shoes of our users, but also because you may at some point decide to stop using Jekyll, and at that point you should also decide to stop being a maintainer and find other things to work on.
+Những người duy trì Jekyll nên sử dụng nó thường xuyên. Điều này một phần là do bạn sẽ không phải là một người duy trì tốt nếu bạn không thể đặt mình vào vị trí của người dùng của chúng tôi, nhưng cũng bởi vì bạn có thể tại một thời điểm nào đó quyết định ngừng sử dụng Jekyll, và tại thời điểm đó bạn cũng nên quyết định ngừng làm người duy trì và tìm những thứ khác để làm.
 
-# 2. No Guilt About Leaving
+# 2. Không Cảm thấy Tội lỗi Khi Rời đi
 
-All maintainers can stop working on Jekyll at any time without any guilt or explanation (like at a job). We may still ask for your help with questions after you leave but you are under no obligation to answer them. If you create a big mess and then leave you still have no obligations but we may think less of you (or, realistically, probably just revert the problematic work). Also, you should probably take a break from Jekyll at least a few times a year.
+Tất cả những người duy trì có thể ngừng làm việc trên Jekyll bất cứ lúc nào mà không có bất kỳ cảm giác tội lỗi hoặc giải thích nào (như tại một công việc). Chúng tôi vẫn có thể yêu cầu sự giúp đỡ của bạn với các câu hỏi sau khi bạn rời đi nhưng bạn không có nghĩa vụ phải trả lời chúng. Nếu bạn tạo ra một mớ hỗn độn lớn và sau đó rời đi, bạn vẫn không có nghĩa vụ nào nhưng chúng tôi có thể nghĩ ít hơn về bạn (hoặc, thực tế, có lẽ chỉ cần hoàn lại công việc có vấn đề). Ngoài ra, bạn có lẽ nên nghỉ ngơi khỏi Jekyll ít nhất một vài lần một năm.
 
-This also means contributors should be consumers. If a maintainer finds they are not using a project in the real-world, they should reconsider their involvement with the project.
+Điều này cũng có nghĩa là những người đóng góp nên là người tiêu dùng. Nếu một người duy trì thấy họ không sử dụng một dự án trong thế giới thực, họ nên xem xét lại sự tham gia của mình với dự án.
 
-# 3. Prioritise Maintainers Over Users
+# 3. Ưu tiên Người duy trì Hơn Người dùng
 
-It's important to be user-focused but ultimately, as long as you follow #1 above, Jekyll's minimum number of users will be the number of maintainers. However, if Jekyll has no maintainers it will quickly become useless to all users and the project will die. As a result, no user complaint, behaviour or need takes priority over the burnout of maintainers. If users do not like the direction of the project, the easiest way to influence it is to make significant, high-quality code contributions and become a maintainer.
+Điều quan trọng là phải tập trung vào người dùng nhưng cuối cùng, miễn là bạn tuân theo #1 ở trên, số lượng người dùng tối thiểu của Jekyll sẽ là số lượng người duy trì. Tuy nhiên, nếu Jekyll không có người duy trì, nó sẽ nhanh chóng trở nên vô dụng đối với tất cả người dùng và dự án sẽ chết. Do đó, không có khiếu nại, hành vi hoặc nhu cầu nào của người dùng được ưu tiên hơn sự kiệt sức của người duy trì. Nếu người dùng không thích hướng đi của dự án, cách dễ nhất để ảnh hưởng đến nó là thực hiện các đóng góp mã quan trọng, chất lượng cao và trở thành người duy trì.
 
-# 4. Learn To Say No
+# 4. Học Cách Nói Không
 
-Jekyll gets a lot of feature requests, non-reproducible bug reports, usage questions and PRs we won't accept. These should be closed out as soon as we realise that they aren't going to be resolved or merged. This is kinder than deciding this after a long period of review. Our issue tracker should reflect work to be done.
+Jekyll nhận được rất nhiều yêu cầu tính năng, báo cáo lỗi không thể tái tạo, câu hỏi sử dụng và PR mà chúng tôi sẽ không chấp nhận. Những điều này nên được đóng lại ngay khi chúng tôi nhận ra rằng chúng sẽ không được giải quyết hoặc hợp nhất. Điều này tử tế hơn là quyết định điều này sau một thời gian dài xem xét. Trình theo dõi vấn đề của chúng tôi nên phản ánh công việc cần làm.
 
 ---
 
-Thanks to https://gist.github.com/ryanflorence/124070e7c4b3839d4573 which influenced this document.
+Cảm ơn <https://gist.github.com/ryanflorence/124070e7c4b3839d4573> đã ảnh hưởng đến tài liệu này.
 
-Thanks to [Homebrew's "Avoiding Burnout" document](https://github.com/Homebrew/brew/blob/master/docs/Maintainers-Avoiding-Burnout.md) for providing a perfect base for this document.
+Cảm ơn [tài liệu "Avoiding Burnout" của Homebrew](https://github.com/Homebrew/brew/blob/master/docs/Maintainers-Avoiding-Burnout.md) đã cung cấp một cơ sở hoàn hảo cho tài liệu này.

@@ -3,27 +3,27 @@ title: Ruby 101
 permalink: /docs/ruby-101/
 ---
 
-Jekyll is written in Ruby. If you're new to Ruby, this page helps you learn some of the terminology.
+Jekyll được viết bằng Ruby. Nếu bạn mới làm quen với Ruby, trang này sẽ giúp bạn tìm hiểu một số thuật ngữ.
 
 ## Gems
 
-Gems are code you can include in Ruby projects. Gems package specific functionality. You can share gems across multiple projects or with other people. 
-Gems can perform actions like:
+Gems là mã bạn có thể đưa vào các dự án Ruby. Gems đóng gói chức năng cụ thể. Bạn có thể chia sẻ gems qua nhiều dự án hoặc với những người khác.
+Gems có thể thực hiện các hành động như:
 
-* Converting a Ruby object to JSON
-* Pagination
-* Interacting with APIs such as GitHub
+* Chuyển đổi một đối tượng Ruby sang JSON
+* Phân trang
+* Tương tác với các API như GitHub
 
-Jekyll is a gem. Many Jekyll [plugins]({{ '/docs/plugins/' | relative_url }}) are also gems, including
+Jekyll là một gem. Nhiều [plugin]({{ '/docs/plugins/' | relative_url }}) Jekyll cũng là gems, bao gồm
 [jekyll-feed](https://github.com/jekyll/jekyll-feed),
-[jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) and
+[jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) và
 [jekyll-archives](https://github.com/jekyll/jekyll-archives).
 
 ## Gemfile
 
-A `Gemfile` is a list of gems used by your site. Every Jekyll site has a Gemfile in the main folder. 
+Một `Gemfile` là danh sách các gems được sử dụng bởi trang web của bạn. Mọi trang web Jekyll đều có một Gemfile trong thư mục chính.
 
-For a simple Jekyll site it might look something like this:
+Đối với một trang web Jekyll đơn giản, nó có thể trông giống như thế này:
 
 ```ruby
 source "https://rubygems.org"
@@ -38,19 +38,19 @@ end
 
 ## Bundler
 
-[Bundler](https://rubygems.org/gems/bundler) is a gem that installs all gems in your `Gemfile`. 
+[Bundler](https://rubygems.org/gems/bundler) là một gem cài đặt tất cả các gems trong `Gemfile` của bạn.
 
-While you don't have to use `Gemfile` and `bundler`, it is highly recommended as it ensures you're running the same version of Jekyll and its plugins across different environments.
+Mặc dù bạn không bắt buộc phải sử dụng `Gemfile` và `bundler`, nhưng nó rất được khuyến khích vì nó đảm bảo bạn đang chạy cùng một phiên bản Jekyll và các plugin của nó trên các môi trường khác nhau.
 
-Install Bundler using `gem install bundler`. You only need to install it once, not every time you create a new Jekyll project. 
+Cài đặt Bundler bằng cách sử dụng `gem install bundler`. Bạn chỉ cần cài đặt nó một lần, không phải mỗi lần bạn tạo một dự án Jekyll mới.
 
-To install gems in your Gemfile using Bundler, run the following in the directory that has the Gemfile:
+Để cài đặt các gems trong Gemfile của bạn bằng Bundler, hãy chạy lệnh sau trong thư mục có Gemfile:
 
 ```
 bundle install
 bundle exec jekyll serve
 ```
 
-To bypass Bundler if you aren't using a Gemfile, run `jekyll serve`.
+Để bỏ qua Bundler nếu bạn không sử dụng Gemfile, hãy chạy `jekyll serve`.
 
-See [Using Jekyll with Bundler](/tutorials/using-jekyll-with-bundler/) for more information about Bundler in Jekyll and for instructions to get up and running quickly.
+Xem [Sử dụng Jekyll với Bundler](/tutorials/using-jekyll-with-bundler/) để biết thêm thông tin về Bundler trong Jekyll và hướng dẫn để bắt đầu nhanh chóng.

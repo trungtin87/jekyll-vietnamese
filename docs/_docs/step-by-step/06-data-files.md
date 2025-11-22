@@ -1,35 +1,29 @@
 ---
 layout: step
-title: Data Files
+title: Tệp dữ liệu
 position: 6
 ---
-Jekyll supports loading data from YAML, JSON, and CSV files located in a `_data`
-directory. Data files are a great way to separate content from source code to
-make the site easier to maintain.
+Jekyll hỗ trợ tải dữ liệu từ các tệp YAML, JSON và CSV nằm trong thư mục `_data`. Các tệp dữ liệu là một cách tuyệt vời để tách nội dung khỏi mã nguồn để làm cho trang web dễ bảo trì hơn.
 
-In this step you'll store the contents of the navigation in a data file
-and then iterate over it in the navigation include.
+Trong bước này, bạn sẽ lưu trữ nội dung của điều hướng trong một tệp dữ liệu và sau đó lặp lại nó trong bao gồm điều hướng.
 
-## Data file usage
+## Sử dụng tệp dữ liệu
 
-[YAML](http://yaml.org/) is a format that's common in the Ruby ecosystem. You'll
-use it to store an array of navigation items each with a name and link.
+[YAML](http://yaml.org/) là một định dạng phổ biến trong hệ sinh thái Ruby. Bạn sẽ sử dụng nó để lưu trữ một mảng các mục điều hướng, mỗi mục có tên và liên kết.
 
-Create a data file for the navigation at `_data/navigation.yml` with the
-following:
+Tạo một tệp dữ liệu cho điều hướng tại `_data/navigation.yml` với nội dung sau:
 
 ```yaml
-- name: Home
+- name: Trang chủ
   link: /
-- name: About
+- name: Giới thiệu
   link: /about.html
 ```
 
-Jekyll makes this data file available to you at `site.data.navigation`. Instead
-of outputting each link in `_includes/navigation.html`, now you can iterate over
-the data file instead:
+Jekyll làm cho tệp dữ liệu này có sẵn cho bạn tại `site.data.navigation`. Thay vì xuất từng liên kết trong `_includes/navigation.html`, bây giờ bạn có thể lặp lại tệp dữ liệu thay thế:
 
 {% raw %}
+
 ```liquid
 <nav>
   {% for item in site.data.navigation %}
@@ -39,10 +33,9 @@ the data file instead:
   {% endfor %}
 </nav>
 ```
+
 {% endraw %}
 
-The output will be exactly the same. The difference is you’ve made it easier to
-add new navigation items and change the HTML structure.
+Đầu ra sẽ hoàn toàn giống nhau. Sự khác biệt là bạn đã làm cho việc thêm các mục điều hướng mới và thay đổi cấu trúc HTML dễ dàng hơn.
 
-What good is a site without CSS, JS and images? Let’s look at how to handle
-assets in Jekyll.
+Một trang web sẽ tốt như thế nào nếu không có CSS, JS và hình ảnh? Hãy xem cách xử lý tài sản trong Jekyll.

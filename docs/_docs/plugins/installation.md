@@ -3,19 +3,19 @@ title: Plugins
 permalink: /docs/plugins/installation/
 ---
 
-Jekyll has built-in support for using plugins to extend the core functionality.
+Jekyll có hỗ trợ tích hợp cho việc sử dụng các plugin để mở rộng chức năng cốt lõi.
 
-Primarily, any file with extension `.rb` placed within a `_plugins` directory at the root of the site's `source`, will be automatically loaded
-during a build session.
+Về cơ bản, bất kỳ tệp nào có phần mở rộng `.rb` được đặt trong thư mục `_plugins` tại gốc của `source` trang web, sẽ được tự động tải
+trong một phiên xây dựng.
 
-This behavior can be configured as follows:
+Hành vi này có thể được cấu hình như sau:
 
-- The `_plugins` directory may be changed either directly via the command-line or via the configuration file(s).
-- Plugins in the `_plugins` directory (or its equivalent(s)) will not be loaded when Jekyll is running in `safe` mode.
-- This route cannot be used to extend the Jekyll CLI.
+- Thư mục `_plugins` có thể được thay đổi trực tiếp thông qua dòng lệnh hoặc thông qua (các) tệp cấu hình.
+- Các plugin trong thư mục `_plugins` (hoặc tương đương) sẽ không được tải khi Jekyll đang chạy ở chế độ `safe`.
+- Tuyến đường này không thể được sử dụng để mở rộng Jekyll CLI.
 
-To work with plugins packaged as gems, one has to list the desired gems in the configuration file under a top-level key named `plugins`.
-Additionally, if you're building in `safe` mode, the gem needs to be listed under a top-level key named `whitelist`. For example:
+Để làm việc với các plugin được đóng gói dưới dạng gem, người ta phải liệt kê các gem mong muốn trong tệp cấu hình dưới một khóa cấp cao nhất có tên `plugins`.
+Ngoài ra, nếu bạn đang xây dựng ở chế độ `safe`, gem cần được liệt kê dưới một khóa cấp cao nhất có tên `whitelist`. Ví dụ:
 
 ```yaml
 plugins:
@@ -36,19 +36,19 @@ whitelist:
   - jekyll-seo-tag
 ```
 
-In the absence of a Gemfile, one must manually ensure that listed plugins have been installed prior to invoking Jekyll. For example, the
-latest versions of gems in the above list may be installed to a system-wide location by running:
+Trong trường hợp không có Gemfile, người ta phải đảm bảo thủ công rằng các plugin được liệt kê đã được cài đặt trước khi gọi Jekyll. Ví dụ, các
+phiên bản mới nhất của các gem trong danh sách trên có thể được cài đặt vào một vị trí toàn hệ thống bằng cách chạy:
 
 ```sh
 gem install jekyll-gist jekyll-coffeescript jekyll-remote-theme some-other-jekyll-plugin
 ```
 
-## Using a Gemfile
+## Sử dụng Gemfile
 
-The maintenance of various gem dependencies may be greatly simplified by using a Gemfile (usually at the root of the site's source) in
-conjunction with a Rubygem named `bundler`. The Gemfile however **should** list all the primary dependencies of your site, including Jekyll
-itself, not just gem-based plugins of the site because Bundler narrows the scope of installed gems to just *runtime dependencies* resolved by
-evaluating the Gemfile. For example:
+Việc bảo trì các phụ thuộc gem khác nhau có thể được đơn giản hóa rất nhiều bằng cách sử dụng Gemfile (thường ở gốc của nguồn trang web) kết hợp
+với một Rubygem có tên `bundler`. Tuy nhiên, Gemfile **nên** liệt kê tất cả các phụ thuộc chính của trang web của bạn, bao gồm cả Jekyll,
+không chỉ các plugin dựa trên gem của trang web vì Bundler thu hẹp phạm vi của các gem đã cài đặt thành chỉ các *phụ thuộc thời gian chạy* được giải quyết bằng cách
+đánh giá Gemfile. Ví dụ:
 
 ```ruby
 source "https://rubygems.org"
@@ -70,16 +70,17 @@ gem "some-other-jekyll-plugin"
 gem "nokogiri", "~> 1.11"
 ```
 
-The gems listed in the Gemfile can be collectively installed by simply running `bundle install`.
+Các gem được liệt kê trong Gemfile có thể được cài đặt tập thể bằng cách đơn giản chạy `bundle install`.
 
-### The `:jekyll_plugins` Gemfile group
+### Nhóm Gemfile `:jekyll_plugins`
+
 {: #the-jekyll_plugins-group}
 
-Jekyll gives a special treatment to gems listed as part of the `:jekyll_plugins` group in a Gemfile. Any gem under this group is loaded at
-the very beginning of any Jekyll process, irrespective of the `--safe` CLI flag or entries in the configuration file(s).
+Jekyll dành sự đối xử đặc biệt cho các gem được liệt kê là một phần của nhóm `:jekyll_plugins` trong Gemfile. Bất kỳ gem nào thuộc nhóm này đều được tải tại
+ngay khi bắt đầu bất kỳ quy trình Jekyll nào, bất kể cờ CLI `--safe` hoặc các mục trong (các) tệp cấu hình.
 
-While this route allows one to enhance Jekyll's CLI with additional subcommands and options, or avoid having to list gems in the configuration
-file, the downside is the necessity to be mindful of what gems are included in the group. For example:
+Trong khi tuyến đường này cho phép người ta nâng cao Jekyll CLI với các lệnh con và tùy chọn bổ sung, hoặc tránh phải liệt kê các gem trong tệp cấu hình,
+nhược điểm là sự cần thiết phải lưu ý đến những gem nào được bao gồm trong nhóm. Ví dụ:
 
 ```ruby
 source "https://rubygems.org"
@@ -103,25 +104,25 @@ end
 ```
 
 <div class="note info">
-  <h5>Plugins on GitHub Pages</h5>
+  <h5>Plugins trên GitHub Pages</h5>
   <p>
-    <a href="https://pages.github.com/">GitHub Pages</a> is powered by Jekyll. All GitHub Pages sites are generated using the
-    <code>--safe</code> option to disable plugins (with the exception of some
-    <a href="https://pages.github.com/versions">whitelisted plugins</a>) for security reasons. Unfortunately, this means your plugins won't
-    work if you’re deploying via GitHub Pages.<br><br>
-    You can still use GitHub Pages to publish your site, but you'll need to either build the site locally and push the generated files to
-    your GitHub repository or use
-    <a href="{{ '/docs/continuous-integration/github-actions/' | relative_url }}" title="GitHub Actions">GitHub Actions</a> to host source
-    files on GitHub yet build and deploy with full control on GitHub Pages.
+    <a href="https://pages.github.com/">GitHub Pages</a> được cung cấp bởi Jekyll. Tất cả các trang web GitHub Pages được tạo bằng cách sử dụng tùy chọn
+    <code>--safe</code> để vô hiệu hóa các plugin (ngoại trừ một số
+    <a href="https://pages.github.com/versions">plugin được đưa vào danh sách trắng</a>) vì lý do bảo mật. Thật không may, điều này có nghĩa là các plugin của bạn sẽ không
+    hoạt động nếu bạn đang triển khai qua GitHub Pages.<br><br>
+    Bạn vẫn có thể sử dụng GitHub Pages để xuất bản trang web của mình, nhưng bạn sẽ cần phải xây dựng trang web cục bộ và đẩy các tệp đã tạo đến
+    kho lưu trữ GitHub của bạn hoặc sử dụng
+    <a href="{{ '/docs/continuous-integration/github-actions/' | relative_url }}" title="GitHub Actions">GitHub Actions</a> để lưu trữ các tệp nguồn
+    trên GitHub nhưng xây dựng và triển khai với toàn quyền kiểm soát trên GitHub Pages.
   </p>
 </div>
 
 <div class="note">
   <h5>
-    <code>_plugins</code>, <code>_config.yml</code> and <code>Gemfile</code> can be used simultaneously
+    <code>_plugins</code>, <code>_config.yml</code> và <code>Gemfile</code> có thể được sử dụng đồng thời
   </h5>
   <p>
-    You may use any of the aforementioned plugin routes simultaneously in the same site if you so choose.
-    Use of one does not restrict the use of the others.
+    Bạn có thể sử dụng bất kỳ tuyến đường plugin nào đã nói ở trên đồng thời trong cùng một trang web nếu bạn chọn.
+    Việc sử dụng một cái không hạn chế việc sử dụng những cái khác.
   </p>
 </div>

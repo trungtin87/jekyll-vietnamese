@@ -1,49 +1,50 @@
 ---
-title: Convert an HTML site to Jekyll
+title: Chuyển đổi trang web HTML sang Jekyll
 author: tomjoht
 date: 2017-02-10 21:58:56 -0800
 ---
 
-If you're looking for themes for your Jekyll site, you don't have to restrict yourself to existing Jekyll themes. It's pretty easy to convert almost any static HTML files into a Jekyll website.
+Nếu bạn đang tìm kiếm giao diện cho trang web Jekyll của mình, bạn không phải giới hạn bản thân với các giao diện Jekyll hiện có. Khá dễ dàng để chuyển đổi hầu hết bất kỳ tệp HTML tĩnh nào thành một trang web Jekyll.
 
-In many ways, any site that is currently a static site is *already* a Jekyll website. Jekyll just allows you to automate parts of the site (like inserting pages into templates, rendering lists for navigation, generating feeds and sitemaps, and more) as it processes the files.
+Theo nhiều cách, bất kỳ trang web nào hiện đang là trang web tĩnh *đã* là một trang web Jekyll. Jekyll chỉ cho phép bạn tự động hóa các phần của trang web (như chèn các trang vào template, hiển thị danh sách để điều hướng, tạo nguồn cấp dữ liệu và sơ đồ trang web, v.v.) khi nó xử lý các tệp.
 
-Understanding how to convert any HTML site into Jekyll templates will open your world to many more options for Jekyll themes. Instead of [searching online for  *Jekyll themes*](https://duckduckgo.com/?q=Jekyll+themes), you can choose from the large variety of HTML templates for your site, quickly Jekyll-ize the HTML templates as you need to, and build the output with Jekyll.
+Hiểu cách chuyển đổi bất kỳ trang web HTML nào thành template Jekyll sẽ mở ra thế giới của bạn với nhiều tùy chọn hơn cho các giao diện Jekyll. Thay vì [tìm kiếm trực tuyến các *giao diện Jekyll*](https://duckduckgo.com/?q=Jekyll+themes), bạn có thể chọn từ nhiều template HTML cho trang web của mình, nhanh chóng Jekyll-hóa các template HTML khi bạn cần và xây dựng đầu ra với Jekyll.
 
-Although websites can have sophisticated features and controls, we'll keep things simple in this tutorial.
+Mặc dù các trang web có thể có các tính năng và điều khiển phức tạp, chúng ta sẽ giữ mọi thứ đơn giản trong hướng dẫn này.
 
-## What is a Jekyll Website?
+## Trang web Jekyll là gì?
 
-First, let's start with a grounding in the basics. Stripping a Jekyll site down to an extremely basic level will help clarify what happens in a Jekyll site. If you haven't already installed the jekyll gem, [install it]({% link _docs/installation.md %}).
+Đầu tiên, hãy bắt đầu với nền tảng cơ bản. Tách một trang web Jekyll xuống mức cơ bản nhất sẽ giúp làm rõ những gì xảy ra trong một trang web Jekyll. Nếu bạn chưa cài đặt gem jekyll, [hãy cài đặt nó]({% link _docs/installation.md %}).
 
-We'll start with a *basic Jekyll site* consisting of three files:
+Chúng ta sẽ bắt đầu với một *trang web Jekyll cơ bản* bao gồm ba tệp:
 
 ```
 .
 ├── _config.yml
 ├── _layouts
-│   └── default.html
+│   └── default.html
 └── index.md
 ```
 
-Manually create these three files in a folder called `my_jekyll_site` or whatever suits you the most, and place `default.html` inside a folder named `_layouts`.
+Tạo thủ công ba tệp này trong một thư mục có tên `my_jekyll_site` hoặc bất cứ tên nào phù hợp nhất với bạn, và đặt `default.html` bên trong một thư mục có tên `_layouts`.
 
 ```sh
 touch _config.yml index.md default.html
 mkdir _layouts && mv default.html _layouts
 ```
 
-Fire up your favorite editor, and populate the contents of the `default.html` and `index.md` files as follows:
+Khởi động trình soạn thảo yêu thích của bạn và điền nội dung của các tệp `default.html` và `index.md` như sau:
 
 **_config.yml**
 
 ```yaml
-name: My Jekyll Website
+name: Trang web Jekyll của tôi
 ```
 
 **_layouts/default.html**
 
 {% raw %}
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -52,31 +53,34 @@ name: My Jekyll Website
   </body>
 </html>
 ```
+
 {% endraw %}
 
 **index.md**
 
 {% raw %}
+
 ```markdown
 ---
-title: My page
+title: Trang của tôi
 layout: default
 ---
 
 # {{ page.title }}
 
-Content is written in [Markdown](https://learnxinyminutes.com/docs/markdown/).
-Plain text format allows you to focus on your **content**.
+Nội dung được viết bằng [Markdown](https://learnxinyminutes.com/docs/markdown/).
+Định dạng văn bản thuần túy cho phép bạn tập trung vào **nội dung** của mình.
 
 <!--
-You can use HTML elements in Markdown, such as the comment element, and they won't
-be affected by a markdown parser. However, if you create an HTML element in your
-markdown file, you cannot use markdown syntax within that element's contents.
+Bạn có thể sử dụng các phần tử HTML trong Markdown, chẳng hạn như phần tử comment, và chúng sẽ không
+bị ảnh hưởng bởi trình phân tích markdown. Tuy nhiên, nếu bạn tạo một phần tử HTML trong
+tệp markdown của mình, bạn không thể sử dụng cú pháp markdown trong nội dung của phần tử đó.
 -->
 ```
+
 {% endraw %}
 
-Now `cd` to `my_jekyll_site` and serve the site with the built-in server:
+Bây giờ `cd` vào `my_jekyll_site` và phục vụ trang web với máy chủ tích hợp:
 
 ```sh
 cd my_jekyll_site
@@ -84,104 +88,108 @@ jekyll serve
 ```
 
 {: .note .info}
-If you have a Gemfile, [use Bundler](/docs/ruby-101/#bundler) by typing `bundle exec jekyll serve` instead.
+Nếu bạn có Gemfile, [hãy sử dụng Bundler](/docs/ruby-101/#bundler) bằng cách nhập `bundle exec jekyll serve` thay thế.
 
-When you serve the site, you get a preview URL such as `http://127.0.0.1:4000/` (which is the same as `http://localhost:4000/`). The site's files are built into the `_site` folder by default.
+Khi bạn phục vụ trang web, bạn nhận được URL xem trước như `http://127.0.0.1:4000/` (giống với `http://localhost:4000/`). Các tệp của trang web được xây dựng vào thư mục `_site` theo mặc định.
 
-This is a Jekyll site at the most basic functional level. Here's what is happening:
+Đây là một trang web Jekyll ở cấp độ chức năng cơ bản nhất. Đây là những gì đang xảy ra:
 
-  * The `_config.yml` file contains settings that Jekyll uses as it processes your site. An empty config file will use default values for building a Jekyll site. For example, to convert [Markdown](https://learnxinyminutes.com/docs/markdown/) to HTML, Jekyll will automatically use the [kramdown Markdown filter](https://rubygems.org/gems/kramdown/), without any need to specify it.
-  * Jekyll looks for files with [front matter tags]({% link _docs/front-matter.md %}) (the two sets of dashed lines `---` like those in `index.md`) and processes the files (populating site variables, rendering any [Liquid](https://shopify.github.io/liquid/), and converting Markdown to HTML).
-  * Jekyll pushes the content from all pages and posts into the {% raw %}`{{ content }}`{% endraw %} variable in the layout specified (`default`) in the front matter tags.
-  * The processed files get written as `.html` files in the `_site` directory.
+* Tệp `_config.yml` chứa các cài đặt mà Jekyll sử dụng khi xử lý trang web của bạn. Một tệp cấu hình trống sẽ sử dụng các giá trị mặc định để xây dựng trang web Jekyll. Ví dụ: để chuyển đổi [Markdown](https://learnxinyminutes.com/docs/markdown/) thành HTML, Jekyll sẽ tự động sử dụng [bộ lọc Markdown kramdown](https://rubygems.org/gems/kramdown/), mà không cần chỉ định nó.
+* Jekyll tìm kiếm các tệp có [thẻ front matter]({% link _docs/front-matter.md %}) (hai bộ dòng gạch ngang `---` như trong `index.md`) và xử lý các tệp (điền các biến trang web, hiển thị bất kỳ [Liquid](https://shopify.github.io/liquid/) nào và chuyển đổi Markdown thành HTML).
+* Jekyll đẩy nội dung từ tất cả các trang và bài đăng vào biến {% raw %}`{{ content }}`{% endraw %} trong bố cục được chỉ định (`default`) trong các thẻ front matter.
+* Các tệp đã xử lý được ghi dưới dạng tệp `.html` trong thư mục `_site`.
 
-You can read more about how Jekyll processes the files in [order of Interpretation]({% link _tutorials/orderofinterpretation.md %}).
+Bạn có thể đọc thêm về cách Jekyll xử lý các tệp trong [thứ tự Diễn giải]({% link _tutorials/orderofinterpretation.md %}).
 
-With this basic understanding of how a Jekyll site works, you can convert almost any HTML theme for Jekyll. The following sections will take you through a step-by-step tutorial to do so.
+Với sự hiểu biết cơ bản này về cách hoạt động của trang web Jekyll, bạn có thể chuyển đổi hầu hết bất kỳ giao diện HTML nào cho Jekyll. Các phần sau đây sẽ hướng dẫn bạn từng bước để làm như vậy.
 
-## 1. Create a template for your default layout
+## 1. Tạo template cho bố cục mặc định của bạn
 
-Find your HTML theme and save it as a `default` layout. If you're converting or cloning an existing site, you can right-click the page and view the source code.
+Tìm giao diện HTML của bạn và lưu nó dưới dạng bố cục `default`. Nếu bạn đang chuyển đổi hoặc sao chép một trang web hiện có, bạn có thể nhấp chuột phải vào trang và xem mã nguồn.
 
-For example, suppose you're cloning your company site to create a documentation site with the same branding. Or suppose you have a personal site that you built with HTML and now want to make it a Jekyll site. Get the HTML source code for your site.
+Ví dụ: giả sử bạn đang sao chép trang web công ty của mình để tạo một trang web tài liệu với cùng thương hiệu. Hoặc giả sử bạn có một trang web cá nhân mà bạn đã xây dựng bằng HTML và bây giờ muốn biến nó thành một trang web Jekyll. Lấy mã nguồn HTML cho trang web của bạn.
 
 {: .note .info}
-Regardless of the site, do check the license and make sure you have permission to copy and use the code.
+Bất kể trang web nào, hãy kiểm tra giấy phép và đảm bảo bạn có quyền sao chép và sử dụng mã.
 
-Copy and paste the source code into a file called `default.html`. Put the `default.html` file inside the `_layouts` folder. This will be the default layout template for your pages and posts &mdash; that is, each page or post will use this layout when Jekyll builds the site.
+Sao chép và dán mã nguồn vào một tệp có tên `default.html`. Đặt tệp `default.html` bên trong thư mục `_layouts`. Đây sẽ là template bố cục mặc định cho các trang và bài đăng của bạn &mdash; tức là, mỗi trang hoặc bài đăng sẽ sử dụng bố cục này khi Jekyll xây dựng trang web.
 
-Note that in looking for templates, you want the HTML output of the template. If the template has PHP tags or other dynamic scripts, these dynamic elements will need to be converted to HTML or to [Liquid](https://shopify.github.io/liquid/). Liquid is [Jekyll templating system](/docs/liquid/) to retrieve dynamic content.
+Lưu ý rằng khi tìm kiếm template, bạn muốn đầu ra HTML của template. Nếu template có thẻ PHP hoặc các script động khác, các phần tử động này sẽ cần được chuyển đổi thành HTML hoặc thành [Liquid](https://shopify.github.io/liquid/). Liquid là [hệ thống template Jekyll](/docs/liquid/) để lấy nội dung động.
 
-Open `default.html` into your browser locally to ensure the site looks and behaves like it does online. You will likely need to adjust CSS, JS, and image paths so they work.
+Mở `default.html` vào trình duyệt của bạn cục bộ để đảm bảo trang web trông và hoạt động giống như trực tuyến. Bạn có thể sẽ cần điều chỉnh đường dẫn CSS, JS và hình ảnh để chúng hoạt động.
 
-For example, if the paths were relative on the site you copied, you'll need to either download the same assets into your Jekyll site or use absolute paths to the same assets in the cloud. (Syntax such as `src="//` requires a prefix such as `src="http://` to work in your local browser.)
+Ví dụ: nếu các đường dẫn là tương đối trên trang web bạn đã sao chép, bạn sẽ cần tải xuống cùng các tài sản vào trang web Jekyll của mình hoặc sử dụng đường dẫn tuyệt đối đến cùng các tài sản trên đám mây. (Cú pháp như `src="//` yêu cầu tiền tố như `src="http://` để hoạt động trong trình duyệt cục bộ của bạn.)
 
-Jekyll provides some [filters](/docs/liquid/filters/) to prepend a site URL before path. For example, you could preface your stylesheet like this:
+Jekyll cung cấp một số [bộ lọc](/docs/liquid/filters/) để thêm URL trang web trước đường dẫn. Ví dụ: bạn có thể thêm tiền tố cho stylesheet của mình như thế này:
 
 {% raw %}
+
 ```liquid
 {{ "/assets/style.css" | relative_url }}
 ```
+
 {% endraw %}
 
-The `relative_url` filter will prepend the [`baseurl`](https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/) value from your config file (as `blog` for instance) to the input. This is useful if your site is hosted at a subpath rather than at the root of the domain (for example, `http://mysite.com/blog/`).
+Bộ lọc `relative_url` sẽ thêm tiền tố giá trị [`baseurl`](https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/) từ tệp cấu hình của bạn (ví dụ: `blog`) vào đầu vào. Điều này hữu ích nếu trang web của bạn được lưu trữ tại một đường dẫn con thay vì tại gốc của tên miền (ví dụ: `http://mysite.com/blog/`).
 
-You can also use an `absolute_url` filter. This filter will prepend the `url` *and* `baseurl` value to the input:
+Bạn cũng có thể sử dụng bộ lọc `absolute_url`. Bộ lọc này sẽ thêm tiền tố giá trị `url` *và* `baseurl` vào đầu vào:
 
 {% raw %}
+
 ```liquid
 {{ "/assets/style.css" | absolute_url }}
 ```
+
 {% endraw %}
 
-Again, both `url` and `baseurl` can be defined in your site's config file, like this:
+Một lần nữa, cả `url` và `baseurl` đều có thể được định nghĩa trong tệp cấu hình của trang web của bạn, như thế này:
 
 ```yaml
 url: http://mysite.com
 baseurl: /blog
 ```
 
-The result in the output will be `http://mysite.com/blog/assets/style.css`.
+Kết quả trong đầu ra sẽ là `http://mysite.com/blog/assets/style.css`.
 
-Note that the `url` property of any page begins with a forward slash (`/`), so omit this at the end of your `url` or `baseurl` property.
+Lưu ý rằng thuộc tính `url` của bất kỳ trang nào bắt đầu bằng dấu gạch chéo (`/`), vì vậy hãy bỏ qua điều này ở cuối thuộc tính `url` hoặc `baseurl` của bạn.
 
-You don't have to prepend filters to link paths like this. You could also use relative links across your entire site. However you decide to code the paths to your assets, make sure they render correctly.
+Bạn không phải thêm tiền tố bộ lọc vào đường dẫn liên kết như thế này. Bạn cũng có thể sử dụng liên kết tương đối trên toàn bộ trang web của mình. Tuy nhiên, bạn quyết định mã hóa đường dẫn đến tài sản của mình như thế nào, hãy đảm bảo chúng hiển thị chính xác.
 
-Does your local `default.html` page look good in your browser? Are all images, styles, and other elements showing up correctly? If so, great. Keep going. You can use this template as the layout for all your pages and posts or create as many templates as you need.
+Trang `default.html` cục bộ của bạn có trông đẹp trong trình duyệt của bạn không? Tất cả hình ảnh, kiểu và các yếu tố khác có hiển thị chính xác không? Nếu vậy, tuyệt vời. Tiếp tục. Bạn có thể sử dụng template này làm bố cục cho tất cả các trang và bài đăng của mình hoặc tạo bao nhiêu template tùy thích.
 
-In the next section, you'll blank out the content of the layout and replace it with placeholder tags that get populated dynamically with your Jekyll pages.
+Trong phần tiếp theo, bạn sẽ xóa trống nội dung của bố cục và thay thế nó bằng các thẻ giữ chỗ được điền động với các trang Jekyll của bạn.
 
-## 2. Identify the content part of the layout
+## 2. Xác định phần nội dung của bố cục
 
-In `default.html`, find where the page content begins (usually at `h1` or `h2` tags). Replace the title that appears inside these tags with {% raw %}`{{ page.title }}`{% endraw %}.
+Trong `default.html`, tìm nơi nội dung trang bắt đầu (thường là ở thẻ `h1` hoặc `h2`). Thay thế tiêu đề xuất hiện bên trong các thẻ này bằng {% raw %}`{{ page.title }}`{% endraw %}.
 
-Remove the content part (keep everything else: navigation menu, sidebar, footer, etc.) and replace it with {% raw %}`{{ content }}`{% endraw %}.
+Xóa phần nội dung (giữ mọi thứ khác: menu điều hướng, thanh bên, chân trang, v.v.) và thay thế nó bằng {% raw %}`{{ content }}`{% endraw %}.
 
-Check the layout again in your browser and make sure you didn't corrupt or alter it up by inadvertently removing a crucial `div` tag or other element. The only change should be to the title and page content, which are now blanked out or showing the placeholder tag.
+Kiểm tra lại bố cục trong trình duyệt của bạn và đảm bảo bạn không làm hỏng hoặc thay đổi nó bằng cách vô tình xóa thẻ `div` quan trọng hoặc phần tử khác. Thay đổi duy nhất phải là tiêu đề và nội dung trang, hiện đang bị xóa trống hoặc hiển thị thẻ giữ chỗ.
 
-## 3. Create a couple of files with front matter tags
+## 3. Tạo một vài tệp với thẻ front matter
 
-Create a couple of files (`index.md` and `about.md`) in your root directory.
+Tạo một vài tệp (`index.md` và `about.md`) trong thư mục gốc của bạn.
 
-In your `index.md` file, add some front matter tags containing a `title` and `layout` property, like this:
+Trong tệp `index.md` của bạn, thêm một số thẻ front matter chứa thuộc tính `title` và `layout`, như thế này:
 
 ```markdown
 ---
-title: Home
+title: Trang chủ
 layout: default
 ---
 
-Some page content here...
+Một số nội dung trang ở đây...
 ```
 
-Create another page for testing called `about.md` with similar front matter tags.
+Tạo một trang khác để thử nghiệm có tên `about.md` với các thẻ front matter tương tự.
 
 {: .note .info}
-If you don't specify a layout in your pages, Jekyll will simply render that page as an unstyled basic HTML page.
+Nếu bạn không chỉ định bố cục trong các trang của mình, Jekyll sẽ chỉ hiển thị trang đó dưới dạng trang HTML cơ bản không có kiểu.
 
-## 4. Add a configuration file
+## 4. Thêm tệp cấu hình
 
-Add a `_config.yml` file in your root directory. In `_config.yml`, you can optionally specify the markdown filter you want. By default, the [GitHub Flavored Markdown (GFM) processor](https://github.com/kramdown/parser-gfm) for [kramdown](https://kramdown.gettalong.org/) is used. If no other filter is specified, your config file will automatically apply the following as a [default](/docs/configuration/default/) setting:
+Thêm tệp `_config.yml` trong thư mục gốc của bạn. Trong `_config.yml`, bạn có thể tùy chọn chỉ định bộ lọc markdown bạn muốn. Theo mặc định, [bộ xử lý GitHub Flavored Markdown (GFM)](https://github.com/kramdown/parser-gfm) cho [kramdown](https://kramdown.gettalong.org/) được sử dụng. Nếu không có bộ lọc nào khác được chỉ định, tệp cấu hình của bạn sẽ tự động áp dụng như sau dưới dạng cài đặt [mặc định](/docs/configuration/default/):
 
 ```yaml
 markdown: kramdown
@@ -189,84 +197,87 @@ kramdown:
   input: GFM
 ```
 
-You can find additional [Markdown Options](/docs/configuration/markdown/) in the Jekyll docs, though it's unlikely that you'll need them.
+Bạn có thể tìm thấy thêm [Tùy chọn Markdown](/docs/configuration/markdown/) trong tài liệu Jekyll, mặc dù không chắc bạn sẽ cần chúng.
 
-## 5. Test your pages
+## 5. Kiểm tra các trang của bạn
 
-Now run `jekyll serve` and toggle between your `index.html` and `about.html` pages. The default layout should load for both pages.
+Bây giờ chạy `jekyll serve` và chuyển đổi giữa các trang `index.html` và `about.html` của bạn. Bố cục mặc định sẽ tải cho cả hai trang.
 
-You've now extracted your content out into separate files and defined a common layout for pages.
+Bây giờ bạn đã trích xuất nội dung của mình ra các tệp riêng biệt và định nghĩa một bố cục chung cho các trang.
 
-You could define any number of layouts you want for pages. Then just identify the layout you want that particular page to use. For example:
+Bạn có thể định nghĩa bất kỳ số lượng bố cục nào bạn muốn cho các trang. Sau đó chỉ cần xác định bố cục bạn muốn trang cụ thể đó sử dụng. Ví dụ:
 
 ```yaml
 ---
-title: Sample page
+title: Trang mẫu
 layout: homepage
 ---
 ```
 
-This page would then use the `homepage.html` template in the `_layouts` folder.
+Trang này sau đó sẽ sử dụng template `homepage.html` trong thư mục `_layouts`.
 
-You can even set [default front matter tags](/docs/configuration/front-matter-defaults/) for pages, posts, or [collections]({% link _docs/collections.md %}) in your `_config.yml` file so that you don't have to specify the layout in the front matter variables. Anyways, setting defaults is beyond the scope of this tutorial, let's get back to work.
+Bạn thậm chí có thể đặt [thẻ front matter mặc định](/docs/configuration/front-matter-defaults/) cho các trang, bài đăng hoặc [bộ sưu tập]({% link _docs/collections.md %}) trong tệp `_config.yml` của bạn để bạn không phải chỉ định bố cục trong các biến front matter. Dù sao, việc đặt mặc định nằm ngoài phạm vi của hướng dẫn này, hãy quay lại làm việc.
 
-## 6. Configure site variables
+## 6. Cấu hình biến trang web
 
-You already configured the page title using {% raw %}`{{ page.title }}`{% endraw %} tags. But there are more `title` tags to populate. Pages also have a [`title`](https://moz.com/learn/seo/title-tag) tag that appears in the browser tab or window. Typically you put the page title followed by the site title here.
+Bạn đã cấu hình tiêu đề trang bằng thẻ {% raw %}`{{ page.title }}`{% endraw %}. Nhưng còn nhiều thẻ `title` hơn để điền. Các trang cũng có thẻ [`title`](https://moz.com/learn/seo/title-tag) xuất hiện trong tab hoặc cửa sổ trình duyệt. Thông thường bạn đặt tiêu đề trang theo sau là tiêu đề trang web ở đây.
 
-In your `default.html` layout, look for the `title` tags below your `head` tags:
+Trong bố cục `default.html` của bạn, tìm thẻ `title` bên dưới thẻ `head` của bạn:
 
 ```
-<title>ACME Website</title>
+<title>Trang web ACME</title>
 ```
 
-Insert the following site variables:
+Chèn các biến trang web sau:
 
 {% raw %}
+
 ```liquid
 <title>{{ page.title }} | {{ site.title }}</title>
 ```
+
 {% endraw %}
 
-Open `_config.yml` and add a `title` property for your site's name.
+Mở `_config.yml` và thêm thuộc tính `title` cho tên trang web của bạn.
 
 ```yaml
-title: ACME Website
+title: Trang web ACME
 ```
 
-Any properties you add in your `_config.yml` file are accessible through the `site` namespace. Similarly, any properties in your page's front matter are accessible through the `page` namespace. Use dot notation after `site` or `page` to access the value.
+Bất kỳ thuộc tính nào bạn thêm trong tệp `_config.yml` của mình đều có thể truy cập thông qua không gian tên `site`. Tương tự, bất kỳ thuộc tính nào trong front matter của trang của bạn đều có thể truy cập thông qua không gian tên `page`. Sử dụng ký hiệu dấu chấm sau `site` hoặc `page` để truy cập giá trị.
 
-Stop your Jekyll server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and restart it. Verify that the `title` tags are populating correctly.
+Dừng máy chủ Jekyll của bạn bằng <kbd>Ctrl</kbd> + <kbd>C</kbd> và khởi động lại nó. Xác minh rằng các thẻ `title` đang được điền chính xác.
 
 {: .note .info}
-Every time you modify your config file, you have to restart Jekyll for the changes to take effect. When you modify other files, Jekyll automatically picks up the changes when it rebuilds.
+Mỗi khi bạn sửa đổi tệp cấu hình của mình, bạn phải khởi động lại Jekyll để các thay đổi có hiệu lực. Khi bạn sửa đổi các tệp khác, Jekyll tự động nhận các thay đổi khi nó xây dựng lại.
 
-If you have other variables to populate in your site, rinse and repeat.
+Nếu bạn có các biến khác để điền vào trang web của mình, hãy lặp lại.
 
-## 7. Show posts on a page
+## 7. Hiển thị bài đăng trên một trang
 
-It's common to show a list of posts on the homepage. First, let's create some posts so that we have something to showcase.
+Thông thường là hiển thị danh sách các bài đăng trên trang chủ. Đầu tiên, hãy tạo một số bài đăng để chúng ta có thứ để trưng bày.
 
-Add some posts in a `_posts` folder following the standard `YYYY-MM-DD-title.md` post format:
+Thêm một số bài đăng trong thư mục `_posts` theo định dạng bài đăng tiêu chuẩn `YYYY-MM-DD-title.md`:
 
-  * `2017-01-02-my-first-post.md`
-  * `2017-01-15-my-second-post.md`
-  * `2017-02-08-my-third-post.md`
+* `2017-01-02-my-first-post.md`
+* `2017-01-15-my-second-post.md`
+* `2017-02-08-my-third-post.md`
 
-In each post, add some basic content:
+Trong mỗi bài đăng, thêm một số nội dung cơ bản:
 
 ```markdown
 ---
-title: My First Post
+title: Bài đăng đầu tiên của tôi
 layout: default
 ---
 
-Some sample content...
+Một số nội dung mẫu...
 ```
 
-Now let's create a layout that will display the posts. Create a new file in `_layouts` called `home.html` and add the following logic:
+Bây giờ hãy tạo một bố cục sẽ hiển thị các bài đăng. Tạo một tệp mới trong `_layouts` có tên `home.html` và thêm logic sau:
 
 {% raw %}
+
 ```liquid
 ---
 layout: default
@@ -281,9 +292,10 @@ layout: default
 {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-Create a file called `blog.md` in your root directory and specify the `home` layout:
+Tạo một tệp có tên `blog.md` trong thư mục gốc của bạn và chỉ định bố cục `home`:
 
 ```yaml
 ---
@@ -292,34 +304,35 @@ layout: home
 ---
 ```
 
-In this case, contents of `blog.md` will be pushed into the {% raw %}`{{ content }}`{% endraw %} tag in the `home` layout. Then the `home` layout will be pushed into the {% raw %}`{{ content }}`{% endraw %} tag of the `default` layout.
+Trong trường hợp này, nội dung của `blog.md` sẽ được đẩy vào thẻ {% raw %}`{{ content }}`{% endraw %} trong bố cục `home`. Sau đó bố cục `home` sẽ được đẩy vào thẻ {% raw %}`{{ content }}`{% endraw %} của bố cục `default`.
 
-### How layouts work
+### Cách hoạt động của bố cục
 
-When a layout specifies another layout, it means the content of the first layout will be stuffed into the {% raw %}`{{ content }}`{% endraw %} tag of the second layout. As an analogy, think of Russian dolls that fit into each other. Each layout fits into another layout that it specifies.
+Khi một bố cục chỉ định một bố cục khác, điều đó có nghĩa là nội dung của bố cục đầu tiên sẽ được nhồi vào thẻ {% raw %}`{{ content }}`{% endraw %} của bố cục thứ hai. Như một phép loại suy, hãy nghĩ về búp bê Nga vừa vặn vào nhau. Mỗi bố cục vừa vặn vào một bố cục khác mà nó chỉ định.
 
-The following diagram shows how layouts work in Jekyll:
+Sơ đồ sau đây cho thấy cách hoạt động của bố cục trong Jekyll:
 
-<img src="../../img/jekylllayoutconcept.png" alt="Concept of Jekyll layouts" />
+<img src="../../img/jekylllayoutconcept.png" alt="Khái niệm bố cục Jekyll" />
 
 {: .image-description}
-In this example, the content from a Markdown document `document.md` that specifies `layout: docs` gets pushed into the {% raw %}`{{ content }}`{% endraw %} tag of the layout file `docs.html`. Because the `docs` layout itself specifies `layout: page`, the content from `docs.html` gets pushed into the {% raw %}`{{ content }}`{% endraw %} tag in the layout file `page.html`. Finally because the `page` layout specifies `layout: default`, the content from `page.html` gets pushed into the {% raw %}`{{ content }}`{% endraw %} tag of the layout file `default.html`.
+Trong ví dụ này, nội dung từ tài liệu Markdown `document.md` chỉ định `layout: docs` được đẩy vào thẻ {% raw %}`{{ content }}`{% endraw %} của tệp bố cục `docs.html`. Vì bố cục `docs` tự chỉ định `layout: page`, nội dung từ `docs.html` được đẩy vào thẻ {% raw %}`{{ content }}`{% endraw %} trong tệp bố cục `page.html`. Cuối cùng vì bố cục `page` chỉ định `layout: default`, nội dung từ `page.html` được đẩy vào thẻ {% raw %}`{{ content }}`{% endraw %} của tệp bố cục `default.html`.
 
-You don't need multiple layouts. You could just use one: `default`. You have options for how you design your site. In general, it's common to define one layout for pages and another layout for posts, but for both of these layouts to inherit the `default` template (which usually defines the top and bottom parts of the site).
+Bạn không cần nhiều bố cục. Bạn chỉ có thể sử dụng một: `default`. Bạn có các tùy chọn về cách bạn thiết kế trang web của mình. Nói chung, thông thường là định nghĩa một bố cục cho các trang và một bố cục khác cho các bài đăng, nhưng cả hai bố cục này đều kế thừa template `default` (thường định nghĩa các phần trên và dưới của trang web).
 
-In your browser, go to `blog.html` and see the list of posts.
-Note that you don't have to use the method described here. You could have simply added the `for` loop to any page, such as `index.md`, to display these posts. But given that you may have more complex logic for other features, it can be helpful to store your logic in templates separate from the page area where you frequently type your content.
+Trong trình duyệt của bạn, hãy truy cập `blog.html` và xem danh sách các bài đăng.
+Lưu ý rằng bạn không phải sử dụng phương pháp được mô tả ở đây. Bạn có thể chỉ cần thêm vòng lặp `for` vào bất kỳ trang nào, chẳng hạn như `index.md`, để hiển thị các bài đăng này. Nhưng với việc bạn có thể có logic phức tạp hơn cho các tính năng khác, có thể hữu ích khi lưu trữ logic của bạn trong các template riêng biệt với khu vực trang nơi bạn thường xuyên nhập nội dung của mình.
 
 {: .note .info}
-At minimum, a layout should contain {% raw %}`{{ content }}`{% endraw %}, which acts as a receiver for the *content* to be rendered.
+Ở mức tối thiểu, một bố cục phải chứa {% raw %}`{{ content }}`{% endraw %}, hoạt động như một bộ nhận cho *nội dung* được hiển thị.
 
-### For loops
+### Vòng lặp For
 
-By the way, let's pause here to look at the `for` loop logic a little more closely. [For loops in Liquid](https://shopify.github.io/liquid/tags/iteration/) are one of the most commonly used Liquid tags. *For loops* let you iterate through content in your Jekyll site and build out a result. The `for` loop also has [certain properties available](https://help.shopify.com/themes/liquid/objects/for-loops) (like first or last iteration) based on the loop's position in the loop as well.
+Nhân tiện, hãy tạm dừng ở đây để xem xét logic vòng lặp `for` kỹ hơn một chút. [Vòng lặp For trong Liquid](https://shopify.github.io/liquid/tags/iteration/) là một trong những thẻ Liquid được sử dụng phổ biến nhất. *Vòng lặp For* cho phép bạn lặp qua nội dung trong trang web Jekyll của bạn và xây dựng kết quả. Vòng lặp `for` cũng có [các thuộc tính nhất định có sẵn](https://help.shopify.com/themes/liquid/objects/for-loops) (như lần lặp đầu tiên hoặc cuối cùng) dựa trên vị trí của vòng lặp trong vòng lặp.
 
-We've only scratched the surface of what you can do with `for` loops in retrieving posts. For example, if you wanted to display posts from a specific category, you could do so by adding a `categories` property to your post's front matter and then look in those categories. Further, you could limit the number of results by adding a `limit` property. Here's an example:
+Chúng ta chỉ mới chạm bề mặt những gì bạn có thể làm với vòng lặp `for` trong việc lấy các bài đăng. Ví dụ: nếu bạn muốn hiển thị các bài đăng từ một danh mục cụ thể, bạn có thể làm như vậy bằng cách thêm thuộc tính `categories` vào front matter của bài đăng của bạn và sau đó tìm trong các danh mục đó. Hơn nữa, bạn có thể giới hạn số lượng kết quả bằng cách thêm thuộc tính `limit`. Đây là một ví dụ:
 
 {% raw %}
+
 ```liquid
 <ul class="myposts">
 {% for post in site.categories.podcasts limit:3 %}
@@ -329,19 +342,21 @@ We've only scratched the surface of what you can do with `for` loops in retrievi
 {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-This loop would get the latest three posts that have a category called `podcasts` in the front matter.
+Vòng lặp này sẽ lấy ba bài đăng mới nhất có danh mục gọi là `podcasts` trong front matter.
 
-## 8. Configure navigation
+## 8. Cấu hình điều hướng
 
-Now that you've configured posts, let's configure page navigation. Most websites have some navigation either in the sidebar or header area.
+Bây giờ bạn đã cấu hình các bài đăng, hãy cấu hình điều hướng trang. Hầu hết các trang web đều có một số điều hướng trong thanh bên hoặc khu vực tiêu đề.
 
-In this tutorial, we'll assume you've got a simple list of pages you want to generate. If you only have a handful of pages, you could list them by using a `for` loop to iterate through the `site.pages` object and then order them by a front matter property.
+Trong hướng dẫn này, chúng ta sẽ giả sử bạn có một danh sách đơn giản các trang bạn muốn tạo. Nếu bạn chỉ có một số trang, bạn có thể liệt kê chúng bằng cách sử dụng vòng lặp `for` để lặp qua đối tượng `site.pages` và sau đó sắp xếp chúng theo thuộc tính front matter.
 
-Identify the part of your code where the list of pages appears. Usually this is a `<ul>` element with various child `<li>` elements. Replace the code with the following:
+Xác định phần mã của bạn nơi danh sách các trang xuất hiện. Thông thường đây là một phần tử `<ul>` với các phần tử con `<li>` khác nhau. Thay thế mã bằng như sau:
 
 {% raw %}
+
 ```liquid
 <ul>
   {% assign mypages = site.pages | sort: "order" %}
@@ -350,42 +365,44 @@ Identify the part of your code where the list of pages appears. Usually this is 
     {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-This example assumes each page would have front matter containing both a `title` and `order` property like this:
+Ví dụ này giả định mỗi trang sẽ có front matter chứa cả thuộc tính `title` và `order` như thế này:
 
 ```yaml
 ---
-title: My page
+title: Trang của tôi
 order: 2
 ---
 ```
 
-Here the `order` property will define how the pages get sorted, with `1` appearing first in the list.
+Ở đây thuộc tính `order` sẽ xác định cách các trang được sắp xếp, với `1` xuất hiện đầu tiên trong danh sách.
 
-You could also iterate through a list of pages that you maintain in a separate data file. This might be more appropriate if you have a lot of pages, or you have other properties about the pages you want to store.
+Bạn cũng có thể lặp qua danh sách các trang mà bạn duy trì trong một tệp dữ liệu riêng biệt. Điều này có thể phù hợp hơn nếu bạn có nhiều trang hoặc bạn có các thuộc tính khác về các trang bạn muốn lưu trữ.
 
-To manage page links this way, create a folder in your Jekyll project called `_data`. In this folder, create a file called e.g. `navigation.yml` with this content:
+Để quản lý liên kết trang theo cách này, hãy tạo một thư mục trong dự án Jekyll của bạn có tên `_data`. Trong thư mục này, tạo một tệp có tên ví dụ: `navigation.yml` với nội dung này:
 
 ```yaml
-- title: Sample page 1
+- title: Trang mẫu 1
   url: /page-1-permalink/
 
-- title: Sample page 2
+- title: Trang mẫu 2
   url: /page-2-permalink/
 
-- title: Sample page 3
+- title: Trang mẫu 3
   url: /page-3-permalink/
 ```
 
 {: .note .info}
-If you never wrote any YAML before, you'll get quickly familiar with it. Take a look at [what you can do with YAML](https://learnxinyminutes.com/docs/yaml/).
+Nếu bạn chưa bao giờ viết YAML trước đây, bạn sẽ nhanh chóng làm quen với nó. Hãy xem [những gì bạn có thể làm với YAML](https://learnxinyminutes.com/docs/yaml/).
 
-You can store additional properties for each item in this data file as desired. Arrange the list items in the order you want them to appear.
+Bạn có thể lưu trữ các thuộc tính bổ sung cho mỗi mục trong tệp dữ liệu này theo mong muốn. Sắp xếp các mục danh sách theo thứ tự bạn muốn chúng xuất hiện.
 
-To print the list of pages from the data file, use code like this:
+Để in danh sách các trang từ tệp dữ liệu, hãy sử dụng mã như thế này:
 
 {% raw %}
+
 ```liquid
 <ul>
     {% for link in site.data.navigation %}
@@ -393,33 +410,37 @@ To print the list of pages from the data file, use code like this:
     {% endfor %}
 </ul>
 ```
+
 {% endraw %}
 
-If you have more sophisticated requirements around navigation, such as when building a documentation site, see the [detailed tutorial on navigation](/tutorials/navigation/).
+Nếu bạn có yêu cầu phức tạp hơn về điều hướng, chẳng hạn như khi xây dựng trang web tài liệu, hãy xem [hướng dẫn chi tiết về điều hướng](/tutorials/navigation/).
 
-## 9. Simplify your site with includes
+## 9. Đơn giản hóa trang web của bạn với includes
 
-Let's suppose your `default.html` file is massive and hard to work with. You can break up your layout by putting some of the HTML code in *include* files.
+Giả sử tệp `default.html` của bạn rất lớn và khó làm việc. Bạn có thể chia bố cục của mình bằng cách đặt một số mã HTML trong các tệp *include*.
 
-Add a folder called `_includes` in your root directory. In that folder, add a file there called `sidebar.html`.
+Thêm một thư mục có tên `_includes` trong thư mục gốc của bạn. Trong thư mục đó, thêm một tệp có tên `sidebar.html`.
 
-Remove your sidebar code from your `default.html` layout and insert it into the `sidebar.html` file.
+Xóa mã thanh bên của bạn khỏi bố cục `default.html` và chèn nó vào tệp `sidebar.html`.
 
-Where the sidebar code previously existed in `default.html`, pull in your "include" like this:
+Nơi mã thanh bên trước đây tồn tại trong `default.html`, kéo "include" của bạn như thế này:
 
 {% raw %}
+
 ```liquid
 {% include sidebar.html %}
 ```
+
 {% endraw %}
 
-You can break up other elements of your theme like this, such as your header or footer. Then you can apply these common elements to other layout files. This way you won't have duplicate code.
+Bạn có thể chia các yếu tố khác của giao diện của mình như thế này, chẳng hạn như tiêu đề hoặc chân trang của bạn. Sau đó, bạn có thể áp dụng các yếu tố chung này cho các tệp bố cục khác. Bằng cách này, bạn sẽ không có mã trùng lặp.
 
-## 10. RSS feed
+## 10. Nguồn cấp RSS
 
-Your Jekyll site needs an RSS feed. Here's the [basic RSS feed syntax](http://www.w3schools.com/xml/xml_rss.asp). To create an RSS file in Jekyll, create a file called `feed.xml` in your root directory and add the following:
+Trang web Jekyll của bạn cần một nguồn cấp RSS. Đây là [cú pháp nguồn cấp RSS cơ bản](http://www.w3schools.com/xml/xml_rss.asp). Để tạo tệp RSS trong Jekyll, hãy tạo một tệp có tên `feed.xml` trong thư mục gốc của bạn và thêm như sau:
 
 {% raw %}
+
 ```liquid
 ---
 layout: null
@@ -452,27 +473,31 @@ layout: null
     </channel>
 </rss>
 ```
+
 {% endraw %}
 
-Make sure your `_config.yml` file has properties for `title`, `url`, and `description`.
+Đảm bảo tệp `_config.yml` của bạn có các thuộc tính cho `title`, `url` và `description`.
 
-This code uses a `for` loop to look through your last 20 posts. The content from the posts gets escaped and truncated to the last 400 characters using [Liquid filters](https://help.shopify.com/themes/liquid/filters).
+Mã này sử dụng vòng lặp `for` để xem qua 20 bài đăng cuối cùng của bạn. Nội dung từ các bài đăng được thoát và cắt ngắn xuống 400 ký tự cuối cùng bằng cách sử dụng [bộ lọc Liquid](https://help.shopify.com/themes/liquid/filters).
 
-In your `default.html` layout, look for a reference to the RSS or Atom feed in your header, and replace it with a reference to the file you just created. For example:
+Trong bố cục `default.html` của bạn, tìm tham chiếu đến nguồn cấp RSS hoặc Atom trong tiêu đề của bạn và thay thế nó bằng tham chiếu đến tệp bạn vừa tạo. Ví dụ:
 
 {% raw %}
+
 ```liquid
 <link rel="alternate" type="application/rss+xml"  href="{{ site.url }}/feed.xml" title="{{ site.title }}">
 ```
+
 {% endraw %}
 
-You can also auto-generate your posts feed by adding a gem called [`jekyll-feed`](https://help.github.com/articles/atom-rss-feeds-for-github-pages/). This gem will also work on GitHub Pages.
+Bạn cũng có thể tự động tạo nguồn cấp bài đăng của mình bằng cách thêm một gem có tên [`jekyll-feed`](https://help.github.com/articles/atom-rss-feeds-for-github-pages/). Gem này cũng sẽ hoạt động trên GitHub Pages.
 
-## 11. Add a sitemap
+## 11. Thêm sơ đồ trang web
 
-Finally, add a [site map](https://www.sitemaps.org/protocol.html). Create a `sitemap.xml` file in your root directory and add this code:
+Cuối cùng, thêm một [sơ đồ trang web](https://www.sitemaps.org/protocol.html). Tạo tệp `sitemap.xml` trong thư mục gốc của bạn và thêm mã này:
 
 {% raw %}
+
 ```liquid
 ---
 layout: null
@@ -502,21 +527,22 @@ search: exclude
 
 </urlset>
 ```
+
 {% endraw %}
 
-Again, we're using a `for` loop here to iterate through all posts and pages to add them to the sitemap.
+Một lần nữa, chúng ta đang sử dụng vòng lặp `for` ở đây để lặp qua tất cả các bài đăng và trang để thêm chúng vào sơ đồ trang web.
 
-You can also auto-generate your sitemap by adding a gem called [`jekyll-sitemap`](https://help.github.com/articles/sitemaps-for-github-pages/). This gem will also work on GitHub Pages.
+Bạn cũng có thể tự động tạo sơ đồ trang web của mình bằng cách thêm một gem có tên [`jekyll-sitemap`](https://help.github.com/articles/sitemaps-for-github-pages/). Gem này cũng sẽ hoạt động trên GitHub Pages.
 
-## 12. Add external services
+## 12. Thêm dịch vụ bên ngoài
 
-For other services you might need (such as contact forms, search, comments, and more), [look for third-party services](https://serverless.css-tricks.com/services/major). We listed some [integrations on our resources page](/resources/#integrations) but in todays's world of SaaS and APis the list is endless.
+Đối với các dịch vụ khác bạn có thể cần (chẳng hạn như biểu mẫu liên hệ, tìm kiếm, nhận xét và hơn thế nữa), [hãy tìm kiếm các dịch vụ bên thứ ba](https://serverless.css-tricks.com/services/major). Chúng tôi đã liệt kê một số [tích hợp trên trang tài nguyên của chúng tôi](/resources/#integrations) nhưng trong thế giới SaaS và API ngày nay, danh sách là vô tận.
 
-Your Jekyll pages consist of HTML, CSS, and JavaScript, so pretty much any code you need to embed will work without a problem.
+Các trang Jekyll của bạn bao gồm HTML, CSS và JavaScript, vì vậy hầu hết bất kỳ mã nào bạn cần nhúng sẽ hoạt động mà không có vấn đề gì.
 
-As you integrate code for these services, note that **if a page in your Jekyll site doesn't have front matter tags, Jekyll won't process any of the content in that page.** The page will just be passed to the `_site` folder when you build your site.
+Khi bạn tích hợp mã cho các dịch vụ này, lưu ý rằng **nếu một trang trong trang web Jekyll của bạn không có thẻ front matter, Jekyll sẽ không xử lý bất kỳ nội dung nào trong trang đó.** Trang sẽ chỉ được chuyển vào thư mục `_site` khi bạn xây dựng trang web của mình.
 
-If you do want Jekyll to process some page content (for example, to populate a variable that you define in your site's config file), just add front matter tags to the page. If you don't want any layout applied to the page, specify `layout: null` like this:
+Nếu bạn muốn Jekyll xử lý một số nội dung trang (ví dụ: để điền một biến mà bạn định nghĩa trong tệp cấu hình của trang web của mình), chỉ cần thêm thẻ front matter vào trang. Nếu bạn không muốn bất kỳ bố cục nào được áp dụng cho trang, hãy chỉ định `layout: null` như thế này:
 
 ```yaml
 ---
@@ -524,17 +550,17 @@ layout: null
 ---
 ```
 
-## 13. Conclusion
+## 13. Kết luận
 
-Although websites can implement more sophisticated features and functionality, we've covered the basics in this tutorial. You now have a fully functional Jekyll site.
+Mặc dù các trang web có thể triển khai các tính năng và chức năng phức tạp hơn, chúng tôi đã đề cập đến những điều cơ bản trong hướng dẫn này. Bây giờ bạn đã có một trang web Jekyll hoạt động đầy đủ.
 
-To deploy your site, consider using [GitHub Pages](https://pages.github.com/), [Netlify](https://www.netlify.com/), [Vercel](https://vercel.com), [Render](https://render.com), [Amazon AWS S3](https://aws.amazon.com/s3/) using the [s3_website plugin](https://github.com/laurilehmijoki/s3_website), or just FTP your files to your web server.
+Để triển khai trang web của bạn, hãy xem xét sử dụng [GitHub Pages](https://pages.github.com/), [Netlify](https://www.netlify.com/), [Vercel](https://vercel.com), [Render](https://render.com), [Amazon AWS S3](https://aws.amazon.com/s3/) sử dụng [plugin s3_website](https://github.com/laurilehmijoki/s3_website), hoặc chỉ cần FTP các tệp của bạn lên máy chủ web của bạn.
 
-You can also package your layouts, includes and assets into a Ruby `gem` and [make it a Jekyll theme](/docs/themes/).
+Bạn cũng có thể đóng gói bố cục, includes và tài sản của mình thành một `gem` Ruby và [biến nó thành một giao diện Jekyll](/docs/themes/).
 
-## Additional resources
+## Tài nguyên bổ sung
 
-Here are some additional tutorials on creating Jekyll sites:
+Dưới đây là một số hướng dẫn bổ sung về tạo trang web Jekyll:
 
-  * [Convert a static site to Jekyll](http://jekyll.tips/jekyll-casts/converting-a-static-site-to-jekyll/)
-  * [Building a Jekyll Site – Part 1 of 3: Converting a Static Website To Jekyll](https://css-tricks.com/building-a-jekyll-site-part-1-of-3/)
+* [Chuyển đổi trang web tĩnh sang Jekyll](http://jekyll.tips/jekyll-casts/converting-a-static-site-to-jekyll/)
+* [Xây dựng trang web Jekyll – Phần 1 trong 3: Chuyển đổi trang web tĩnh sang Jekyll](https://css-tricks.com/building-a-jekyll-site-part-1-of-3/)

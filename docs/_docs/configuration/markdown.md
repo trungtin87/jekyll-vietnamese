@@ -1,42 +1,42 @@
 ---
-title: Markdown Options
+title: Tùy chọn Markdown (Markdown Options)
 permalink: "/docs/configuration/markdown/"
 ---
-The various Markdown renderers supported by Jekyll sometimes have extra options
-available.
+Các trình kết xuất Markdown khác nhau được hỗ trợ bởi Jekyll đôi khi có thêm các tùy chọn
+có sẵn.
 
 ## Kramdown
 
-Kramdown is the default Markdown renderer for Jekyll, and often works well with no additional configuration. However, it does support many configuration options.
+Kramdown là trình kết xuất Markdown mặc định cho Jekyll, và thường hoạt động tốt mà không cần cấu hình bổ sung. Tuy nhiên, nó hỗ trợ nhiều tùy chọn cấu hình.
 
-### Kramdown Processor
+### Bộ xử lý Kramdown (Kramdown Processor)
 
-By default, Jekyll uses the [GitHub Flavored Markdown (GFM) processor](https://github.com/kramdown/parser-gfm) for Kramdown. (Specifying `input: GFM` is fine, but redundant.) GFM supports a couple additional Kramdown options, documented by [kramdown-parser-gfm](https://github.com/kramdown/parser-gfm). These options can be used directly in your Kramdown Jekyll config, like this:
+Theo mặc định, Jekyll sử dụng [bộ xử lý GitHub Flavored Markdown (GFM)](https://github.com/kramdown/parser-gfm) cho Kramdown. (Việc chỉ định `input: GFM` là tốt, nhưng dư thừa.) GFM hỗ trợ một vài tùy chọn Kramdown bổ sung, được ghi lại bởi [kramdown-parser-gfm](https://github.com/kramdown/parser-gfm). Các tùy chọn này có thể được sử dụng trực tiếp trong cấu hình Kramdown Jekyll của bạn, như thế này:
 
 ```yaml
 kramdown:
   gfm_quirks: [paragraph_end]
 ```
 
-You can also change the processor used by Kramdown (as specified for the `input` key in the [Kramdown RDoc](https://kramdown.gettalong.org/rdoc/Kramdown/Document.html#method-c-new)). For example, to use the non-GFM Kramdown processor in Jekyll, add the following to your configuration.
+Bạn cũng có thể thay đổi bộ xử lý được sử dụng bởi Kramdown (như được chỉ định cho khóa `input` trong [Kramdown RDoc](https://kramdown.gettalong.org/rdoc/Kramdown/Document.html#method-c-new)). Ví dụ, để sử dụng bộ xử lý Kramdown không phải GFM trong Jekyll, hãy thêm phần sau vào cấu hình của bạn.
 
 ```yaml
 kramdown:
   input: Kramdown
 ```
 
-Documentation for Kramdown parsers is available in the [Kramdown docs](https://kramdown.gettalong.org/parser/kramdown.html). If you use a Kramdown parser other than Kramdown or GFM, you'll need to add the gem for it.
+Tài liệu cho các trình phân tích cú pháp Kramdown có sẵn trong [tài liệu Kramdown](https://kramdown.gettalong.org/parser/kramdown.html). Nếu bạn sử dụng trình phân tích cú pháp Kramdown khác ngoài Kramdown hoặc GFM, bạn sẽ cần thêm gem cho nó.
 
-### Syntax Highlighting (CodeRay)
+### Tô sáng Cú pháp (CodeRay)
 
-To use the [CodeRay](http://coderay.rubychan.de/) syntax highlighter with Kramdown, you  need to add a dependency on the `kramdown-syntax-coderay` gem. For example, `bundle add kramdown-syntax-coderay`. Then, you'll be able to specify CodeRay in your `syntax_highlighter` config:
+Để sử dụng trình tô sáng cú pháp [CodeRay](http://coderay.rubychan.de/) với Kramdown, bạn cần thêm một phụ thuộc vào gem `kramdown-syntax-coderay`. Ví dụ, `bundle add kramdown-syntax-coderay`. Sau đó, bạn sẽ có thể chỉ định CodeRay trong cấu hình `syntax_highlighter` của mình:
 
 ```yaml
 kramdown:
   syntax_highlighter: coderay
 ```
 
-CodeRay supports several of its own configuration options, documented in the [kramdown-syntax-coderay docs](https://github.com/kramdown/syntax-coderay) which can be passed as `syntax_highlighter_opts` like this:
+CodeRay hỗ trợ một số tùy chọn cấu hình riêng của nó, được ghi lại trong [tài liệu kramdown-syntax-coderay](https://github.com/kramdown/syntax-coderay) có thể được chuyển qua dưới dạng `syntax_highlighter_opts` như thế này:
 
 ```yaml
 kramdown:
@@ -46,9 +46,9 @@ kramdown:
     bold_every: 5
 ```
 
-### Advanced Kramdown Options
+### Tùy chọn Kramdown Nâng cao
 
-Kramdown supports a variety of other relatively advanced options such as `header_offset` and `smart_quotes`. These are documented in the [Kramdown configuration documentation](https://kramdown.gettalong.org/options.html) and can be added to your Kramdown config like this:
+Kramdown hỗ trợ nhiều tùy chọn tương đối nâng cao khác như `header_offset` và `smart_quotes`. Những điều này được ghi lại trong [tài liệu cấu hình Kramdown](https://kramdown.gettalong.org/options.html) và có thể được thêm vào cấu hình Kramdown của bạn như thế này:
 
 ```yaml
 kramdown:
@@ -56,21 +56,21 @@ kramdown:
 ```
 
 <div class="note warning">
-  <h5>There are several unsupported kramdown options</h5>
+  <h5>Có một số tùy chọn kramdown không được hỗ trợ</h5>
   <p>
-    Please note that Jekyll uses Kramdown's HTML converter. Kramdown options used only by other converters, such as <code>remove_block_html_tags</code> (used by the RemoveHtmlTags converter), will not work.
+    Xin lưu ý rằng Jekyll sử dụng trình chuyển đổi HTML của Kramdown. Các tùy chọn Kramdown chỉ được sử dụng bởi các trình chuyển đổi khác, chẳng hạn như <code>remove_block_html_tags</code> (được sử dụng bởi trình chuyển đổi RemoveHtmlTags), sẽ không hoạt động.
   </p>
 </div>
 
 ## CommonMark
 
-[CommonMark](https://commonmark.org/) is a rationalized version of Markdown syntax, implemented in C and thus faster than default Kramdown implemented in Ruby. It [slightly differs](https://github.com/commonmark/CommonMark#differences-from-original-markdown) from original Markdown and does not support all the syntax elements implemented in Kramdown, like [Block Inline Attribute Lists](https://kramdown.gettalong.org/syntax.html#block-ials).
+[CommonMark](https://commonmark.org/) là một phiên bản hợp lý hóa của cú pháp Markdown, được triển khai bằng C và do đó nhanh hơn Kramdown mặc định được triển khai bằng Ruby. Nó [hơi khác](https://github.com/commonmark/CommonMark#differences-from-original-markdown) so với Markdown gốc và không hỗ trợ tất cả các yếu tố cú pháp được triển khai trong Kramdown, như [Block Inline Attribute Lists](https://kramdown.gettalong.org/syntax.html#block-ials).
 
-It comes in two flavors: basic CommonMark with [jekyll-commonmark](https://github.com/jekyll/jekyll-commonmark) plugin and [GitHub Flavored Markdown supported by GitHub Pages](https://github.com/github/jekyll-commonmark-ghpages).
+Nó có hai hương vị: CommonMark cơ bản với plugin [jekyll-commonmark](https://github.com/jekyll/jekyll-commonmark) và [GitHub Flavored Markdown được hỗ trợ bởi GitHub Pages](https://github.com/github/jekyll-commonmark-ghpages).
 
-### Custom Markdown Processors
+### Bộ xử lý Markdown Tùy chỉnh
 
-If you're interested in creating a custom markdown processor, you're in luck! Create a new class in the `Jekyll::Converters::Markdown` namespace:
+Nếu bạn quan tâm đến việc tạo một bộ xử lý markdown tùy chỉnh, bạn thật may mắn! Tạo một lớp mới trong không gian tên `Jekyll::Converters::Markdown`:
 
 ```ruby
 class Jekyll::Converters::Markdown::MyCustomProcessor
@@ -89,8 +89,7 @@ class Jekyll::Converters::Markdown::MyCustomProcessor
 end
 ```
 
-Once you've created your class and have it properly set up either as a plugin
-in the `_plugins` folder or as a gem, specify it in your `_config.yml`:
+Khi bạn đã tạo lớp của mình và thiết lập nó đúng cách dưới dạng plugin trong thư mục `_plugins` hoặc dưới dạng gem, hãy chỉ định nó trong `_config.yml` của bạn:
 
 ```yaml
 markdown: MyCustomProcessor

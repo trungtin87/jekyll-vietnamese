@@ -1,23 +1,23 @@
 ---
-title: Collections
+title: Bộ sưu tập (Collections)
 permalink: /docs/collections/
 ---
 
-Collections are a great way to group related content like members of a team or
-talks at a conference.
+Bộ sưu tập là một cách tuyệt vời để nhóm nội dung liên quan như các thành viên của một nhóm hoặc
+các bài nói chuyện tại một hội nghị.
 
-## Setup
+## Thiết lập
 
-To use a Collection you first need to define it in your `_config.yml`. For
-example here's a collection of staff members:
+Để sử dụng một Bộ sưu tập, trước tiên bạn cần định nghĩa nó trong `_config.yml`. Ví dụ
+đây là một bộ sưu tập các nhân viên:
 
 ```yaml
 collections:
   - staff_members
 ```
 
-In this case `collections` is defined as a sequence (i.e., array) with no additional metadata defined for each collection.
-You can optionally specify metadata for your collection by defining `collections` as a mapping (i.e., hashmap) instead of sequence, and then defining additional fields in it:
+Trong trường hợp này `collections` được định nghĩa là một chuỗi (tức là, mảng) không có siêu dữ liệu bổ sung nào được định nghĩa cho mỗi bộ sưu tập.
+Bạn có thể tùy chọn chỉ định siêu dữ liệu cho bộ sưu tập của mình bằng cách định nghĩa `collections` như một ánh xạ (tức là, hashmap) thay vì chuỗi, và sau đó định nghĩa các trường bổ sung trong đó:
 
 ```yaml
 collections:
@@ -26,41 +26,40 @@ collections:
 ```
 
 {: .note .info}
-When defining a collection as a sequence, its pages will not be rendered by
-default. To enable this, <code>output: true</code> must be specified on the
-collection, which requires defining the collection as a mapping. For more
-information, see the section <a href="#output">Output</a>.
+Khi định nghĩa một bộ sưu tập dưới dạng một chuỗi, các trang của nó sẽ không được hiển thị theo
+mặc định. Để kích hoạt điều này, <code>output: true</code> phải được chỉ định trên
+bộ sưu tập, điều này yêu cầu định nghĩa bộ sưu tập dưới dạng một ánh xạ. Để biết thêm
+thông tin, xem phần <a href="#output">Đầu ra</a>.
 
 <div class="note">
-  <h5>Gather your collections {%- include docs_version_badge.html version="3.7.0" -%}</h5>
+  <h5>Tập hợp các bộ sưu tập của bạn {%- include docs_version_badge.html version="3.7.0" -%}</h5>
 
-  <p>You can optionally specify a directory to store all your collections in the same place with <code>collections_dir: my_collections</code>.</p>
+  <p>Bạn có thể tùy chọn chỉ định một thư mục để lưu trữ tất cả các bộ sưu tập của mình ở cùng một nơi với <code>collections_dir: my_collections</code>.</p>
 
-  <p>Then Jekyll will look in <code>my_collections/_books</code> for the <code>books</code> collection, and
-  in <code>my_collections/_recipes</code> for the <code>recipes</code> collection.</p>
+  <p>Sau đó Jekyll sẽ tìm trong <code>my_collections/_books</code> cho bộ sưu tập <code>books</code>, và
+  trong <code>my_collections/_recipes</code> cho bộ sưu tập <code>recipes</code>.</p>
 </div>
 
 <div class="note warning">
-  <h5>Be sure to move drafts and posts into custom collections directory</h5>
+  <h5>Hãy chắc chắn di chuyển bản nháp và bài đăng vào thư mục bộ sưu tập tùy chỉnh</h5>
 
-  <p>If you specify a directory to store all your collections in the same place with <code>collections_dir: my_collections</code>, then you will need to move your <code>_drafts</code> and <code>_posts</code> directory to <code>my_collections/_drafts</code> and <code>my_collections/_posts</code>. Note that, the name of your collections directory cannot start with an underscore (`_`).</p>
+  <p>Nếu bạn chỉ định một thư mục để lưu trữ tất cả các bộ sưu tập của mình ở cùng một nơi với <code>collections_dir: my_collections</code>, thì bạn sẽ cần di chuyển thư mục <code>_drafts</code> và <code>_posts</code> của mình đến <code>my_collections/_drafts</code> và <code>my_collections/_posts</code>. Lưu ý rằng, tên của thư mục bộ sưu tập của bạn không thể bắt đầu bằng dấu gạch dưới (`_`).</p>
 </div>
 
-## Add content
+## Thêm nội dung
 
-Create a corresponding folder (e.g. `<source>/_staff_members`) and add
-documents. Front matter is processed if the front matter exists, and everything
-after the front matter is pushed into the document's `content` attribute. If no front
-matter is provided, Jekyll will consider it to be a [static file]({{ '/docs/static-files/' | relative_url }})
-and the contents will not undergo further processing. If front matter is provided,
-Jekyll will process the file contents into the expected output.
+Tạo một thư mục tương ứng (ví dụ: `<source>/_staff_members`) và thêm
+các tài liệu. Front matter được xử lý nếu front matter tồn tại, và mọi thứ
+sau front matter được đẩy vào thuộc tính `content` của tài liệu. Nếu không có front
+matter nào được cung cấp, Jekyll sẽ coi nó là một [tệp tĩnh]({{ '/docs/static-files/' | relative_url }})
+và nội dung sẽ không trải qua quá trình xử lý tiếp theo. Nếu front matter được cung cấp,
+Jekyll sẽ xử lý nội dung tệp thành đầu ra mong đợi.
 
-Regardless of whether front matter exists or not, Jekyll will write to the destination
-directory (e.g. `_site`) only if `output: true` has been set in the collection's
-metadata.
+Bất kể front matter có tồn tại hay không, Jekyll sẽ chỉ ghi vào thư mục đích
+(ví dụ: `_site`) nếu `output: true` đã được đặt trong siêu dữ liệu của bộ sưu tập.
 
-For example here's how you would add a staff member to the collection set above.
-The filename is `./_staff_members/jane.md` with the following content:
+Ví dụ, đây là cách bạn sẽ thêm một nhân viên vào bộ sưu tập được thiết lập ở trên.
+Tên tệp là `./_staff_members/jane.md` với nội dung sau:
 
 ```markdown
 ---
@@ -71,37 +70,39 @@ Jane has worked on Jekyll for the past *five years*.
 ```
 
 <em>
-  Do note that in spite of being considered as a collection internally, the above
-  doesn't apply to [posts](/docs/posts/). Posts with a valid filename format will be
-  marked for processing even if they do not contain front matter.
+  Lưu ý rằng mặc dù được coi là một bộ sưu tập trong nội bộ, điều trên
+  không áp dụng cho [bài đăng](/docs/posts/). Các bài đăng có định dạng tên tệp hợp lệ sẽ được
+  đánh dấu để xử lý ngay cả khi chúng không chứa front matter.
 </em>
 
 <div class="note info">
-  <h5>Be sure to name your directories correctly</h5>
+  <h5>Hãy chắc chắn đặt tên thư mục của bạn một cách chính xác</h5>
   <p>
-The folder must be named identically to the collection you defined in
-your <code>_config.yml</code> file, with the addition of the preceding <code>_</code> character.
+Thư mục phải được đặt tên giống hệt với bộ sưu tập bạn đã định nghĩa trong
+tệp <code>_config.yml</code> của bạn, với việc thêm ký tự <code>_</code> ở trước.
   </p>
 </div>
 
-## Output
+## Đầu ra
 
-Now you can iterate over `site.staff_members` on a page and output the content
-for each staff member. Similar to posts, the body of the document is accessed
-using the `content` variable:
+Bây giờ bạn có thể lặp qua `site.staff_members` trên một trang và xuất nội dung
+cho mỗi nhân viên. Tương tự như các bài đăng, phần thân của tài liệu được truy cập
+bằng biến `content`:
 
 {% raw %}
+
 ```liquid
 {% for staff_member in site.staff_members %}
   <h2>{{ staff_member.name }} - {{ staff_member.position }}</h2>
   <p>{{ staff_member.content | markdownify }}</p>
 {% endfor %}
 ```
+
 {% endraw %}
 
-If you'd like Jekyll to create a rendered page for each document in your
-collection, you can set the `output` key to `true` in your collection
-metadata in `_config.yml`:
+Nếu bạn muốn Jekyll tạo một trang được hiển thị cho mỗi tài liệu trong
+bộ sưu tập của bạn, bạn có thể đặt khóa `output` thành `true` trong siêu dữ liệu
+bộ sưu tập của bạn trong `_config.yml`:
 
 ```yaml
 collections:
@@ -109,9 +110,10 @@ collections:
     output: true
 ```
 
-You can link to the generated page using the `url` attribute:
+Bạn có thể liên kết đến trang được tạo bằng thuộc tính `url`:
 
 {% raw %}
+
 ```liquid
 {% for staff_member in site.staff_members %}
   <h2>
@@ -122,24 +124,26 @@ You can link to the generated page using the `url` attribute:
   <p>{{ staff_member.content | markdownify }}</p>
 {% endfor %}
 ```
+
 {% endraw %}
 
-## Permalinks
+## Liên kết tĩnh (Permalinks)
 
-There are special [permalink variables for collections]({{ '/docs/permalinks/#collections' | relative_url }}) to
-help you control the output url for the entire collection.
+Có các [biến liên kết tĩnh đặc biệt cho bộ sưu tập]({{ '/docs/permalinks/#collections' | relative_url }}) để
+giúp bạn kiểm soát url đầu ra cho toàn bộ bộ sưu tập.
 
-## Custom Sorting of Documents {%- include docs_version_badge.html version="4.0" -%}
+## Sắp xếp Tùy chỉnh Tài liệu {%- include docs_version_badge.html version="4.0" -%}
+
 {: #custom-sorting-of-documents}
 
-By default, two documents in a collection are sorted by their `date` attribute when both of them have the `date` key in their front matter. However, if either or both documents do not have the `date` key in their front matter, they are sorted by their respective paths.
+Theo mặc định, hai tài liệu trong một bộ sưu tập được sắp xếp theo thuộc tính `date` của chúng khi cả hai đều có khóa `date` trong front matter của chúng. Tuy nhiên, nếu một trong hai hoặc cả hai tài liệu không có khóa `date` trong front matter, chúng được sắp xếp theo đường dẫn tương ứng của chúng.
 
-You can control this sorting via the collection's metadata.
+Bạn có thể kiểm soát việc sắp xếp này thông qua siêu dữ liệu của bộ sưu tập.
 
-### Sort By Front Matter Key
+### Sắp xếp Theo Khóa Front Matter
 
-Documents can be sorted based on a front matter key by setting a `sort_by` metadata to the front matter key string. For example,
-to sort a collection of tutorials based on key `lesson`, the configuration would be:
+Các tài liệu có thể được sắp xếp dựa trên một khóa front matter bằng cách đặt siêu dữ liệu `sort_by` thành chuỗi khóa front matter. Ví dụ,
+để sắp xếp một bộ sưu tập các hướng dẫn dựa trên khóa `lesson`, cấu hình sẽ là:
 
 ```yaml
 collections:
@@ -147,14 +151,14 @@ collections:
     sort_by: lesson
 ```
 
-The documents are arranged in the increasing order of the key's value. If a document does not have the front matter key defined
-then that document is placed immediately after sorted documents. When multiple documents do not have the front matter key defined,
-those documents are sorted by their dates or paths and then placed immediately after the sorted documents.
+Các tài liệu được sắp xếp theo thứ tự tăng dần của giá trị khóa. Nếu một tài liệu không có khóa front matter được định nghĩa
+thì tài liệu đó được đặt ngay sau các tài liệu đã sắp xếp. Khi nhiều tài liệu không có khóa front matter được định nghĩa,
+những tài liệu đó được sắp xếp theo ngày hoặc đường dẫn của chúng và sau đó được đặt ngay sau các tài liệu đã sắp xếp.
 
-### Manually Ordering Documents
+### Sắp xếp Tài liệu Thủ công
 
-You can also manually order the documents by setting an `order` metadata with **the filenames listed** in the desired order.
-For example, a collection of tutorials would be configured as:
+Bạn cũng có thể sắp xếp thủ công các tài liệu bằng cách đặt siêu dữ liệu `order` với **tên tệp được liệt kê** theo thứ tự mong muốn.
+Ví dụ, một bộ sưu tập các hướng dẫn sẽ được cấu hình như sau:
 
 ```yaml
 collections:
@@ -166,8 +170,8 @@ collections:
       - advanced-concepts.md
 ```
 
-Any documents with filenames that do not match the list entry simply gets placed after the rearranged documents. If a document is
-nested under subdirectories, include them in entries as well:
+Bất kỳ tài liệu nào có tên tệp không khớp với mục danh sách chỉ đơn giản là được đặt sau các tài liệu đã sắp xếp lại. Nếu một tài liệu được
+lồng dưới các thư mục con, hãy bao gồm chúng trong các mục nhập:
 
 ```yaml
 collections:
@@ -179,21 +183,21 @@ collections:
       - concepts/advanced.md
 ```
 
-If both metadata keys have been defined properly, `order` list takes precedence.
+Nếu cả hai khóa siêu dữ liệu đã được định nghĩa đúng cách, danh sách `order` sẽ được ưu tiên.
 
-## Liquid Attributes
+## Thuộc tính Liquid
 
-### Collections
+### Bộ sưu tập
 
-Collections are also available under `site.collections`, with the metadata
-you specified in your `_config.yml` (if present) and the following information:
+Các bộ sưu tập cũng có sẵn dưới `site.collections`, với siêu dữ liệu
+bạn đã chỉ định trong `_config.yml` (nếu có) và thông tin sau:
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Variable</th>
-      <th>Description</th>
+      <th>Biến</th>
+      <th>Mô tả</th>
     </tr>
   </thead>
   <tbody>
@@ -203,7 +207,7 @@ you specified in your `_config.yml` (if present) and the following information:
       </td>
       <td>
         <p>
-          The name of your collection, e.g. <code>my_collection</code>.
+          Tên của bộ sưu tập của bạn, ví dụ: <code>my_collection</code>.
         </p>
       </td>
     </tr>
@@ -213,7 +217,7 @@ you specified in your `_config.yml` (if present) and the following information:
       </td>
       <td>
         <p>
-          An array of <a href="#documents">documents</a>.
+          Một mảng các <a href="#documents">tài liệu</a>.
         </p>
       </td>
     </tr>
@@ -223,7 +227,7 @@ you specified in your `_config.yml` (if present) and the following information:
       </td>
       <td>
         <p>
-          An array of static files in the collection.
+          Một mảng các tệp tĩnh trong bộ sưu tập.
         </p>
       </td>
     </tr>
@@ -233,8 +237,7 @@ you specified in your `_config.yml` (if present) and the following information:
       </td>
       <td>
         <p>
-          The path to the collection's source directory, relative to the site
-          source.
+          Đường dẫn đến thư mục nguồn của bộ sưu tập, tương đối với nguồn trang web.
         </p>
       </td>
     </tr>
@@ -244,7 +247,7 @@ you specified in your `_config.yml` (if present) and the following information:
       </td>
       <td>
         <p>
-          The full path to the collections's source directory.
+          Đường dẫn đầy đủ đến thư mục nguồn của bộ sưu tập.
         </p>
       </td>
     </tr>
@@ -254,8 +257,7 @@ you specified in your `_config.yml` (if present) and the following information:
       </td>
       <td>
         <p>
-          Whether the collection's documents will be output as individual
-          files.
+          Liệu các tài liệu của bộ sưu tập có được xuất ra dưới dạng các tệp riêng lẻ hay không.
         </p>
       </td>
     </tr>
@@ -264,41 +266,41 @@ you specified in your `_config.yml` (if present) and the following information:
 </div>
 
 <div class="note info">
-  <h5>A Hard-Coded Collection</h5>
-  <p>In addition to any collections you create yourself, the
-  <code>posts</code> collection is hard-coded into Jekyll. It exists whether
-  you have a <code>_posts</code> directory or not. This is something to note
-  when iterating through <code>site.collections</code> as you may need to
-  filter it out.</p>
-  <p>You may wish to use filters to find your collection:
+  <h5>Một Bộ sưu tập Được mã hóa cứng</h5>
+  <p>Ngoài bất kỳ bộ sưu tập nào bạn tự tạo, bộ sưu tập
+  <code>posts</code> được mã hóa cứng vào Jekyll. Nó tồn tại cho dù
+  bạn có thư mục <code>_posts</code> hay không. Đây là điều cần lưu ý
+  khi lặp qua <code>site.collections</code> vì bạn có thể cần phải
+  lọc nó ra.</p>
+  <p>Bạn có thể muốn sử dụng bộ lọc để tìm bộ sưu tập của mình:
   <code>{% raw %}{{ site.collections | where: "label", "myCollection" | first }}{% endraw %}</code></p>
 </div>
 
 <div class="note info">
-  <h5>Collections and Time</h5>
-  <p>Except for documents in hard-coded default collection <code>posts</code>, all documents in collections
-    you create, are accessible via Liquid irrespective of their assigned date, if any, and therefore renderable.
+  <h5>Bộ sưu tập và Thời gian</h5>
+  <p>Ngoại trừ các tài liệu trong bộ sưu tập mặc định được mã hóa cứng <code>posts</code>, tất cả các tài liệu trong các bộ sưu tập
+    bạn tạo, đều có thể truy cập được qua Liquid bất kể ngày được chỉ định của chúng, nếu có, và do đó có thể hiển thị.
   </p>
-  <p>Documents are attempted to be written to disk only if the concerned collection
-    metadata has <code>output: true</code>. Additionally, future-dated documents are only written if
-    <code>site.future</code> <em>is also true</em>.
+  <p>Các tài liệu chỉ được cố gắng ghi vào đĩa nếu siêu dữ liệu bộ sưu tập liên quan
+    có <code>output: true</code>. Ngoài ra, các tài liệu có ngày trong tương lai chỉ được ghi nếu
+    <code>site.future</code> <em>cũng là true</em>.
   </p>
-  <p>More fine-grained control over documents being written to disk can be exercised by setting
-    <code>published: false</code> (<em><code>true</code> by default</em>) in the document's front matter.
+  <p>Kiểm soát chi tiết hơn đối với các tài liệu được ghi vào đĩa có thể được thực hiện bằng cách đặt
+    <code>published: false</code> (<em><code>true</code> theo mặc định</em>) trong front matter của tài liệu.
   </p>
 </div>
 
-### Documents
+### Tài liệu
 
-In addition to any front matter provided in the document's corresponding
-file, each document has the following attributes:
+Ngoài bất kỳ front matter nào được cung cấp trong tệp tương ứng của tài liệu,
+mỗi tài liệu có các thuộc tính sau:
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Variable</th>
-      <th>Description</th>
+      <th>Biến</th>
+      <th>Mô tả</th>
     </tr>
   </thead>
   <tbody>
@@ -308,11 +310,11 @@ file, each document has the following attributes:
       </td>
       <td>
         <p>
-          The (unrendered) content of the document. If no front matter is
-          provided, Jekyll will not generate the file in your collection. If
-          front matter is used, then this is all the contents of the file
-          after the terminating
-          `---` of the front matter.
+          Nội dung (chưa được hiển thị) của tài liệu. Nếu không có front matter nào được
+          cung cấp, Jekyll sẽ không tạo tệp trong bộ sưu tập của bạn. Nếu
+          front matter được sử dụng, thì đây là tất cả nội dung của tệp
+          sau dấu kết thúc
+          `---` của front matter.
         </p>
       </td>
     </tr>
@@ -322,7 +324,7 @@ file, each document has the following attributes:
       </td>
       <td>
         <p>
-          The rendered output of the document, based on the
+          Đầu ra được hiển thị của tài liệu, dựa trên
           <code>content</code>.
         </p>
       </td>
@@ -333,7 +335,7 @@ file, each document has the following attributes:
       </td>
       <td>
         <p>
-          The full path to the document's source file.
+          Đường dẫn đầy đủ đến tệp nguồn của tài liệu.
         </p>
       </td>
     </tr>
@@ -343,7 +345,7 @@ file, each document has the following attributes:
       </td>
       <td>
         <p>
-          The path to the document's source file relative to the site source.
+          Đường dẫn đến tệp nguồn của tài liệu tương đối với nguồn trang web.
         </p>
       </td>
     </tr>
@@ -353,7 +355,7 @@ file, each document has the following attributes:
       </td>
       <td>
         <p>
-          The URL of the rendered collection. The file is only written to the destination when the collection to which it belongs has <code>output: true</code> in the site's configuration.
+          URL của bộ sưu tập được hiển thị. Tệp chỉ được ghi vào đích khi bộ sưu tập mà nó thuộc về có <code>output: true</code> trong cấu hình của trang web.
           </p>
       </td>
     </tr>
@@ -363,7 +365,7 @@ file, each document has the following attributes:
       </td>
       <td>
         <p>
-          The name of the document's collection.
+          Tên của bộ sưu tập của tài liệu.
         </p>
       </td>
     </tr>
@@ -373,7 +375,7 @@ file, each document has the following attributes:
       </td>
       <td>
         <p>
-          The date of the document's collection.
+          Ngày của bộ sưu tập của tài liệu.
         </p>
       </td>
     </tr>

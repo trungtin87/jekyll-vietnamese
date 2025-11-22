@@ -1,25 +1,25 @@
 #
 # ---------------------------------------------------------------------------------------
-# List of Liquid Filters provided by Jekyll Core that will be utilized for their
-# documentation.
+# Danh sách các Bộ lọc Liquid được cung cấp bởi Jekyll Core sẽ được sử dụng cho
+# tài liệu của chúng.
 #
-# To document a new filter, create a new "list-item" below with the following keys:
-#   name:           : [REQUIRED] A string label that identifies the filter
-#   description:    : [REQUIRED] A short description of what to expect from the filter
-#   version_badge:  : [OPTIONAL] Jekyll version that introduced the filter
-#   examples:       : [REQUIRED] A 'nested list' comprised of inputs and outputs
-#     input:        : [REQUIRED] The filter syntax and usage
-#     output:       : [OPTIONAL] The output from the filter
+# Để ghi lại một bộ lọc mới, hãy tạo một "mục danh sách" mới bên dưới với các khóa sau:
+#   name:           : [BẮT BUỘC] Một nhãn chuỗi xác định bộ lọc
+#   description:    : [BẮT BUỘC] Một mô tả ngắn về những gì mong đợi từ bộ lọc
+#   version_badge:  : [TÙY CHỌN] Phiên bản Jekyll đã giới thiệu bộ lọc
+#   examples:       : [BẮT BUỘC] Một 'danh sách lồng nhau' bao gồm đầu vào và đầu ra
+#     input:        : [BẮT BUỘC] Cú pháp và cách sử dụng bộ lọc
+#     output:       : [TÙY CHỌN] Đầu ra từ bộ lọc
 #
-# Tip: Use YAML Block notations to "fold" a long string, or to "break" a long string
-#      to the following line. Block notations can also be used to avoid having to use
-#      backslashes to escape quotes.
+# Mẹo: Sử dụng ký hiệu Khối YAML để "gấp" một chuỗi dài, hoặc để "ngắt" một chuỗi dài
+#      sang dòng tiếp theo. Ký hiệu khối cũng có thể được sử dụng để tránh phải sử dụng
+#      dấu gạch chéo ngược để thoát dấu ngoặc kép.
 # ---------------------------------------------------------------------------------------
 #
 - name: Relative URL
   description: >-
-    Prepend <code>baseurl</code> config value to the input to convert a URL path into a relative URL. 
-    This is recommended for a site that is hosted on a subpath of a domain.
+    Thêm giá trị cấu hình <code>baseurl</code> vào đầu vào để chuyển đổi đường dẫn URL thành URL tương đối.
+    Điều này được khuyến nghị cho một trang web được lưu trữ trên một đường dẫn con của một tên miền.
   examples:
     - input: '{{ "/assets/style.css" | relative_url }}'
       output: '/my-baseurl/assets/style.css'
@@ -28,7 +28,7 @@
 
 - name: Absolute URL
   description: >-
-    Prepend <code>url</code> and <code>baseurl</code> values to the input to convert a URL path to an absolute URL.
+    Thêm giá trị <code>url</code> và <code>baseurl</code> vào đầu vào để chuyển đổi đường dẫn URL thành URL tuyệt đối.
   examples:
     - input: '{{ "/assets/style.css" | absolute_url }}'
       output: 'http://example.com/my-baseurl/assets/style.css'
@@ -36,7 +36,7 @@
 #
 
 - name: Date to XML Schema
-  description: Convert a Date into XML Schema (ISO 8601) format.
+  description: Chuyển đổi Ngày thành định dạng XML Schema (ISO 8601).
   examples:
     - input: '{{ site.time | date_to_xmlschema }}'
       output: '2008-11-07T13:07:54-08:00'
@@ -44,7 +44,7 @@
 #
 
 - name: Date to RFC-822 Format
-  description: Convert a Date into the RFC-822 format used for RSS feeds.
+  description: Chuyển đổi Ngày thành định dạng RFC-822 được sử dụng cho nguồn cấp dữ liệu RSS.
   examples:
     - input: '{{ site.time | date_to_rfc822 }}'
       output: 'Mon, 07 Nov 2008 13:07:54 -0800'
@@ -52,7 +52,7 @@
 #
 
 - name: Date to String
-  description: Convert a date to short format.
+  description: Chuyển đổi ngày thành định dạng ngắn.
   examples:
     - input: '{{ site.time | date_to_string }}'
       output: '07 Nov 2008'
@@ -60,7 +60,7 @@
 #
 
 - name: Date to String in ordinal US style
-  description: 'Format a date to ordinal, US, short format.'
+  description: 'Định dạng ngày thành định dạng số thứ tự, Hoa Kỳ, ngắn.'
   version_badge: 3.8.0
   examples:
     - input: '{{ site.time | date_to_string: "ordinal", "US" }}'
@@ -69,7 +69,7 @@
 #
 
 - name: Date to Long String
-  description: Format a date to long format.
+  description: Định dạng ngày thành định dạng dài.
   examples:
     - input: '{{ site.time | date_to_long_string }}'
       output: '07 November 2008'
@@ -77,7 +77,7 @@
 #
 
 - name: Date to Long String in ordinal UK style
-  description: 'Format a date to ordinal, UK, long format.'
+  description: 'Định dạng ngày thành định dạng số thứ tự, Vương quốc Anh, dài.'
   version_badge: 3.8.0
   examples:
     - input: '{{ site.time | date_to_long_string: "ordinal" }}'
@@ -86,7 +86,7 @@
 #
 
 - name: Where
-  description: Select all the objects in an array where the key has the given value.
+  description: Chọn tất cả các đối tượng trong một mảng mà khóa có giá trị đã cho.
   examples:
     - input: '{{ site.members | where:"graduation_year","2014" }}'
       output:
@@ -94,7 +94,7 @@
 #
 
 - name: Where Expression
-  description: Select all the objects in an array where the expression is true.
+  description: Chọn tất cả các đối tượng trong một mảng mà biểu thức là đúng.
   version_badge: 3.2.0
   examples:
     - input: |-
@@ -114,9 +114,9 @@
 
 - name: Find
   description: >-
-    Return <strong>the first object</strong> in an array for which the queried
-    attribute has the given value or return <code>nil</code> if no item in
-    the array satisfies the given criteria.
+    Trả về <strong>đối tượng đầu tiên</strong> trong một mảng mà thuộc tính được truy vấn
+    có giá trị đã cho hoặc trả về <code>nil</code> nếu không có mục nào trong
+    mảng thỏa mãn tiêu chí đã cho.
   version_badge: 4.1.0
   examples:
     - input: '{{ site.members | find: "graduation_year", "2014" }}'
@@ -126,9 +126,9 @@
 
 - name: Find Expression
   description: >-
-    Return <strong>the first object</strong> in an array for which the given
-    expression evaluates to true or return <code>nil</code> if no item in
-    the array satisfies the evaluated expression.
+    Trả về <strong>đối tượng đầu tiên</strong> trong một mảng mà biểu thức đã cho
+    đánh giá là đúng hoặc trả về <code>nil</code> nếu không có mục nào trong
+    mảng thỏa mãn biểu thức đã đánh giá.
   version_badge: 4.1.0
   examples:
     - input: |-
@@ -147,7 +147,7 @@
 #
 
 - name: Group By
-  description: Group an array's items by a given property.
+  description: Nhóm các mục của một mảng theo một thuộc tính đã cho.
   examples:
     - input: '{{ site.members | group_by:"graduation_year" }}'
       output: |-
@@ -157,7 +157,7 @@
 #
 
 - name: Group By Expression
-  description: Group an array's items using a Liquid expression.
+  description: Nhóm các mục của một mảng bằng cách sử dụng một biểu thức Liquid.
   version_badge: 3.4.0
   examples:
     - input: |-
@@ -170,7 +170,7 @@
 #
 
 - name: XML Escape
-  description: Escape some text for use in XML.
+  description: Thoát một số văn bản để sử dụng trong XML.
   examples:
     - input: '{{ page.content | xml_escape }}'
       output:
@@ -179,9 +179,9 @@
 
 - name: CGI Escape
   description: >-
-    CGI escape a string for use in a URL. Replaces any special characters
-    with appropriate <code>%XX</code> replacements. CGI escape normally
-    replaces a space with a plus <code>+</code> sign.
+    Thoát CGI một chuỗi để sử dụng trong URL. Thay thế bất kỳ ký tự đặc biệt nào
+    bằng các thay thế <code>%XX</code> thích hợp. Thoát CGI thường
+    thay thế khoảng trắng bằng dấu cộng <code>+</code>.
   examples:
     - input: '{{ "foo, bar; baz?" | cgi_escape }}'
       output: 'foo%2C+bar%3B+baz%3F'
@@ -190,10 +190,10 @@
 
 - name: URI Escape
   description: >-
-    Percent encodes any special characters in a URI.
-    URI escape normally replaces a space with <code>%20</code>.
-    <a href="https://en.wikipedia.org/wiki/Percent-encoding#Types_of_URI_characters">Reserved characters</a>
-    will not be escaped.
+    Mã hóa phần trăm bất kỳ ký tự đặc biệt nào trong URI.
+    Thoát URI thường thay thế khoảng trắng bằng <code>%20</code>.
+    <a href="https://en.wikipedia.org/wiki/Percent-encoding#Types_of_URI_characters">Các ký tự dành riêng</a>
+    sẽ không bị thoát.
   examples:
     - input: '{{ "http://foo.com/?q=foo, \bar?" | uri_escape }}'
       output: 'http://foo.com/?q=foo,%20%5Cbar?'
@@ -202,15 +202,15 @@
 
 - name: Number of Words
   description: >-
-    Count the number of words in some text.<br/>
-    From <span class="version-badge">v4.1.0</span>, this filter takes an optional
-    argument to control the handling of Chinese-Japanese-Korean (CJK) characters
-    in the <code>input</code> string.<br/>
-    Passing <code>'cjk'</code> as the argument will count every CJK character
-    detected as one word irrespective of being separated by whitespace.<br/>
-    Passing <code>'auto'</code> (auto-detect) works similar to <code>'cjk'</code>
-    but is more performant if the filter is used on a variable string that may
-    or may not contain CJK chars.
+    Đếm số lượng từ trong một số văn bản.<br/>
+    Từ <span class="version-badge">v4.1.0</span>, bộ lọc này nhận một đối số tùy chọn
+    để kiểm soát việc xử lý các ký tự Trung-Nhật-Hàn (CJK)
+    trong chuỗi <code>input</code>.<br/>
+    Truyền <code>'cjk'</code> làm đối số sẽ đếm mọi ký tự CJK
+    được phát hiện là một từ bất kể được phân tách bằng khoảng trắng.<br/>
+    Truyền <code>'auto'</code> (tự động phát hiện) hoạt động tương tự như <code>'cjk'</code>
+    nhưng hiệu quả hơn nếu bộ lọc được sử dụng trên một chuỗi biến có thể
+    hoặc không chứa các ký tự CJK.
   examples:
     - input: '{{ "Hello world!" | number_of_words }}'
       output: 2
@@ -225,8 +225,8 @@
 
 - name: Array to Sentence
   description: >-
-    Convert an array into a sentence. Useful for listing tags.
-    Optional argument for connector.
+    Chuyển đổi một mảng thành một câu. Hữu ích cho việc liệt kê các thẻ.
+    Đối số tùy chọn cho trình kết nối.
   examples:
     - input: '{{ page.tags | array_to_sentence_string }}'
       output: 'foo, bar, and baz'
@@ -236,7 +236,7 @@
 #
 
 - name: Markdownify
-  description: Convert a Markdown-formatted string into HTML.
+  description: Chuyển đổi một chuỗi được định dạng Markdown thành HTML.
   examples:
     - input: '{{ page.excerpt | markdownify }}'
       output:
@@ -244,7 +244,7 @@
 #
 
 - name: Smartify
-  description: 'Convert "quotes" into &ldquo;smart quotes.&rdquo;'
+  description: 'Chuyển đổi "quotes" thành &ldquo;smart quotes.&rdquo;'
   examples:
     - input: '{{ page.title | smartify }}'
       output:
@@ -252,7 +252,7 @@
 #
 
 - name: Converting Sass/SCSS
-  description: Convert a Sass- or SCSS-formatted string into CSS.
+  description: Chuyển đổi một chuỗi được định dạng Sass hoặc SCSS thành CSS.
   examples:
     - input: '{{ some_sass | sassify }}'
       output:
@@ -262,7 +262,7 @@
 #
 
 - name: Slugify
-  description: Convert a string into a lowercase URL "slug". See below for options.
+  description: Chuyển đổi một chuỗi thành "slug" URL chữ thường. Xem bên dưới để biết các tùy chọn.
   examples:
     - input: '{{ "The _config.yml file" | slugify }}'
       output: 'the-config-yml-file'
@@ -276,7 +276,7 @@
 #
 
 - name: Data To JSON
-  description: Convert Hash or Array to JSON.
+  description: Chuyển đổi Hash hoặc Array thành JSON.
   examples:
     - input: '{{ site.data.projects | jsonify }}'
       output:
@@ -284,7 +284,7 @@
 #
 
 - name: Normalize Whitespace
-  description: Replace any occurrence of whitespace with a single space.
+  description: Thay thế bất kỳ sự xuất hiện nào của khoảng trắng bằng một dấu cách duy nhất.
   examples:
     - input: '{{ "a \n b" | normalize_whitespace }}'
       output:
@@ -293,9 +293,9 @@
 
 - name: Sort
   description: >-
-    Sort an array. Optional arguments for hashes
-    1.&nbsp;property name
-    2.&nbsp;nils order (<em>first</em> or <em>last</em>).
+    Sắp xếp một mảng. Các đối số tùy chọn cho hàm băm
+    1.&nbsp;tên thuộc tính
+    2.&nbsp;thứ tự nils (<em>first</em> hoặc <em>last</em>).
   examples:
     - input: '{{ page.tags | sort }}'
       output:
@@ -307,7 +307,7 @@
 #
 
 - name: Sample
-  description: 'Pick a random value from an array. Optionally, pick multiple values.'
+  description: 'Chọn một giá trị ngẫu nhiên từ một mảng. Tùy chọn, chọn nhiều giá trị.'
   examples:
     - input: '{{ site.pages | sample }}'
       output:
@@ -317,7 +317,7 @@
 #
 
 - name: To Integer
-  description: Convert a string or boolean to integer.
+  description: Chuyển đổi một chuỗi hoặc boolean thành số nguyên.
   examples:
     - input: '{{ some_var | to_integer }}'
       output:
@@ -326,9 +326,9 @@
 
 - name: Array Filters
   description: >-
-    Push, pop, shift, and unshift elements from an Array.
-    These are <strong>NON-DESTRUCTIVE</strong>, i.e. they do not mutate the array,
-    but rather make a copy and mutate that.
+    Push, pop, shift, và unshift các phần tử từ một Mảng.
+    Những cái này là <strong>KHÔNG PHÁ HỦY</strong>, tức là chúng không làm thay đổi mảng,
+    mà thay vào đó tạo một bản sao và thay đổi bản sao đó.
   examples:
     - input: '{{ page.tags | push: "Spokane" }}'
       output: '["Seattle", "Tacoma", "Spokane"]'
@@ -342,7 +342,7 @@
 #
 
 - name: Inspect
-  description: Convert an object into its String representation for debugging.
+  description: Chuyển đổi một đối tượng thành biểu diễn Chuỗi của nó để gỡ lỗi.
   examples:
     - input: '{{ some_var | inspect }}'
       output:

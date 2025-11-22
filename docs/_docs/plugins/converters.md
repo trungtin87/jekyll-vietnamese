@@ -1,23 +1,23 @@
 ---
-title: Converters
+title: Bộ chuyển đổi (Converters)
 permalink: /docs/plugins/converters/
 ---
 
-If you have a new markup language you’d like to use with your site, you can
-include it by implementing your own converter. Both the Markdown and
-[Textile](https://github.com/jekyll/jekyll-textile-converter) markup
-languages are implemented using this method.
+Nếu bạn có một ngôn ngữ đánh dấu mới mà bạn muốn sử dụng với trang web của mình, bạn có thể
+bao gồm nó bằng cách triển khai bộ chuyển đổi của riêng bạn. Cả ngôn ngữ đánh dấu Markdown và
+[Textile](https://github.com/jekyll/jekyll-textile-converter)
+đều được triển khai bằng phương pháp này.
 
 <div class="note info">
-  <h5>Remember your Front Matter</h5>
+  <h5>Hãy nhớ Front Matter của bạn</h5>
   <p>
-    Jekyll will only convert files that have a YAML header at the top, even for
-    converters you add using a plugin.
+    Jekyll sẽ chỉ chuyển đổi các tệp có tiêu đề YAML ở đầu, ngay cả đối với
+    các bộ chuyển đổi bạn thêm bằng plugin.
   </p>
 </div>
 
-Below is a converter that will take all posts ending in `.upcase` and process
-them using the `UpcaseConverter`:
+Dưới đây là một bộ chuyển đổi sẽ lấy tất cả các bài đăng kết thúc bằng `.upcase` và xử lý
+chúng bằng cách sử dụng `UpcaseConverter`:
 
 ```ruby
 module Jekyll
@@ -40,14 +40,14 @@ module Jekyll
 end
 ```
 
-Converters should implement at a minimum 3 methods:
+Các bộ chuyển đổi nên triển khai tối thiểu 3 phương thức:
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Method</th>
-      <th>Description</th>
+      <th>Phương thức</th>
+      <th>Mô tả</th>
     </tr>
   </thead>
   <tbody>
@@ -56,10 +56,9 @@ Converters should implement at a minimum 3 methods:
         <p><code>matches</code></p>
       </td>
       <td><p>
-        Does the given extension match this converter’s list of acceptable
-        extensions? Takes one argument: the file’s extension (including the
-        dot). Must return <code>true</code> if it matches, <code>false</code>
-        otherwise.
+        Phần mở rộng đã cho có khớp với danh sách các phần mở rộng chấp nhận được của bộ chuyển đổi này không?
+        Nhận một đối số: phần mở rộng của tệp (bao gồm cả dấu chấm).
+        Phải trả về <code>true</code> nếu khớp, ngược lại là <code>false</code>.
       </p></td>
     </tr>
     <tr>
@@ -67,8 +66,8 @@ Converters should implement at a minimum 3 methods:
         <p><code>output_ext</code></p>
       </td>
       <td><p>
-        The extension to be given to the output file (including the dot).
-        Usually this will be <code>".html"</code>.
+        Phần mở rộng được cung cấp cho tệp đầu ra (bao gồm cả dấu chấm).
+        Thông thường đây sẽ là <code>".html"</code>.
       </p></td>
     </tr>
     <tr>
@@ -76,16 +75,16 @@ Converters should implement at a minimum 3 methods:
         <p><code>convert</code></p>
       </td>
       <td><p>
-        Logic to do the content conversion. Takes one argument: the raw content
-        of the file (without front matter). Must return a String.
+        Logic để thực hiện chuyển đổi nội dung. Nhận một đối số: nội dung thô
+        của tệp (không có front matter). Phải trả về một Chuỗi (String).
       </p></td>
     </tr>
   </tbody>
 </table>
 </div>
 
-In our example, `UpcaseConverter#matches` checks if our filename extension is
-`.upcase`, and will render using the converter if it is. It will call
-`UpcaseConverter#convert` to process the content. In our simple converter we’re
-simply uppercasing the entire content string. Finally, when it saves the page,
-it will do so with a `.html` extension.
+Trong ví dụ của chúng tôi, `UpcaseConverter#matches` kiểm tra xem phần mở rộng tên tệp của chúng tôi có phải là
+`.upcase` hay không, và sẽ hiển thị bằng bộ chuyển đổi nếu đúng. Nó sẽ gọi
+`UpcaseConverter#convert` để xử lý nội dung. Trong bộ chuyển đổi đơn giản của chúng tôi, chúng tôi
+chỉ đơn giản là viết hoa toàn bộ chuỗi nội dung. Cuối cùng, khi nó lưu trang,
+nó sẽ làm như vậy với phần mở rộng `.html`.

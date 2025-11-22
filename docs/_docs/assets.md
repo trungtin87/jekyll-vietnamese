@@ -1,92 +1,92 @@
 ---
-title: Assets
+title: Tài sản (Assets)
 permalink: /docs/assets/
 ---
 
-Jekyll provides built-in support for [Sass](https://sass-lang.com/)
-and can work with [CoffeeScript](https://coffeescript.org/) via a Ruby gem.
-In order to use them, you must first create a file with the proper extension
-name (one of `.sass`, `.scss`, or `.coffee`) and
-***start the file with two lines of triple dashes***, like this:
+Jekyll cung cấp hỗ trợ tích hợp cho [Sass](https://sass-lang.com/)
+và có thể làm việc với [CoffeeScript](https://coffeescript.org/) thông qua một Ruby gem.
+Để sử dụng chúng, trước tiên bạn phải tạo một tệp với phần mở rộng tên thích hợp
+(một trong các `.sass`, `.scss`, hoặc `.coffee`) và
+***bắt đầu tệp với hai dòng dấu gạch ngang ba***, như thế này:
 
 ```sass
 ---
 ---
 
-// start content
+// bắt đầu nội dung
 .my-definition
   font-size: 1.2em
 ```
 
-Jekyll treats these files the same as a regular page, in that the output file
-will be placed in the same directory that it came from. For instance, if you
-have a file named `css/styles.scss` in your site's source folder, Jekyll
-will process it and put it in your site's destination folder under
+Jekyll xử lý các tệp này giống như một trang thông thường, ở chỗ tệp đầu ra
+sẽ được đặt trong cùng thư mục mà nó đến. Ví dụ, nếu bạn
+có một tệp tên là `css/styles.scss` trong thư mục nguồn trang web của bạn, Jekyll
+sẽ xử lý nó và đặt nó vào thư mục đích của trang web của bạn dưới dạng
 `css/styles.css`.
 
 <div class="note info">
-  <h5>Jekyll processes all Liquid filters and tags in asset files</h5>
-  <p>If you are using <a href="https://mustache.github.io">Mustache</a>
-     or another JavaScript templating language that conflicts with
-     the <a href="{{ '/docs/templates/' | relative_url }}">Liquid template syntax</a>, you
-     will need to place <code>{&#37; raw &#37;}</code> and
-     <code>{&#37; endraw &#37;}</code> tags around your code.</p>
+  <h5>Jekyll xử lý tất cả các bộ lọc và thẻ Liquid trong các tệp tài sản</h5>
+  <p>Nếu bạn đang sử dụng <a href="https://mustache.github.io">Mustache</a>
+     hoặc một ngôn ngữ mẫu JavaScript khác xung đột với
+     <a href="{{ '/docs/templates/' | relative_url }}">cú pháp mẫu Liquid</a>, bạn
+     sẽ cần đặt các thẻ <code>{&#37; raw &#37;}</code> và
+     <code>{&#37; endraw &#37;}</code> xung quanh mã của bạn.</p>
 </div>
 
 ## Sass/SCSS
 
-Jekyll allows you to customize your Sass conversion in certain ways.
+Jekyll cho phép bạn tùy chỉnh chuyển đổi Sass theo một số cách nhất định.
 
-Place all your partials in your `sass_dir`, which defaults to
-`<source>/_sass`. Place your main SCSS or Sass files in the place you want
-them to be in the output file, such as `<source>/css`. For an example, take
-a look at [this example site using Sass support in Jekyll][example-sass].
+Đặt tất cả các thành phần (partials) của bạn vào `sass_dir`, mặc định là
+`<source>/_sass`. Đặt các tệp SCSS hoặc Sass chính của bạn vào nơi bạn muốn
+chúng ở trong tệp đầu ra, chẳng hạn như `<source>/css`. Để xem ví dụ, hãy
+xem [trang web ví dụ này sử dụng hỗ trợ Sass trong Jekyll][example-sass].
 
-If you are using Sass `@import` statements, you'll need to ensure that your
-`sass_dir` is set to the base directory that contains your Sass files:
+Nếu bạn đang sử dụng các câu lệnh `@import` của Sass, bạn sẽ cần đảm bảo rằng
+`sass_dir` của bạn được đặt thành thư mục cơ sở chứa các tệp Sass của bạn:
 
 ```yaml
 sass:
     sass_dir: _sass
 ```
 
-The Sass converter will default the `sass_dir` configuration option to
+Bộ chuyển đổi Sass sẽ mặc định tùy chọn cấu hình `sass_dir` thành
 `_sass`.
 
 [example-sass]: https://github.com/jekyll/jekyll-sass-converter/tree/master/docs
 
 <div class="note info">
-  <h5>The <code>sass_dir</code> is only used by Sass</h5>
+  <h5><code>sass_dir</code> chỉ được sử dụng bởi Sass</h5>
   <p>
 
-    Note that the <code>sass_dir</code> becomes the load path for Sass imports,
-    nothing more. This means that Jekyll does not know about these files
-    directly. Any files here should not contain the empty front matter as
-    described above. If they do, they'll not be transformed as described above. This
-    folder should only contain imports.
+    Lưu ý rằng <code>sass_dir</code> trở thành đường dẫn tải cho các nhập khẩu Sass,
+    không gì hơn. Điều này có nghĩa là Jekyll không biết về các tệp này
+    một cách trực tiếp. Bất kỳ tệp nào ở đây không nên chứa front matter trống như
+    được mô tả ở trên. Nếu có, chúng sẽ không được chuyển đổi như mô tả ở trên. Thư mục này
+    chỉ nên chứa các nhập khẩu.
 
   </p>
 </div>
 
-You may also specify the output style with the `style` option in your
-`_config.yml` file:
+Bạn cũng có thể chỉ định kiểu đầu ra với tùy chọn `style` trong tệp
+`_config.yml` của bạn:
 
 ```yaml
 sass:
     style: compressed
 ```
 
-These are passed to Sass, so any output style options Sass supports are valid
-here, too.
+Những tùy chọn này được chuyển đến Sass, vì vậy bất kỳ tùy chọn kiểu đầu ra nào mà Sass hỗ trợ đều hợp lệ
+ở đây cũng vậy.
 
-For more information on Sass configuration options, see the [Sass configuration]({{ '/docs/configuration/sass/' | relative_url }}) docs.
+Để biết thêm thông tin về các tùy chọn cấu hình Sass, xem tài liệu [cấu hình Sass]({{ '/docs/configuration/sass/' | relative_url }}).
 
 ## Coffeescript
 
-To enable Coffeescript in Jekyll 3.0 and up you must
+Để kích hoạt Coffeescript trong Jekyll 3.0 trở lên, bạn phải
 
-* Install the `jekyll-coffeescript` gem
-* Ensure that your `_config.yml` is up-to-date and includes the following:
+* Cài đặt gem `jekyll-coffeescript`
+* Đảm bảo rằng `_config.yml` của bạn được cập nhật và bao gồm những điều sau:
 
 ```yaml
 plugins:

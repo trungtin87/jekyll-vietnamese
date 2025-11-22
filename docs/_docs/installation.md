@@ -1,20 +1,20 @@
 ---
-title: Installation
-description: Official guide to install Jekyll on macOS, GNU/Linux or Windows.
+title: Cài đặt
+description: Hướng dẫn chính thức để cài đặt Jekyll trên macOS, GNU/Linux hoặc Windows.
 permalink: /docs/installation/
 ---
 
-Jekyll is a [Ruby Gem]({{ '/docs/ruby-101/#gems' | relative_url }}) that can be installed on most systems.
+Jekyll là một [Ruby Gem]({{ '/docs/ruby-101/#gems' | relative_url }}) có thể được cài đặt trên hầu hết các hệ thống.
 
-## Requirements
+## Yêu cầu
 
-* [Ruby](https://www.ruby-lang.org/en/downloads/) version **{{ site.data.ruby.min_version }}** or higher, including all development headers (check your Ruby version using `ruby -v`)
-* [RubyGems](https://rubygems.org/pages/download) (check your Gems version using `gem -v`)
-* [GCC](https://gcc.gnu.org/install/) and [Make](https://www.gnu.org/software/make/) (check versions using `gcc -v`,`g++ -v`,  and `make -v`)
+* [Ruby](https://www.ruby-lang.org/en/downloads/) phiên bản **{{ site.data.ruby.min_version }}** hoặc cao hơn, bao gồm tất cả các tiêu đề phát triển (kiểm tra phiên bản Ruby của bạn bằng cách sử dụng `ruby -v`)
+* [RubyGems](https://rubygems.org/pages/download) (kiểm tra phiên bản Gems của bạn bằng cách sử dụng `gem -v`)
+* [GCC](https://gcc.gnu.org/install/) và [Make](https://www.gnu.org/software/make/) (kiểm tra phiên bản bằng cách sử dụng `gcc -v`,`g++ -v`,  và `make -v`)
 
-## Guides
+## Hướng dẫn
 
-For detailed install instructions, follow the guide for your operating system.
+Để biết hướng dẫn cài đặt chi tiết, hãy làm theo hướng dẫn cho hệ điều hành của bạn.
 
 * [macOS]({{ '/docs/installation/macos/' | relative_url }})
 * [Ubuntu]({{ '/docs/installation/ubuntu/' | relative_url }})

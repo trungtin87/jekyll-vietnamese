@@ -1,39 +1,33 @@
 ---
 layout: step
-title: Includes
+title: Bao gồm
 position: 5
 ---
-The site is coming together; however, there's no way to navigate between
-pages. Let's fix that.
+Trang web đang dần hình thành; tuy nhiên, không có cách nào để điều hướng giữa các trang. Hãy sửa điều đó.
 
-Navigation should be on every page so adding it to your layout is the correct
-place to do this. Instead of adding it directly to the layout, let's use this
-as an opportunity to learn about includes.
+Điều hướng nên có trên mọi trang vì vậy thêm nó vào bố cục của bạn là nơi chính xác để làm điều này. Thay vì thêm trực tiếp vào bố cục, hãy sử dụng cơ hội này để tìm hiểu về bao gồm (includes).
 
-## Include tag
+## Thẻ include
 
-The `include` tag allows you to include content from another file stored
-in an `_includes` folder. Includes are useful for having a single source for
-source code that repeats around the site or for improving the readability.
+Thẻ `include` cho phép bạn bao gồm nội dung từ một tệp khác được lưu trữ trong thư mục `_includes`. Bao gồm rất hữu ích để có một nguồn duy nhất cho mã nguồn lặp lại xung quanh trang web hoặc để cải thiện khả năng đọc.
 
-Navigation source code can get complex, so sometimes it's nice to move it into an
-include.
+Mã nguồn điều hướng có thể trở nên phức tạp, vì vậy đôi khi thật tốt khi di chuyển nó vào một bao gồm.
 
-## Include usage
+## Sử dụng include
 
-Create a file for the navigation at `_includes/navigation.html` with the
-following content:
+Tạo một tệp cho điều hướng tại `_includes/navigation.html` với nội dung sau:
 
 ```
 <nav>
-  <a href="/">Home</a>
-  <a href="/about.html">About</a>
+  <a href="/">Trang chủ</a>
+  <a href="/about.html">Giới thiệu</a>
 </nav>
 ```
 
-Try using the include tag to add the navigation to `_layouts/default.html`:
+Hãy thử sử dụng thẻ include để thêm điều hướng vào `_layouts/default.html`:
 
 {% raw %}
+
 ```liquid
 <!doctype html>
 <html>
@@ -47,37 +41,34 @@ Try using the include tag to add the navigation to `_layouts/default.html`:
   </body>
 </html>
 ```
+
 {% endraw %}
 
-Open <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a>
-in your browser and try switching between the pages.
+Mở <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> trong trình duyệt của bạn và thử chuyển đổi giữa các trang.
 
-## Current page highlighting
+## Làm nổi bật trang hiện tại
 
-Let's take this a step further and highlight the current page in the navigation.
+Hãy tiến thêm một bước và làm nổi bật trang hiện tại trong điều hướng.
 
-`_includes/navigation.html` needs to know the URL of the page it's inserted into
-so it can add styling. Jekyll has useful [variables](/docs/variables/) available,
-one of which is `page.url`.
+`_includes/navigation.html` cần biết URL của trang mà nó được chèn vào để nó có thể thêm kiểu dáng. Jekyll có các [biến](/docs/variables/) hữu ích có sẵn, một trong số đó là `page.url`.
 
-Using `page.url` you can check if each link is the current page and color it red
-if true:
+Sử dụng `page.url`, bạn có thể kiểm tra xem mỗi liên kết có phải là trang hiện tại hay không và tô màu đỏ nếu đúng:
 
 {% raw %}
+
 ```liquid
 <nav>
   <a href="/" {% if page.url == "/" %}style="color: red;"{% endif %}>
-    Home
+    Trang chủ
   </a>
   <a href="/about.html" {% if page.url == "/about.html" %}style="color: red;"{% endif %}>
-    About
+    Giới thiệu
   </a>
 </nav>
 ```
+
 {% endraw %}
 
-Take a look at <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a>
-and see your red link for the current page.
+Hãy xem <a href="http://localhost:4000" target="_blank" data-proofer-ignore>http://localhost:4000</a> và xem liên kết màu đỏ của bạn cho trang hiện tại.
 
-There's still a lot of repetition here if you wanted to add a new item to the
-navigation or change the highlight color. In the next step we'll address this.
+Vẫn còn rất nhiều sự lặp lại ở đây nếu bạn muốn thêm một mục mới vào điều hướng hoặc thay đổi màu tô sáng. Trong bước tiếp theo, chúng ta sẽ giải quyết vấn đề này.

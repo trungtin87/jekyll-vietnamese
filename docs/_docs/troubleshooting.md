@@ -1,53 +1,52 @@
 ---
-title: Troubleshooting
+title: Khắc phục sự cố (Troubleshooting)
 permalink: /docs/troubleshooting/
 ---
 
-If you ever run into problems installing or using Jekyll, here are a few tips
-that might be of help. If the problem you’re experiencing isn’t covered below,
-**please [check out our other help resources](/help/)** as well.
+Nếu bạn gặp sự cố khi cài đặt hoặc sử dụng Jekyll, đây là một vài mẹo
+có thể giúp ích. Nếu vấn đề bạn đang gặp phải không được đề cập bên dưới,
+**vui lòng [kiểm tra các tài nguyên trợ giúp khác của chúng tôi](/help/)** nữa.
 
-- [Installation Problems](#installation-problems)
-- [Problems running Jekyll](#problems-running-jekyll)
-- [Base-URL Problems](#base-url-problems)
-- [Configuration problems](#configuration-problems)
-- [Markup Problems](#markup-problems)
-- [Production Problems](#production-problems)
+- [Sự cố Cài đặt](#installation-problems)
+- [Sự cố khi chạy Jekyll](#problems-running-jekyll)
+- [Sự cố Base-URL](#base-url-problems)
+- [Sự cố Cấu hình](#configuration-problems)
+- [Sự cố Markup](#markup-problems)
+- [Sự cố Sản xuất](#production-problems)
 
-## Installation Problems
+## Sự cố Cài đặt
 
-If you encounter errors during gem installation, you may need to install
-the header files for compiling extension modules for Ruby 2.x This
-can be done on Ubuntu or Debian by running:
+Nếu bạn gặp lỗi trong quá trình cài đặt gem, bạn có thể cần cài đặt
+các tệp tiêu đề để biên dịch các mô-đun mở rộng cho Ruby 2.x. Điều này
+có thể được thực hiện trên Ubuntu hoặc Debian bằng cách chạy:
 
 ```sh
 sudo apt-get install ruby2.6-dev
 ```
 
-On Red Hat, CentOS, and Fedora systems you can do this by running:
+Trên các hệ thống Red Hat, CentOS và Fedora, bạn có thể thực hiện việc này bằng cách chạy:
 
 ```sh
 sudo yum install ruby-devel
 ```
 
-On Arch Linux you need to run:
+Trên Arch Linux, bạn cần chạy:
 
 ```sh
 sudo pacman -S ruby-ffi
 ```
 
-On Ubuntu if you get stuck after `bundle exec jekyll serve` and see error
-messages like `Could not locate Gemfile` or `.bundle/ directory`, it's likely
-because all requirements have not been fully met. Recent stock Ubuntu
-distributions require the installation of both the `ruby` and `ruby-all-dev`
-packages:
+Trên Ubuntu nếu bạn bị kẹt sau khi chạy `bundle exec jekyll serve` và thấy các thông báo lỗi
+như `Could not locate Gemfile` hoặc `.bundle/ directory`, có khả năng
+là do tất cả các yêu cầu chưa được đáp ứng đầy đủ. Các bản phân phối Ubuntu gốc gần đây
+yêu cầu cài đặt cả hai gói `ruby` và `ruby-all-dev`:
 
 ```sh
 sudo apt-get install ruby ruby-all-dev
 ```
 
-On [NearlyFreeSpeech](https://www.nearlyfreespeech.net/) you need to run the
-following commands before installing Jekyll:
+Trên [NearlyFreeSpeech](https://www.nearlyfreespeech.net/), bạn cần chạy các
+lệnh sau trước khi cài đặt Jekyll:
 
 ```sh
 export GEM_HOME=/home/private/gems
@@ -56,54 +55,54 @@ export PATH=$PATH:/home/private/gems/bin
 export RB_USER_INSTALL='true'
 ```
 
-To install RubyGems on Gentoo:
+Để cài đặt RubyGems trên Gentoo:
 
 ```sh
 sudo emerge -av dev-ruby/rubygems
 ```
 
-On Windows, you may need to install [RubyInstaller
+Trên Windows, bạn có thể cần cài đặt [RubyInstaller
 DevKit](https://wiki.github.com/oneclick/rubyinstaller/development-kit).
 
-On Android (with Termux) you can install all requirements by running:
+Trên Android (với Termux), bạn có thể cài đặt tất cả các yêu cầu bằng cách chạy:
 
 ```sh
 apt update && apt install libffi-dev clang ruby-dev make
 ```
 
-On macOS, you may need to update RubyGems (using `sudo` only if necessary):
+Trên macOS, bạn có thể cần cập nhật RubyGems (chỉ sử dụng `sudo` nếu cần thiết):
 
 ```sh
 gem update --system
 ```
 
-If you still have issues, you can download and install new Command Line
-Tools (such as `gcc`) using the following command:
+Nếu bạn vẫn gặp sự cố, bạn có thể tải xuống và cài đặt Command Line Tools
+mới (chẳng hạn như `gcc`) bằng lệnh sau:
 
 ```sh
 xcode-select --install
 ```
 
-which may allow you to install native gems using this command (again, using
-`sudo` only if necessary):
+điều này có thể cho phép bạn cài đặt các gem gốc bằng lệnh này (một lần nữa, chỉ sử dụng
+`sudo` nếu cần thiết):
 
 ```sh
 gem install jekyll
 ```
 
-Note that upgrading macOS does not automatically upgrade Xcode itself
-(that can be done separately via the App Store), and having an out-of-date
-Xcode.app can interfere with the command line tools downloaded above. If
-you run into this issue, upgrade Xcode and install the upgraded Command
-Line Tools.
+Lưu ý rằng việc nâng cấp macOS không tự động nâng cấp Xcode
+(điều đó có thể được thực hiện riêng qua App Store), và việc có một
+Xcode.app lỗi thời có thể can thiệp vào các công cụ dòng lệnh được tải xuống ở trên. Nếu
+bạn gặp vấn đề này, hãy nâng cấp Xcode và cài đặt Command Line Tools đã nâng cấp.
 
-### Running Jekyll as Non-Superuser (no sudo!)
+### Chạy Jekyll với tư cách không phải Superuser (không sudo!)
+
 {: #no-sudo}
 
-On most flavors of Linux, macOS, and Bash on Ubuntu on Windows, it is
-possible to run Jekyll as a non-superuser and without having to install
-gems to system-wide locations by adding the following lines to the end
-of your `.bashrc` file:
+Trên hầu hết các hương vị của Linux, macOS và Bash trên Ubuntu trên Windows, có thể
+chạy Jekyll với tư cách không phải superuser và không cần phải cài đặt
+các gem vào các vị trí toàn hệ thống bằng cách thêm các dòng sau vào cuối
+tệp `.bashrc` của bạn:
 
 ```bash
 # Ruby exports
@@ -112,20 +111,20 @@ export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 ```
 
-This tells `gem` to place its gems within the user's home folder,
-not in a system-wide location, and adds the local `jekyll` command to the
-user's `PATH` ahead of any system-wide paths.
+Điều này bảo `gem` đặt các gem của nó trong thư mục chính của người dùng,
+không phải ở vị trí toàn hệ thống, và thêm lệnh `jekyll` cục bộ vào
+`PATH` của người dùng trước bất kỳ đường dẫn toàn hệ thống nào.
 
-This is also useful for many shared webhosting services, where user accounts
-have only limited privileges. Adding these exports to `.bashrc` before running
-`gem install jekyll bundler` allows a complete non-`sudo` install of Jekyll.
+Điều này cũng hữu ích cho nhiều dịch vụ lưu trữ web chia sẻ, nơi tài khoản người dùng
+chỉ có các đặc quyền hạn chế. Thêm các xuất này vào `.bashrc` trước khi chạy
+`gem install jekyll bundler` cho phép cài đặt Jekyll hoàn toàn không cần `sudo`.
 
-To activate the new exports, either close and restart Bash, logout and
-log back into your shell account, or run `. .bashrc` in the
-currently-running shell.
+Để kích hoạt các xuất mới, hãy đóng và khởi động lại Bash, đăng xuất và
+đăng nhập lại vào tài khoản shell của bạn, hoặc chạy `. .bashrc` trong
+shell đang chạy hiện tại.
 
-If you see the following error when running the `jekyll new` command,
-you can solve it by using the above-described procedure:
+Nếu bạn thấy lỗi sau khi chạy lệnh `jekyll new`,
+bạn có thể giải quyết nó bằng cách sử dụng quy trình được mô tả ở trên:
 
 ```sh
 jekyll new test
@@ -143,117 +142,117 @@ and install the bundled gems to RubyGems using sudo.
 Password:
 ```
 
-Once this is done, the `jekyll new` command should work properly for
-your user account.
+Khi điều này được thực hiện, lệnh `jekyll new` sẽ hoạt động bình thường cho
+tài khoản người dùng của bạn.
 
 ### Jekyll &amp; macOS
 
-With the introduction of System Integrity Protection in v10.11, several directories
-that were previously writable are now considered system locations and are no
-longer available. Given these changes, there are a couple of simple ways to get
-up and running. One option is to change the location where the gem will be
-installed (again, using `sudo` only if necessary):
+Với sự ra đời của Bảo vệ Tính toàn vẹn Hệ thống (System Integrity Protection) trong v10.11, một số thư mục
+trước đây có thể ghi được giờ được coi là vị trí hệ thống và không còn
+khả dụng nữa. Với những thay đổi này, có một vài cách đơn giản để
+bắt đầu và chạy. Một tùy chọn là thay đổi vị trí nơi gem sẽ được
+cài đặt (một lần nữa, chỉ sử dụng `sudo` nếu cần thiết):
 
 ```sh
 gem install -n /usr/local/bin jekyll
 ```
 
-Alternatively, Homebrew can be installed and used to set up Ruby. This can be
-done as follows:
+Ngoài ra, Homebrew có thể được cài đặt và sử dụng để thiết lập Ruby. Điều này có thể được
+thực hiện như sau:
 
 ```sh
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Once Homebrew is installed, the second step is to run:
+Khi Homebrew được cài đặt, bước thứ hai là chạy:
 
 ```sh
 brew install ruby
 ```
 
-Advanced users (with more complex needs) may find it helpful to choose one of a
-number of Ruby version managers ([RVM][], [rbenv][], [chruby][], [etc][].) in
-which to install Jekyll.
+Người dùng nâng cao (với nhu cầu phức tạp hơn) có thể thấy hữu ích khi chọn một trong
+số các trình quản lý phiên bản Ruby ([RVM][], [rbenv][], [chruby][], [etc][].) để
+cài đặt Jekyll trong đó.
 
 [RVM]: https://rvm.io
 [rbenv]: http://rbenv.org
 [chruby]: https://github.com/postmodern/chruby
 [etc]: https://github.com/rvm/rvm/blob/master/docs/alt.md
 
-If you elect to use one of the above methods to install Ruby, it might be
-necessary to modify your `$PATH` variable using the following command:
+Nếu bạn chọn sử dụng một trong các phương pháp trên để cài đặt Ruby, có thể
+cần thiết phải sửa đổi biến `$PATH` của bạn bằng lệnh sau:
 
 ```sh
 export PATH=/usr/local/bin:$PATH
 ```
 
-GUI apps can modify the `$PATH` as follows:
+Các ứng dụng GUI có thể sửa đổi `$PATH` như sau:
 
 ```sh
 launchctl setenv PATH "/usr/local/bin:$PATH"
 ```
 
-Either of these approaches are useful because `/usr/local` is considered a
-"safe" location on systems which have SIP enabled, they avoid potential
-conflicts with the version of Ruby included by Apple, and it keeps Jekyll and
-its dependencies in a sandboxed environment. This also has the added
-benefit of not requiring `sudo` when you want to add or remove a gem.
+Bất kỳ phương pháp nào trong số này đều hữu ích vì `/usr/local` được coi là một
+vị trí "an toàn" trên các hệ thống đã bật SIP, chúng tránh các xung đột tiềm ẩn
+với phiên bản Ruby được bao gồm bởi Apple, và nó giữ Jekyll và
+các phụ thuộc của nó trong một môi trường hộp cát (sandboxed). Điều này cũng có thêm
+lợi ích là không yêu cầu `sudo` khi bạn muốn thêm hoặc xóa một gem.
 
-### Could not find a JavaScript runtime. (ExecJS::RuntimeUnavailable)
+### Không thể tìm thấy JavaScript runtime. (ExecJS::RuntimeUnavailable)
 
-This error can occur during the installation of `jekyll-coffeescript` when
-you don't have a proper JavaScript runtime. To solve this, either install
-`execjs` and `therubyracer` gems, or install `nodejs`. Check out
-[issue #2327](https://github.com/jekyll/jekyll/issues/2327) for more info.
+Lỗi này có thể xảy ra trong quá trình cài đặt `jekyll-coffeescript` khi
+bạn không có JavaScript runtime thích hợp. Để giải quyết vấn đề này, hãy cài đặt
+các gem `execjs` và `therubyracer`, hoặc cài đặt `nodejs`. Xem
+[issue #2327](https://github.com/jekyll/jekyll/issues/2327) để biết thêm thông tin.
 
-## Problems running Jekyll
+## Sự cố khi chạy Jekyll
 
 ### macOS
 
-Jekyll is compatible with macOS with ARM64 architecture.
-However, `bundle exec jekyll serve` may [fail with older version `ffi`](https://github.com/ffi/ffi/issues/870).
+Jekyll tương thích với macOS có kiến trúc ARM64.
+Tuy nhiên, `bundle exec jekyll serve` có thể [thất bại với phiên bản cũ hơn của `ffi`](https://github.com/ffi/ffi/issues/870).
 
-You may need to run `bundle update` or update `ffi` to at least `1.14.2` manually.
+Bạn có thể cần chạy `bundle update` hoặc cập nhật `ffi` lên ít nhất là `1.14.2` theo cách thủ công.
 
-### Debian or Ubuntu
+### Debian hoặc Ubuntu
 
-On Debian or Ubuntu, you may need to add `/var/lib/gems/1.8/bin/` to your path
-in order to have the `jekyll` executable be available in your Terminal.
+Trên Debian hoặc Ubuntu, bạn có thể cần thêm `/var/lib/gems/1.8/bin/` vào đường dẫn của mình
+để tệp thực thi `jekyll` có sẵn trong Terminal của bạn.
 
-## Base-URL Problems
+## Sự cố Base-URL
 
-If you are using base-url option like:
+Nếu bạn đang sử dụng tùy chọn base-url như:
 
 ```sh
 jekyll serve --baseurl '/blog'
 ```
 
-… then make sure that you access the site at:
+… thì hãy chắc chắn rằng bạn truy cập trang web tại:
 
 ```
 http://localhost:4000/blog/index.html
 ```
 
-It won’t work to just access:
+Sẽ không hoạt động nếu chỉ truy cập:
 
 ```
 http://localhost:4000/blog
 ```
 
-## Configuration problems
+## Sự cố Cấu hình
 
-The order of precedence for conflicting [configuration settings](/docs/configuration/)
-is as follows:
+Thứ tự ưu tiên cho các [cài đặt cấu hình](/docs/configuration/) xung đột
+như sau:
 
-1. Command-line flags
-2. Configuration file settings
-3. Defaults
+1. Cờ dòng lệnh (Command-line flags)
+2. Cài đặt tệp cấu hình
+3. Mặc định
 
-That is: defaults are overridden by options specified in `_config.yml`,
-and flags specified at the command-line will override all other settings
-specified elsewhere.
+Nghĩa là: các giá trị mặc định bị ghi đè bởi các tùy chọn được chỉ định trong `_config.yml`,
+và các cờ được chỉ định tại dòng lệnh sẽ ghi đè tất cả các cài đặt khác
+được chỉ định ở nơi khác.
 
-**Note: From v3.3.0 onward, Jekyll does not process `node_modules` and certain subdirectories within `vendor`, by default. But, by having an `exclude:` array defined explicitly in the config file overrides this default setting, which results in some users to encounter an error in building the site, with the following error message:**
+**Lưu ý: Từ v3.3.0 trở đi, Jekyll không xử lý `node_modules` và một số thư mục con nhất định trong `vendor`, theo mặc định. Nhưng, việc có một mảng `exclude:` được định nghĩa rõ ràng trong tệp cấu hình sẽ ghi đè cài đặt mặc định này, dẫn đến việc một số người dùng gặp lỗi khi xây dựng trang web, với thông báo lỗi sau:**
 
 ```
     ERROR: YOUR SITE COULD NOT BE BUILT:
@@ -263,11 +262,11 @@ specified elsewhere.
     does not have a valid date in front matter.
 ```
 
-Adding `vendor/bundle` to the `exclude:` list will solve this problem but will lead to having other sub-directories under `/vendor/` (and also `/node_modules/`, if present) be processed to the destination folder `_site`.
+Thêm `vendor/bundle` vào danh sách `exclude:` sẽ giải quyết vấn đề này nhưng sẽ dẫn đến việc có các thư mục con khác dưới `/vendor/` (và cả `/node_modules/`, nếu có) được xử lý vào thư mục đích `_site`.
 
-The proper solution is to incorporate the default setting for `exclude:` rather than override it completely:
+Giải pháp thích hợp là kết hợp cài đặt mặc định cho `exclude:` thay vì ghi đè hoàn toàn nó:
 
-For versions up to `v3.4.3`, the `exclude:` setting must look like following:
+Đối với các phiên bản lên đến `v3.4.3`, cài đặt `exclude:` phải trông giống như sau:
 
 ```yaml
 exclude:
@@ -278,46 +277,46 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - any_additional_item # any user-specific listing goes at the end
+  - any_additional_item # bất kỳ danh sách cụ thể nào của người dùng sẽ ở cuối
 ```
 
-From `v3.5` onward, `Gemfile` and `Gemfile.lock` are also excluded by default. So, in most cases there is no need to define another `exclude:` array in the config file. So an existing definition can either be modified as above, or removed completely, or commented out to enable easy edits in future.
+Từ `v3.5` trở đi, `Gemfile` và `Gemfile.lock` cũng được loại trừ theo mặc định. Vì vậy, trong hầu hết các trường hợp, không cần phải định nghĩa một mảng `exclude:` khác trong tệp cấu hình. Vì vậy, một định nghĩa hiện có có thể được sửa đổi như trên, hoặc xóa hoàn toàn, hoặc nhận xét để cho phép chỉnh sửa dễ dàng trong tương lai.
 
-## Markup Problems
+## Sự cố Markup
 
-The various markup engines that Jekyll uses may have some issues. This
-page will document them to help others who may run into the same
-problems.
+Các công cụ markup khác nhau mà Jekyll sử dụng có thể có một số vấn đề. Trang này
+sẽ ghi lại chúng để giúp những người khác có thể gặp phải các vấn đề
+tương tự.
 
 ### Liquid
 
-Liquid version 2.0 seems to break the use of `{{ "{{" }}` in templates.
-Unlike previous versions, using `{{ "{{" }}` in 2.0 triggers the following error:
+Phiên bản Liquid 2.0 dường như phá vỡ việc sử dụng `{{ "{{" }}` trong các mẫu.
+Không giống như các phiên bản trước, việc sử dụng `{{ "{{" }}` trong 2.0 gây ra lỗi sau:
 
 ```
 '{{ "{{" }}' was not properly terminated with regexp: /\}\}/  (Liquid::SyntaxError)
 ```
 
-### Excerpts
+### Excerpts (Trích dẫn)
 
-Since v1.0.0, Jekyll has had automatically-generated post excerpts. Since
-v1.1.0, Jekyll also passes these excerpts through Liquid, which can cause
-strange errors where references don't exist or a tag hasn't been closed. If you
-run into these errors, try setting `excerpt_separator: ""` in your
-`_config.yml`, or set it to some nonsense string.
+Kể từ v1.0.0, Jekyll đã có các trích dẫn bài đăng được tạo tự động. Kể từ
+v1.1.0, Jekyll cũng chuyển các trích dẫn này qua Liquid, điều này có thể gây ra
+các lỗi lạ khi các tham chiếu không tồn tại hoặc một thẻ chưa được đóng. Nếu bạn
+gặp phải các lỗi này, hãy thử đặt `excerpt_separator: ""` trong
+`_config.yml` của bạn, hoặc đặt nó thành một chuỗi vô nghĩa nào đó.
 
-## Production Problems
+## Sự cố Sản xuất
 
-If you run into an issue that a static file can't be found in your
-production environment during build since v3.2.0 you should set your
-[environment to `production`](/docs/configuration/environments/).
-The issue is caused by trying to copy a non-existing symlink.
+Nếu bạn gặp sự cố rằng một tệp tĩnh không thể được tìm thấy trong
+môi trường sản xuất của bạn trong quá trình xây dựng kể từ v3.2.0, bạn nên đặt
+[môi trường thành `production`](/docs/configuration/environments/).
+Vấn đề là do cố gắng sao chép một liên kết tượng trưng (symlink) không tồn tại.
 
 <div class="note">
-  <h5>Please report issues you encounter!</h5>
+  <h5>Vui lòng báo cáo các vấn đề bạn gặp phải!</h5>
   <p>
-  If you come across a bug, please <a href="{{ site.repository }}/issues/new">create an issue</a>
-  on GitHub describing the problem and any workarounds you find so we can
-  document it here for others.
+  Nếu bạn gặp lỗi, vui lòng <a href="{{ site.repository }}/issues/new">tạo một vấn đề</a>
+  trên GitHub mô tả vấn đề và bất kỳ giải pháp thay thế nào bạn tìm thấy để chúng tôi có thể
+  ghi lại nó ở đây cho những người khác.
   </p>
 </div>

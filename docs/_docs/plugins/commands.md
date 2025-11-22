@@ -1,10 +1,10 @@
 ---
-title: Commands
+title: Lệnh (Commands)
 permalink: /docs/plugins/commands/
 ---
-As of version {% include docs_version_badge.html version="2.5.0"%}, Jekyll can be extended with plugins which provide
-subcommands for the `jekyll` executable. This is possible by including the
-relevant plugins in a `Gemfile` group called `:jekyll_plugins`:
+Kể từ phiên bản {% include docs_version_badge.html version="2.5.0"%}, Jekyll có thể được mở rộng với các plugin cung cấp
+các lệnh con cho tệp thực thi `jekyll`. Điều này có thể thực hiện được bằng cách bao gồm các
+plugin liên quan trong một nhóm `Gemfile` được gọi là `:jekyll_plugins`:
 
 ```ruby
 group :jekyll_plugins do
@@ -12,8 +12,8 @@ group :jekyll_plugins do
 end
 ```
 
-Each `Command` must be a subclass of the `Jekyll::Command` class and must
-contain one class method: `init_with_program`. An example:
+Mỗi `Command` phải là một lớp con của lớp `Jekyll::Command` và phải
+chứa một phương thức lớp: `init_with_program`. Một ví dụ:
 
 ```ruby
 class MyNewCommand < Jekyll::Command
@@ -34,14 +34,14 @@ class MyNewCommand < Jekyll::Command
 end
 ```
 
-Commands should implement this single class method:
+Các lệnh nên triển khai phương thức lớp duy nhất này:
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Method</th>
-      <th>Description</th>
+      <th>Phương thức</th>
+      <th>Mô tả</th>
     </tr>
   </thead>
   <tbody>
@@ -50,11 +50,11 @@ Commands should implement this single class method:
         <p><code>init_with_program</code></p>
       </td>
       <td><p>
-        This method accepts one parameter, the
-        <code><a href="https://github.com/jekyll/mercenary#readme">Mercenary::Program</a></code>
-        instance, which is the Jekyll program itself. Upon the program,
-        commands may be created using the above syntax. For more details,
-        visit the Mercenary repository on GitHub.com.
+        Phương thức này chấp nhận một tham số, thể hiện
+        <code><a href="https://github.com/jekyll/mercenary#readme">Mercenary::Program</a></code>,
+        chính là chương trình Jekyll. Dựa trên chương trình,
+        các lệnh có thể được tạo bằng cú pháp trên. Để biết thêm chi tiết,
+        hãy truy cập kho lưu trữ Mercenary trên GitHub.com.
       </p></td>
     </tr>
   </tbody>

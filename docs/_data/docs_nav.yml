@@ -1,16 +1,17 @@
-- title: Getting Started
+# Tệp này định nghĩa cấu trúc điều hướng cho tài liệu.
+- title: Bắt đầu
   docs:
     - link: /docs/
     - link: /docs/installation/
     - link: /docs/ruby-101/
     - link: /docs/community/
     - link: /docs/step-by-step/01-setup/
-- title: Build
+- title: Xây dựng
   docs:
     - link: /docs/usage/
     - link: /docs/configuration/
     - link: /docs/rendering-process/
-- title: Content
+- title: Nội dung
   docs:
     - link: /docs/pages/
     - link: /docs/posts/
@@ -19,7 +20,7 @@
     - link: /docs/datafiles/
     - link: /docs/assets/
     - link: /docs/static-files/
-- title: Site Structure
+- title: Cấu trúc trang web
   docs:
     - link: /docs/structure/
     - link: /docs/liquid/
@@ -29,7 +30,7 @@
     - link: /docs/permalinks/
     - link: /docs/themes/
     - link: /docs/pagination/
-- title: Guides
+- title: Hướng dẫn
   docs:
     - link: /docs/plugins/
     - link: /docs/migrations/

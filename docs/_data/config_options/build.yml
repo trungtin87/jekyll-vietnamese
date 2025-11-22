@@ -1,113 +1,114 @@
+# Tùy chọn cấu hình cho lệnh 'build'.
 - name: Regeneration
-  description: Enable auto-regeneration of the site when files are modified.
+  description: Kích hoạt tự động tái tạo trang web khi các tệp được sửa đổi.
   flag: "-w, --[no-]watch"
 
 
 - name: Configuration
   description: >-
-    Specify config files instead of using <code>_config.yml</code> automatically.
-    Settings in later files override settings in earlier files.
+    Chỉ định các tệp cấu hình thay vì sử dụng <code>_config.yml</code> tự động.
+    Các cài đặt trong các tệp sau sẽ ghi đè các cài đặt trong các tệp trước đó.
   flag: "--config FILE1[,FILE2,...]"
 
 
 - name: Plugins
   description: >-
-    Specify plugin directories instead of using <code>_plugins/</code> automatically.
+    Chỉ định các thư mục plugin thay vì sử dụng <code>_plugins/</code> tự động.
   option: "plugins_dir: [ DIR1,... ]"
   flag: "-p, --plugins DIR1[,DIR2,...]"
 
 
 - name: Layouts
   description: >-
-    Specify layout directory instead of using <code>_layouts/</code> automatically.
+    Chỉ định thư mục bố cục thay vì sử dụng <code>_layouts/</code> tự động.
   option: "layouts_dir: DIR"
   flag: --layouts DIR
 
 
 - name: Drafts
-  description: Process and render draft posts.
+  description: Xử lý và hiển thị các bài đăng nháp.
   option: "show_drafts: BOOL"
   flag: -D, --drafts
 
 
 - name: Environment
-  description: Use a specific environment value in the build.
+  description: Sử dụng một giá trị môi trường cụ thể trong bản dựng.
   flag: JEKYLL_ENV=production
 
 
 - name: Future
-  description: Publish posts or collection documents with a future date.
+  description: Xuất bản các bài đăng hoặc tài liệu bộ sưu tập có ngày trong tương lai.
   option: "future: BOOL"
   flag: --future
 
 
 - name: Unpublished
-  description: Render posts that were marked as unpublished.
+  description: Hiển thị các bài đăng đã được đánh dấu là chưa xuất bản.
   option: "unpublished: BOOL"
   flag: --unpublished
 
 
 - name: LSI
   description: >-
-    Produce an index for related posts. Requires the
-    <a href="https://jekyll.github.io/classifier-reborn/">classifier-reborn</a> plugin.
+    Tạo chỉ mục cho các bài đăng liên quan. Yêu cầu plugin
+    <a href="https://jekyll.github.io/classifier-reborn/">classifier-reborn</a>.
   option: "lsi: BOOL"
   flag: --lsi
 
 
 - name: Limit posts
-  description: Limit the number of posts to parse and publish.
+  description: Giới hạn số lượng bài đăng để phân tích và xuất bản.
   option: "limit_posts: NUM"
   flag: --limit_posts NUM
 
 
 - name: Force polling
-  description: Force watch to use polling.
+  description: Buộc theo dõi sử dụng polling.
   option: "force_polling: BOOL"
   flag: --force_polling
 
 
 - name: Verbose output
-  description: Print verbose output.
+  description: In đầu ra chi tiết.
   option: "verbose: BOOL"
   flag: -V, --verbose
 
 
 - name: Silence output
-  description: Silence the normal output from Jekyll during a build.
+  description: Tắt đầu ra bình thường từ Jekyll trong quá trình xây dựng.
   option: "quiet: BOOL"
   flag: -q, --quiet
 
 
 - name: Log level
-  description: Specify a log level among debug, info, warn, or error.
+  description: Chỉ định mức độ nhật ký trong số debug, info, warn, hoặc error.
   flag: JEKYLL_LOG_LEVEL=info
 
 
 - name: Incremental build
   description: >-
-    Enable the experimental
+    Kích hoạt tính năng thử nghiệm
     <a href="/docs/configuration/incremental-regeneration/">incremental
-    build</a> feature. Incremental build only re-builds posts and pages that
-    have changed, resulting in significant performance improvements for large
-    sites, but may also break site generation in certain cases.
+    build</a> (xây dựng gia tăng). Xây dựng gia tăng chỉ xây dựng lại các bài đăng và trang mà
+    đã thay đổi, dẫn đến cải thiện hiệu suất đáng kể cho các trang web lớn,
+    nhưng cũng có thể phá vỡ việc tạo trang web trong một số trường hợp nhất định.
   option: "incremental: BOOL"
   flag: -I, --incremental
 
 
 - name: Disable bundle require
-  description: Disables the need to require gems in `:jekyll_plugins` Gemfile
+  description: Vô hiệu hóa nhu cầu yêu cầu các gem trong `:jekyll_plugins` Gemfile
   flag: JEKYLL_NO_BUNDLER_REQUIRE=true
 
 
 - name: Liquid profiler
-  description: Generate a Liquid rendering profile to help you identify performance bottlenecks.
+  description: Tạo hồ sơ hiển thị Liquid để giúp bạn xác định các điểm nghẽn hiệu suất.
   option: "profile: BOOL"
   flag: --profile
 
 
 - name: Strict front matter
-  description: Cause a build to fail if there is a YAML syntax error in a page's front matter.
+  description: Khiến bản dựng thất bại nếu có lỗi cú pháp YAML trong front matter của trang.
   option: "strict_front_matter: BOOL"
   flag: --strict_front_matter
 
@@ -115,26 +116,25 @@
 - name: Web Domain URL
   option: "url: SCHEME://HOST[:PORT]"
   description: >-
-    The canonical URL of the root of your production deploy, composed of the following components:<br>
-    &nbsp; &nbsp;• &nbsp; Protocol scheme (e.g. <code>http://</code>)<br>
-    &nbsp; &nbsp;• &nbsp; Hostname or IP address (e.g. <code>example.org</code>)<br>
-    &nbsp; &nbsp;• &nbsp; <em>(Optional)</em> The port number of the server, prefixed with a colon
-    (e.g. <code>:8080</code>)<br>
-    The value of this configuration option should NOT have a trailing slash. It will be appended
-    with the <code>baseurl</code> to form the full URL to your Jekyll site when using the
-    <a href="/docs/liquid/filters/">Liquid filter <code>absolute_url</code></a>.<br>
-    <strong>NOTE:</strong> This setting is automatically configured to the <strong>localhost URL</strong>
-    when the <code>jekyll serve</code> command is invoked.
+    URL chính tắc của thư mục gốc của bản triển khai sản xuất của bạn, bao gồm các thành phần sau:<br>
+    &nbsp; &nbsp;• &nbsp; Giao thức (ví dụ: <code>http://</code>)<br>
+    &nbsp; &nbsp;• &nbsp; Tên máy chủ hoặc địa chỉ IP (ví dụ: <code>example.org</code>)<br>
+    &nbsp; &nbsp;• &nbsp; <em>(Tùy chọn)</em> Số cổng của máy chủ, có tiền tố là dấu hai chấm
+    (ví dụ: <code>:8080</code>)<br>
+    Giá trị của tùy chọn cấu hình này KHÔNG nên có dấu gạch chéo ở cuối. Nó sẽ được nối thêm
+    với <code>baseurl</code> để tạo thành URL đầy đủ đến trang web Jekyll của bạn khi sử dụng
+    <a href="/docs/liquid/filters/">bộ lọc Liquid <code>absolute_url</code></a>.<br>
+    <strong>LƯU Ý:</strong> Cài đặt này được tự động cấu hình thành <strong>URL localhost</strong>
+    khi lệnh <code>jekyll serve</code> được gọi.
 
 
 - name: Base URL
   description: >-
-    Serve the website from the given base URL (the path between web-server or domain root and your landing
-    page).
+    Phục vụ trang web từ URL cơ sở đã cho (đường dẫn giữa máy chủ web hoặc gốc tên miền và trang đích của bạn).
   option: "baseurl: /PATH/TO/SITE"
   flag: -b, --baseurl /PATH/TO/SITE
 
 
 - name: Trace
-  description: Show the full backtrace when an error occurs.
+  description: Hiển thị dấu vết đầy đủ khi xảy ra lỗi.
   flag: -t, --trace

@@ -1,22 +1,22 @@
 ---
-title: Custom 404 Page
+title: Trang 404 Tùy chỉnh
 author: ashmaroli
 date: 2017-03-11 17:23:24 +0530
 ---
 
-You can easily serve custom 404 error pages with Jekyll to replace the default **Error 404 -- File Not Found** page displayed when one tries to access a broken link on your site.
+Bạn có thể dễ dàng phục vụ các trang lỗi 404 tùy chỉnh với Jekyll để thay thế trang **Error 404 -- File Not Found** mặc định được hiển thị khi ai đó cố gắng truy cập một liên kết bị hỏng trên trang web của bạn.
 
-## On GitHub Pages
+## Trên GitHub Pages
 
-Any `404.html` at the **root of your `_site` directory** will be served automatically by GitHub Pages and the local WEBrick development server.
+Bất kỳ `404.html` nào tại **thư mục gốc của thư mục `_site` của bạn** sẽ được phục vụ tự động bởi GitHub Pages và máy chủ phát triển WEBrick cục bộ.
 
-Simply add a `404.md` or `404.html` at the root of your site's source directory and include front matter data to use the theme's base layout.
+Chỉ cần thêm một `404.md` hoặc `404.html` tại thư mục gốc của thư mục nguồn trang web của bạn và bao gồm dữ liệu front matter để sử dụng bố cục cơ sở của giao diện.
 
-If you plan to organize your files under subdirectories, the error page should have the following Front Matter Data, set: `permalink: /404.html`. This is to ensure that the compiled `404.html` resides at the root of your processed site, where it'll be picked by the server.
+Nếu bạn dự định tổ chức các tệp của mình dưới các thư mục con, trang lỗi nên có Dữ liệu Front Matter sau, được đặt: `permalink: /404.html`. Điều này là để đảm bảo rằng `404.html` đã biên dịch nằm ở thư mục gốc của trang web đã xử lý của bạn, nơi nó sẽ được máy chủ chọn.
 
 ```markdown
 ---
-# example 404.md
+# ví dụ 404.md
 
 layout: default
 permalink: /404.html
@@ -24,34 +24,34 @@ permalink: /404.html
 
 # 404
 
-Page not found! :(
+Không tìm thấy trang! :(
 ```
 
-## Hosting on Apache Web Servers
+## Lưu trữ trên Máy chủ Web Apache
 
-Apache Web Servers load a configuration file named [`.htaccess`](http://www.htaccess-guide.com/) that modifies the functionality of these servers.
+Máy chủ Web Apache tải một tệp cấu hình có tên [`.htaccess`](http://www.htaccess-guide.com/) sửa đổi chức năng của các máy chủ này.
 
-Simply add the following to your `.htaccess` file.
+Chỉ cần thêm nội dung sau vào tệp `.htaccess` của bạn.
 
 ```apache
 ErrorDocument 404 /404.html
 ```
 
-With an `.htaccess` file, you have the freedom to place your error page within a subdirectory.
+Với tệp `.htaccess`, bạn có quyền tự do đặt trang lỗi của mình trong một thư mục con.
 
 ```apache
 ErrorDocument 404 /error_pages/404.html
 ```
 
-Where the path is relative to your site's domain.
+Trong đó đường dẫn là tương đối với tên miền của trang web của bạn.
 
-More info on configuring Apache Error Pages can found in [official documentation](https://httpd.apache.org/docs/current/mod/core.html#errordocument).
+Thông tin thêm về cấu hình Trang Lỗi Apache có thể được tìm thấy trong [tài liệu chính thức](https://httpd.apache.org/docs/current/mod/core.html#errordocument).
 
-## Hosting on Nginx server
+## Lưu trữ trên máy chủ Nginx
 
-The procedure is just as simple as configuring Apache servers, but slightly different.
+Quy trình cũng đơn giản như cấu hình máy chủ Apache, nhưng hơi khác một chút.
 
-The nginx configuration file depends on the system in which it is installed. In most systems, it is the `nginx.conf` file, which is usually located inside `/etc/nginx/` or `/etc/nginx/conf/`. However, in other systems like Ubuntu, you would have to look for a `default` nginx configuration file, containing server related information, which is usually located inside `/etc/nginx/sites-available/` or `/etc/nginx/sites-enabled/`. Add the following to your nginx configuration file, _i.e._ either to `nginx.conf` file or to `default` file:
+Tệp cấu hình nginx phụ thuộc vào hệ thống mà nó được cài đặt. Trong hầu hết các hệ thống, đó là tệp `nginx.conf`, thường nằm trong `/etc/nginx/` hoặc `/etc/nginx/conf/`. Tuy nhiên, trong các hệ thống khác như Ubuntu, bạn sẽ phải tìm tệp cấu hình nginx `default`, chứa thông tin liên quan đến máy chủ, thường nằm trong `/etc/nginx/sites-available/` hoặc `/etc/nginx/sites-enabled/`. Thêm nội dung sau vào tệp cấu hình nginx của bạn, _tức là_ vào tệp `nginx.conf` hoặc vào tệp `default`:
 
 ```nginx
 server {
@@ -62,11 +62,11 @@ server {
 }
 ```
 
-If the `server` block already exists, only add the code inside the `server` block given above.
-The `location` directive prevents users from directly browsing the 404.html page.
+Nếu khối `server` đã tồn tại, chỉ cần thêm mã bên trong khối `server` được đưa ra ở trên.
+Chỉ thị `location` ngăn người dùng duyệt trực tiếp trang 404.html.
 
-More info on nginx error page can be found on [nginx official documentation](http://nginx.org/en/docs/http/ngx_http_core_module.html#error_page).
+Thông tin thêm về trang lỗi nginx có thể được tìm thấy trên [tài liệu chính thức nginx](http://nginx.org/en/docs/http/ngx_http_core_module.html#error_page).
 
 <p class="note warning">
-  Proceed with caution while editing the configuration file.
+  Hãy thận trọng khi chỉnh sửa tệp cấu hình.
 </p>

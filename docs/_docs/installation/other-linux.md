@@ -1,17 +1,18 @@
 ---
-title: Jekyll on Linux
+title: Jekyll trên Linux (Jekyll on Linux)
 permalink: /docs/installation/other-linux/
 ---
 
-Installation on other Linux distributions works similarly to installing on [Ubuntu](../ubuntu/).
+Cài đặt trên các bản phân phối Linux khác hoạt động tương tự như cài đặt trên [Ubuntu](../ubuntu/).
 
-## Install prerequisites
+## Cài đặt các điều kiện tiên quyết
 
 ### Fedora
 
 ```sh
 sudo dnf install ruby ruby-devel openssl-devel redhat-rpm-config gcc-c++ @development-tools
 ```
+
 ### RHEL8/CentOS8
 
 ```sh
@@ -31,7 +32,7 @@ sudo apt-get install ruby-full build-essential
 sudo emerge -av jekyll
 ```
 
-or
+hoặc
 
 ```sh
 sudo emerge --ask --verbose jekyll
@@ -55,6 +56,7 @@ sudo zypper install ruby-devel
 ```sh
 sudo swupd bundle-add ruby-basic
 ```
-## Install Jekyll
 
-Follow the instructions for [Ubuntu](../ubuntu/).
+## Cài đặt Jekyll
+
+Làm theo hướng dẫn cho [Ubuntu](../ubuntu/).

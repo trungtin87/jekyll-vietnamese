@@ -1,11 +1,11 @@
 ---
-title:  Command Line Usage
+title:  Sử dụng Dòng lệnh (Command Line Usage)
 permalink: /docs/usage/
 ---
 
-The Jekyll gem makes a `jekyll` executable available to you in your terminal.
+Gem Jekyll làm cho một tệp thực thi `jekyll` có sẵn cho bạn trong terminal của bạn.
 
-The `jekyll` program has several commands but the structure is always:
+Chương trình `jekyll` có một số lệnh nhưng cấu trúc luôn là:
 
 ```
 jekyll command [argument] [option] [argument_to_option]
@@ -15,19 +15,19 @@ Examples:
     jekyll serve --config _alternative_config.yml
 ```
 
-Typically you'll use `jekyll serve` while developing locally and `jekyll build` when you need to generate the site for production.
+Thông thường bạn sẽ sử dụng `jekyll serve` trong khi phát triển cục bộ và `jekyll build` khi bạn cần tạo trang web cho sản xuất.
 
-For a full list of options and their argument, see [Build Command Options](/docs/configuration/options/#build-command-options).
+Để có danh sách đầy đủ các tùy chọn và đối số của chúng, hãy xem [Tùy chọn Lệnh Build](/docs/configuration/options/#build-command-options).
 
-Here are some of the most common commands:
+Dưới đây là một số lệnh phổ biến nhất:
 
-* `jekyll new PATH` - Creates a new Jekyll site with default gem-based theme at specified path. The directories will be created as necessary.
-* `jekyll new PATH --blank` - Creates a new blank Jekyll site scaffold at specified path.
-* `jekyll build` or `jekyll b` - Performs a one off build your site to `./_site` (by default).
-* `jekyll serve` or `jekyll s` - Builds your site any time a source file changes and serves it locally.
-* `jekyll clean` - Removes all generated files: destination folder, metadata file, Sass and Jekyll caches.
-* `jekyll help` - Shows help, optionally for a given subcommand, e.g. `jekyll help build`.
-* `jekyll new-theme` - Creates a new Jekyll theme scaffold.
-* `jekyll doctor` - Outputs any deprecation or configuration issues.
+* `jekyll new PATH` - Tạo một trang web Jekyll mới với chủ đề dựa trên gem mặc định tại đường dẫn được chỉ định. Các thư mục sẽ được tạo khi cần thiết.
+* `jekyll new PATH --blank` - Tạo một khung trang web Jekyll trống mới tại đường dẫn được chỉ định.
+* `jekyll build` hoặc `jekyll b` - Thực hiện một lần xây dựng trang web của bạn vào `./_site` (theo mặc định).
+* `jekyll serve` hoặc `jekyll s` - Xây dựng trang web của bạn bất cứ khi nào tệp nguồn thay đổi và phục vụ nó cục bộ.
+* `jekyll clean` - Xóa tất cả các tệp đã tạo: thư mục đích, tệp siêu dữ liệu, bộ nhớ đệm Sass và Jekyll.
+* `jekyll help` - Hiển thị trợ giúp, tùy chọn cho một lệnh con nhất định, ví dụ: `jekyll help build`.
+* `jekyll new-theme` - Tạo một khung chủ đề Jekyll mới.
+* `jekyll doctor` - Xuất ra bất kỳ vấn đề nào về việc ngừng sử dụng hoặc cấu hình.
 
-To change Jekyll's default build behavior have a look through the [configuration options](/docs/configuration/).
+Để thay đổi hành vi xây dựng mặc định của Jekyll, hãy xem qua các [tùy chọn cấu hình](/docs/configuration/).

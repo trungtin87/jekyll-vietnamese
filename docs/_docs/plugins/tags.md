@@ -1,12 +1,12 @@
 ---
-title: Tags
+title: Thẻ (Tags)
 permalink: /docs/plugins/tags/
 ---
 
-If you’d like to include custom liquid tags in your site, you can do so by
-hooking into the tagging system. Built-in examples added by Jekyll include the
-`highlight` and `include` tags. Below is an example of a custom liquid tag that
-will output the time the page was rendered:
+Nếu bạn muốn bao gồm các thẻ liquid tùy chỉnh trong trang web của mình, bạn có thể làm như vậy bằng cách
+móc nối vào hệ thống gắn thẻ. Các ví dụ tích hợp được thêm bởi Jekyll bao gồm các thẻ
+`highlight` và `include`. Dưới đây là một ví dụ về thẻ liquid tùy chỉnh sẽ
+xuất ra thời gian trang được hiển thị:
 
 ```ruby
 module Jekyll
@@ -26,14 +26,14 @@ end
 Liquid::Template.register_tag('render_time', Jekyll::RenderTimeTag)
 ```
 
-At a minimum, liquid tags must implement:
+Tối thiểu, các thẻ liquid phải triển khai:
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Method</th>
-      <th>Description</th>
+      <th>Phương thức</th>
+      <th>Mô tả</th>
     </tr>
   </thead>
   <tbody>
@@ -42,39 +42,41 @@ At a minimum, liquid tags must implement:
         <p><code>render</code></p>
       </td>
       <td>
-        <p>Outputs the content of the tag.</p>
+        <p>Xuất nội dung của thẻ.</p>
       </td>
     </tr>
   </tbody>
 </table>
 </div>
 
-You must also register the custom tag with the Liquid template engine as
-follows:
+Bạn cũng phải đăng ký thẻ tùy chỉnh với công cụ mẫu Liquid như
+sau:
 
 ```ruby
 Liquid::Template.register_tag('render_time', Jekyll::RenderTimeTag)
 ```
 
-In the example above, we can place the following tag anywhere in one of our
-pages:
+Trong ví dụ trên, chúng ta có thể đặt thẻ sau ở bất kỳ đâu trong một trong các
+trang của chúng ta:
 
 {% raw %}
+
 ```liquid
 <p>{% render_time page rendered at: %}</p>
 ```
+
 {% endraw %}
 
-And we would get something like this on the page:
+Và chúng ta sẽ nhận được một cái gì đó như thế này trên trang:
 
 ```html
 <p>page rendered at: Tue June 22 23:38:47 –0500 2010</p>
 ```
 
-## Tag Blocks
+## Khối Thẻ
 
-The `render_time` tag seen above can also be rewritten as a tag block by
-inheriting the `Liquid::Block` class. Look at the example below:
+Thẻ `render_time` thấy ở trên cũng có thể được viết lại dưới dạng một khối thẻ bằng cách
+kế thừa lớp `Liquid::Block`. Hãy xem ví dụ dưới đây:
 
 ```ruby
 module Jekyll
@@ -91,24 +93,26 @@ end
 Liquid::Template.register_tag('render_time', Jekyll::RenderTimeTagBlock)
 ```
 
-We can now use the tag block anywhere:
+Bây giờ chúng ta có thể sử dụng khối thẻ ở bất cứ đâu:
 
 {% raw %}
+
 ```liquid
 {% render_time %}
 page rendered at:
 {% endrender_time %}
 ```
+
 {% endraw %}
 
-And we would still get the same output as above on the page:
+Và chúng ta vẫn sẽ nhận được cùng một đầu ra như trên trang:
 
 ```html
 <p>page rendered at: Tue June 22 23:38:47 –0500 2010</p>
 ```
 
 {: .note .info}
-In the above example, the tag block and the tag are both registered with
-the name <code>render_time</code>, but to register a tag and a tag block using
-the same name in the same project is not recommended as this may lead to
-conflicts.
+Trong ví dụ trên, khối thẻ và thẻ đều được đăng ký với
+tên <code>render_time</code>, nhưng việc đăng ký một thẻ và một khối thẻ sử dụng
+cùng một tên trong cùng một dự án không được khuyến khích vì điều này có thể dẫn đến
+xung đột.

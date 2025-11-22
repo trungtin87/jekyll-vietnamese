@@ -1,15 +1,16 @@
-- title: Home
+# Tệp này định nghĩa các liên kết điều hướng chính của trang web.
+- title: Trang chủ
   link: /
   show_on_mobile: true
-- title: Docs
+- title: Tài liệu
   link: /docs/
   show_on_mobile: true
-- title: Resources
+- title: Tài nguyên
   link: /resources/
   show_on_mobile: true
-- title: Showcase
+- title: Trưng bày
   link: /showcase/
   show_on_mobile: false
-- title: News
+- title: Tin tức
   link: /news/
   show_on_mobile: true

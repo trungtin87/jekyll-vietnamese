@@ -1,21 +1,21 @@
 ---
-title: Configuration Options
+title: Tùy chọn Cấu hình (Configuration Options)
 permalink: "/docs/configuration/options/"
 ---
 
-The tables below list the available settings for Jekyll, and the various <code
-class="option">options</code> (specified in the configuration file) and <code
-class="flag">flags</code> (specified on the command-line) that control them.
+Các bảng dưới đây liệt kê các cài đặt có sẵn cho Jekyll, và các <code
+class="option">tùy chọn</code> khác nhau (được chỉ định trong tệp cấu hình) và <code
+class="flag">cờ</code> (được chỉ định trên dòng lệnh) kiểm soát chúng.
 
-### Global Configuration
+### Cấu hình Toàn cục
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Setting</th>
+      <th>Cài đặt</th>
       <th>
-        <span class="option">Options</span> and <span class="flag">Flags</span>
+        <span class="option">Tùy chọn</span> và <span class="flag">Cờ</span>
       </th>
     </tr>
   </thead>
@@ -26,11 +26,11 @@ class="flag">flags</code> (specified on the command-line) that control them.
           <p class="name">
             <strong>{{ setting.name }}</strong>
             {% if setting.version-badge %}
-              <span class="version-badge" title="Introduced in v{{ setting.version-badge }}">{{ setting.version-badge }}</span>
+              <span class="version-badge" title="Được giới thiệu trong v{{ setting.version-badge }}">{{ setting.version-badge }}</span>
             {% endif %}
-          </p> 
+          </p>
           <p class="description">{{ setting.description }}</p>
-        </td> 
+        </td>
         <td class="align-center">
           <p><code class="option">{{ setting.option }}</code></p>
           {% if setting.flag %}
@@ -41,14 +41,13 @@ class="flag">flags</code> (specified on the command-line) that control them.
     {% endfor %}
     <tr>
       <td>
-        <p class='name'><strong>Defaults</strong></p>
+        <p class='name'><strong>Mặc định (Defaults)</strong></p>
         <p class='description'>
-            Set defaults for <a href="{{ '/docs/front-matter/' | relative_url }}" title="front matter">front matter</a>
-            variables.
+            Đặt mặc định cho các biến <a href="{{ '/docs/front-matter/' | relative_url }}" title="front matter">front matter</a>.
         </p>
       </td>
       <td class='align-center'>
-        <p>see <a href="{{ '/docs/configuration/front-matter-defaults/' | relative_url }}" title="details">below</a></p>
+        <p>xem <a href="{{ '/docs/configuration/front-matter-defaults/' | relative_url }}" title="chi tiết">bên dưới</a></p>
       </td>
     </tr>
   </tbody>
@@ -56,27 +55,27 @@ class="flag">flags</code> (specified on the command-line) that control them.
 </div>
 
 <div class="note warning">
-  <h5>Destination folders are cleaned on site builds</h5>
+  <h5>Thư mục đích được làm sạch khi xây dựng trang web</h5>
   <p>
-    The contents of <code>&lt;destination&gt;</code> are automatically
-    cleaned, by default, when the site is built. Files or folders that are not
-    created by your site will be removed. Some files could be retained
-    by specifying them within the <code>&lt;keep_files&gt;</code> configuration directive.
+    Nội dung của <code>&lt;destination&gt;</code> được tự động
+    làm sạch, theo mặc định, khi trang web được xây dựng. Các tệp hoặc thư mục không được
+    tạo bởi trang web của bạn sẽ bị xóa. Một số tệp có thể được giữ lại
+    bằng cách chỉ định chúng trong chỉ thị cấu hình <code>&lt;keep_files&gt;</code>.
   </p>
   <p>
-    Do not use an important location for <code>&lt;destination&gt;</code>; instead, use it as
-    a staging area and copy files from there to your web server.
+    Không sử dụng một vị trí quan trọng cho <code>&lt;destination&gt;</code>; thay vào đó, hãy sử dụng nó như
+    một khu vực tổ chức (staging area) và sao chép các tệp từ đó sang máy chủ web của bạn.
   </p>
 </div>
 
-### Build Command Options
+### Tùy chọn Lệnh Build
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Setting</th>
-      <th><span class="option">Options</span> and <span class="flag">Flags</span></th>
+      <th>Cài đặt</th>
+      <th><span class="option">Tùy chọn</span> và <span class="flag">Cờ</span></th>
     </tr>
   </thead>
   <tbody>
@@ -86,11 +85,11 @@ class="flag">flags</code> (specified on the command-line) that control them.
           <p class="name">
             <strong>{{ setting.name }}</strong>
             {% if setting.version-badge %}
-              <span class="version-badge" title="Introduced in v{{ setting.version-badge }}">{{ setting.version-badge }}</span>
+              <span class="version-badge" title="Được giới thiệu trong v{{ setting.version-badge }}">{{ setting.version-badge }}</span>
             {% endif %}
-          </p> 
+          </p>
           <p class="description">{{ setting.description }}</p>
-        </td> 
+        </td>
         <td class="align-center">
           {% if setting.option %}<p><code class="option">{{ setting.option }}</code></p>{% endif %}
           {% if setting.flag %}<p><code class="flag">{{ setting.flag }}</code></p>{% endif %}
@@ -101,18 +100,18 @@ class="flag">flags</code> (specified on the command-line) that control them.
 </table>
 </div>
 
-### Serve Command Options
+### Tùy chọn Lệnh Serve
 
-In addition to the options below, the `serve` sub-command can accept any of the options
-for the `build` sub-command, which are then applied to the site build which occurs right
-before your site is served.
+Ngoài các tùy chọn bên dưới, lệnh phụ `serve` có thể chấp nhận bất kỳ tùy chọn nào
+của lệnh phụ `build`, sau đó được áp dụng cho bản dựng trang web diễn ra ngay
+trước khi trang web của bạn được phục vụ.
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Setting</th>
-      <th><span class="option">Options</span> and <span class="flag">Flags</span></th>
+      <th>Cài đặt</th>
+      <th><span class="option">Tùy chọn</span> và <span class="flag">Cờ</span></th>
     </tr>
   </thead>
   <tbody>
@@ -122,11 +121,11 @@ before your site is served.
           <p class="name">
             <strong>{{ setting.name }}</strong>
             {% if setting.version-badge %}
-              <span class="version-badge" title="Introduced in v{{ setting.version-badge }}">{{ setting.version-badge }}</span>
+              <span class="version-badge" title="Được giới thiệu trong v{{ setting.version-badge }}">{{ setting.version-badge }}</span>
             {% endif %}
-          </p> 
+          </p>
           <p class="description">{{ setting.description }}</p>
-        </td> 
+        </td>
         <td class="align-center">
           {% if setting.option %}
             <p><code class="option">{{ setting.option }}</code></p>
@@ -154,9 +153,9 @@ before your site is served.
 </div>
 
 <div class="note warning">
-  <h5>Do not use tabs in configuration files</h5>
+  <h5>Không sử dụng tab trong các tệp cấu hình</h5>
   <p>
-    This will either lead to parsing errors, or Jekyll will revert to the
-    default settings. Use spaces instead.
+    Điều này sẽ dẫn đến lỗi phân tích cú pháp, hoặc Jekyll sẽ quay lại
+    cài đặt mặc định. Sử dụng dấu cách thay thế.
   </p>
 </div>

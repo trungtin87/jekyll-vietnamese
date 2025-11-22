@@ -1,84 +1,83 @@
 ---
-title: Your first plugin
+title: Plugin đầu tiên của bạn
 permalink: /docs/plugins/your-first-plugin/
 ---
 
-Plugins allow you to extend Jekyll's behavior to fit your needs. There are six
-types of plugins in Jekyll.
+Các plugin cho phép bạn mở rộng hành vi của Jekyll để phù hợp với nhu cầu của bạn. Có sáu
+loại plugin trong Jekyll.
 
-## Generators
+## Bộ tạo (Generators)
 
-[Generators](/docs/plugins/generators/) create content on your site.
-For example:
+[Bộ tạo](/docs/plugins/generators/) tạo nội dung trên trang web của bạn.
+Ví dụ:
 
-* [jekyll-feed](https://github.com/jekyll/jekyll-feed) creates an Atom feed of
-blog posts.
-* [jekyll-archives](https://github.com/jekyll/jekyll-archives) creates archive
-pages for blog categories and tags.
-* [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap) creates a sitemap.
+* [jekyll-feed](https://github.com/jekyll/jekyll-feed) tạo một nguồn cấp dữ liệu Atom của
+các bài đăng trên blog.
+* [jekyll-archives](https://github.com/jekyll/jekyll-archives) tạo các trang lưu trữ
+cho các danh mục và thẻ blog.
+* [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap) tạo một sơ đồ trang web.
 
-## Converters
+## Bộ chuyển đổi (Converters)
 
-[Converters](/docs/plugins/converters/) change a markup language into another
-format. For example:
+[Bộ chuyển đổi](/docs/plugins/converters/) thay đổi một ngôn ngữ đánh dấu thành một định dạng
+khác. Ví dụ:
 
 * [jekyll-textile-converter](https://github.com/jekyll/jekyll-textile-converter)
-converts textile to HTML.
-* [jekyll-coffeescript](https://github.com/jekyll/jekyll-coffeescript) converts
-Coffeescript to JavaScript.
-* [jekyll-opal](https://github.com/jekyll/jekyll-opal) converts Ruby to
+chuyển đổi textile sang HTML.
+* [jekyll-coffeescript](https://github.com/jekyll/jekyll-coffeescript) chuyển đổi
+Coffeescript sang JavaScript.
+* [jekyll-opal](https://github.com/jekyll/jekyll-opal) chuyển đổi Ruby sang
 JavaScript.
 
-## Commands
+## Lệnh (Commands)
 
-[Commands](/docs/plugins/commands/) extend the `jekyll` executable with
-subcommands. For example:
+[Lệnh](/docs/plugins/commands/) mở rộng tệp thực thi `jekyll` với các
+lệnh con. Ví dụ:
 
-* [jekyll-compose](https://github.com/jekyll/jekyll-compose) adds subcommands
-for creating a post, page or draft.
+* [jekyll-compose](https://github.com/jekyll/jekyll-compose) thêm các lệnh con
+để tạo một bài đăng, trang hoặc bản nháp.
 
-## Tags
+## Thẻ (Tags)
 
-[Tags](/docs/plugins/tags/) create custom Liquid tags. For example:
+[Thẻ](/docs/plugins/tags/) tạo các thẻ Liquid tùy chỉnh. Ví dụ:
 
-* [jekyll-youtube](https://github.com/dommmel/jekyll-youtube) embeds a YouTube
-video.
+* [jekyll-youtube](https://github.com/dommmel/jekyll-youtube) nhúng một video
+YouTube.
 * [jekyll-asset-path-plugin](https://github.com/samrayner/jekyll-asset-path-plugin)
-outputs a relative URL for assets.
-* [jekyll-swfobject](https://github.com/sectore/jekyll-swfobject) embeds a SWF
-object.
+xuất ra một URL tương đối cho các tài sản.
+* [jekyll-swfobject](https://github.com/sectore/jekyll-swfobject) nhúng một đối tượng
+SWF.
 
-## Filters
+## Bộ lọc (Filters)
 
-[Filters](/docs/plugins/filters/) create custom Liquid filters. For example:
+[Bộ lọc](/docs/plugins/filters/) tạo các bộ lọc Liquid tùy chỉnh. Ví dụ:
 
-* [jekyll-time-ago](https://github.com/markets/jekyll-timeago) - The distance
-between two dates in words.
-* [jekyll-toc](https://github.com/toshimaru/jekyll-toc) - Generates a table of
-content.
+* [jekyll-time-ago](https://github.com/markets/jekyll-timeago) - Khoảng cách
+giữa hai ngày bằng chữ.
+* [jekyll-toc](https://github.com/toshimaru/jekyll-toc) - Tạo một mục lục.
 * [jekyll-email-protect](https://github.com/vwochnik/jekyll-email-protect) -
-Obfuscates emails to protect them from spam bots.
+Làm mờ email để bảo vệ chúng khỏi các bot spam.
 
-## Hooks
+## Móc (Hooks)
 
-[Hooks](/docs/plugins/hooks/) give fine-grained control to extend the build
-process. For example:
+[Móc](/docs/plugins/hooks/) cung cấp quyền kiểm soát chi tiết để mở rộng quá trình
+xây dựng. Ví dụ:
 
-* [jemoji](https://github.com/jekyll/jemoji) Display emojis :+1: 
-* [jekyll-mentions](https://github.com/jekyll/jekyll-mentions) turns mentions @jekyll into links
-* [jekyll-spaceship](https://github.com/jeffreytse/jekyll-spaceship) - advanced example. Provides
-powerful supports for table, mathjax, plantuml, video, etc.
+* [jemoji](https://github.com/jekyll/jemoji) Hiển thị biểu tượng cảm xúc :+1:
+* [jekyll-mentions](https://github.com/jekyll/jekyll-mentions) biến các đề cập @jekyll thành các liên kết
+* [jekyll-spaceship](https://github.com/jeffreytse/jekyll-spaceship) - ví dụ nâng cao. Cung cấp
+hỗ trợ mạnh mẽ cho bảng, mathjax, plantuml, video, v.v.
 
-## Flags
+## Cờ (Flags)
 
-There are two flags to be aware of when writing a plugin:
+Có hai cờ cần lưu ý khi viết một plugin:
 
 <div class="mobile-side-scroller">
 <table>
   <thead>
     <tr>
-      <th>Flag</th>
-      <th>Description</th>
+      <th>Cờ</th>
+      <th>Mô tả</th>
     </tr>
   </thead>
   <tbody>
@@ -88,13 +87,13 @@ There are two flags to be aware of when writing a plugin:
       </td>
       <td>
         <p>
-          A boolean flag that informs Jekyll whether this plugin may be safely
-          executed in an environment where arbitrary code execution is not
-          allowed. This is used by GitHub Pages to determine which core plugins
-          may be used, and which are unsafe to run. If your plugin does not
-          allow for arbitrary code execution, set this to <code>true</code>.
-          GitHub Pages still won’t load your plugin, but if you submit it for
-          inclusion in core, it’s best for this to be correct!
+          Một cờ boolean thông báo cho Jekyll biết liệu plugin này có thể được thực thi an toàn
+          trong một môi trường nơi việc thực thi mã tùy ý không được
+          cho phép hay không. Điều này được sử dụng bởi GitHub Pages để xác định plugin cốt lõi nào
+          có thể được sử dụng, và plugin nào không an toàn để chạy. Nếu plugin của bạn không
+          cho phép thực thi mã tùy ý, hãy đặt cái này thành <code>true</code>.
+          GitHub Pages vẫn sẽ không tải plugin của bạn, nhưng nếu bạn gửi nó để
+          đưa vào cốt lõi, tốt nhất là cái này phải chính xác!
         </p>
       </td>
     </tr>
@@ -104,10 +103,10 @@ There are two flags to be aware of when writing a plugin:
       </td>
       <td>
         <p>
-          This flag determines what order the plugin is loaded in. Valid values
-          are: <code>:lowest</code>, <code>:low</code>, <code>:normal</code>,
-          <code>:high</code>, and <code>:highest</code>. Highest priority
-          matches are applied first, lowest priority are applied last.
+          Cờ này xác định thứ tự plugin được tải. Các giá trị hợp lệ
+          là: <code>:lowest</code>, <code>:low</code>, <code>:normal</code>,
+          <code>:high</code>, và <code>:highest</code>. Các kết quả khớp ưu tiên cao nhất
+          được áp dụng trước, ưu tiên thấp nhất được áp dụng sau cùng.
         </p>
       </td>
     </tr>
@@ -115,8 +114,8 @@ There are two flags to be aware of when writing a plugin:
 </table>
 </div>
 
-To use one of the example plugins above as an illustration, here is how you’d
-specify these two flags:
+Để sử dụng một trong các plugin ví dụ ở trên làm minh họa, đây là cách bạn sẽ
+chỉ định hai cờ này:
 
 ```ruby
 module Jekyll
@@ -128,15 +127,15 @@ module Jekyll
 end
 ```
 
-## Best Practices
+## Thực tiễn tốt nhất
 
-The guides help you with the specifics of creating plugins. We also have some
-recommended best practices to help structure your plugin.
+Các hướng dẫn giúp bạn với các chi tiết cụ thể của việc tạo plugin. Chúng tôi cũng có một số
+thực tiễn tốt nhất được đề xuất để giúp cấu trúc plugin của bạn.
 
-We recommend using a [gem](/docs/ruby-101/#gems) for your plugin. This will
-help you manage dependencies, keep separation from your site source code and
-allow you to share functionality across multiple projects. For tips on creating
-a gem take a look at the
-[Ruby gems guide](https://guides.rubygems.org/make-your-own-gem/) or look
-through the source code of an existing plugin such as
+Chúng tôi khuyên bạn nên sử dụng một [gem](/docs/ruby-101/#gems) cho plugin của bạn. Điều này sẽ
+giúp bạn quản lý các phụ thuộc, giữ sự tách biệt khỏi mã nguồn trang web của bạn và
+cho phép bạn chia sẻ chức năng trên nhiều dự án. Để biết các mẹo về việc tạo
+một gem hãy xem
+[hướng dẫn Ruby gems](https://guides.rubygems.org/make-your-own-gem/) hoặc xem
+qua mã nguồn của một plugin hiện có như
 [jekyll-feed](https://github.com/jekyll/jekyll-feed).

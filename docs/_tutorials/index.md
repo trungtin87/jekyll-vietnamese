@@ -1,32 +1,32 @@
 ---
-title: Tutorials
+title: Hướng dẫn (Tutorials)
 permalink: /tutorials/home/
 redirect_from: /tutorials/index.html
 ---
 
-In contrast to [Docs]({{ '/docs/home/' | relative_url }}), Tutorials provide more detailed, narrative instruction that cover a variety of Jekyll topics and scenarios. Tutorials might contain the following:
+Khác với [Tài liệu]({{ '/docs/home/' | relative_url }}), Hướng dẫn cung cấp hướng dẫn chi tiết hơn, mang tính tường thuật bao gồm nhiều chủ đề và tình huống Jekyll khác nhau. Hướng dẫn có thể chứa những nội dung sau:
 
-* Step-by-step processes through particular scenarios or challenges
-* Full walk-throughs using sample data, showing inputs and results from the sample data
-* Detailed explanation about the pros and cons for different Jekyll strategies
-* End-to-end instruction in developing a complete feature on a Jekyll site
-* Instruction that combines various techniques from across the docs
+* Quy trình từng bước thông qua các tình huống hoặc thách thức cụ thể
+* Hướng dẫn đầy đủ sử dụng dữ liệu mẫu, hiển thị đầu vào và kết quả từ dữ liệu mẫu
+* Giải thích chi tiết về ưu và nhược điểm của các chiến lược Jekyll khác nhau
+* Hướng dẫn từ đầu đến cuối trong việc phát triển một tính năng hoàn chỉnh trên trang web Jekyll
+* Hướng dẫn kết hợp các kỹ thuật khác nhau từ khắp tài liệu
 
-In short, tutorials aren't the core reference information in docs. They walk users through processes from beginning to end.
+Nói tóm lại, hướng dẫn không phải là thông tin tham khảo cốt lõi trong tài liệu. Chúng hướng dẫn người dùng qua các quy trình từ đầu đến cuối.
 
 {: .note .info}
-The Tutorials section is new, so there aren't many tutorials yet. You can add a tutorial here to help populate this section.
+Phần Hướng dẫn là mới, vì vậy chưa có nhiều hướng dẫn. Bạn có thể thêm một hướng dẫn ở đây để giúp điền vào phần này.
 
-Some of these techniques might even guide you through a supporting tool, script, service, or other hack used with your Jekyll site. Feel free to include tutorials involving external services with Jekyll as well. However, note that Jekyll in no way endorses any third-party tools mentioned in tutorials.
+Một số kỹ thuật này thậm chí có thể hướng dẫn bạn qua một công cụ hỗ trợ, script, dịch vụ hoặc hack khác được sử dụng với trang web Jekyll của bạn. Hãy thoải mái bao gồm các hướng dẫn liên quan đến các dịch vụ bên ngoài với Jekyll. Tuy nhiên, lưu ý rằng Jekyll không ủng hộ bất kỳ công cụ bên thứ ba nào được đề cập trong các hướng dẫn.
 
-## How to contribute a tutorial
+## Cách đóng góp một hướng dẫn
 
-We welcome your tutorial contributions. To add your tutorial:
+Chúng tôi hoan nghênh các đóng góp hướng dẫn của bạn. Để thêm hướng dẫn của bạn:
 
-1. Fork the Jekyll project by clicking the **Fork** button in the upper-right corner of the [jekyll/jekyll project GitHub repo](https://github.com/jekyll/jekyll/).
-2. Add your tutorial in the `_tutorials` collection.
-3. Make sure your tutorial has the same front matter items as other tutorial items.
-5. Add a reference to your tutorial filename in `_data/tutorials.yml`. This allows your tutorial to appear in the Tutorials sidebar.
-6. Follow the regular git workflow to submit the pull request.
+1. Fork dự án Jekyll bằng cách nhấp vào nút **Fork** ở góc trên bên phải của [kho lưu trữ GitHub dự án jekyll/jekyll](https://github.com/jekyll/jekyll/).
+2. Thêm hướng dẫn của bạn vào bộ sưu tập `_tutorials`.
+3. Đảm bảo hướng dẫn của bạn có cùng các mục front matter như các mục hướng dẫn khác.
+4. Thêm tham chiếu đến tên tệp hướng dẫn của bạn trong `_data/tutorials.yml`. Điều này cho phép hướng dẫn của bạn xuất hiện trong thanh bên Hướng dẫn.
+5. Làm theo quy trình git thông thường để gửi pull request.
 
-When you submit your pull request, the Jekyll documentation team will review your contribution and either merge it or suggest edits.
+Khi bạn gửi pull request của mình, nhóm tài liệu Jekyll sẽ xem xét đóng góp của bạn và hợp nhất nó hoặc đề xuất chỉnh sửa.

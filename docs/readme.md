@@ -1,23 +1,23 @@
-# Jekyll docs site
+# Trang tài liệu Jekyll
 
-This directory contains the code for the Jekyll docs site, [jekyllrb.com](https://jekyllrb.com/).
+Thư mục này chứa mã nguồn cho trang tài liệu Jekyll, [jekyllrb.com](https://jekyllrb.com/).
 
-## Contributing
+## Đóng góp
 
-For information about contributing, see the [Contributing page](https://jekyllrb.com/docs/contributing/).
+Để biết thông tin về cách đóng góp, xem [Trang đóng góp](https://jekyllrb.com/docs/contributing/).
 
-## Running locally
+## Chạy cục bộ
 
-You can preview your contributions before opening a pull request by running from within the directory:
+Bạn có thể xem trước các đóng góp của mình trước khi mở một yêu cầu kéo (pull request) bằng cách chạy các lệnh sau từ trong thư mục:
 
-1. `bundle install --without test test_legacy benchmark`
-2. `bundle exec rake site:preview`
+1. `bundle install --without test test_legacy benchmark` # Cài đặt các phụ thuộc, bỏ qua nhóm test và benchmark
+2. `bundle exec rake site:preview` # Chạy tác vụ rake để xem trước trang web
 
-It's just a jekyll site, afterall! :wink:
+Rốt cuộc thì nó cũng chỉ là một trang Jekyll thôi mà! :wink:
 
-## Updating Font Awesome
+## Cập nhật Font Awesome
 
-1. Go to <https://icomoon.io/app/>
-2. Choose Import Icons and load `icomoon-selection.json`
-3. Choose Generate Font → Download
-4. Copy the font files and adapt the CSS to the paths we use in Jekyll
+1. Truy cập <https://icomoon.io/app/>
+2. Chọn Import Icons và tải `icomoon-selection.json` lên
+3. Chọn Generate Font → Download
+4. Sao chép các tệp phông chữ và điều chỉnh CSS theo đường dẫn chúng ta sử dụng trong Jekyll

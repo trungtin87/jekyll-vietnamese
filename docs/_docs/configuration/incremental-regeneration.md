@@ -1,36 +1,37 @@
 ---
-title: Default Configuration
+title: Cấu hình Mặc định (Default Configuration)
 permalink: "/docs/configuration/incremental-regeneration/"
 ---
 
-## Incremental Regeneration
+## Tái tạo Gia tăng (Incremental Regeneration)
+
 <div class="note warning">
-  <h5>Incremental regeneration is still an experimental feature</h5>
+  <h5>Tái tạo gia tăng vẫn là một tính năng thử nghiệm</h5>
   <p>
-    While incremental regeneration will work for the most common cases, it will
-    not work correctly in every scenario. Please be extremely cautious when
-    using the feature, and report any problems not listed below by
-    <a href="https://github.com/jekyll/jekyll/issues/new">opening an issue on GitHub</a>.
+    Mặc dù tái tạo gia tăng sẽ hoạt động cho các trường hợp phổ biến nhất, nó sẽ
+    không hoạt động chính xác trong mọi tình huống. Vui lòng cực kỳ thận trọng khi
+    sử dụng tính năng này, và báo cáo bất kỳ vấn đề nào không được liệt kê bên dưới bằng cách
+    <a href="https://github.com/jekyll/jekyll/issues/new">mở một vấn đề trên GitHub</a>.
   </p>
 </div>
 
-Incremental regeneration helps shorten build times by only generating documents
-and pages that were updated since the previous build. It does this by keeping
-track of both file modification times and inter-document dependencies in the
-`.jekyll-metadata` file.
+Tái tạo gia tăng giúp rút ngắn thời gian xây dựng bằng cách chỉ tạo các tài liệu
+và trang đã được cập nhật kể từ lần xây dựng trước. Nó thực hiện điều này bằng cách theo dõi
+cả thời gian sửa đổi tệp và các phụ thuộc giữa các tài liệu trong tệp
+`.jekyll-metadata`.
 
-Under the current implementation, incremental regeneration will only generate a
-document or page if either it, or one of its dependencies, is modified. Currently,
-the only types of dependencies tracked are includes (using the
-{% raw %}`{% include %}`{% endraw %} tag) and layouts. This means that plain
-references to other documents (for example, the common case of iterating over
-`site.posts` in a post listings page) will not be detected as a dependency.
+Theo cách triển khai hiện tại, tái tạo gia tăng sẽ chỉ tạo một
+tài liệu hoặc trang nếu nó, hoặc một trong các phụ thuộc của nó, được sửa đổi. Hiện tại,
+các loại phụ thuộc duy nhất được theo dõi là các bao gồm (sử dụng thẻ
+{% raw %}`{% include %}`{% endraw %}) và bố cục. Điều này có nghĩa là các tham chiếu
+thuần túy đến các tài liệu khác (ví dụ, trường hợp phổ biến lặp qua
+`site.posts` trong trang danh sách bài đăng) sẽ không được phát hiện là một phụ thuộc.
 
-To remedy some of these shortfalls, putting `regenerate: true` in the front-matter
-of a document will force Jekyll to regenerate it regardless of whether it has been
-modified. Note that this will generate the specified document only; references
-to other documents' contents will not work since they won't be re-rendered.
+Để khắc phục một số thiếu sót này, việc đặt `regenerate: true` trong front-matter
+của một tài liệu sẽ buộc Jekyll tái tạo nó bất kể nó có được sửa đổi hay không.
+Lưu ý rằng điều này sẽ chỉ tạo tài liệu được chỉ định; các tham chiếu
+đến nội dung của các tài liệu khác sẽ không hoạt động vì chúng sẽ không được hiển thị lại.
 
-Incremental regeneration can be enabled via the `--incremental` flag (`-I` for
-short) from the command-line or by setting `incremental: true` in your
-configuration file.
+Tái tạo gia tăng có thể được kích hoạt thông qua cờ `--incremental` (viết tắt là `-I`)
+từ dòng lệnh hoặc bằng cách đặt `incremental: true` trong tệp
+cấu hình của bạn.

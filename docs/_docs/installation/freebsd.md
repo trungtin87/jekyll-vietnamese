@@ -1,29 +1,29 @@
 ---
-title: Jekyll on FreeBSD
+title: Jekyll trên FreeBSD (Jekyll on FreeBSD)
 permalink: /docs/installation/freebsd/
 ---
 
-### Install Ruby
+### Cài đặt Ruby
 
 ```sh
 sudo pkg install ruby
 ```
 
-### Install Ruby Gems
+### Cài đặt Ruby Gems
 
-Find the latest version and install it. (Replace `ruby3x` with whatever the latest version is.)
+Tìm phiên bản mới nhất và cài đặt nó. (Thay thế `ruby3x` bằng bất kỳ phiên bản mới nhất nào.)
 
 ```sh
 pkg search gems
 sudo pkg install ruby3x-gems
 ```
 
-## Set Gems directory and add that to the Bash path
+## Đặt thư mục Gems và thêm nó vào đường dẫn Bash
 
-Avoid installing RubyGems packages (called gems) as the root user. Instead,
-set up a gem installation directory for your user account. The following
-commands will add environment variables to your `~/.bashrc` file to configure
-the gem installation path:
+Tránh cài đặt các gói RubyGems (được gọi là gems) với tư cách là người dùng root. Thay vào đó,
+thiết lập một thư mục cài đặt gem cho tài khoản người dùng của bạn. Các lệnh sau
+sẽ thêm các biến môi trường vào tệp `~/.bashrc` của bạn để cấu hình
+đường dẫn cài đặt gem:
 
 ```sh
 echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
@@ -32,19 +32,19 @@ echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-## Install Jekyll Gems
+## Cài đặt Jekyll Gems
 
 ```sh
 gem install jekyll bundler jekyll-sitemap
 ```
 
-## Verify install
+## Xác minh cài đặt
 
-Both of these commands should return some output showing version number, etc.
+Cả hai lệnh này sẽ trả về một số đầu ra hiển thị số phiên bản, v.v.
 
 ```sh
 ruby -v
 jekyll -v
 ```
 
-That's it! You're ready to start using Jekyll.
+Vậy là xong! Bạn đã sẵn sàng để bắt đầu sử dụng Jekyll.

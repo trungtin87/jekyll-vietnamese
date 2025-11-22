@@ -1,19 +1,19 @@
 ---
-title: Automated Deployment
+title: Triển khai Tự động (Automated Deployment)
 permalink: /docs/deployment/automated/
 ---
-There are a number of ways to easily automate the deployment of a Jekyll site.
+Có một số cách để dễ dàng tự động hóa việc triển khai một trang web Jekyll.
 
-## Continuous Integration Service
+## Dịch vụ Tích hợp Liên tục (Continuous Integration Service)
 
-One of the easiest ways to set up an automated deployment flow is by using a
+Một trong những cách dễ nhất để thiết lập luồng triển khai tự động là sử dụng một
 CI.
 
-These services run a script when there's a commit on your Git repository.
-You might want this script to build the site, run tests over the output then deploy it to the
-service of your choice.
+Các dịch vụ này chạy một tập lệnh khi có một cam kết (commit) trên kho lưu trữ Git của bạn.
+Bạn có thể muốn tập lệnh này xây dựng trang web, chạy thử nghiệm trên đầu ra sau đó triển khai nó đến
+dịch vụ bạn chọn.
 
-We have guides for the following providers:
+Chúng tôi có hướng dẫn cho các nhà cung cấp sau:
 
 * [GitHub Actions]({{ '/docs/continuous-integration/github-actions/' | relative_url }})
 * [Travis CI]({{ '/docs/continuous-integration/travis-ci/' | relative_url }})
@@ -23,7 +23,7 @@ We have guides for the following providers:
 
 ## Git post-receive hook
 
-To have a remote server handle the deploy for you every time you push changes using Git, you can create a user account which has all the public keys that are authorized to deploy in its `authorized_keys` file. With that in place, setting up the post-receive hook is done as follows:
+Để có một máy chủ từ xa xử lý việc triển khai cho bạn mỗi khi bạn đẩy các thay đổi bằng Git, bạn có thể tạo một tài khoản người dùng có tất cả các khóa công khai được ủy quyền để triển khai trong tệp `authorized_keys` của nó. Với điều đó tại chỗ, việc thiết lập post-receive hook được thực hiện như sau:
 
 ```sh
 laptop$ ssh deployer@example.com
@@ -34,8 +34,8 @@ server$ cp hooks/post-receive.sample hooks/post-receive
 server$ mkdir /var/www/myrepo
 ```
 
-Next, add the following lines to hooks/post-receive and be sure Jekyll is
-installed on the server:
+Tiếp theo, thêm các dòng sau vào hooks/post-receive và đảm bảo Jekyll được
+cài đặt trên máy chủ:
 
 ```bash
 #!/bin/bash -l
@@ -55,15 +55,15 @@ rm -Rf $TMP_GIT_CLONE
 exit
 ```
 
-Finally, run the following command on any users laptop that needs to be able to
-deploy using this hook:
+Cuối cùng, chạy lệnh sau trên bất kỳ máy tính xách tay của người dùng nào cần có khả năng
+triển khai bằng hook này:
 
 ```sh
 laptops$ git remote add deploy deployer@example.com:~/myrepo.git
 ```
 
-Deploying is now as easy as telling nginx or Apache to look at
-`/var/www/myrepo` and running the following:
+Việc triển khai bây giờ dễ dàng như bảo nginx hoặc Apache xem xét
+`/var/www/myrepo` và chạy lệnh sau:
 
 ```sh
 laptops$ git push deploy master

@@ -1,46 +1,46 @@
 ---
-title: "Reviewing a Pull Request"
+title: "Xem xét một Yêu cầu Kéo"
 ---
 
-**This guide is for maintainers.** These special people have **write access** to one or more of Jekyll's repositories and help merge the contributions of others. You may find what is written here interesting, but it’s definitely not for everyone.
+**Hướng dẫn này dành cho những người duy trì.** Những người đặc biệt này có **quyền ghi** vào một hoặc nhiều kho lưu trữ của Jekyll và giúp hợp nhất các đóng góp của người khác. Bạn có thể thấy những gì được viết ở đây thú vị, nhưng nó chắc chắn không dành cho tất cả mọi người.
 {: .note .info}
 
-## Respond Kindly
+## Phản hồi Tử tế
 
-Above all else, please review a pull request kindly. Our community can only be strong if we make it a welcoming and inclusive environment. To further promote this, the Jekyll community is governed by a [Code of Conduct](/docs/conduct/) by which all community members must abide.
+Trên hết, hãy xem xét một yêu cầu kéo một cách tử tế. Cộng đồng của chúng tôi chỉ có thể mạnh mẽ nếu chúng tôi biến nó thành một môi trường chào đón và hòa nhập. Để thúc đẩy hơn nữa điều này, cộng đồng Jekyll được quản lý bởi một [Quy tắc Ứng xử](/docs/conduct/) mà tất cả các thành viên cộng đồng phải tuân theo.
 
-Use emoji liberally :heart: :tada: :sparkles: :confetti_ball: and feel free to be emotive!! Contributions keep this project moving forward and we're always happy to receive them, even if the pull request isn't ultimately merged.
+Sử dụng biểu tượng cảm xúc một cách tự do :heart: :tada: :sparkles: :confetti_ball: và thoải mái biểu cảm!! Các đóng góp giữ cho dự án này tiến lên phía trước và chúng tôi luôn vui mừng nhận được chúng, ngay cả khi yêu cầu kéo cuối cùng không được hợp nhất.
 
-Mike McQuaid's post on the GitHub blog entitled ["Kindly Closing Pull Requests"](https://github.com/blog/2124-kindly-closing-pull-requests) is a great place to start. It describes various scenarios in which it would be acceptable to close a pull request for reasons other than lack of technical integrity or accuracy. Part of being kind is responding to and resolving pull requests quickly.
+Bài đăng của Mike McQuaid trên blog GitHub có tiêu đề ["Kindly Closing Pull Requests"](https://github.com/blog/2124-kindly-closing-pull-requests) là một nơi tuyệt vời để bắt đầu. Nó mô tả các tình huống khác nhau trong đó việc đóng một yêu cầu kéo vì những lý do khác ngoài sự thiếu toàn vẹn kỹ thuật hoặc độ chính xác là chấp nhận được. Một phần của việc tử tế là phản hồi và giải quyết các yêu cầu kéo một cách nhanh chóng.
 
-## Respond Quickly
+## Phản hồi Nhanh chóng
 
-We should be able to review all pull requests within one week. The only time initial review should take longer is if all the maintainers mysteriously took vacation during the same week. Promptness encourages frequent, high-quality contributions from community members and other maintainers.
+Chúng tôi nên có thể xem xét tất cả các yêu cầu kéo trong vòng một tuần. Thời gian duy nhất xem xét ban đầu nên mất nhiều thời gian hơn là nếu tất cả những người duy trì bí ẩn đi nghỉ trong cùng một tuần. Sự nhanh chóng khuyến khích các đóng góp thường xuyên, chất lượng cao từ các thành viên cộng đồng và những người duy trì khác.
 
-If your response requires a response on the part of the author, please add the `pending-feedback` tag. @jekyllbot will automatically remove the tag once the author of the pull request responds.
+Nếu phản hồi của bạn yêu cầu phản hồi từ phía tác giả, vui lòng thêm thẻ `pending-feedback`. @jekyllbot sẽ tự động xóa thẻ sau khi tác giả của yêu cầu kéo phản hồi.
 
-## Resolve Quickly
+## Giải quyết Nhanh chóng
 
-Similarly, we should aim to resolve pull requests quickly. If a pull request introduces a feature which does not fit into the core purpose or goal of the project, close it promptly with a kind explanation of why it is not acceptable.
+Tương tự, chúng tôi nên nhắm đến việc giải quyết các yêu cầu kéo một cách nhanh chóng. Nếu một yêu cầu kéo giới thiệu một tính năng không phù hợp với mục đích cốt lõi hoặc mục tiêu của dự án, hãy đóng nó ngay lập tức với một lời giải thích tử tế về lý do tại sao nó không được chấp nhận.
 
-Leave detailed comments wherever possible. Provide the contributor with context around why the change you are requesting is necessary, or why the question you are asking is important to resolve. The more context we can clearly communicate to the contributor, the better able the contributor is to provide high-quality patches.
+Để lại nhận xét chi tiết bất cứ khi nào có thể. Cung cấp cho người đóng góp bối cảnh xung quanh lý do tại sao thay đổi bạn đang yêu cầu là cần thiết, hoặc tại sao câu hỏi bạn đang hỏi là quan trọng để giải quyết. Chúng tôi càng có thể truyền đạt rõ ràng bối cảnh cho người đóng góp, người đóng góp càng có khả năng cung cấp các bản vá chất lượng cao.
 
-You may close a pull request if more than 30 days pass without a response from the author.
+Bạn có thể đóng một yêu cầu kéo nếu hơn 30 ngày trôi qua mà không có phản hồi từ tác giả.
 
-In some cases, review will involve many weeks of back-and-forth. As long as communication continues, this is fine. Ideally, any PR would be capable of resolution within 30 days of it being opened.
+Trong một số trường hợp, việc xem xét sẽ liên quan đến nhiều tuần qua lại. Miễn là giao tiếp vẫn tiếp tục, điều này là ổn. Lý tưởng nhất, bất kỳ PR nào cũng có khả năng giải quyết trong vòng 30 ngày kể từ khi nó được mở.
 
-## Look for Tests
+## Tìm kiếm Kiểm tra
 
-If this is a code change, are there tests for the updated or added behaviour? Shipping a version with bugs is inevitable, but ensuring changes are tested helps keep bugs and regressions to a minimum.
+Nếu đây là một thay đổi mã, có các bài kiểm tra cho hành vi được cập nhật hoặc thêm vào không? Việc vận chuyển một phiên bản có lỗi là không thể tránh khỏi, nhưng việc đảm bảo các thay đổi được kiểm tra giúp giữ cho các lỗi và hồi quy ở mức tối thiểu.
 
-## CI Must Pass
+## CI Phải Vượt qua
 
-It is fine to ask a contributor to investigate failures on Travis and patch them up before you begin your review. It is helpful to leave a message for the contributor indicating that the tests have failed and that no review will occur before the tests pass. If they ask for help, take a look and assist if you can.
+Việc yêu cầu một người đóng góp điều tra các lỗi trên Travis và vá chúng trước khi bạn bắt đầu xem xét là ổn. Sẽ rất hữu ích khi để lại một tin nhắn cho người đóng góp cho biết rằng các bài kiểm tra đã thất bại và sẽ không có đánh giá nào xảy ra trước khi các bài kiểm tra vượt qua. Nếu họ yêu cầu giúp đỡ, hãy xem xét và hỗ trợ nếu bạn có thể.
 
-## Rule of Two
+## Quy tắc Hai người
 
-A pull request may be merged once two maintainers have reviewed the pull request and indicated that it is acceptable to them. There is no need to wait for a third unless one of the two reviewers wishes for another set of eyes.
+Một yêu cầu kéo có thể được hợp nhất sau khi hai người duy trì đã xem xét yêu cầu kéo và chỉ ra rằng nó được chấp nhận đối với họ. Không cần phải đợi người thứ ba trừ khi một trong hai người đánh giá muốn có một cái nhìn khác.
 
-## Think Security
+## Nghĩ về Bảo mật
 
-We owe it to our users to ensure that using a theme from the community or building someone else's site doesn't come with built-in security vulnerabilities. Things like where files may be read from and written to are important to keep secure. Jekyll is also the basis for hosted services such as [GitHub Pages](https://pages.github.com), which cannot upgrade when security issues are introduced.
+Chúng tôi nợ người dùng của mình việc đảm bảo rằng việc sử dụng một chủ đề từ cộng đồng hoặc xây dựng trang web của người khác không đi kèm với các lỗ hổng bảo mật tích hợp. Những thứ như nơi các tệp có thể được đọc từ và ghi vào là quan trọng để giữ an toàn. Jekyll cũng là cơ sở cho các dịch vụ được lưu trữ như [GitHub Pages](https://pages.github.com), không thể nâng cấp khi các vấn đề bảo mật được giới thiệu.
