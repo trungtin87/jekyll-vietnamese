@@ -1,0 +1,24 @@
+# Exclude lib directory from Jekyll build
+exclude:
+  - lib/
+  - features/
+  - test/
+  - benchmark/
+  - script/
+  - rake/
+  - rubocop/
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - jekyll.gemspec
+  - translate_features.py
+  - Earthfile
+  - .rubocop.yml
+  - .rubocop_todo.yml
+  - .jrubyrc
+  - .editorconfig
+  - .codeclimate.yml
+  - .gitignore
+  - .gitattributes
+  - .devcontainer/
+  - exe/
