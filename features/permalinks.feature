@@ -1,186 +1,186 @@
-Feature: Fancy permalinks
-  As a hacker who likes to blog
-  I want to be able to set permalinks
-  In order to make my blog URLs awesome
+Tính năng: Permalinks đẹp
+  Là một hacker thích viết blog
+  Tôi muốn có khả năng đặt permalinks
+  Để làm cho các URL blog của tôi tuyệt vời
 
-  Scenario: Use none permalink schema
-    Given I have a _posts directory
-    And I have the following post:
+  Kịch bản: Sử dụng permalink schema none
+    Giả sử tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title                 | date       | content          |
       | None Permalink Schema | 2009-03-27 | Totally nothing. |
-    And I have a configuration file with "permalink" set to "none"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Totally nothing." in "_site/none-permalink-schema.html"
+    Và tôi có file cấu hình với "permalink" được đặt thành "none"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Totally nothing." trong "_site/none-permalink-schema.html"
 
-  Scenario: Use pretty permalink schema
-    Given I have a _posts directory
-    And I have the following post:
+  Kịch bản: Sử dụng permalink schema pretty
+    Giả sử tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title                   | date       | content            |
       | Pretty Permalink Schema | 2009-03-27 | Totally wordpress. |
-    And I have a configuration file with "permalink" set to "pretty"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Totally wordpress." in "_site/2009/03/27/pretty-permalink-schema/index.html"
+    Và tôi có file cấu hình với "permalink" được đặt thành "pretty"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Totally wordpress." trong "_site/2009/03/27/pretty-permalink-schema/index.html"
 
-  Scenario: Use pretty permalink schema for pages
-    Given I have an "index.html" page that contains "Totally index"
-    And I have an "awesome.html" page that contains "Totally awesome"
-    And I have an "sitemap.xml" page that contains "Totally uhm, sitemap"
-    And I have a configuration file with "permalink" set to "pretty"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Totally index" in "_site/index.html"
-    And I should see "Totally awesome" in "_site/awesome/index.html"
-    And I should see "Totally uhm, sitemap" in "_site/sitemap.xml"
+  Kịch bản: Sử dụng permalink schema pretty cho pages
+    Giả sử tôi có trang "index.html" chứa nội dung "Totally index"
+    Và tôi có trang "awesome.html" chứa nội dung "Totally awesome"
+    Và tôi có trang "sitemap.xml" chứa nội dung "Totally uhm, sitemap"
+    Và tôi có file cấu hình với "permalink" được đặt thành "pretty"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Totally index" trong "_site/index.html"
+    Và tôi nên thấy "Totally awesome" trong "_site/awesome/index.html"
+    Và tôi nên thấy "Totally uhm, sitemap" trong "_site/sitemap.xml"
 
-  Scenario: Use custom permalink schema with prefix
-    Given I have a _posts directory
-    And I have the following post:
+  Kịch bản: Sử dụng permalink schema tùy chỉnh với prefix
+    Giả sử tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title                   | category | date       | content         |
       | Custom Permalink Schema | stuff    | 2009-03-27 | Totally custom. |
-    And I have a configuration file with "permalink" set to "/blog/:year/:month/:day/:title/"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Totally custom." in "_site/blog/2009/03/27/custom-permalink-schema/index.html"
+    Và tôi có file cấu hình với "permalink" được đặt thành "/blog/:year/:month/:day/:title/"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Totally custom." trong "_site/blog/2009/03/27/custom-permalink-schema/index.html"
 
-  Scenario: Use custom permalink schema with category
-    Given I have a _posts directory
-    And I have the following post:
+  Kịch bản: Sử dụng permalink schema tùy chỉnh với category
+    Giả sử tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title                   | category | date       | content         |
       | Custom Permalink Schema | stuff    | 2009-03-27 | Totally custom. |
-    And I have a configuration file with "permalink" set to "/:categories/:title.html"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Totally custom." in "_site/stuff/custom-permalink-schema.html"
+    Và tôi có file cấu hình với "permalink" được đặt thành "/:categories/:title.html"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Totally custom." trong "_site/stuff/custom-permalink-schema.html"
 
-  Scenario: Use custom permalink schema with squished date
-    Given I have a _posts directory
-    And I have the following post:
+  Kịch bản: Sử dụng permalink schema tùy chỉnh với ngày nén
+    Giả sử tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title                   | category | date       | content         |
       | Custom Permalink Schema | stuff    | 2009-03-27 | Totally custom. |
-    And I have a configuration file with "permalink" set to "/:month-:day-:year/:title.html"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Totally custom." in "_site/03-27-2009/custom-permalink-schema.html"
+    Và tôi có file cấu hình với "permalink" được đặt thành "/:month-:day-:year/:title.html"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Totally custom." trong "_site/03-27-2009/custom-permalink-schema.html"
 
-  Scenario: Use custom permalink schema with date and time
-    Given I have a configuration file with:
+  Kịch bản: Sử dụng permalink schema tùy chỉnh với ngày và giờ
+    Giả sử tôi có file cấu hình với:
     | key         | value              |
     | permalink   | "/:year:month:day:hour:minute:second.html" |
     | timezone    | UTC                |
-    And I have a _posts directory
-    And I have the following post:
+    Và tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title                   | category | date                | content         |
       | Custom Permalink Schema | stuff    | 2009-03-27 22:31:07 | Totally custom. |
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Totally custom." in "_site/20090327223107.html"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Totally custom." trong "_site/20090327223107.html"
 
-  Scenario: Use per-post permalink
-    Given I have a _posts directory
-    And I have the following post:
+  Kịch bản: Sử dụng permalink cho từng bài viết
+    Giả sử tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title     | date       | permalink       | content |
       | Some post | 2013-04-14 | /custom/posts/1/ | bla bla |
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And the _site/custom/posts/1 directory should exist
-    And I should see "bla bla" in "_site/custom/posts/1/index.html"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và thư mục _site/custom/posts/1 nên tồn tại
+    Và tôi nên thấy "bla bla" trong "_site/custom/posts/1/index.html"
 
-  Scenario: Use per-post ending in .html
-    Given I have a _posts directory
-    And I have the following post:
+  Kịch bản: Sử dụng permalink cho từng bài viết kết thúc bằng .html
+    Giả sử tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title     | date       | permalink               | content |
       | Some post | 2013-04-14 | /custom/posts/some.html | bla bla |
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And the _site/custom/posts directory should exist
-    And I should see "bla bla" in "_site/custom/posts/some.html"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và thư mục _site/custom/posts nên tồn tại
+    Và tôi nên thấy "bla bla" trong "_site/custom/posts/some.html"
 
-  Scenario: Use pretty permalink schema with cased file name
-    Given I have a _posts directory
-    And I have an "_posts/2009-03-27-Pretty-Permalink-Schema.md" page that contains "Totally wordpress"
-    And I have a configuration file with "permalink" set to "pretty"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Totally wordpress." in "_site/2009/03/27/Pretty-Permalink-Schema/index.html"
+  Kịch bản: Sử dụng permalink schema pretty với tên file có chữ hoa
+    Giả sử tôi có thư mục _posts
+    Và tôi có trang "_posts/2009-03-27-Pretty-Permalink-Schema.md" chứa nội dung "Totally wordpress"
+    Và tôi có file cấu hình với "permalink" được đặt thành "pretty"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Totally wordpress." trong "_site/2009/03/27/Pretty-Permalink-Schema/index.html"
 
-  Scenario: Use custom permalink schema with cased file name
-    Given I have a _posts directory
-    And I have an "_posts/2009-03-27-Custom-Schema.md" page with title "Custom Schema" that contains "Totally awesome"
-    And I have a configuration file with "permalink" set to "/:year/:month/:day/:slug/"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Totally awesome" in "_site/2009/03/27/custom-schema/index.html"
+  Kịch bản: Sử dụng permalink schema tùy chỉnh với tên file có chữ hoa
+    Giả sử tôi có thư mục _posts
+    Và tôi có trang "_posts/2009-03-27-Custom-Schema.md" với title "Custom Schema" chứa nội dung "Totally awesome"
+    Và tôi có file cấu hình với "permalink" được đặt thành "/:year/:month/:day/:slug/"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Totally awesome" trong "_site/2009/03/27/custom-schema/index.html"
 
-  Scenario: Use pretty permalink schema with title containing underscore
-    Given I have a _posts directory
-    And I have an "_posts/2009-03-27-Custom_Schema.md" page with title "Custom Schema" that contains "Totally awesome"
-    And I have a configuration file with "permalink" set to "pretty"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Totally awesome" in "_site/2009/03/27/Custom_Schema/index.html"
+  Kịch bản: Sử dụng permalink schema pretty với title chứa dấu gạch dưới
+    Giả sử tôi có thư mục _posts
+    Và tôi có trang "_posts/2009-03-27-Custom_Schema.md" với title "Custom Schema" chứa nội dung "Totally awesome"
+    Và tôi có file cấu hình với "permalink" được đặt thành "pretty"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Totally awesome" trong "_site/2009/03/27/Custom_Schema/index.html"
 
-  Scenario: Use a non-HTML file extension in the permalink
-    Given I have a _posts directory
-    And I have an "_posts/2016-01-18-i-am-php.md" page with permalink "/2016/i-am-php.php" that contains "I am PHP"
-    And I have a "i-am-also-php.md" page with permalink "/i-am-also-php.php" that contains "I am also PHP"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "I am PHP" in "_site/2016/i-am-php.php"
-    And I should see "I am also PHP" in "_site/i-am-also-php.php"
+  Kịch bản: Sử dụng phần mở rộng file không phải HTML trong permalink
+    Giả sử tôi có thư mục _posts
+    Và tôi có trang "_posts/2016-01-18-i-am-php.md" với permalink "/2016/i-am-php.php" chứa nội dung "I am PHP"
+    Và tôi có trang "i-am-also-php.md" với permalink "/i-am-also-php.php" chứa nội dung "I am also PHP"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "I am PHP" trong "_site/2016/i-am-php.php"
+    Và tôi nên thấy "I am also PHP" trong "_site/i-am-also-php.php"
 
-  Scenario: Using the same permalink twice
-    Given I have a "cool.md" page with permalink "/amazing.html" that contains "I am cool"
-    And I have an "awesome.md" page with permalink "/amazing.html" that contains "I am also awesome"
-    And I have an "amazing.html" file with content:
+  Kịch bản: Sử dụng cùng một permalink hai lần
+    Giả sử tôi có trang "cool.md" với permalink "/amazing.html" chứa nội dung "I am cool"
+    Và tôi có trang "awesome.md" với permalink "/amazing.html" chứa nội dung "I am also awesome"
+    Và tôi có file "amazing.html" với nội dung:
       """
       Hello World
       I'm a static file
       """
-    And I have a "_config.yml" file with content:
+    Và tôi có file "_config.yml" với nội dung:
       """
       collections:
         puppies:
           output: true
           permalink: /:collection/:year/:month/:day/:title:output_ext
       """
-    And I have a _puppies directory
-    And I have the following documents under the puppies collection:
+    Và tôi có thư mục _puppies
+    Và tôi có các tài liệu sau trong collection puppies:
       | title  | date       | content             |
       | Rover  | 2009-03-27 | content for Rover.  |
-    And I have a _posts directory
-    And I have the following post:
+    Và tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title     | date       | layout | category  | content                 |
       | Rover     | 2009-03-27 | none   | puppies   | Luke, I am your father. |
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Conflict: The following destination is shared by multiple files." in the build output
-    And I should see "_site/amazing.html" in the build output
-    And I should see "awesome.md" in the build output
-    And I should see "cool.md" in the build output
-    And I should see "amazing.html" in the build output
-    And I should see "_site/puppies/2009/03/27/rover.html" in the build output
-    And I should see "_posts/2009-03-27-rover.markdown" in the build output
-    And I should see "_puppies/rover.md" in the build output
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Conflict: The following destination is shared by multiple files." trong kết quả build
+    Và tôi nên thấy "_site/amazing.html" trong kết quả build
+    Và tôi nên thấy "awesome.md" trong kết quả build
+    Và tôi nên thấy "cool.md" trong kết quả build
+    Và tôi nên thấy "amazing.html" trong kết quả build
+    Và tôi nên thấy "_site/puppies/2009/03/27/rover.html" trong kết quả build
+    Và tôi nên thấy "_posts/2009-03-27-rover.markdown" trong kết quả build
+    Và tôi nên thấy "_puppies/rover.md" trong kết quả build
 
-  Scenario: Redirecting from an existing permalink
-    Given I have a configuration file with "plugins" set to "[jekyll-redirect-from]"
-    And I have a "deals.html" file with content:
+  Kịch bản: Chuyển hướng từ một permalink hiện có
+    Giả sử tôi có file cấu hình với "plugins" được đặt thành "[jekyll-redirect-from]"
+    Và tôi có file "deals.html" với nội dung:
       """
       ---
       permalink: /deals/
@@ -188,11 +188,11 @@ Feature: Fancy permalinks
         - /offers/
       ---
       """
-    And I have a "offers.html" page with permalink "/offers/" that contains "Hurry! Limited time only!"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should not see "Conflict: The following destination is shared by multiple files." in the build output
-    And I should not see "_site/offers/index.html" in the build output
-    And I should not see "offers.html" in the build output
-    And I should not see "redirect.html" in the build output
+    Và tôi có trang "offers.html" với permalink "/offers/" chứa nội dung "Hurry! Limited time only!"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi không nên thấy "Conflict: The following destination is shared by multiple files." trong kết quả build
+    Và tôi không nên thấy "_site/offers/index.html" trong kết quả build
+    Và tôi không nên thấy "offers.html" trong kết quả build
+    Và tôi không nên thấy "redirect.html" trong kết quả build

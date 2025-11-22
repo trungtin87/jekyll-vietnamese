@@ -1,56 +1,56 @@
-Feature: Rendering
-  As a hacker who likes to blog
-  I want to be able to make a static site
-  In order to share my awesome ideas with the interwebs
-  But I want to make it as simply as possible
-  So render with Liquid and place in Layouts
+Tính năng: Rendering
+  Là một hacker thích viết blog
+  Tôi muốn có khả năng tạo một static site
+  Để chia sẻ các ý tưởng tuyệt vời của tôi với internet
+  Nhưng tôi muốn làm nó đơn giản nhất có thể
+  Vì vậy render với Liquid và đặt trong Layouts
 
-  Scenario: Rendering a site with parentheses in its path name
-    Given I have a blank site in "omega(beta)"
-    And   I have an "omega(beta)/test.md" page with layout "simple" that contains "Hello World"
-    And   I have an omega(beta)/_includes directory
-    And   I have an "omega(beta)/_includes/head.html" file that contains "Snippet"
-    And   I have a configuration file with "source" set to "omega(beta)"
-    And   I have an omega(beta)/_layouts directory
-    And   I have an "omega(beta)/_layouts/simple.html" file that contains "{% include head.html %}: {{ content }}"
-    When  I run jekyll build --profile
-    Then  I should get a zero exit status
-    And   I should see "Snippet: <p>Hello World</p>" in "_site/test.html"
-    And   I should see "_layouts/simple.html" in the build output
+  Kịch bản: Rendering một site với dấu ngoặc đơn trong tên đường dẫn
+    Giả sử tôi có một blank site trong "omega(beta)"
+    Và   tôi có trang "omega(beta)/test.md" với layout "simple" chứa nội dung "Hello World"
+    Và   tôi có thư mục omega(beta)/_includes
+    Và   tôi có file "omega(beta)/_includes/head.html" chứa nội dung "Snippet"
+    Và   tôi có file cấu hình với "source" được đặt thành "omega(beta)"
+    Và   tôi có thư mục omega(beta)/_layouts
+    Và   tôi có file "omega(beta)/_layouts/simple.html" chứa nội dung "{% include head.html %}: {{ content }}"
+    Khi  tôi chạy jekyll build --profile
+    Thì  tôi nên nhận được trạng thái thoát bằng không
+    Và   tôi nên thấy "Snippet: <p>Hello World</p>" trong "_site/test.html"
+    Và   tôi nên thấy "_layouts/simple.html" trong kết quả build
 
-  Scenario: When receiving bad Liquid
-    Given I have a "index.html" page with layout "simple" that contains "{% include invalid.html %}"
-    And   I have a simple layout that contains "{{ content }}"
-    When  I run jekyll build
-    Then  I should get a non-zero exit-status
-    And   I should see "Liquid Exception" in the build output
+  Kịch bản: Khi nhận Liquid không hợp lệ
+    Giả sử tôi có trang "index.html" với layout "simple" chứa nội dung "{% include invalid.html %}"
+    Và   tôi có layout simple chứa nội dung "{{ content }}"
+    Khi  tôi chạy jekyll build
+    Thì  tôi nên nhận được trạng thái thoát khác không
+    Và   tôi nên thấy "Liquid Exception" trong kết quả build
 
-  Scenario: When receiving a liquid syntax error in included file
-    Given I have a _includes directory
-    And   I have a "_includes/invalid.html" file that contains "{% INVALID %}"
-    And   I have a "index.html" page with layout "simple" that contains "{% include invalid.html %}"
-    And   I have a simple layout that contains "{{ content }}"
-    When  I run jekyll build
-    Then  I should get a non-zero exit-status
-    And   I should see "Liquid Exception: Liquid syntax error \(.+/invalid\.html line 1\): Unknown tag 'INVALID' included in index\.html" in the build output
+  Kịch bản: Khi nhận lỗi cú pháp liquid trong file included
+    Giả sử tôi có thư mục _includes
+    Và   tôi có file "_includes/invalid.html" chứa nội dung "{% INVALID %}"
+    Và   tôi có trang "index.html" với layout "simple" chứa nội dung "{% include invalid.html %}"
+    Và   tôi có layout simple chứa nội dung "{{ content }}"
+    Khi  tôi chạy jekyll build
+    Thì  tôi nên nhận được trạng thái thoát khác không
+    Và   tôi nên thấy "Liquid Exception: Liquid syntax error \\(.+/invalid\\.html line 1\\): Unknown tag 'INVALID' included in index\\.html" trong kết quả build
 
-  Scenario: When receiving a generic liquid error in included file
-    Given I have a _includes directory
-    And   I have a "_includes/invalid.html" file that contains "{{ site.title | prepend 'Prepended Text' }}"
-    And   I have a "index.html" page with layout "simple" that contains "{% include invalid.html %}"
-    And   I have a simple layout that contains "{{ content }}"
-    When  I run jekyll build
-    Then  I should get a non-zero exit-status
-    And   I should see "Liquid Exception: Liquid error \(.+/_includes/invalid\.html line 1\): wrong number of arguments (\(given 1, expected 2\)|\(1 for 2\)) included in index\.html" in the build output
+  Kịch bản: Khi nhận lỗi liquid chung trong file included
+    Giả sử tôi có thư mục _includes
+    Và   tôi có file "_includes/invalid.html" chứa nội dung "{{ site.title | prepend 'Prepended Text' }}"
+    Và   tôi có trang "index.html" với layout "simple" chứa nội dung "{% include invalid.html %}"
+    Và   tôi có layout simple chứa nội dung "{{ content }}"
+    Khi  tôi chạy jekyll build
+    Thì  tôi nên nhận được trạng thái thoát khác không
+    Và   tôi nên thấy "Liquid Exception: Liquid error \\(.+/_includes/invalid\\.html line 1\\): wrong number of arguments (\\(given 1, expected 2\\)|\\(1 for 2\\)) included in index\\.html" trong kết quả build
 
-  Scenario: Rendering a default site containing a file with rogue Liquid constructs
-    Given I have a "index.html" page with title "Simple Test" that contains "{{ page.title | foobar }}\n\n{{ page.author }}"
-    When  I run jekyll build
-    Then  I should get a zero exit-status
-    And   I should not see "Liquid Exception:" in the build output
+  Kịch bản: Rendering một default site chứa file với Liquid constructs không hợp lệ
+    Giả sử tôi có trang "index.html" với title "Simple Test" chứa nội dung "{{ page.title | foobar }}\\n\\n{{ page.author }}"
+    Khi  tôi chạy jekyll build
+    Thì  tôi nên nhận được trạng thái thoát bằng không
+    Và   tôi không nên thấy "Liquid Exception:" trong kết quả build
 
-  Scenario: Rendering a default site containing a file with a non-existent Liquid variable
-    Given I have a "index.html" file with content:
+  Kịch bản: Rendering một default site chứa file với biến Liquid không tồn tại
+    Giả sử tôi có file "index.html" với nội dung:
     """
     ---
     title: Simple Test
@@ -58,13 +58,13 @@ Feature: Rendering
     {{ site.lorem.ipsum }}
     {{ site.title }}
     """
-    And  I have a configuration file with "title" set to "Hello World"
-    When I run jekyll build
-    Then I should get a zero exit-status
-    And  the _site directory should exist
+    Và  tôi có file cấu hình với "title" được đặt thành "Hello World"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và  thư mục _site nên tồn tại
 
-  Scenario: Rendering a custom site containing a file with a non-existent Liquid variable
-    Given I have a "index.html" file with content:
+  Kịch bản: Rendering một custom site chứa file với biến Liquid không tồn tại
+    Giả sử tôi có file "index.html" với nội dung:
     """
     ---
     title: Simple Test
@@ -73,17 +73,17 @@ Feature: Rendering
 
     {{ page.author }}
     """
-    And   I have a "_config.yml" file with content:
+    Và   tôi có file "_config.yml" với nội dung:
     """
     liquid:
       strict_variables: true
     """
-    When  I run jekyll build
-    Then  I should get a non-zero exit-status
-    And   I should see "Liquid error \(line 3\): undefined variable author in index.html" in the build output
+    Khi  tôi chạy jekyll build
+    Thì  tôi nên nhận được trạng thái thoát khác không
+    Và   tôi nên thấy "Liquid error \\(line 3\\): undefined variable author in index.html" trong kết quả build
 
-  Scenario: Rendering a custom site containing a file with a non-existent Liquid filter
-    Given I have a "index.html" file with content:
+  Kịch bản: Rendering một custom site chứa file với bộ lọc Liquid không tồn tại
+    Giả sử tôi có file "index.html" với nội dung:
     """
     ---
     author: John Doe
@@ -92,101 +92,101 @@ Feature: Rendering
 
     {{ page.author | foobar }}
     """
-    And   I have a "_config.yml" file with content:
+    Và   tôi có file "_config.yml" với nội dung:
     """
     liquid:
       strict_filters: true
     """
-    When  I run jekyll build
-    Then  I should get a non-zero exit-status
-    And   I should see "Liquid error \(line 3\): undefined filter foobar in index.html" in the build output
+    Khi  tôi chạy jekyll build
+    Thì  tôi nên nhận được trạng thái thoát khác không
+    Và   tôi nên thấy "Liquid error \\(line 3\\): undefined filter foobar in index.html" trong kết quả build
 
-  Scenario: Render Liquid and place in layout
-    Given I have a "index.html" page with layout "simple" that contains "Hi there, Jekyll {{ jekyll.environment }}!"
-    And I have a simple layout that contains "{{ content }}Ahoy, indeed!"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Hi there, Jekyll development!\nAhoy, indeed" in "_site/index.html"
+  Kịch bản: Render Liquid và đặt trong layout
+    Giả sử tôi có trang "index.html" với layout "simple" chứa nội dung "Hi there, Jekyll {{ jekyll.environment }}!"
+    Và tôi có layout simple chứa nội dung "{{ content }}Ahoy, indeed!"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Hi there, Jekyll development!\\nAhoy, indeed" trong "_site/index.html"
 
-  Scenario: Don't place asset files in layout
-    Given I have an "index.scss" page with layout "simple" that contains ".foo-bar { color:black; }"
-    And I have an "index.coffee" page with layout "simple" that contains "whatever()"
-    And I have a configuration file with "plugins" set to "[jekyll-coffeescript]"
-    And I have a simple layout that contains "{{ content }}Ahoy, indeed!"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should not see "Ahoy, indeed!" in "_site/index.css"
-    And I should not see "Ahoy, indeed!" in "_site/index.js"
+  Kịch bản: Không đặt asset files trong layout
+    Giả sử tôi có trang "index.scss" với layout "simple" chứa nội dung ".foo-bar { color:black; }"
+    Và tôi có trang "index.coffee" với layout "simple" chứa nội dung "whatever()"
+    Và tôi có file cấu hình với "plugins" được đặt thành "[jekyll-coffeescript]"
+    Và tôi có layout simple chứa nội dung "{{ content }}Ahoy, indeed!"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi không nên thấy "Ahoy, indeed!" trong "_site/index.css"
+    Và tôi không nên thấy "Ahoy, indeed!" trong "_site/index.js"
 
-  Scenario: Ignore defaults and don't place pages and documents with layout set to 'none'
-    Given I have a "index.md" page with layout "none" that contains "Hi there, {{ site.author }}!"
-    And I have a _trials directory
-    And I have a "_trials/no-layout.md" page with layout "none" that contains "Hi there, {{ site.author }}!"
-    And I have a "_trials/test.md" page with layout "null" that contains "Hi there, {{ site.author }}!"
-    And I have a none layout that contains "{{ content }}Welcome!"
-    And I have a page layout that contains "{{ content }}Check this out!"
-    And I have a configuration file with:
+  Kịch bản: Bỏ qua defaults và không đặt pages và documents với layout được đặt thành 'none'
+    Giả sử tôi có trang "index.md" với layout "none" chứa nội dung "Hi there, {{ site.author }}!"
+    Và tôi có thư mục _trials
+    Và tôi có trang "_trials/no-layout.md" với layout "none" chứa nội dung "Hi there, {{ site.author }}!"
+    Và tôi có trang "_trials/test.md" với layout "null" chứa nội dung "Hi there, {{ site.author }}!"
+    Và tôi có layout none chứa nội dung "{{ content }}Welcome!"
+    Và tôi có layout page chứa nội dung "{{ content }}Check this out!"
+    Và tôi có file cấu hình với:
     | key             | value                                          |
     | author          | John Doe                                       |
     | collections     | {trials: {output: true}}                       |
     | defaults        | [{scope: {path: ""}, values: {layout: page}}]  |
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should not see "Welcome!" in "_site/trials/no-layout.html"
-    And I should not see "Check this out!" in "_site/trials/no-layout.html"
-    But I should see "Check this out!" in "_site/trials/test.html"
-    And I should see "Hi there, John Doe!" in "_site/index.html"
-    And I should not see "Welcome!" in "_site/index.html"
-    And I should not see "Build Warning:" in the build output
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi không nên thấy "Welcome!" trong "_site/trials/no-layout.html"
+    Và tôi không nên thấy "Check this out!" trong "_site/trials/no-layout.html"
+    Nhưng tôi nên thấy "Check this out!" trong "_site/trials/test.html"
+    Và tôi nên thấy "Hi there, John Doe!" trong "_site/index.html"
+    Và tôi không nên thấy "Welcome!" trong "_site/index.html"
+    Và tôi không nên thấy "Build Warning:" trong kết quả build
 
-  Scenario: Don't place pages and documents with layout set to 'none'
-    Given I have a "index.md" page with layout "none" that contains "Hi there, {{ site.author }}!"
-    And I have a _trials directory
-    And I have a "_trials/no-layout.md" page with layout "none" that contains "Hi there, {{ site.author }}!"
-    And I have a "_trials/test.md" page with layout "page" that contains "Hi there, {{ site.author }}!"
-    And I have a none layout that contains "{{ content }}Welcome!"
-    And I have a page layout that contains "{{ content }}Check this out!"
-    And I have a configuration file with:
+  Kịch bản: Không đặt pages và documents với layout được đặt thành 'none'
+    Giả sử tôi có trang "index.md" với layout "none" chứa nội dung "Hi there, {{ site.author }}!"
+    Và tôi có thư mục _trials
+    Và tôi có trang "_trials/no-layout.md" với layout "none" chứa nội dung "Hi there, {{ site.author }}!"
+    Và tôi có trang "_trials/test.md" với layout "page" chứa nội dung "Hi there, {{ site.author }}!"
+    Và tôi có layout none chứa nội dung "{{ content }}Welcome!"
+    Và tôi có layout page chứa nội dung "{{ content }}Check this out!"
+    Và tôi có file cấu hình với:
     | key             | value                     |
     | author          | John Doe                  |
     | collections     | {trials: {output: true}}  |
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should not see "Welcome!" in "_site/trials/no-layout.html"
-    And I should not see "Welcome!" in "_site/index.html"
-    But I should see "Check this out!" in "_site/trials/test.html"
-    And I should see "Hi there, John Doe!" in "_site/index.html"
-    And I should not see "Build Warning:" in the build output
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi không nên thấy "Welcome!" trong "_site/trials/no-layout.html"
+    Và tôi không nên thấy "Welcome!" trong "_site/index.html"
+    Nhưng tôi nên thấy "Check this out!" trong "_site/trials/test.html"
+    Và tôi nên thấy "Hi there, John Doe!" trong "_site/index.html"
+    Và tôi không nên thấy "Build Warning:" trong kết quả build
 
-  Scenario: Render liquid in Sass
-    Given I have an "index.scss" page that contains ".foo-bar { color:{{site.color}}; }"
-    And I have a configuration file with "color" set to "red"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see ".foo-bar {\n  color: red;\n}\n\n\/\*# sourceMappingURL=index.css.map \*\/" in "_site/index.css"
+  Kịch bản: Render liquid trong Sass
+    Giả sử tôi có trang "index.scss" chứa nội dung ".foo-bar { color:{{site.color}}; }"
+    Và tôi có file cấu hình với "color" được đặt thành "red"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy ".foo-bar {\\n  color: red;\\n}\\n\\n\\/\\*# sourceMappingURL=index.css.map \\*\\/" trong "_site/index.css"
 
-  Scenario: Not render liquid in CoffeeScript without explicitly including jekyll-coffeescript
-    Given I have an "index.coffee" page with animal "cicada" that contains "hey='for {{page.animal}}'"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And the "_site/index.js" file should not exist
+  Kịch bản: Không render liquid trong CoffeeScript mà không bao gồm jekyll-coffeescript một cách rõ ràng
+    Giả sử tôi có trang "index.coffee" với animal "cicada" chứa nội dung "hey='for {{page.animal}}'"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và file "_site/index.js" không nên tồn tại
 
-  Scenario: Render liquid in CoffeeScript with jekyll-coffeescript enabled
-    Given I have an "index.coffee" page with animal "cicada" that contains "hey='for {{page.animal}}'"
-    And I have a configuration file with "plugins" set to "[jekyll-coffeescript]"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "hey = 'for cicada';" in "_site/index.js"
+  Kịch bản: Render liquid trong CoffeeScript với jekyll-coffeescript được bật
+    Giả sử tôi có trang "index.coffee" với animal "cicada" chứa nội dung "hey='for {{page.animal}}'"
+    Và tôi có file cấu hình với "plugins" được đặt thành "[jekyll-coffeescript]"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "hey = 'for cicada';" trong "_site/index.js"
 
-  Scenario: Rendering Liquid expressions that return strings containing Liquid expressions
-    Given I have an "index.md" file with content:
+  Kịch bản: Rendering các biểu thức Liquid trả về chuỗi chứa biểu thức Liquid
+    Giả sử tôi có file "index.md" với nội dung:
       """
       ---
       prequel: "{% link series/first-part.md %}"
@@ -201,17 +201,17 @@ Feature: Rendering
       {% capture sequel_link %}{{ page.sequel }}{% endcapture %}
       The last part of the series can be read at {{ sequel_link }}
       """
-    And I have a configuration file with "novel" set to "'{{ site.title }}'"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And I should see "series named {{ site.title }}" in "_site/index.html"
-    And I should see "{% link series/first-part.md %}" in "_site/index.html"
-    And I should see "{% link series/last-part.md %}" in "_site/index.html"
+    Và tôi có file cấu hình với "novel" được đặt thành "'{{ site.title }}'"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và tôi nên thấy "series named {{ site.title }}" trong "_site/index.html"
+    Và tôi nên thấy "{% link series/first-part.md %}" trong "_site/index.html"
+    Và tôi nên thấy "{% link series/last-part.md %}" trong "_site/index.html"
 
-  Scenario: Render content of another page
-    Given I have an "index.md" page that contains "__Hello World__"
-    And I have an "about.md" page that contains "{{ page.name }}"
-    And I have a "test.json" file with content:
+  Kịch bản: Render nội dung của một trang khác
+    Giả sử tôi có trang "index.md" chứa nội dung "__Hello World__"
+    Và tôi có trang "about.md" chứa nội dung "{{ page.name }}"
+    Và tôi có file "test.json" với nội dung:
       """
       ---
       ---
@@ -232,10 +232,10 @@ Feature: Rendering
         ]
       }
       """
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    But I should not see "content\": \"{{ page.name }}" in "_site/test.json"
-    And I should not see "content\": \"__Hello World__" in "_site/test.json"
-    But I should see "content\": \"<p>about.md</p>" in "_site/test.json"
-    And I should see "content\": \"<p><strong>Hello World</strong></p>" in "_site/test.json"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Nhưng tôi không nên thấy "content\\\": \\\"{{ page.name }}\" trong "_site/test.json"
+    Và tôi không nên thấy "content\\\": \\\"__Hello World__\" trong "_site/test.json"
+    Nhưng tôi nên thấy "content\\\": \\\"<p>about.md</p>\" trong "_site/test.json"
+    Và tôi nên thấy "content\\\": \\\"<p><strong>Hello World</strong></p>\" trong "_site/test.json"

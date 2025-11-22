@@ -1,104 +1,104 @@
-Feature: Incremental rebuild
-  As an impatient hacker who likes to blog
-  I want to be able to make a static site
-  Without waiting too long for it to build
+Tính năng: Build lại tăng dần
+  Là một hacker thiếu kiên nhẫn thích viết blog
+  Tôi muốn có khả năng tạo một trang web tĩnh
+  Mà không phải chờ đợi quá lâu để nó build
 
-  Scenario: Produce correct output site
-    Given I have a _layouts directory
-    And I have a _posts directory
-    And I have the following posts:
+  Kịch bản: Tạo ra site đầu ra chính xác
+    Giả sử tôi có thư mục _layouts
+    Và tôi có thư mục _posts
+    Và tôi có các bài viết sau:
       | title    | date       | layout  | content                               |
       | Wargames | 2009-03-27 | default | The only winning move is not to play. |
-    And I have a default layout that contains "Post Layout: {{ content }}"
-    When I run jekyll build -I
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Post Layout: <p>The only winning move is not to play.</p>" in "_site/2009/03/27/wargames.html"
-    When I run jekyll build -I
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Post Layout: <p>The only winning move is not to play.</p>" in "_site/2009/03/27/wargames.html"
+    Và tôi có layout default chứa nội dung "Post Layout: {{ content }}"
+    Khi tôi chạy jekyll build -I
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Post Layout: <p>The only winning move is not to play.</p>" trong "_site/2009/03/27/wargames.html"
+    Khi tôi chạy jekyll build -I
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Post Layout: <p>The only winning move is not to play.</p>" trong "_site/2009/03/27/wargames.html"
 
-  Scenario: Generate a metadata file
-    Given I have an "index.html" file that contains "Basic Site"
-    When I run jekyll build -I
-    Then the ".jekyll-metadata" file should exist
+  Kịch bản: Tạo file metadata
+    Giả sử tôi có file "index.html" chứa nội dung "Basic Site"
+    Khi tôi chạy jekyll build -I
+    Thì file ".jekyll-metadata" nên tồn tại
 
-  Scenario: Rebuild when content is changed
-    Given I have an "index.html" file that contains "Basic Site"
-    When I run jekyll build -I
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Basic Site" in "_site/index.html"
-    When I wait 1 second
-    Then I have an "index.html" file that contains "Bacon Site"
-    When I run jekyll build -I
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Bacon Site" in "_site/index.html"
+  Kịch bản: Build lại khi nội dung được thay đổi
+    Giả sử tôi có file "index.html" chứa nội dung "Basic Site"
+    Khi tôi chạy jekyll build -I
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Basic Site" trong "_site/index.html"
+    Khi tôi chờ 1 giây
+    Thì tôi có file "index.html" chứa nội dung "Bacon Site"
+    Khi tôi chạy jekyll build -I
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Bacon Site" trong "_site/index.html"
 
-  Scenario: Rebuild when layout is changed
-    Given I have a _layouts directory
-    And I have an "index.html" page with layout "default" that contains "Basic Site with Layout"
-    And I have a default layout that contains "Page Layout: {{ content }}"
-    When I run jekyll build -I
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Page Layout: Basic Site with Layout" in "_site/index.html"
-    When I wait 1 second
-    Then I have a default layout that contains "Page Layout Changed: {{ content }}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Page Layout Changed: Basic Site with Layout" in "_site/index.html"
+  Kịch bản: Build lại khi layout được thay đổi
+    Giả sử tôi có thư mục _layouts
+    Và tôi có trang "index.html" với layout "default" chứa nội dung "Basic Site with Layout"
+    Và tôi có layout default chứa nội dung "Page Layout: {{ content }}"
+    Khi tôi chạy jekyll build -I
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Page Layout: Basic Site with Layout" trong "_site/index.html"
+    Khi tôi chờ 1 giây
+    Thì tôi có layout default chứa nội dung "Page Layout Changed: {{ content }}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Page Layout Changed: Basic Site with Layout" trong "_site/index.html"
 
-  Scenario: Rebuild when an include is changed
-    Given I have a _includes directory
-    And I have an "index.html" page that contains "Basic Site with include tag: {% include about.textile %}"
-    And I have an "_includes/about.textile" file that contains "Generated by Jekyll"
-    When I run jekyll build -I
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Basic Site with include tag: Generated by Jekyll" in "_site/index.html"
-    When I wait 1 second
-    Then I have an "_includes/about.textile" file that contains "Regenerated by Jekyll"
-    When I run jekyll build -I
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Basic Site with include tag: Regenerated by Jekyll" in "_site/index.html"
+  Kịch bản: Build lại khi một include được thay đổi
+    Giả sử tôi có thư mục _includes
+    Và tôi có trang "index.html" chứa nội dung "Basic Site with include tag: {% include about.textile %}"
+    Và tôi có file "_includes/about.textile" chứa nội dung "Generated by Jekyll"
+    Khi tôi chạy jekyll build -I
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Basic Site with include tag: Generated by Jekyll" trong "_site/index.html"
+    Khi tôi chờ 1 giây
+    Thì tôi có file "_includes/about.textile" chứa nội dung "Regenerated by Jekyll"
+    Khi tôi chạy jekyll build -I
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Basic Site with include tag: Regenerated by Jekyll" trong "_site/index.html"
 
-  Scenario: Rebuild when a dependency of document in custom collection_dir is changed
-    Given I have a _includes directory
-    And I have a configuration file with "collections_dir" set to "collections"
-    And I have a collections/_posts directory
-    And I have the following post within the "collections" directory:
+  Kịch bản: Build lại khi một dependency của document trong collection_dir tùy chỉnh được thay đổi
+    Giả sử tôi có thư mục _includes
+    Và tôi có file cấu hình với "collections_dir" được đặt thành "collections"
+    Và tôi có thư mục collections/_posts
+    Và tôi có bài viết sau trong thư mục "collections":
       | title    | date       | layout  | content                                               |
       | Wargames | 2009-03-27 | default | Basic Site with include tag: {% include about.html %} |
-    And I have an "_includes/about.html" file that contains "Generated by Jekyll"
-    When I run jekyll build -I
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Basic Site with include tag: Generated by Jekyll" in "_site/2009/03/27/wargames.html"
-    When I wait 1 second
-    Then I have an "_includes/about.html" file that contains "Regenerated by Jekyll"
-    When I run jekyll build -I
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Basic Site with include tag: Regenerated by Jekyll" in "_site/2009/03/27/wargames.html"
+    Và tôi có file "_includes/about.html" chứa nội dung "Generated by Jekyll"
+    Khi tôi chạy jekyll build -I
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Basic Site with include tag: Generated by Jekyll" trong "_site/2009/03/27/wargames.html"
+    Khi tôi chờ 1 giây
+    Thì tôi có file "_includes/about.html" chứa nội dung "Regenerated by Jekyll"
+    Khi tôi chạy jekyll build -I
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Basic Site with include tag: Regenerated by Jekyll" trong "_site/2009/03/27/wargames.html"
 
-  Scenario: A themed-site and incremental regeneration
-    Given I have a configuration file with "theme" set to "test-theme"
-    And I have an "index.md" page that contains "Themed site"
-    When I run jekyll build --incremental --verbose
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Rendering: index.md" in the build output
-    And I should see "Themed site" in "_site/index.html"
-    When I wait 1 second
-    And I have an "about.md" page that contains "About Themed site"
-    When I run jekyll build --incremental --verbose
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should not see "Rendering: index.md" in the build output
-    But I should see "Themed site" in "_site/index.html"
-    And I should see "About Themed site" in "_site/about.html"
+  Kịch bản: Một themed-site và tái tạo tăng dần
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Và tôi có trang "index.md" chứa nội dung "Themed site"
+    Khi tôi chạy jekyll build --incremental --verbose
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Rendering: index.md" trong kết quả build
+    Và tôi nên thấy "Themed site" trong "_site/index.html"
+    Khi tôi chờ 1 giây
+    Và tôi có trang "about.md" chứa nội dung "About Themed site"
+    Khi tôi chạy jekyll build --incremental --verbose
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi không nên thấy "Rendering: index.md" trong kết quả build
+    Nhưng tôi nên thấy "Themed site" trong "_site/index.html"
+    Và tôi nên thấy "About Themed site" trong "_site/about.html"

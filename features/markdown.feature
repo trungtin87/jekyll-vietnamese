@@ -1,34 +1,34 @@
-Feature: Markdown
-  As a hacker who likes to blog
-  I want to be able to make a static site
-  In order to share my awesome ideas with the interwebs
+Tính năng: Markdown
+  Là một hacker thích viết blog
+  Tôi muốn có khả năng tạo một trang web tĩnh
+  Để chia sẻ những ý tưởng tuyệt vời của mình với internet
 
-  Scenario: Markdown in list on index
-    Given I have a configuration file with "paginate" set to "5"
-    And I have an "index.html" page that contains "Index - {% for post in site.posts %} {{ post.content }} {% endfor %}"
-    And I have a _posts directory
-    And I have the following post:
+  Kịch bản: Markdown trong danh sách trên trang index
+    Giả sử tôi có file cấu hình với "paginate" được đặt thành "5"
+    Và tôi có trang "index.html" chứa nội dung "Index - {% for post in site.posts %} {{ post.content }} {% endfor %}"
+    Và tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title   | date       | content    | type     |
       | Hackers | 2009-03-27 | # My Title | markdown |
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Index" in "_site/index.html"
-    And I should see "<h1 id=\"my-title\">My Title</h1>" in "_site/2009/03/27/hackers.html"
-    And I should see "<h1 id=\"my-title\">My Title</h1>" in "_site/index.html"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Index" trong "_site/index.html"
+    Và tôi nên thấy "<h1 id=\"my-title\">My Title</h1>" trong "_site/2009/03/27/hackers.html"
+    Và tôi nên thấy "<h1 id=\"my-title\">My Title</h1>" trong "_site/index.html"
 
-  Scenario: Markdown in pagination on index
-    Given I have a configuration file with:
+  Kịch bản: Markdown trong phân trang trên trang index
+    Giả sử tôi có file cấu hình với:
       | key      | value             |
       | paginate | 5                 |
       | plugins  | [jekyll-paginate] |
-    And I have an "index.html" page that contains "Index - {% for post in paginator.posts %} {{ post.content }} {% endfor %}"
-    And I have a _posts directory
-    And I have the following post:
+    Và tôi có trang "index.html" chứa nội dung "Index - {% for post in paginator.posts %} {{ post.content }} {% endfor %}"
+    Và tôi có thư mục _posts
+    Và tôi có bài viết sau:
       | title   | date       | content    | type     |
       | Hackers | 2009-03-27 | # My Title | markdown |
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Index" in "_site/index.html"
-    And I should see "<h1 id=\"my-title\">My Title</h1>" in "_site/index.html"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Index" trong "_site/index.html"
+    Và tôi nên thấy "<h1 id=\"my-title\">My Title</h1>" trong "_site/index.html"

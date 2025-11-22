@@ -1,32 +1,32 @@
-Feature: Building Theme Gems
-  As a hacker who likes to share my expertise
-  I want to be able to make a bonafide rubygem off my theme
-  In order to share my awesome style skillz with other Jekyllites
+Tính năng: Xây dựng Theme Gem
+  Là một hacker thích chia sẻ chuyên môn của mình
+  Tôi muốn có khả năng tạo một rubygem chính thống từ theme của mình
+  Để chia sẻ kỹ năng phong cách tuyệt vời của tôi với các Jekyllite khác
 
-  Scenario: Generating a new Jekyll Theme
-    When I run jekyll new-theme my-cool-theme
-    Then I should get a zero exit status
-    And the my-cool-theme directory should exist
+  Kịch bản: Tạo một Jekyll Theme mới
+    Khi tôi chạy jekyll new-theme my-cool-theme
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục my-cool-theme nên tồn tại
 
-  Scenario: Checking if a bonafide Theme gem will be built from generated scaffolding
-    When I run jekyll new-theme my-cool-theme
-    Then the my-cool-theme directory should exist
-    When I decide to build the theme gem
-    Then the "_includes/blank.html" file should exist
-    Then the "_sass/blank.scss" file should exist
-    Then the "assets/blank.scss" file should exist
-    When I run git add .
-    Then I should get an updated git index
-    When I run gem build --force my-cool-theme.gemspec
-    Then the "./my-cool-theme-0.1.0.gem" file should exist
-    When I run gem unpack my-cool-theme-0.1.0.gem
-    Then the my-cool-theme-0.1.0 directory should exist
-    And the "my-cool-theme-0.1.0/_layouts/default.html" file should exist
-    And the "my-cool-theme-0.1.0/_includes/blank.html" file should exist
-    And the "my-cool-theme-0.1.0/_sass/blank.scss" file should exist
-    And the "my-cool-theme-0.1.0/assets/blank.scss" file should exist
-    And the "my-cool-theme-0.1.0/_config.yml" file should exist
-    And the my-cool-theme-0.1.0/.git directory should not exist
-    And the "my-cool-theme-0.1.0/.gitignore" file should not exist
-    And the "my-cool-theme-0.1.0/Gemfile" file should not exist
-    And the "my-cool-theme-0.1.0/my-cool-theme.gemspec" file should not exist
+  Kịch bản: Kiểm tra xem một Theme gem chính thống có được build từ scaffolding được tạo không
+    Khi tôi chạy jekyll new-theme my-cool-theme
+    Thì thư mục my-cool-theme nên tồn tại
+    Khi tôi quyết định build theme gem
+    Thì file "_includes/blank.html" nên tồn tại
+    Thì file "_sass/blank.scss" nên tồn tại
+    Thì file "assets/blank.scss" nên tồn tại
+    Khi tôi chạy git add .
+    Thì tôi nên nhận được git index đã cập nhật
+    Khi tôi chạy gem build --force my-cool-theme.gemspec
+    Thì file "./my-cool-theme-0.1.0.gem" nên tồn tại
+    Khi tôi chạy gem unpack my-cool-theme-0.1.0.gem
+    Thì thư mục my-cool-theme-0.1.0 nên tồn tại
+    Và file "my-cool-theme-0.1.0/_layouts/default.html" nên tồn tại
+    Và file "my-cool-theme-0.1.0/_includes/blank.html" nên tồn tại
+    Và file "my-cool-theme-0.1.0/_sass/blank.scss" nên tồn tại
+    Và file "my-cool-theme-0.1.0/assets/blank.scss" nên tồn tại
+    Và file "my-cool-theme-0.1.0/_config.yml" nên tồn tại
+    Và thư mục my-cool-theme-0.1.0/.git không nên tồn tại
+    Và file "my-cool-theme-0.1.0/.gitignore" không nên tồn tại
+    Và file "my-cool-theme-0.1.0/Gemfile" không nên tồn tại
+    Và file "my-cool-theme-0.1.0/my-cool-theme.gemspec" không nên tồn tại

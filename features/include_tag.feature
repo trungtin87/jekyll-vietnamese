@@ -1,15 +1,15 @@
-Feature: Include tags
-  In order to share their content across several pages
-  As a hacker who likes to blog
-  I want to be able to include files in my blog posts
+Tính năng: Tag Include
+  Để chia sẻ nội dung của họ qua nhiều trang
+  Là một hacker thích viết blog
+  Tôi muốn có khả năng include các file trong các bài viết blog của mình
 
-  Scenario: Include a file with parameters
-    Given I have an _includes directory
-    And I have an "_includes/header.html" file that contains "<header>My awesome blog header: {{include.param}}</header>"
-    And I have an "_includes/params.html" file that contains "Parameters:<ul>{% for param in include %}<li>{{param[0]}} = {{param[1]}}</li>{% endfor %}</ul>"
-    And I have an "_includes/ignore.html" file that contains "<footer>My blog footer</footer>"
-    And I have a _posts directory
-    And I have the following posts:
+  Kịch bản: Include một file với tham số
+    Giả sử tôi có thư mục _includes
+    Và tôi có file "_includes/header.html" chứa nội dung "<header>My awesome blog header: {{include.param}}</header>"
+    Và tôi có file "_includes/params.html" chứa nội dung "Parameters:<ul>{% for param in include %}<li>{{param[0]}} = {{param[1]}}</li>{% endfor %}</ul>"
+    Và tôi có file "_includes/ignore.html" chứa nội dung "<footer>My blog footer</footer>"
+    Và tôi có thư mục _posts
+    Và tôi có các bài viết sau:
       | title                               | date       | type | content                                                                                                                 |
       | Include Files                       | 2013-03-21 | html | {% include header.html param="myparam" %}                                                                               |
       | Ignore params if unused             | 2013-03-21 | html | {% include ignore.html date="today" %}                                                                                  |
@@ -18,114 +18,114 @@ Feature: Include tags
       | Allow params with spaces and quotes | 2013-04-07 | html | {% include params.html cool="param with spaces" super="\\"quoted\\"" single='has "quotes"' escaped='\\'single\\' quotes' %} |
       | Parameter syntax                    | 2013-04-12 | html | {% include params.html param1_or_2="value" %}                                                                           |
       | Pass a variable                     | 2013-06-22 | html | {% assign var = 'some text' %}{% include params.html local=var title=page.title %}                                    |
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "<header>My awesome blog header: myparam</header>" in "_site/2013/03/21/include-files.html"
-    And I should not see "myparam" in "_site/2013/03/21/ignore-params-if-unused.html"
-    And I should see "<li>date = today</li>" in "_site/2013/03/21/list-multiple-parameters.html"
-    And I should see "<li>start = tomorrow</li>" in "_site/2013/03/21/list-multiple-parameters.html"
-    And I should not see "<header>My awesome blog header: myparam</header>" in "_site/2013/03/21/dont-keep-parameters.html"
-    But I should see "<header>My awesome blog header: </header>" in "_site/2013/03/21/dont-keep-parameters.html"
-    And I should see "<li>cool = param with spaces</li>" in "_site/2013/04/07/allow-params-with-spaces-and-quotes.html"
-    And I should see "<li>super = \"quoted\"</li>" in "_site/2013/04/07/allow-params-with-spaces-and-quotes.html"
-    And I should see "<li>single = has \"quotes\"</li>" in "_site/2013/04/07/allow-params-with-spaces-and-quotes.html"
-    And I should see "<li>escaped = 'single' quotes</li>" in "_site/2013/04/07/allow-params-with-spaces-and-quotes.html"
-    And I should see "<li>param1_or_2 = value</li>" in "_site/2013/04/12/parameter-syntax.html"
-    And I should see "<li>local = some text</li>" in "_site/2013/06/22/pass-a-variable.html"
-    And I should see "<li>title = Pass a variable</li>" in "_site/2013/06/22/pass-a-variable.html"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "<header>My awesome blog header: myparam</header>" trong "_site/2013/03/21/include-files.html"
+    Và tôi không nên thấy "myparam" trong "_site/2013/03/21/ignore-params-if-unused.html"
+    Và tôi nên thấy "<li>date = today</li>" trong "_site/2013/03/21/list-multiple-parameters.html"
+    Và tôi nên thấy "<li>start = tomorrow</li>" trong "_site/2013/03/21/list-multiple-parameters.html"
+    Và tôi không nên thấy "<header>My awesome blog header: myparam</header>" trong "_site/2013/03/21/dont-keep-parameters.html"
+    Nhưng tôi nên thấy "<header>My awesome blog header: </header>" trong "_site/2013/03/21/dont-keep-parameters.html"
+    Và tôi nên thấy "<li>cool = param with spaces</li>" trong "_site/2013/04/07/allow-params-with-spaces-and-quotes.html"
+    Và tôi nên thấy "<li>super = \\\"quoted\\\"</li>" trong "_site/2013/04/07/allow-params-with-spaces-and-quotes.html"
+    Và tôi nên thấy "<li>single = has \\\"quotes\\\"</li>" trong "_site/2013/04/07/allow-params-with-spaces-and-quotes.html"
+    Và tôi nên thấy "<li>escaped = 'single' quotes</li>" trong "_site/2013/04/07/allow-params-with-spaces-and-quotes.html"
+    Và tôi nên thấy "<li>param1_or_2 = value</li>" trong "_site/2013/04/12/parameter-syntax.html"
+    Và tôi nên thấy "<li>local = some text</li>" trong "_site/2013/06/22/pass-a-variable.html"
+    Và tôi nên thấy "<li>title = Pass a variable</li>" trong "_site/2013/06/22/pass-a-variable.html"
 
-  Scenario: Include a file from a variable
-    Given I have an _includes directory
-    And I have an "_includes/snippet.html" file that contains "a snippet"
-    And I have an "_includes/parametrized.html" file that contains "works with {{include.what}}"
-    And I have a configuration file with:
+  Kịch bản: Include một file từ một biến
+    Giả sử tôi có thư mục _includes
+    Và tôi có file "_includes/snippet.html" chứa nội dung "a snippet"
+    Và tôi có file "_includes/parametrized.html" chứa nội dung "works with {{include.what}}"
+    Và tôi có file cấu hình với:
     | key           | value             |
     | include_file1 | snippet.html      |
     | include_file2 | parametrized.html |
-    And I have an "index.html" page that contains "{% include {{site.include_file1}} %} that {% include {{site.include_file2}} what='parameters' %}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "a snippet that works with parameters" in "_site/index.html"
+    Và tôi có trang "index.html" chứa nội dung "{% include {{site.include_file1}} %} that {% include {{site.include_file2}} what='parameters' %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "a snippet that works with parameters" trong "_site/index.html"
 
-  Scenario: Include a variable file in a loop
-    Given I have an _includes directory
-    And I have an "_includes/one.html" file that contains "one"
-    And I have an "_includes/two.html" file that contains "two"
-    And I have an "index.html" page with files "[one.html, two.html]" that contains "{% for file in page.files %}{% include {{file}} %} {% endfor %}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "one two" in "_site/index.html"
+  Kịch bản: Include một file biến trong một vòng lặp
+    Giả sử tôi có thư mục _includes
+    Và tôi có file "_includes/one.html" chứa nội dung "one"
+    Và tôi có file "_includes/two.html" chứa nội dung "two"
+    Và tôi có trang "index.html" với files "[one.html, two.html]" chứa nội dung "{% for file in page.files %}{% include {{file}} %} {% endfor %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "one two" trong "_site/index.html"
 
-  Scenario: Include a file with variables and filters
-    Given I have an _includes directory
-    And I have an "_includes/one.html" file that contains "one included"
-    And I have a configuration file with:
+  Kịch bản: Include một file với biến và bộ lọc
+    Giả sử tôi có thư mục _includes
+    Và tôi có file "_includes/one.html" chứa nội dung "one included"
+    Và tôi có file cấu hình với:
     | key          | value |
     | include_file | one   |
-    And I have an "index.html" page that contains "{% include {{ site.include_file | append: '.html' }} %}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "one included" in "_site/index.html"
+    Và tôi có trang "index.html" chứa nội dung "{% include {{ site.include_file | append: '.html' }} %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "one included" trong "_site/index.html"
 
-  Scenario: Include a file with partial variables
-    Given I have an _includes directory
-    And I have an "_includes/one.html" file that contains "one included"
-    And I have a configuration file with:
+  Kịch bản: Include một file với biến một phần
+    Giả sử tôi có thư mục _includes
+    Và tôi có file "_includes/one.html" chứa nội dung "one included"
+    Và tôi có file cấu hình với:
     | key          | value |
     | include_file | one   |
-    And I have an "index.html" page that contains "{% include {{ site.include_file }}.html %}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "one included" in "_site/index.html"
+    Và tôi có trang "index.html" chứa nội dung "{% include {{ site.include_file }}.html %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "one included" trong "_site/index.html"
 
-  Scenario: Include a file and rebuild when include content is changed
-    Given I have an _includes directory
-    And I have an "_includes/one.html" file that contains "include"
-    And I have an "index.html" page that contains "{% include one.html %}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "include" in "_site/index.html"
-    When I wait 1 second
-    Then I have an "_includes/one.html" file that contains "include content changed"
-    When I run jekyll build
-    Then I should see "include content changed" in "_site/index.html"
+  Kịch bản: Include một file và rebuild khi nội dung include thay đổi
+    Giả sử tôi có thư mục _includes
+    Và tôi có file "_includes/one.html" chứa nội dung "include"
+    Và tôi có trang "index.html" chứa nội dung "{% include one.html %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "include" trong "_site/index.html"
+    Khi tôi đợi 1 giây
+    Thì tôi có file "_includes/one.html" chứa nội dung "include content changed"
+    Khi tôi chạy jekyll build
+    Thì tôi nên thấy "include content changed" trong "_site/index.html"
 
-  Scenario: Include a file with multiple variables
-    Given I have an _includes directory
-    And I have an "_includes/header-en.html" file that contains "include"
-    And I have an "index.html" page that contains "{% assign name = 'header' %}{% assign locale = 'en' %}{% include {{name}}-{{locale}}.html %}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "include" in "_site/index.html"
+  Kịch bản: Include một file với nhiều biến
+    Giả sử tôi có thư mục _includes
+    Và tôi có file "_includes/header-en.html" chứa nội dung "include"
+    Và tôi có trang "index.html" chứa nội dung "{% assign name = 'header' %}{% assign locale = 'en' %}{% include {{name}}-{{locale}}.html %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "include" trong "_site/index.html"
 
-  Scenario: Include a file-path with non-alphanumeric character sequences
-    Given I have an _includes directory
-    And I have an "_includes/header-en.html" file that contains "include"
-    And I have an "index.html" page that contains "{% include ./header-en.html %}"
-    When I run jekyll build
-    Then I should get a non-zero exit status
-    And I should see "Invalid syntax for include tag." in the build output
-    When I have an "index.html" page that contains "{% include foo/.header-en.html %}"
-    When I run jekyll build
-    Then I should get a non-zero exit status
-    And I should see "Invalid syntax for include tag." in the build output
-    When I have an "index.html" page that contains "{% include //header-en.html %}"
-    When I run jekyll build
-    Then I should get a non-zero exit status
-    And I should see "Invalid syntax for include tag." in the build output
-    When I have an "index.html" page that contains "{% include ..header-en.html %}"
-    When I run jekyll build
-    Then I should get a non-zero exit status
-    And I should see "Invalid syntax for include tag." in the build output
-    When I have an "index.html" page that contains "{% include header-en.html %}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "include" in "_site/index.html"
+  Kịch bản: Include một đường dẫn file với chuỗi ký tự không phải chữ và số
+    Giả sử tôi có thư mục _includes
+    Và tôi có file "_includes/header-en.html" chứa nội dung "include"
+    Và tôi có trang "index.html" chứa nội dung "{% include ./header-en.html %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát khác không
+    Và tôi nên thấy "Invalid syntax for include tag." trong kết quả build
+    Khi tôi có trang "index.html" chứa nội dung "{% include foo/.header-en.html %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát khác không
+    Và tôi nên thấy "Invalid syntax for include tag." trong kết quả build
+    Khi tôi có trang "index.html" chứa nội dung "{% include //header-en.html %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát khác không
+    Và tôi nên thấy "Invalid syntax for include tag." trong kết quả build
+    Khi tôi có trang "index.html" chứa nội dung "{% include ..header-en.html %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát khác không
+    Và tôi nên thấy "Invalid syntax for include tag." trong kết quả build
+    Khi tôi có trang "index.html" chứa nội dung "{% include header-en.html %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "include" trong "_site/index.html"

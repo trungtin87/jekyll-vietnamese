@@ -1,151 +1,151 @@
-Feature: Writing themes
-  As a hacker who likes to share my expertise
-  I want to be able to make a gemified theme
-  In order to share my awesome style skillz with other Jekyllites
+Tính năng: Viết theme
+  Là một hacker thích chia sẻ chuyên môn của mình
+  Tôi muốn có khả năng tạo một theme dạng gem
+  Để chia sẻ kỹ năng phong cách tuyệt vời của tôi với những Jekyllite khác
 
-  Scenario: Generating a new theme scaffold
-    When I run jekyll new-theme my-cool-theme
-    Then I should get a zero exit status
-    And the my-cool-theme directory should exist
+  Kịch bản: Tạo một khung theme mới
+    Khi tôi chạy jekyll new-theme my-cool-theme
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục my-cool-theme nên tồn tại
 
-  Scenario: Generating a new theme scaffold with a code of conduct
-    When I run jekyll new-theme my-cool-theme --code-of-conduct
-    Then I should get a zero exit status
-    And the my-cool-theme directory should exist
-    And the "my-cool-theme/CODE_OF_CONDUCT.md" file should exist
+  Kịch bản: Tạo một khung theme mới với code of conduct
+    Khi tôi chạy jekyll new-theme my-cool-theme --code-of-conduct
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục my-cool-theme nên tồn tại
+    Và file "my-cool-theme/CODE_OF_CONDUCT.md" nên tồn tại
 
-  Scenario: A theme with SCSS
-    Given I have a configuration file with "theme" set to "test-theme"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see ".sample {\n  color: red;\n}\n\n\/\*# sourceMappingURL=style.css.map \*\/" in "_site/assets/style.css"
+  Kịch bản: Một theme với SCSS
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy ".sample {\n  color: red;\n}\n\n\/\*# sourceMappingURL=style.css.map \*\/" trong "_site/assets/style.css"
 
-  Scenario: Overriding a theme with SCSS
-    Given I have a configuration file with "theme" set to "test-theme"
-    And I have an assets directory
-    And I have an "assets/style.scss" page that contains "@import 'test-theme-black';"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see ".sample {\n  color: black;\n}\n\n\/\*# sourceMappingURL=style.css.map \*\/" in "_site/assets/style.css"
+  Kịch bản: Ghi đè một theme với SCSS
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Và tôi có thư mục assets
+    Và tôi có trang "assets/style.scss" chứa nội dung "@import 'test-theme-black';"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy ".sample {\n  color: black;\n}\n\n\/\*# sourceMappingURL=style.css.map \*\/" trong "_site/assets/style.css"
 
-  Scenario: A theme with an include
-    Given I have a configuration file with "theme" set to "test-theme"
-    And I have an _includes directory
-    And I have an "_includes/in_project.html" file that contains "I'm in the project."
-    And I have an "index.html" page that contains "{% include in_project.html %} {% include include.html %}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "I'm in the project." in "_site/index.html"
-    And I should see "<span class=\"sample\">include.html from test-theme</span>" in "_site/index.html"
+  Kịch bản: Một theme với một include
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Và tôi có thư mục _includes
+    Và tôi có file "_includes/in_project.html" chứa nội dung "I'm in the project."
+    Và tôi có trang "index.html" chứa nội dung "{% include in_project.html %} {% include include.html %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "I'm in the project." trong "_site/index.html"
+    Và tôi nên thấy "<span class=\"sample\">include.html from test-theme</span>" trong "_site/index.html"
 
-  Scenario: A theme without data
-    Given I have a configuration file with "theme" set to "test-theme-skinny"
-    And I have a _data directory
-    And I have a "_data/greetings.yml" file with content:
+  Kịch bản: Một theme không có data
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme-skinny"
+    Và tôi có thư mục _data
+    Và tôi có file "_data/greetings.yml" với nội dung:
       """
-      foo: "Hello! I’m foo. And who are you?"
+      foo: "Hello! I'm foo. And who are you?"
       """
-    And I have an "index.html" page that contains "{{ site.data.greetings.foo }}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Hello! I’m foo. And who are you?" in "_site/index.html"
+    Và tôi có trang "index.html" chứa nội dung "{{ site.data.greetings.foo }}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Hello! I'm foo. And who are you?" trong "_site/index.html"
 
-  Scenario: A theme with data overridden by data in source directory
-    Given I have a configuration file with "theme" set to "test-theme"
-    And I have a _data directory
-    And I have a "_data/greetings.yml" file with content:
+  Kịch bản: Một theme với data bị ghi đè bởi data trong thư mục nguồn
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Và tôi có thư mục _data
+    Và tôi có file "_data/greetings.yml" với nội dung:
       """
-      foo: "Hello! I’m foo. And who are you?"
+      foo: "Hello! I'm foo. And who are you?"
       """
-    And I have an "index.html" page that contains "{{ site.data.greetings.foo }}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Hello! I’m foo. And who are you?" in "_site/index.html"
-    And I should not see "Hello! I’m bar. What’s up so far?" in "_site/index.html"
+    Và tôi có trang "index.html" chứa nội dung "{{ site.data.greetings.foo }}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Hello! I'm foo. And who are you?" trong "_site/index.html"
+    Và tôi không nên thấy "Hello! I'm bar. What's up so far?" trong "_site/index.html"
 
-  Scenario: A theme with a layout
-    Given I have a configuration file with "theme" set to "test-theme"
-    And I have an _layouts directory
-    And I have an "_layouts/post.html" file that contains "post.html from the project: {{ content }}"
-    And I have an "index.html" page with layout "default" that contains "I'm content."
-    And I have a "post.html" page with layout "post" that contains "I'm more content."
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "default.html from test-theme: I'm content." in "_site/index.html"
-    And I should see "post.html from the project: I'm more content." in "_site/post.html"
+  Kịch bản: Một theme với một layout
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Và tôi có thư mục _layouts
+    Và tôi có file "_layouts/post.html" chứa nội dung "post.html from the project: {{ content }}"
+    Và tôi có trang "index.html" với layout "default" chứa nội dung "I'm content."
+    Và tôi có trang "post.html" với layout "post" chứa nội dung "I'm more content."
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "default.html from test-theme: I'm content." trong "_site/index.html"
+    Và tôi nên thấy "post.html from the project: I'm more content." trong "_site/post.html"
 
-  Scenario: A theme with assets
-    Given I have a configuration file with "theme" set to "test-theme"
-    And I have an assets directory
-    And I have an "assets/application.coffee" file that contains "From your site."
-    And I have an "assets/base.js" file that contains "From your site."
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "From your site." in "_site/assets/application.coffee"
-    And I should see "From your site." in "_site/assets/base.js"
+  Kịch bản: Một theme với assets
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Và tôi có thư mục assets
+    Và tôi có file "assets/application.coffee" chứa nội dung "From your site."
+    Và tôi có file "assets/base.js" chứa nội dung "From your site."
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "From your site." trong "_site/assets/application.coffee"
+    Và tôi nên thấy "From your site." trong "_site/assets/base.js"
 
-  Scenario: A theme with *just* layouts
-    Given I have a configuration file with "theme" set to "test-theme-skinny"
-    And I have an "index.html" page with layout "home" that contains "The quick brown fox."
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Message: The quick brown fox." in "_site/index.html"
-    But I should not see "_includes" in the build output
-    And I should not see "_sass" in the build output
-    And I should not see "assets" in the build output
+  Kịch bản: Một theme chỉ có layouts
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme-skinny"
+    Và tôi có trang "index.html" với layout "home" chứa nội dung "The quick brown fox."
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Message: The quick brown fox." trong "_site/index.html"
+    Nhưng tôi không nên thấy "_includes" trong kết quả build
+    Và tôi không nên thấy "_sass" trong kết quả build
+    Và tôi không nên thấy "assets" trong kết quả build
 
-  Scenario: Requiring dependencies of a theme
-    Given I have a configuration file with "theme" set to "test-dependency-theme"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And the "_site/test.txt" file should exist
+  Kịch bản: Yêu cầu các dependency của một theme
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-dependency-theme"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và file "_site/test.txt" nên tồn tại
 
-  Scenario: Complicated site that puts it all together
-    Given I have a configuration file with "theme" set to "test-theme"
-    And I have a _posts directory
-    And I have the following posts:
+  Kịch bản: Site phức tạp kết hợp tất cả mọi thứ
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Và tôi có thư mục _posts
+    Và tôi có các bài viết sau:
       | title  | date       | layout  | content             |
       | entry1 | 2016-04-21 | post    | I am using a local layout. {% include include.html %} |
       | entry2 | 2016-04-21 | default | I am using a themed layout. {% include include.html %} {% include in_project.html %} |
-    And I have a _layouts directory
-    And I have a "_layouts/post.html" page with layout "default" that contains "I am a post layout! {{ content }}"
-    And I have an _includes directory
-    And I have an "_includes/in_project.html" file that contains "I am in the project, not the theme."
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "I am in the project, not the theme." in "_site/2016/04/21/entry2.html"
-    And I should see "<span class=\"sample\">include.html from test-theme</span>" in "_site/2016/04/21/entry2.html"
-    And I should see "default.html from test-theme:" in "_site/2016/04/21/entry2.html"
-    And I should see "I am using a themed layout." in "_site/2016/04/21/entry2.html"
-    And I should not see "I am a post layout!" in "_site/2016/04/21/entry2.html"
-    And I should not see "I am in the project, not the theme." in "_site/2016/04/21/entry1.html"
-    And I should see "<span class=\"sample\">include.html from test-theme</span>" in "_site/2016/04/21/entry1.html"
-    And I should see "default.html from test-theme:" in "_site/2016/04/21/entry1.html"
-    And I should see "I am using a local layout." in "_site/2016/04/21/entry1.html"
-    And I should see "I am a post layout!" in "_site/2016/04/21/entry1.html"
+    Và tôi có thư mục _layouts
+    Và tôi có trang "_layouts/post.html" với layout "default" chứa nội dung "I am a post layout! {{ content }}"
+    Và tôi có thư mục _includes
+    Và tôi có file "_includes/in_project.html" chứa nội dung "I am in the project, not the theme."
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "I am in the project, not the theme." trong "_site/2016/04/21/entry2.html"
+    Và tôi nên thấy "<span class=\"sample\">include.html from test-theme</span>" trong "_site/2016/04/21/entry2.html"
+    Và tôi nên thấy "default.html from test-theme:" trong "_site/2016/04/21/entry2.html"
+    Và tôi nên thấy "I am using a themed layout." trong "_site/2016/04/21/entry2.html"
+    Và tôi không nên thấy "I am a post layout!" trong "_site/2016/04/21/entry2.html"
+    Và tôi không nên thấy "I am in the project, not the theme." trong "_site/2016/04/21/entry1.html"
+    Và tôi nên thấy "<span class=\"sample\">include.html from test-theme</span>" trong "_site/2016/04/21/entry1.html"
+    Và tôi nên thấy "default.html from test-theme:" trong "_site/2016/04/21/entry1.html"
+    Và tôi nên thấy "I am using a local layout." trong "_site/2016/04/21/entry1.html"
+    Và tôi nên thấy "I am a post layout!" trong "_site/2016/04/21/entry1.html"
 
-  Scenario: Complicated site that puts it all together in respect to data folders
-    Given I have a configuration file with "theme" set to "test-theme"
-    And I have a _data directory
-    And I have a "_data/i18n.yml" file with content:
+  Kịch bản: Site phức tạp kết hợp tất cả mọi thứ liên quan đến thư mục data
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Và tôi có thư mục _data
+    Và tôi có file "_data/i18n.yml" với nội dung:
       """
       testimonials:
         header: Kundenstimmen
       """
-    And I have an "index.html" page that contains "{% include testimonials.html %}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should not see "Testimonials" in "_site/index.html"
-    And I should see "Kundenstimmen" in "_site/index.html"
-    And I should see "Design by FTC" in "_site/index.html"
+    Và tôi có trang "index.html" chứa nội dung "{% include testimonials.html %}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi không nên thấy "Testimonials" trong "_site/index.html"
+    Và tôi nên thấy "Kundenstimmen" trong "_site/index.html"
+    Và tôi nên thấy "Design by FTC" trong "_site/index.html"

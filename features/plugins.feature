@@ -1,37 +1,37 @@
-Feature: Configuring and using plugins
-  As a hacker
-  I want to specify my own plugins that can modify Jekyll's behaviour
+Tính năng: Cấu hình và sử dụng plugin
+  Là một hacker
+  Tôi muốn chỉ định các plugin của riêng mình có thể sửa đổi hành vi của Jekyll
 
-  Scenario: Add a gem-based plugin
-    Given I have an "index.html" file that contains "Whatever"
-    And I have a configuration file with "plugins" set to "[jekyll_test_plugin]"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Whatever" in "_site/index.html"
-    And I should see "this is a test" in "_site/test.txt"
+  Kịch bản: Thêm một plugin dựa trên gem
+    Giả sử tôi có file "index.html" chứa nội dung "Whatever"
+    Và tôi có file cấu hình với "plugins" được đặt thành "[jekyll_test_plugin]"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Whatever" trong "_site/index.html"
+    Và tôi nên thấy "this is a test" trong "_site/test.txt"
 
-  Scenario: Add an empty whitelist to restrict all gems
-    Given I have an "index.html" file that contains "Whatever"
-    And I have a configuration file with:
+  Kịch bản: Thêm danh sách trắng rỗng để hạn chế tất cả các gem
+    Giả sử tôi có file "index.html" chứa nội dung "Whatever"
+    Và tôi có file cấu hình với:
       | key       | value                |
       | plugins   | [jekyll_test_plugin] |
       | whitelist | []                   |
-    When I run jekyll build --safe
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Whatever" in "_site/index.html"
-    And the "_site/test.txt" file should not exist
+    Khi tôi chạy jekyll build --safe
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Whatever" trong "_site/index.html"
+    Và file "_site/test.txt" không nên tồn tại
 
-  Scenario: Add a whitelist to restrict some gems but allow others
-    Given I have an "index.html" file that contains "Whatever"
-    And I have a configuration file with:
+  Kịch bản: Thêm danh sách trắng để hạn chế một số gem nhưng cho phép các gem khác
+    Giả sử tôi có file "index.html" chứa nội dung "Whatever"
+    Và tôi có file cấu hình với:
       | key       | value                                              |
       | plugins   | [jekyll_test_plugin, jekyll_test_plugin_malicious] |
       | whitelist | [jekyll_test_plugin]                               |
-    When I run jekyll build --safe
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Whatever" in "_site/index.html"
-    And the "_site/test.txt" file should exist
-    And I should see "this is a test" in "_site/test.txt"
+    Khi tôi chạy jekyll build --safe
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Whatever" trong "_site/index.html"
+    Và file "_site/test.txt" nên tồn tại
+    Và tôi nên thấy "this is a test" trong "_site/test.txt"

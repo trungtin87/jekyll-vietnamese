@@ -1,36 +1,36 @@
-Feature: Bundling Config file with Theme gems
-  As a web developer who likes to share my expertise
-  I want to be able to pre-configure my gemified theme
-  In order to make it easier for other Jekyllites to use my theme
+Tính năng: Đóng gói file cấu hình với Theme gem
+  Là một nhà phát triển web thích chia sẻ chuyên môn của mình
+  Tôi muốn có khả năng cấu hình trước theme gemified của mình
+  Để giúp các Jekyllite khác sử dụng theme của tôi dễ dàng hơn
 
-  Scenario: Easy onboarding with a pre-configured theme
-    Given I have a configuration file with "theme" set to "test-theme"
-    And I have an "index.md" page that contains "{{ site.test_theme.skin }}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "aero" in "_site/index.html"
+  Kịch bản: Dễ dàng bắt đầu với theme được cấu hình sẵn
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Và tôi có trang "index.md" chứa nội dung "{{ site.test_theme.skin }}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "aero" trong "_site/index.html"
 
-  Scenario: Disabling import of theme configuration entirely
-    Given I have a configuration file with:
+  Kịch bản: Vô hiệu hóa hoàn toàn việc import cấu hình theme
+    Giả sử tôi có file cấu hình với:
       | key                 | value      |
       | theme               | test-theme |
       | ignore_theme_config | true       |
-    And I have an "index.md" page that contains "{{ site.test_theme.skin }}"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should not see "aero" in "_site/index.html"
+    Và tôi có trang "index.md" chứa nội dung "{{ site.test_theme.skin }}"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi không nên thấy "aero" trong "_site/index.html"
 
-  Scenario: A pre-configured theme with valid config file overriding Jekyll defaults
-    Given I have a configuration file with "theme" set to "test-theme"
-    And I have an "index.md" page that contains "{{ site.baseurl }}"
-    And I have a node_modules directory
-    And I have a "node_modules/alert.js" file that contains "alert('foo');"
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And the "_site/index.html" file should exist
-    But the "_site/node_modules/alert.js" file should not exist
-    And the "_site/extras/banner.html" file should not exist
-    And I should not see "/test-theme" in "_site/index.html"
+  Kịch bản: Theme được cấu hình sẵn với file cấu hình hợp lệ ghi đè các mặc định của Jekyll
+    Giả sử tôi có file cấu hình với "theme" được đặt thành "test-theme"
+    Và tôi có trang "index.md" chứa nội dung "{{ site.baseurl }}"
+    Và tôi có thư mục node_modules
+    Và tôi có file "node_modules/alert.js" chứa nội dung "alert('foo');"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và file "_site/index.html" nên tồn tại
+    Nhưng file "_site/node_modules/alert.js" không nên tồn tại
+    Và file "_site/extras/banner.html" không nên tồn tại
+    Và tôi không nên thấy "/test-theme" trong "_site/index.html"

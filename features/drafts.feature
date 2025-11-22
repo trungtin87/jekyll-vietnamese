@@ -1,50 +1,50 @@
-Feature: Draft Posts
-  As a hacker who likes to blog
-  I want to be able to preview drafts locally
-  In order to see if they look alright before publishing
+Tính năng: Bài viết nháp
+  Là một hacker thích viết blog
+  Tôi muốn có khả năng xem trước các bản nháp ở local
+  Để xem chúng có ổn không trước khi xuất bản
 
-  Scenario: Preview a draft
-    Given I have a configuration file with "permalink" set to "none"
-    And I have a _drafts directory
-    And I have the following draft:
+  Kịch bản: Xem trước một bản nháp
+    Giả sử tôi có file cấu hình với "permalink" được đặt thành "none"
+    Và tôi có thư mục _drafts
+    Và tôi có bản nháp sau:
       | title  | date       | layout  | content        |
       | Recipe | 2009-03-27 | default | Not baked yet. |
-    When I run jekyll build --drafts
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Not baked yet." in "_site/recipe.html"
+    Khi tôi chạy jekyll build --drafts
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Not baked yet." trong "_site/recipe.html"
 
-  Scenario: Don't preview a draft
-    Given I have a configuration file with "permalink" set to "none"
-    And I have an "index.html" page that contains "Totally index"
-    And I have a _drafts directory
-    And I have the following draft:
+  Kịch bản: Không xem trước bản nháp
+    Giả sử tôi có file cấu hình với "permalink" được đặt thành "none"
+    Và tôi có trang "index.html" chứa nội dung "Totally index"
+    Và tôi có thư mục _drafts
+    Và tôi có bản nháp sau:
       | title  | date       | layout  | content        |
       | Recipe | 2009-03-27 | default | Not baked yet. |
-    When I run jekyll build
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And the "_site/recipe.html" file should not exist
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và file "_site/recipe.html" không nên tồn tại
 
-  Scenario: Don't preview a draft that is not published
-    Given I have a configuration file with "permalink" set to "none"
-    And I have an "index.html" page that contains "Totally index"
-    And I have a _drafts directory
-    And I have the following draft:
+  Kịch bản: Không xem trước bản nháp chưa được xuất bản
+    Giả sử tôi có file cấu hình với "permalink" được đặt thành "none"
+    Và tôi có trang "index.html" chứa nội dung "Totally index"
+    Và tôi có thư mục _drafts
+    Và tôi có bản nháp sau:
       | title  | date       | layout  | published | content        |
       | Recipe | 2009-03-27 | default | false     | Not baked yet. |
-    When I run jekyll build --drafts
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And the "_site/recipe.html" file should not exist
+    Khi tôi chạy jekyll build --drafts
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và file "_site/recipe.html" không nên tồn tại
 
-  Scenario: Use page.path variable
-    Given I have a configuration file with "permalink" set to "none"
-    And I have a _drafts directory
-    And I have the following draft:
+  Kịch bản: Sử dụng biến page.path
+    Giả sử tôi có file cấu hình với "permalink" được đặt thành "none"
+    Và tôi có thư mục _drafts
+    Và tôi có bản nháp sau:
       | title  | date       | layout | content                    |
       | Recipe | 2009-03-27 | simple | Post path: {{ page.path }} |
-    When I run jekyll build --drafts
-    Then I should get a zero exit status
-    And the _site directory should exist
-    And I should see "Post path: _drafts/recipe.markdown" in "_site/recipe.html"
+    Khi tôi chạy jekyll build --drafts
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và thư mục _site nên tồn tại
+    Và tôi nên thấy "Post path: _drafts/recipe.markdown" trong "_site/recipe.html"

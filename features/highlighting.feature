@@ -1,10 +1,10 @@
-Feature: Syntax Highlighting
-  As a hacker who likes to blog
-  I want to share code snippets in my blog
-  And make them pretty for all the world to see
+Tính năng: Làm nổi bật cú pháp
+  Là một hacker thích viết blog
+  Tôi muốn chia sẻ các đoạn code trong blog của mình
+  Và làm cho chúng đẹp mắt cho mọi người xem
 
-  Scenario: highlighting an apache configuration
-    Given I have an "index.html" page with content:
+  Kịch bản: làm nổi bật cấu hình apache
+    Giả sử tôi có trang "index.html" với nội dung:
       """
       {% highlight apache %}
       RewriteEngine On
@@ -13,12 +13,12 @@ Feature: Syntax Highlighting
       RewriteRule ^(.*)$ index.php [QSA,L]
       {% endhighlight %}
       """
-    When I run jekyll build
-    Then I should get a zero exit-status
-    And I should see "<span class="nc">RewriteCond</span>" in "_site/index.html"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và tôi nên thấy "<span class=\"nc\">RewriteCond</span>" trong "_site/index.html"
 
-  Scenario: marking lines 1 and 2 in a Ruby code block with valid syntax
-    Given I have an "index.html" page with content:
+  Kịch bản: đánh dấu dòng 1 và 2 trong khối code Ruby với cú pháp hợp lệ
+    Giả sử tôi có trang "index.html" với nội dung:
       """
       {% highlight ruby mark_lines="1 2" %}
       module Jekyll
@@ -26,14 +26,14 @@ Feature: Syntax Highlighting
           class HighlightBlock < Liquid::Block
       {% endhighlight %}
       """
-    When I run jekyll build
-    Then I should get a zero exit-status
-    And I should see "<span class=\"hll\"><span class=\"k\">module</span> <span class=\"nn\">Jekyll</span>" in "_site/index.html"
-    And I should see "<span class=\"hll\">  <span class=\"k\">module</span> <span class=\"nn\">Tags</span>" in "_site/index.html"
-    And I should see "<span class=\"k\">class</span> <span class=\"nc\">HighlightBlock</span" in "_site/index.html"
+    Khi tôi chạy jekyll build
+    Thì tôi nên nhận được trạng thái thoát bằng không
+    Và tôi nên thấy "<span class=\"hll\"><span class=\"k\">module</span> <span class=\"nn\">Jekyll</span>" trong "_site/index.html"
+    Và tôi nên thấy "<span class=\"hll\">  <span class=\"k\">module</span> <span class=\"nn\">Tags</span>" trong "_site/index.html"
+    Và tôi nên thấy "<span class=\"k\">class</span> <span=\"nc\">HighlightBlock</span" trong "_site/index.html"
 
-  Scenario: marking a single line in a Ruby code block with invalid syntax
-    Given I have an "index.html" page with content:
+  Kịch bản: đánh dấu một dòng trong khối code Ruby với cú pháp không hợp lệ
+    Giả sử tôi có trang "index.html" với nội dung:
       """
       {% highlight ruby mark_lines=1 %}
       module Jekyll
@@ -41,5 +41,5 @@ Feature: Syntax Highlighting
           class HighlightBlock < Liquid::Block
       {% endhighlight %}
       """
-    When I run jekyll build
-    Then I should see "Liquid Exception: Syntax Error" in the build output
+    Khi tôi chạy jekyll build
+    Thì tôi nên thấy "Liquid Exception: Syntax Error" trong kết quả build
