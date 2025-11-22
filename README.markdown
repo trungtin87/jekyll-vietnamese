@@ -7,54 +7,52 @@
 
 [ruby-gems]: https://rubygems.org/gems/jekyll
 [ci-workflow]: https://github.com/jekyll/jekyll/actions?query=workflow%3A%22Continuous+Integration%22+branch%3Amaster
-[appveyor]: https://ci.appveyor.com/project/jekyll/jekyll/branch/master
 
-Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind [GitHub Pages](https://pages.github.com), which you can use to host sites right from your GitHub repositories.
+Jekyll là một trình tạo trang web tĩnh đơn giản, hỗ trợ blog, hoàn hảo cho các trang web cá nhân, dự án hoặc tổ chức. Hãy nghĩ về nó như một CMS dựa trên file, nhưng không có sự phức tạp. Jekyll lấy nội dung của bạn, render các template Markdown và Liquid, và tạo ra một trang web tĩnh hoàn chỉnh sẵn sàng để phục vụ bởi Apache, Nginx hoặc web server khác. Jekyll là engine đằng sau [GitHub Pages](https://pages.github.com), cho phép bạn host các trang web trực tiếp từ repository GitHub của mình.
 
-## Philosophy
+## Triết lý
 
-Jekyll does what you tell it to do — no more, no less. It doesn't try to outsmart users by making bold assumptions, nor does it burden them with needless complexity and configuration. Put simply, Jekyll gets out of your way and allows you to concentrate on what truly matters: your content.
+Jekyll làm những gì bạn yêu cầu — không hơn, không kém. Nó không cố gắng tự ý đoán người dùng bằng cách đưa ra các giả định táo bạo, cũng không làm phiền họ với sự phức tạp và cấu hình không cần thiết. Nói một cách đơn giản, Jekyll tránh xa con đường của bạn và cho phép bạn tập trung vào những gì thực sự quan trọng: nội dung của bạn.
 
-See: [https://jekyllrb.com/philosophy](https://jekyllrb.com/philosophy)
+Xem: [https://jekyllrb.com/philosophy](https://jekyllrb.com/philosophy)
 
-## Getting Started
+## Bắt đầu
 
-* [Install](https://jekyllrb.com/docs/installation/) the gem
-* Read up about its [Usage](https://jekyllrb.com/docs/usage/) and [Configuration](https://jekyllrb.com/docs/configuration/)
-* Take a gander at some existing [Sites](https://github.com/jekyll/jekyll/wiki/sites)
-* [Fork](https://github.com/jekyll/jekyll/fork) and [Contribute](https://jekyllrb.com/docs/contributing/) your own modifications
-* Have questions? Check out our official forum community [Jekyll Talk](https://talk.jekyllrb.com/) and [`#jekyll` Channel on Libera IRC](https://libera.chat)
+* [Cài đặt](https://jekyllrb.com/docs/installation/) gem
+* Đọc về [Cách sử dụng](https://jekyllrb.com/docs/usage/) và [Cấu hình](https://jekyllrb.com/docs/configuration/)
+* Xem qua một số [Trang web](https://github.com/jekyll/jekyll/wiki/sites) hiện có
+* [Fork](https://github.com/jekyll/jekyll/fork) và [Đóng góp](https://jekyllrb.com/docs/contributing/) các sửa đổi của riêng bạn
+* Có câu hỏi? Hãy xem diễn đàn cộng đồng chính thức của chúng tôi [Jekyll Talk](https://talk.jekyllrb.com/) và [Kênh `#jekyll` trên Libera IRC](https://libera.chat)
 
-## Diving In
+## Tìm hiểu sâu hơn
 
-* [Migrate](https://import.jekyllrb.com/docs/home/) from your previous system
-* Learn how [Front Matter](https://jekyllrb.com/docs/front-matter/) works
-* Put information on your site with [Variables](https://jekyllrb.com/docs/variables/)
-* Customize the [Permalinks](https://jekyllrb.com/docs/permalinks/) your posts are generated with
-* Use the built-in [Liquid Extensions](https://jekyllrb.com/docs/templates/) to make your life easier
-* Use custom [Plugins](https://jekyllrb.com/docs/plugins/) to generate content specific to your site
-* Watch [video tutorials from Giraffe Academy](https://jekyllrb.com/tutorials/video-walkthroughs/)
+* [Di chuyển](https://import.jekyllrb.com/docs/home/) từ hệ thống trước đó của bạn
+* Tìm hiểu cách [Front Matter](https://jekyllrb.com/docs/front-matter/) hoạt động
+* Đặt thông tin trên trang web của bạn với [Variables](https://jekyllrb.com/docs/variables/)
+* Tùy chỉnh [Permalinks](https://jekyllrb.com/docs/permalinks/) mà các bài viết của bạn được tạo ra
+* Sử dụng các [Liquid Extensions](https://jekyllrb.com/docs/templates/) tích hợp sẵn để làm cho cuộc sống của bạn dễ dàng hơn
+* Sử dụng [Plugins](https://jekyllrb.com/docs/plugins/) tùy chỉnh để tạo nội dung cụ thể cho trang web của bạn
+* Xem [video hướng dẫn từ Giraffe Academy](https://jekyllrb.com/tutorials/video-walkthroughs/)
 
-## Need help?
+## Cần trợ giúp?
 
-If you don't find the answer to your problem in our [docs](https://jekyllrb.com/docs/), or in the [troubleshooting section](https://jekyllrb.com/docs/troubleshooting/), ask the [community](https://jekyllrb.com/docs/community/) for help.
+Nếu bạn không tìm thấy câu trả lời cho vấn đề của mình trong [tài liệu](https://jekyllrb.com/docs/) của chúng tôi, hoặc trong [phần khắc phục sự cố](https://jekyllrb.com/docs/troubleshooting/), hãy hỏi [cộng đồng](https://jekyllrb.com/docs/community/) để được trợ giúp.
 
-## Code of Conduct
+## Quy tắc ứng xử
 
-In order to have a more open and welcoming community, Jekyll adheres to a
-[code of conduct](https://jekyllrb.com/docs/conduct/) adapted from the Ruby on Rails code of
-conduct.
+Để có một cộng đồng cởi mở và chào đón hơn, Jekyll tuân thủ một
+[quy tắc ứng xử](https://jekyllrb.com/docs/conduct/) được điều chỉnh từ quy tắc ứng xử của Ruby on Rails.
 
-Please adhere to this code of conduct in any interactions you have in the
-Jekyll community. It is strictly enforced on all official Jekyll
-repositories, websites, and resources. If you encounter someone violating
-these terms, please let one of our [core team members](https://jekyllrb.com/team/#core-team) know and we will address it as soon as possible.
+Vui lòng tuân thủ quy tắc ứng xử này trong bất kỳ tương tác nào bạn có trong
+cộng đồng Jekyll. Nó được thực thi nghiêm ngặt trên tất cả các repository Jekyll chính thức,
+trang web và tài nguyên. Nếu bạn gặp ai đó vi phạm
+các điều khoản này, vui lòng cho một trong các [thành viên nhóm cốt lõi](https://jekyllrb.com/team/#core-team) của chúng tôi biết và chúng tôi sẽ giải quyết nó càng sớm càng tốt.
 
-## Credits
+## Ghi công
 
-### Sponsors
+### Nhà tài trợ
 
-Support this project by becoming a sponsor. Your logo will show up in this README with a link to your website. [Become a sponsor!](https://opencollective.com/jekyll#sponsor)
+Hỗ trợ dự án này bằng cách trở thành nhà tài trợ. Logo của bạn sẽ hiển thị trong README này với liên kết đến trang web của bạn. [Trở thành nhà tài trợ!](https://opencollective.com/jekyll#sponsor)
 [![Jekyll Sponsor 0](https://opencollective.com/jekyll/sponsor/0/avatar.svg)](https://opencollective.com/jekyll/sponsor/0/website)
 [![Jekyll Sponsor 1](https://opencollective.com/jekyll/sponsor/1/avatar.svg)](https://opencollective.com/jekyll/sponsor/1/website)
 [![Jekyll Sponsor 2](https://opencollective.com/jekyll/sponsor/2/avatar.svg)](https://opencollective.com/jekyll/sponsor/2/website)
@@ -66,17 +64,17 @@ Support this project by becoming a sponsor. Your logo will show up in this READM
 [![Jekyll Sponsor 8](https://opencollective.com/jekyll/sponsor/8/avatar.svg)](https://opencollective.com/jekyll/sponsor/8/website)
 [![Jekyll Sponsor 9](https://opencollective.com/jekyll/sponsor/9/avatar.svg)](https://opencollective.com/jekyll/sponsor/9/website)
 
-### Contributors
+### Người đóng góp
 
-This project exists thanks to all the people who contribute.
+Dự án này tồn tại nhờ tất cả những người đóng góp.
 [![Jekyll Contributors](https://opencollective.com/jekyll/contributors.svg?width=890&button=false)](../../graphs/contributors)
 
-### Backers
+### Người ủng hộ
 
-Thank you to all our backers! 🙏 [Become a backer](https://opencollective.com/jekyll#backer)
+Cảm ơn tất cả những người ủng hộ của chúng tôi! 🙏 [Trở thành người ủng hộ](https://opencollective.com/jekyll#backer)
 
 [![Jekyll Backers](https://opencollective.com/jekyll/backers.svg?width=890)](https://opencollective.com/jekyll#backers)
 
-## License
+## Giấy phép
 
-See the [LICENSE](https://github.com/jekyll/jekyll/blob/master/LICENSE) file.
+Xem file [LICENSE](https://github.com/jekyll/jekyll/blob/master/LICENSE).
