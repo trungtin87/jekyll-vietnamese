@@ -25,7 +25,7 @@ Jekyll chuyển đổi trang web của bạn theo thứ tự sau:
 
 4. **Bố cục**. Jekyll đẩy nội dung vào các bố cục được chỉ định bởi front matter của trang (hoặc như được chỉ định trong tệp cấu hình). Nội dung từ mỗi trang được đẩy vào các thẻ {% raw %}`{{ content }}`{% endraw %} trong các bố cục.
 
-5. **Tệp**. Jekyll ghi nội dung đã tạo vào các tệp trong [cấu trúc thư mục]({% link _docs/structure.md %}) trong `_site`. Trang, bài đăng và bộ sưu tập được cấu trúc dựa trên cài đặt [permalink]({% link_docs/permalinks.md %}) của chúng. Các thư mục bắt đầu bằng `_` (chẳng hạn như `_includes` và `_data`) thường bị ẩn trong đầu ra.
+5. **Tệp**. Jekyll ghi nội dung đã tạo vào các tệp trong [cấu trúc thư mục]({% link _docs/structure.md %}) trong `_site`. Trang, bài đăng và bộ sưu tập được cấu trúc dựa trên cài đặt [permalink]({% link _docs/permalinks.md %}) của chúng. Các thư mục bắt đầu bằng `_` (chẳng hạn như `_includes` và `_data`) thường bị ẩn trong đầu ra.
 
 ## Các tình huống mà cấu hình không chính xác tạo ra vấn đề
 
@@ -173,3 +173,4 @@ Trên một trang, bạn cố gắng chèn giá trị:
 {% endraw %}
 
 Điều này sẽ chỉ hiển thị dưới dạng chuỗi thay vì một mẫu mã với làm nổi bật cú pháp. Để làm cho mã hiển thị, hãy xem xét sử dụng include thay thế.
+
