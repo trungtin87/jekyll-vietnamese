@@ -1,29 +1,29 @@
 ---
 layout: page
-title: The Jekyll Team
+title: Đội ngũ Jekyll
 permalink: /team/
 ---
 
-## Core Team
+## Đội ngũ Cốt lõi
 
-_The Jekyll Core Team's responsibility is to ensure the development and
-community around the Jekyll ecosystem thrive._
+_Trách nhiệm của Đội ngũ Cốt lõi Jekyll là đảm bảo sự phát triển và
+cộng đồng xung quanh hệ sinh thái Jekyll phát triển mạnh mẽ._
 
 * Ashwin (@ashmaroli)
 * Matt (@mattr-)
 
-## Security Team
+## Đội ngũ Bảo mật
 
-_The Jekyll Security Team's responsibility is to triage, validate, and 
-patch security vulnerabilities reported to them._
+_Trách nhiệm của Đội ngũ Bảo mật Jekyll là phân loại, xác thực, và
+vá các lỗ hổng bảo mật được báo cáo cho họ._
 
 * Parker (@parkr)
 * Ashwin (@ashmaroli)
 * Matt (@mattr-)
 
-## Emeritus Core Team Members
+## Thành viên Đội ngũ Cốt lõi Danh dự
 
-_Emeritus Core Team Members were once members of Jekyll's Core Team._
+_Thành viên Đội ngũ Cốt lõi Danh dự từng là thành viên của Đội ngũ Cốt lõi Jekyll._
 
 * Alfred (@alfredxing)
 * Ben (@benbalter)

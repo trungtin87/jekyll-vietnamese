@@ -1,14 +1,14 @@
 ---
 layout: news
-title: News
+title: Tin tức
 permalink: /news/
 author: all
 ---
 
 {% for post in site.posts -%}
-  {% if forloop.index == 1 -%}
-    {% include news_item.html -%}
-  {% else -%}
-    {% include news_item_archive.html -%}
-  {% endif -%}
+{% if forloop.index == 1 -%}
+{% include news_item.html -%}
+{% else -%}
+{% include news_item_archive.html -%}
+{% endif -%}
 {% endfor -%}

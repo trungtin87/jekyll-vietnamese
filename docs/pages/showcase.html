@@ -3,17 +3,18 @@ layout: page
 title: Showcase
 permalink: /showcase/
 redirect_from:
-  - /docs/sites/
+- /docs/sites/
 ---
 
-<p>Jekyll powers many company websites; here are a few nice ones:</p>
+<p>Jekyll hỗ trợ nhiều trang web công ty; dưới đây là một số trang đẹp:</p>
 
 <ul class="showcase" id="showcase">
   {% for entry in site.data.showcase reversed -%}
   <li>
     <a href="{{ entry.url }}" target="_blank">
       <figure>
-        <img loading="lazy" src="{{ site.cloudinary_url }}/showcase/{{ entry.image }}" alt="{{ entry.name }}" width="404" height="253">
+        <img loading="lazy" src="{{ site.cloudinary_url }}/showcase/{{ entry.image }}" alt="{{ entry.name }}"
+          width="404" height="253">
         <figcaption>{{ entry.name }}</figcaption>
       </figure>
     </a>
