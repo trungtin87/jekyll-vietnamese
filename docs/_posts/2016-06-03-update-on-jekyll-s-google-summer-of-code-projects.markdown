@@ -1,18 +1,18 @@
 ---
-title: "Jekyll's Google Summer of Code Project: The CMS You Always Wanted"
+title: "Dự án Google Summer of Code của Jekyll: CMS mà bạn luôn muốn"
 date: "2016-06-03 13:21:02 -0700"
 author: parkr
 categories: [community]
 ---
 
-This year, Jekyll applied to be a part of [Google Summer of Code](https://summerofcode.withgoogle.com/how-it-works/). Students were able to propose any project related to Jekyll. With a gracious sponsorship from GitHub and the participation of myself, @benbalter and @jldec, Jekyll was able to accept two students for the 2016 season, @mertkahyaoglu and @rush-skills.
+Năm nay, Jekyll đã đăng ký tham gia [Google Summer of Code](https://summerofcode.withgoogle.com/how-it-works/). Sinh viên có thể đề xuất bất kỳ dự án nào liên quan đến Jekyll. Với sự tài trợ hào phóng từ GitHub và sự tham gia của tôi, @benbalter và @jldec, Jekyll đã có thể chấp nhận hai sinh viên cho mùa 2016, @mertkahyaoglu và @rush-skills.
 
-These students are working on a project that fills a huge need for the community: _a graphical solution for managing your site's content._ Current plans include a fully-integrated admin which spins up when you run jekyll serve and provides a friendly web interface for creating and editing your content. The server and web interface will speak a common HTTP interface so either piece could be switched out for, e.g. a server which writes directly to a repository on GitHub.
+Những sinh viên này đang làm việc trên một dự án đáp ứng nhu cầu lớn của cộng đồng: _một giải pháp đồ họa để quản lý nội dung trang web của bạn._ Kế hoạch hiện tại bao gồm một admin được tích hợp hoàn toàn, khởi động khi bạn chạy jekyll serve và cung cấp giao diện web thân thiện để tạo và chỉnh sửa nội dung của bạn. Server và giao diện web sẽ giao tiếp qua một giao diện HTTP chung để có thể thay thế một trong hai phần, ví dụ: một server ghi trực tiếp vào repository trên GitHub.
 
-The strength of text files as the storage medium for content has been part of Jekyll's success. [Our homepage](/) lauds the absence of a traditional SQL database when using Jekyll – your content should be what demands your time, not pesky database downtime. Unfortunately, understanding of the structure of a Jekyll site takes some work, enough that for some users, it's prohibitive to using Jekyll to accomplish their publishing goals.
+Sức mạnh của các file văn bản làm phương tiện lưu trữ nội dung đã là một phần thành công của Jekyll. [Trang chủ của chúng tôi](/) ca ngợi sự vắng mặt của cơ sở dữ liệu SQL truyền thống khi sử dụng Jekyll – nội dung của bạn nên là thứ đòi hỏi thời gian của bạn, không phải thời gian ngừng hoạt động của cơ sở dữ liệu phiền phức. Thật không may, việc hiểu cấu trúc của một trang Jekyll mất một chút công sức, đủ để đối với một số người dùng, nó cản trở việc sử dụng Jekyll để đạt được mục tiêu xuất bản của họ.
 
-Mert and Ankur both applied to take on this challenge and agreed to split the project, one taking on the web interface and the other taking on the backend. We're very excited to see a fully-functional CMS for Jekyll at the end of the summer produced by these excellent community members, and we hope you'll join us in cheering them on and sharing our gratitude for all their hard work.
+Mert và Ankur đều đăng ký để đảm nhận thử thách này và đồng ý chia dự án, một người đảm nhận giao diện web và người kia đảm nhận backend. Chúng tôi rất vui mừng khi thấy một CMS hoạt động đầy đủ cho Jekyll vào cuối mùa hè được tạo ra bởi những thành viên cộng đồng xuất sắc này, và chúng tôi hy vọng bạn sẽ tham gia cùng chúng tôi để cổ vũ họ và chia sẻ lòng biết ơn của chúng tôi đối với tất cả công việc khó khăn của họ.
 
-Thanks, as always, for being part of such a wonderful community that made this all possible. I'm honored to work with each of you to create something folks all around the globe find a joy to use. I look forward to our continued work to move Jekyll forward.
+Cảm ơn, như mọi khi, vì đã là một phần của cộng đồng tuyệt vời như vậy đã làm cho tất cả điều này có thể. Tôi vinh dự được làm việc với mỗi người trong số các bạn để tạo ra thứ mà mọi người trên toàn cầu thấy vui vẻ khi sử dụng. Tôi mong chờ công việc tiếp tục của chúng ta để đưa Jekyll tiến lên.
 
-As always, Happy Jekylling!
+Như mọi khi, Chúc bạn Jekyll vui vẻ!

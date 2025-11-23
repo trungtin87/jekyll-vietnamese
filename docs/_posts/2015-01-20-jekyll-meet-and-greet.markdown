@@ -1,19 +1,19 @@
 ---
-title: "Jekyll Meet & Greet at GitHub HQ"
+title: "Gặp gỡ Jekyll tại Trụ sở GitHub"
 date: "2015-01-20 19:23:12 -0800"
 author: parkr
 categories: [meetup]
 ---
 
-Hey! Our friends at GitHub have agreed to host a Jekyll meet & greet on
-**February 5, 2015 at 7pm**. The event will be hosted at
-[GitHub's Headquarters](https://goo.gl/maps/Bmy7i)
-here in San Francisco, CA. Pizza & beer will be available for those interested,
-and there will be much time to sit and chat about all things Jekyll. This would
-be an especially good time to get help with bugs you've encountered or to talk
-over a potential feature with the core team in attendance.
+Chào! Các bạn của chúng tôi tại GitHub đã đồng ý tổ chức một buổi gặp gỡ Jekyll vào
+**ngày 5 tháng 2 năm 2015 lúc 7 giờ tối**. Sự kiện sẽ được tổ chức tại
+[Trụ sở GitHub](https://goo.gl/maps/Bmy7i)
+ở San Francisco, CA. Pizza & bia sẽ có sẵn cho những người quan tâm,
+và sẽ có nhiều thời gian để ngồi và trò chuyện về mọi thứ liên quan đến Jekyll. Đây sẽ
+là thời điểm đặc biệt tốt để nhận trợ giúp về các lỗi bạn gặp phải hoặc để thảo luận
+về một tính năng tiềm năng với đội ngũ cốt lõi tham dự.
 
-A special thanks to [@gjtorikian](https://github.com/gjtorikian) for making this
-all possible! You rock.
+Một lời cảm ơn đặc biệt đến [@gjtorikian](https://github.com/gjtorikian) đã làm cho tất cả
+điều này có thể! Bạn thật tuyệt vời.
 
-We look forward to meeting all you fine folks. Cheers!
+Chúng tôi mong được gặp tất cả các bạn. Chúc mừng!

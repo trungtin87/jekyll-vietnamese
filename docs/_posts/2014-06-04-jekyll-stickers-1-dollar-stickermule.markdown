@@ -1,5 +1,5 @@
 ---
-title: 'Pick Up your $1 Jekyll Sticker'
+title: 'Nhận Sticker Jekyll $1 của bạn'
 date: 2014-06-04 15:46:53 -0400
 author: parkr
 categories: [partners]
@@ -7,12 +7,12 @@ categories: [partners]
 
 ![Jekyll Sticker](/img/jekyll-sticker.png)
 
-You may have heard that [@cobyism](https://github.com/cobyism)'s excellent
-Jekyll logo has been made into a sticker. You may have sat idly by, wishing
-that you could have a sticker honoring your beloved Jekyll.
+Bạn có thể đã nghe nói rằng logo Jekyll tuyệt vời của [@cobyism](https://github.com/cobyism)
+đã được làm thành sticker. Bạn có thể đã ngồi đó, mong muốn
+rằng mình có thể có một sticker để tôn vinh Jekyll yêu quý của mình.
 
-The StickerMule team says, *"Pine no longer!"* StickerMule has **[discounted the
-price of Jekyll stickers down to $1 and are offering free (domestic)
-shipping](https://www.stickermule.com/marketplace/825-jekyll-stickers)!**
-Go grab one now on the StickerMule marketplace – they'll look
-swell on your favourite hardware.
+Đội ngũ StickerMule nói rằng, *"Đừng mong mỏi nữa!"* StickerMule đã **[giảm giá
+sticker Jekyll xuống còn $1 và đang cung cấp miễn phí vận chuyển (nội địa)
+](https://www.stickermule.com/marketplace/825-jekyll-stickers)!**
+Hãy lấy một cái ngay bây giờ trên thị trường StickerMule – chúng sẽ trông
+thật tuyệt trên phần cứng yêu thích của bạn.

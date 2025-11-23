@@ -1,26 +1,26 @@
 ---
-title: 'Alfred Xing has joined the Jekyll core team'
+title: 'Alfred Xing đã tham gia đội ngũ cốt lõi Jekyll'
 date: 2014-12-17 11:16:21 -0800
 author: parkr
 version: alfredxing
 categories: [team]
 ---
 
-We're excited to announce that [@alfredxing][] has joined the @jekyll/core
-team!
+Chúng tôi vui mừng thông báo rằng [@alfredxing][] đã tham gia đội ngũ
+@jekyll/core!
 
-He hails from Vancouver, BC, Canada, where he is studying Economics and
-Computer Science at the [University of British Columbia][]. Alfred popped up in
-the issues a few months ago with terrific insights, focus, and humility.
-Performance buffs may be pleased to hear incremental regeneration will be
-released in a future version of Jekyll -- a significant piece of the
-feature written by Alfred.
+Anh ấy đến từ Vancouver, BC, Canada, nơi anh ấy đang học Kinh tế và
+Khoa học Máy tính tại [Đại học British Columbia][University of British Columbia]. Alfred xuất hiện trong
+các issue vài tháng trước với những hiểu biết sâu sắc, sự tập trung và khiêm tốn tuyệt vời.
+Những người quan tâm đến hiệu suất có thể vui mừng khi biết rằng tính năng tạo lại tăng dần sẽ được
+phát hành trong phiên bản tương lai của Jekyll -- một phần quan trọng của
+tính năng được viết bởi Alfred.
 
-Please join me in welcoming Alfred to the Jekyll core team. We're excited
-he's agreed to lend his talents to this project. The future is an exciting
-place!
+Hãy cùng tôi chào đón Alfred vào đội ngũ cốt lõi Jekyll. Chúng tôi rất vui
+khi anh ấy đồng ý cống hiến tài năng của mình cho dự án này. Tương lai thật
+thú vị!
 
-Happy Jekylling!
+Chúc bạn Jekyll vui vẻ!
 
 [@alfredxing]: https://github.com/alfredxing
 [University of British Columbia]: http://www.ubc.ca

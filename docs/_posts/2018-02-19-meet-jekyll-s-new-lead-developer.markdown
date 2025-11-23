@@ -1,43 +1,43 @@
 ---
 layout: news_item
-title: "Meet Jekyll's New Lead Developer"
+title: "Gặp gỡ Trưởng nhóm Phát triển Mới của Jekyll"
 date: "2018-02-19 20:48:09 -0500"
 author: parkr
 categories: [team]
 ---
 
-Jekyll has a new Lead Developer: Olivia!
+Jekyll có Trưởng nhóm Phát triển mới: Olivia!
 
-After over 5 years of leading Jekyll, many releases from 0.12.1 to 3.6.0, and
-countless conversations in GitHub Issues, Pull Requests, Jekyll Talk, and
-more, I am passing on the torch as Lead Developer of Jekyll.
+Sau hơn 5 năm lãnh đạo Jekyll, nhiều bản phát hành từ 0.12.1 đến 3.6.0, và
+vô số cuộc trò chuyện trong GitHub Issues, Pull Requests, Jekyll Talk, và
+nhiều hơn nữa, tôi đang chuyển giao ngọn đuốc với tư cách Trưởng nhóm Phát triển của Jekyll.
 
-Olivia has been working with the Jekyll community for some time now. You
-may have seen her around in issues and pull requests on the various Jekyll
-repositories. She started as a contributor, then joined the Core team as our
-community lead. Olivia joined the Jekyll Core Team with experience in the
-Node.js community, both online and as a volunteer organizer with JSConf EU.
+Olivia đã làm việc với cộng đồng Jekyll trong một thời gian. Bạn
+có thể đã thấy cô ấy trong các issue và pull request trên các repository
+Jekyll khác nhau. Cô ấy bắt đầu với tư cách là một người đóng góp, sau đó tham gia đội ngũ Core với tư cách
+là người dẫn dắt cộng đồng của chúng tôi. Olivia tham gia Đội ngũ Cốt lõi Jekyll với kinh nghiệm trong
+cộng đồng Node.js, cả trực tuyến và với tư cách là người tổ chức tình nguyện với JSConf EU.
 
-In my conversations with Olivia, it is clear that Jekyll's vision of
-simplicity for the user ([no magic!](/philosophy/#1-no-magic)) and letting
-users' [content be king](/philosophy/#3-content-is-king) will remain a top
-priority. In just the last few weeks as the transition has been occurring,
-we have seen some incredible work on performance that will make future
-versions of Jekyll work better at scale. She will be prioritizing work on
-innovative improvements to make Jekyll that much better for all of us.
-Olivia balances an eye for quality with the need for shipping well.
+Trong các cuộc trò chuyện của tôi với Olivia, rõ ràng là tầm nhìn của Jekyll về
+sự đơn giản cho người dùng ([không có ma thuật!](/philosophy/#1-no-magic)) và để
+[nội dung là vua](/philosophy/#3-content-is-king) của người dùng sẽ vẫn là ưu tiên
+hàng đầu. Chỉ trong vài tuần qua khi quá trình chuyển giao đang diễn ra,
+chúng tôi đã thấy một số công việc đáng kinh ngạc về hiệu suất sẽ làm cho các phiên bản
+tương lai của Jekyll hoạt động tốt hơn ở quy mô lớn. Cô ấy sẽ ưu tiên công việc về
+các cải tiến sáng tạo để làm cho Jekyll tốt hơn nhiều cho tất cả chúng ta.
+Olivia cân bằng con mắt về chất lượng với nhu cầu vận chuyển tốt.
 
-When Tom Preston-Werner met me at GitHub HQ 2.0 in January 2013 to pass on
-the torch, I could never have dreamed of all the amazing experiences this
-community would share with me over the next 5 years. From visiting @qrush
-in Buffalo, NY for a hack night on Jekyll to attending a Jekyll planning
-session hosted by @benbalter at GitHub to Google Summer of Code which gave
-us jekyll-admin, I am eternally grateful to all of you for the opportunity
-to lead this excellent community. I'm confident Olivia will continue to
-lead Jekyll to even greater heights.
+Khi Tom Preston-Werner gặp tôi tại GitHub HQ 2.0 vào tháng 1 năm 2013 để chuyển giao
+ngọn đuốc, tôi không bao giờ có thể mơ ước về tất cả những trải nghiệm tuyệt vời mà
+cộng đồng này sẽ chia sẻ với tôi trong 5 năm tiếp theo. Từ việc thăm @qrush
+ở Buffalo, NY cho một đêm hack về Jekyll đến tham dự một buổi lập kế hoạch Jekyll
+được tổ chức bởi @benbalter tại GitHub đến Google Summer of Code đã cho
+chúng tôi jekyll-admin, tôi vô cùng biết ơn tất cả các bạn vì cơ hội
+để lãnh đạo cộng đồng xuất sắc này. Tôi tin tưởng Olivia sẽ tiếp tục
+dẫn dắt Jekyll đến những tầm cao cao hơn nữa.
 
-As always, Happy Jekylling!
+Như mọi khi, Chúc bạn Jekyll vui vẻ!
 
 Parker
 
-*Curious about who else runs this show? [Check out our excellent team.](/team/)*
+*Tò mò về ai khác điều hành chương trình này? [Xem đội ngũ xuất sắc của chúng tôi.](/team/)*

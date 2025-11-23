@@ -1,32 +1,32 @@
 ---
-title: 'Goodbye, Dear Frank.'
+title: 'Tạm biệt, Frank thân mến.'
 date: 2021-09-14 11:28:02 -0500
 author: ashmaroli
 categories: [team, community]
 ---
 
-Over the weekend, the Jekyll core team learned of the passing of one of our own: *Frank Taillandier*, popularly known
-by his GitHub username @DirtyF.
+Vào cuối tuần, đội ngũ cốt lõi Jekyll đã biết tin về sự ra đi của một trong những người của chúng tôi: *Frank Taillandier*, được biết đến rộng rãi
+với tên người dùng GitHub @DirtyF.
 
-Ruby not being his forte, he chose to avoid code-level changes and instead focus on what he did best &mdash; *engage with
-the community*.
+Ruby không phải là thế mạnh của anh ấy, anh ấy đã chọn tránh các thay đổi cấp code và thay vào đó tập trung vào những gì anh ấy làm tốt nhất &mdash; *tương tác với
+cộng đồng*.
 
-He helped resolve complaints reported on the GitHub issue tracker, ensured that Jekyll documentation remained simple for
-novice users yet detailed enough for advanced users seeking additional information.
+Anh ấy đã giúp giải quyết các khiếu nại được báo cáo trên trình theo dõi issue GitHub, đảm bảo rằng tài liệu Jekyll vẫn đơn giản cho
+người dùng mới nhưng đủ chi tiết cho người dùng nâng cao tìm kiếm thông tin bổ sung.
 
-He also served as the administrator for Jekyll's public [discourse forum](https://talk.jekyllrb.com/) where he not only
-addressed queries from users and provided tips to improve Jekyll workflow, he also shared feedback on Jekyll sites
-created by the community, and used the forum as a platform to gather feedback on unreleased iterations of Jekyll and
-in-house plugins.
+Anh ấy cũng phục vụ với tư cách là quản trị viên cho [diễn đàn discourse](https://talk.jekyllrb.com/) công khai của Jekyll, nơi anh ấy không chỉ
+giải quyết các câu hỏi từ người dùng và cung cấp mẹo để cải thiện quy trình làm việc Jekyll, anh ấy còn chia sẻ phản hồi về các trang Jekyll
+được tạo bởi cộng đồng, và sử dụng diễn đàn như một nền tảng để thu thập phản hồi về các phiên bản chưa phát hành của Jekyll và
+các plugin nội bộ.
 
-Abreast with latest developments in the Web-verse, Frank was always quick to introduce technologies that vastly improved
-maintenance in the Jekyll organization. He was instrumental in setting up deploy previews for patches to Jekyll's
-documentation site and later wiring GitHub Actions to handle continuous integrations for Jekyll and in-house projects.
+Bắt kịp với những phát triển mới nhất trong Web-verse, Frank luôn nhanh chóng giới thiệu các công nghệ cải thiện đáng kể
+việc bảo trì trong tổ chức Jekyll. Anh ấy đóng vai trò quan trọng trong việc thiết lập bản xem trước triển khai cho các bản vá cho
+trang web tài liệu của Jekyll và sau đó kết nối GitHub Actions để xử lý tích hợp liên tục cho Jekyll và các dự án nội bộ.
 
-In spite of spiritually moving away from Jekyll during the later part of his career, choosing to concentrate efforts on
-furthering JAMstack projects, he greatly remained active on Jekyll's development channel on Slack relaying key feedback
-from the community or discuss concerns regarding the future of Jekyll at length.
+Mặc dù về mặt tinh thần đã rời xa Jekyll trong phần sau của sự nghiệp, chọn tập trung nỗ lực vào
+việc thúc đẩy các dự án JAMstack, anh ấy vẫn rất tích cực trên kênh phát triển của Jekyll trên Slack chuyển tiếp phản hồi quan trọng
+từ cộng đồng hoặc thảo luận các mối quan tâm về tương lai của Jekyll một cách chi tiết.
 
-Having untimely left Jekyll and our community with an unfillable void, he will be missed immensely. :broken_heart:
+Đã rời bỏ Jekyll và cộng đồng của chúng ta một cách không kịp thời với một khoảng trống không thể lấp đầy, anh ấy sẽ được nhớ đến vô cùng. :broken_heart:
 
-Rest in Peace, friend and colleague. :bouquet:
+Yên nghỉ, bạn và đồng nghiệp. :bouquet:

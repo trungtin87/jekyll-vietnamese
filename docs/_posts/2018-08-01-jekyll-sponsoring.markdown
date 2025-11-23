@@ -1,78 +1,78 @@
 ---
-title: "Sponsoring Jekyll's development"
+title: "Tài trợ cho sự phát triển của Jekyll"
 date: 2018-08-01 15:00:00 +0200
 author: oe
 categories: [community]
 ---
 
-_(TL;DR: We're open for sponsorships on our [OpenCollective page](https://opencollective.com/jekyll))_
+_(TL;DR: Chúng tôi mở cho các khoản tài trợ trên [trang OpenCollective](https://opencollective.com/jekyll) của chúng tôi)_
 
-Hi Jekyllers,
+Chào các Jekyllers,
 
-As you may know, Jekyll is a completely free and open source project. We offer
-our software and its related plugins and documentation at no cost because we
-believe that good software should not cost anything. We're not planning on
-changing that, but today I want to talk about a different monetary aspect of
-open source.
+Như bạn có thể biết, Jekyll là một dự án hoàn toàn miễn phí và mã nguồn mở. Chúng tôi cung cấp
+phần mềm của chúng tôi và các plugin cũng như tài liệu liên quan miễn phí vì chúng tôi
+tin rằng phần mềm tốt không nên tốn bất kỳ chi phí nào. Chúng tôi không có kế hoạch
+thay đổi điều đó, nhưng hôm nay tôi muốn nói về một khía cạnh tiền tệ khác của
+mã nguồn mở.
 
-Open source developers being paid for the work they do is a rare sight. Most
-open source software is effectively the result of hundreds and thousands of
-hours of free labor provided by individuals who are passionate enough to work
-outside of their day job to create software that, ironically, is being used by
-almost every company that offers digital services. It's a problem that has
-gotten more attention in recent years, with the open source community becoming
-more diverse and more and more companies actively investing in providing
-monetary support for open source developers.
+Các nhà phát triển mã nguồn mở được trả tiền cho công việc họ làm là một cảnh tượng hiếm. Hầu hết
+phần mềm mã nguồn mở thực sự là kết quả của hàng trăm và hàng nghìn
+giờ lao động miễn phí được cung cấp bởi các cá nhân đủ đam mê để làm việc
+ngoài công việc hàng ngày của họ để tạo ra phần mềm mà, trớ trêu thay, đang được sử dụng bởi
+hầu hết mọi công ty cung cấp dịch vụ kỹ thuật số. Đó là một vấn đề đã
+nhận được nhiều sự chú ý hơn trong những năm gần đây, với cộng đồng mã nguồn mở trở nên
+đa dạng hơn và ngày càng nhiều công ty tích cực đầu tư vào việc cung cấp
+hỗ trợ tiền tệ cho các nhà phát triển mã nguồn mở.
 
-Jekyll has always been a product of volunteers. Rarely has someone been paid to
-implement a certain plugin or feature. Today, we're excited to announce that we
-will finally be able to fund our contributors! __We are opening an
-OpenCollective to receive individual and corporate sponsorships__.
-This is not unheard of, [Hugo](http://gohugo.io) is also funded by sponsorships,
-as are many other similar projects, such as
+Jekyll luôn là sản phẩm của các tình nguyện viên. Hiếm khi có ai được trả tiền để
+triển khai một plugin hoặc tính năng nhất định. Hôm nay, chúng tôi vui mừng thông báo rằng chúng tôi
+cuối cùng sẽ có thể tài trợ cho các cộng tác viên của chúng tôi! __Chúng tôi đang mở một
+OpenCollective để nhận các khoản tài trợ cá nhân và doanh nghiệp__.
+Điều này không phải là chưa từng nghe, [Hugo](http://gohugo.io) cũng được tài trợ bởi các khoản tài trợ,
+cũng như nhiều dự án tương tự khác, chẳng hạn như
 [webpack](https://opencollective.com/webpack),
-[Babel](https://opencollective.com/babel) or
+[Babel](https://opencollective.com/babel) hoặc
 [RuboCop](https://opencollective.com/rubocop).
 
-OpenCollective is a service that makes it easy for open source projects to
-receive funding from individuals and companies alike. It's specifically designed
-for open source and many other projects already use it for funding.
+OpenCollective là một dịch vụ giúp các dự án mã nguồn mở dễ dàng
+nhận tài trợ từ cả cá nhân và công ty. Nó được thiết kế đặc biệt
+cho mã nguồn mở và nhiều dự án khác đã sử dụng nó để tài trợ.
 
-Sponsoring is, for us, a method to finally realize some of the more ambitious
-goals we've had with the project for years. The closest thing we want to realize
-is to __release Jekyll 4.0, and to make it as polished as we can__. In the
-future, we would also like to work on other things that will improve the Jekyll
-ecosystem. Here's a couple of ideas:
+Tài trợ, đối với chúng tôi, là một phương pháp để cuối cùng thực hiện một số mục tiêu đầy tham vọng hơn
+mà chúng tôi đã có với dự án trong nhiều năm. Điều gần nhất chúng tôi muốn thực hiện
+là __phát hành Jekyll 4.0, và làm cho nó được đánh bóng nhất có thể__. Trong
+tương lai, chúng tôi cũng muốn làm việc trên những thứ khác sẽ cải thiện
+hệ sinh thái Jekyll. Đây là một số ý tưởng:
 
-- Create a comprehensive official plugin and theme directory site
-- Improve tooling built around measuring and improving Jekyll's performance
-- Improve maintenance for official plugins
-- Including the community into official decisions; making Jekyll more friendly to folks in the community
+- Tạo một trang web thư mục plugin và theme chính thức toàn diện
+- Cải thiện công cụ được xây dựng xung quanh việc đo lường và cải thiện hiệu suất của Jekyll
+- Cải thiện bảo trì cho các plugin chính thức
+- Bao gồm cộng đồng vào các quyết định chính thức; làm cho Jekyll thân thiện hơn với mọi người trong cộng đồng
 
-Again, these are just some ideas, but with the help of sponsoring, they are now
-one step closer to being realized :heart:
+Một lần nữa, đây chỉ là một số ý tưởng, nhưng với sự giúp đỡ của tài trợ, chúng hiện
+gần hơn một bước để được thực hiện :heart:
 
 <div align="center" style="background-color: white;padding: 1em;">
   <a href="https://forestry/io"><img src="/img/forestry-logo.svg" alt="Forestry" /></a>
 </div>
 
-With that, we would like to announce our very first sponsor:
+Với điều đó, chúng tôi muốn thông báo nhà tài trợ đầu tiên của chúng tôi:
 [__Forestry.io__](https://forestry.io)!
-Forestry is a CMS that integrates with your Jekyll sites and lets you update
-content using a beautiful interface, and then automatically commits it back to
-your GitHub repository. We're excited to have them on board on a new, exciting
-step of our journey.
+Forestry là một CMS tích hợp với các trang Jekyll của bạn và cho phép bạn cập nhật
+nội dung bằng một giao diện đẹp, và sau đó tự động commit nó trở lại
+repository GitHub của bạn. Chúng tôi vui mừng có họ trên tàu trong một bước mới, thú vị
+của hành trình của chúng tôi.
 
-Will anything change for Jekyll users? The answer is no - this step does not
-impact the Jekyll software in any aspect. In fact, you might see positive
-changes, such as more features and better performance. Surprisingly, that's what
-happens when you properly fund people for their work!
+Có điều gì thay đổi cho người dùng Jekyll không? Câu trả lời là không - bước này không
+ảnh hưởng đến phần mềm Jekyll ở bất kỳ khía cạnh nào. Trên thực tế, bạn có thể thấy những thay đổi tích cực,
+chẳng hạn như nhiều tính năng hơn và hiệu suất tốt hơn. Đáng ngạc nhiên, đó là những gì
+xảy ra khi bạn tài trợ đúng cách cho mọi người cho công việc của họ!
 
-If you have been a long time user for Jekyll and would like to give something
-back to the project, you can consider a small monthly donation to our
-[OpenCollective page](http://opencollective.com/jekyll). If your company heavily
-relies on Jekyll, do consider sponsoring us!
+Nếu bạn là người dùng lâu năm của Jekyll và muốn đóng góp lại
+cho dự án, bạn có thể xem xét một khoản đóng góp hàng tháng nhỏ cho
+[trang OpenCollective](http://opencollective.com/jekyll) của chúng tôi. Nếu công ty của bạn phụ thuộc nhiều
+vào Jekyll, hãy xem xét tài trợ cho chúng tôi!
 
-Contact [matt@jekyllrb.com](mailto:matt@jekyllrb.com) and we'll figure something out together.
+Liên hệ [matt@jekyllrb.com](mailto:matt@jekyllrb.com) và chúng tôi sẽ tìm ra điều gì đó cùng nhau.
 
-Thanks for sticking with us, and happy Jekylling! :tada:
+Cảm ơn vì đã ở lại với chúng tôi, và chúc bạn Jekyll vui vẻ! :tada:

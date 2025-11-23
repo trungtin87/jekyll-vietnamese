@@ -1,28 +1,28 @@
 ---
-title: "Jekyll 4.0 is on the Horizon!"
+title: "Jekyll 4.0 đang ở phía chân trời!"
 date: "2018-04-19 16:07:00 +0100"
 author: oe
 categories: [community]
 ---
 
-With the release of Jekyll 3.8.0, it's been 2 and a half years since the last major release. Jekyll 3.0.0 was released in late October of 2015! That's a long time ago, and we've been working towards the next major release of Jekyll for a couple of months now. Here's a small preview of what's to come:
+Với việc phát hành Jekyll 3.8.0, đã 2 năm rưỡi kể từ bản phát hành chính cuối cùng. Jekyll 3.0.0 được phát hành vào cuối tháng 10 năm 2015! Đó là một thời gian dài trước đây, và chúng tôi đã làm việc hướng tới bản phát hành chính tiếp theo của Jekyll trong vài tháng nay. Đây là một bản xem trước nhỏ về những gì sắp tới:
 
-- Dropping support for Ruby 2.1 and 2.2. Both versions have reached their EOL period.
-- Dropping Pygments as a dependency. We're already defaulting to Rouge, and this removes the implicit Python dependency. (finally!)
-- Making the `link` tag use relative URLs. This is a big breaking change, but it's the cleaner solution.
+- Ngừng hỗ trợ Ruby 2.1 và 2.2. Cả hai phiên bản đã đạt đến giai đoạn EOL của chúng.
+- Ngừng Pygments như một phụ thuộc. Chúng tôi đã mặc định sử dụng Rouge, và điều này loại bỏ phụ thuộc Python ngầm định. (cuối cùng!)
+- Làm cho thẻ `link` sử dụng URL tương đối. Đây là một thay đổi phá vỡ lớn, nhưng đó là giải pháp sạch hơn.
 
-We're open to more ideas, though. If the development cost isn't too high, or if someone volunteers to take care of the implementation, it's likely that your suggestion might make it into Jekyll 4.0. Head over to this [issue] for more details. Some interesting topics might be improving Internationalization support in Jekyll, creating convenience Liquid tags, et cetera.
+Tuy nhiên, chúng tôi cởi mở với nhiều ý tưởng hơn. Nếu chi phí phát triển không quá cao, hoặc nếu ai đó tình nguyện đảm nhận việc triển khai, có khả năng đề xuất của bạn có thể được đưa vào Jekyll 4.0. Hãy truy cập [issue] này để biết thêm chi tiết. Một số chủ đề thú vị có thể là cải thiện hỗ trợ Quốc tế hóa trong Jekyll, tạo các thẻ Liquid tiện lợi, v.v.
 
-That being said, the development period of version 4.0 begins _now_. This means a couple of things:
+Điều đó nói rằng, giai đoạn phát triển của phiên bản 4.0 bắt đầu _ngay bây giờ_. Điều này có nghĩa là một số điều:
 
-- New features will only be implemented in Jekyll 4.0. There will be no 3.9.0 or the like.
-- Same with bug fixes, unless they concern something introduced in Jekyll 3.7 or 3.8, in which case we will backport the fixes and release a patch version.
-- Now is a great time to finally take on the feature you've wanted to see in Jekyll for ages! Just open an issue or experiment with the code to get going!
+- Các tính năng mới sẽ chỉ được triển khai trong Jekyll 4.0. Sẽ không có 3.9.0 hoặc tương tự.
+- Tương tự với các bản sửa lỗi, trừ khi chúng liên quan đến thứ gì đó được giới thiệu trong Jekyll 3.7 hoặc 3.8, trong trường hợp đó chúng tôi sẽ backport các bản sửa lỗi và phát hành phiên bản patch.
+- Bây giờ là thời điểm tuyệt vời để cuối cùng đảm nhận tính năng bạn đã muốn thấy trong Jekyll từ lâu! Chỉ cần mở một issue hoặc thử nghiệm với code để bắt đầu!
 
-As for a release date, we're currently aiming for late summer, around September or so. However, keep in mind that this project is purely volunteer-run, and as such, delays might occur and we might not hit that release date.
+Về ngày phát hành, chúng tôi hiện đang nhắm đến cuối mùa hè, khoảng tháng 9 hoặc lâu hơn. Tuy nhiên, hãy nhớ rằng dự án này hoàn toàn do tình nguyện viên điều hành, và do đó, sự chậm trễ có thể xảy ra và chúng tôi có thể không đạt được ngày phát hành đó.
 
-Finally, this is a great time for newcomers to open-source to make their first contribution. We'll be doing our best to mark recommended contributions and create newcomer-friendly issues, as well as to provide mentoring throughout the contribution process (although we'd like to think that we're already pretty proficient at that). So if you've always been hesitant about contributing to a large open-source project, Jekyll is a good place to start!
+Cuối cùng, đây là thời điểm tuyệt vời cho người mới đến mã nguồn mở để thực hiện đóng góp đầu tiên của họ. Chúng tôi sẽ cố gắng hết sức để đánh dấu các đóng góp được đề xuất và tạo các issue thân thiện với người mới, cũng như cung cấp hướng dẫn trong suốt quá trình đóng góp (mặc dù chúng tôi muốn nghĩ rằng chúng tôi đã khá thành thạo trong việc đó). Vì vậy, nếu bạn luôn do dự về việc đóng góp vào một dự án mã nguồn mở lớn, Jekyll là một nơi tốt để bắt đầu!
 
-Happy Jekylling! :wave:
+Chúc bạn Jekyll vui vẻ! :wave:
 
 [issue]: https://github.com/jekyll/jekyll/issues/6948

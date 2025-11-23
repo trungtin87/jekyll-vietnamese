@@ -1,44 +1,44 @@
 ---
-title: "Diversity in Open Source, and Jekyll's role in it"
+title: "Đa dạng trong Mã nguồn Mở, và vai trò của Jekyll trong đó"
 date: 2017-10-19 21:33:00 +0200
 author: oe
 categories: [community]
 ---
 
-Open Source has a problem with diversity. GitHub recently conducted a [survey](http://opensourcesurvey.org/2017) which revealed that 95% of the respondents were identifying as male. This is even worse than in the tech industry overall, where the percentage is only about 76%. Every other week, there seems to be another case of a maintainer engaging in targeted harassment against minorities. People somehow deem it completely okay to let these things slide, though.
+Mã nguồn Mở có vấn đề về đa dạng. GitHub gần đây đã thực hiện một [khảo sát](http://opensourcesurvey.org/2017) cho thấy 95% người trả lời tự nhận là nam giới. Điều này thậm chí còn tệ hơn trong ngành công nghệ nói chung, nơi tỷ lệ này chỉ khoảng 76%. Cứ mỗi tuần khác, dường như lại có một trường hợp người duy trì tham gia vào việc quấy rối có chủ đích đối với các nhóm thiểu số. Tuy nhiên, mọi người bằng cách nào đó lại cho rằng hoàn toàn ổn khi để những điều này trôi qua.
 
-Fortunately, there's a couple of things we can do to make it easier and more comfortable for people that have never contributed to any open source project before, to contribute to our projects.
+May mắn thay, có một số điều chúng ta có thể làm để làm cho việc đóng góp vào các dự án của chúng ta dễ dàng và thoải mái hơn cho những người chưa bao giờ đóng góp vào bất kỳ dự án mã nguồn mở nào trước đây.
 
-## Add a Code of Conduct, and enforce it
+## Thêm Quy tắc Ứng xử và thực thi nó
 
-This might seem like one of the easiest steps to do, but it actually requires a lot of dedication to pull through with. Basically, a Code of Conduct is a document detailing what is and what isn't acceptable behavior in your project. A good Code of Conduct also details enforcement procedures, that means how the person violating the Code of Conduct gets dealt with. This is the point at which I've seen a looooot of projects fail. It's easy enough to copy-paste a Code of Conduct into your project, but it's more important to be clear on how to enforce it. Inconsistent —or worse, nonexistent— enforcement is just going to scare off newcomers even more!
+Đây có vẻ như là một trong những bước dễ nhất để thực hiện, nhưng nó thực sự đòi hỏi rất nhiều sự cống hiến để thực hiện. Về cơ bản, Quy tắc Ứng xử là một tài liệu chi tiết những gì được và không được chấp nhận trong dự án của bạn. Một Quy tắc Ứng xử tốt cũng chi tiết các thủ tục thực thi, có nghĩa là cách xử lý người vi phạm Quy tắc Ứng xử. Đây là điểm mà tôi đã thấy rấttttt nhiều dự án thất bại. Sao chép-dán Quy tắc Ứng xử vào dự án của bạn là đủ dễ, nhưng quan trọng hơn là phải rõ ràng về cách thực thi nó. Việc thực thi không nhất quán —hoặc tệ hơn, không tồn tại— chỉ sẽ làm cho người mới đến sợ hãi hơn nữa!
 
-The most widely adopted Code of Conduct is the [Contributor Covenant](https://www.contributor-covenant.org/). It's a very good catch-all document, but it is a bit light in the enforcement section, so I'd recommend to flesh it out by yourself, be it by means of adding contact information or expanding the enforcement rules.
+Quy tắc Ứng xử được áp dụng rộng rãi nhất là [Contributor Covenant](https://www.contributor-covenant.org/). Đây là một tài liệu bao quát rất tốt, nhưng nó hơi nhẹ trong phần thực thi, vì vậy tôi khuyên bạn nên mở rộng nó bằng cách tự mình, bằng cách thêm thông tin liên hệ hoặc mở rộng các quy tắc thực thi.
 
-No matter which Code of Conduct you pick, the most important thing is to actually _read it for yourself_. The worst thing in open source is a maintainer that doesn't know when they've violated their own Code of Conduct.
+Bất kể bạn chọn Quy tắc Ứng xử nào, điều quan trọng nhất là thực sự _tự đọc nó_. Điều tồi tệ nhất trong mã nguồn mở là một người duy trì không biết khi nào họ đã vi phạm Quy tắc Ứng xử của chính mình.
 
-## Document your contributing workflow
+## Ghi lại quy trình đóng góp của bạn
 
-The problem that puts people off the most is incomplete or missing documentation, as revealed through GitHub's [open source survey](http://opensourcesurvey.org/2017). A very popular myth in programming is that good code explains itself, which might be true, but only for the person writing it. It's important, especially once you put your project out there for the world to see, to document not only your code, but also the process by which you maintain it. Otherwise, it's going to be extremely hard for newcomers to even figure out where to begin contributing to your project.
+Vấn đề khiến mọi người nản lòng nhất là tài liệu không đầy đủ hoặc thiếu, như được tiết lộ qua [khảo sát mã nguồn mở](http://opensourcesurvey.org/2017) của GitHub. Một huyền thoại rất phổ biến trong lập trình là code tốt tự giải thích chính nó, điều này có thể đúng, nhưng chỉ đối với người viết nó. Điều quan trọng, đặc biệt là khi bạn đưa dự án của mình ra cho thế giới xem, là ghi lại không chỉ code của bạn, mà còn cả quy trình mà bạn duy trì nó. Nếu không, sẽ cực kỳ khó khăn cho người mới đến để thậm chí tìm ra nơi bắt đầu đóng góp vào dự án của bạn.
 
-Jekyll has [an entire section of its docs](/docs/contributing/) dedicated to information on how to contribute for this very reason. Every documentation page has a link to directly edit and improve it on GitHub. It's also important to realize that not all contributions are code. It can be documentation, it can be reviewing pull requests, but it can also just be weighing into issues, and all of this should be recognized in the same way. At Jekyll, out of 397 total merged pull requests in the last year, __204__ were documentation pull requests!
+Jekyll có [toàn bộ một phần trong tài liệu](/docs/contributing/) dành riêng cho thông tin về cách đóng góp vì lý do này. Mỗi trang tài liệu đều có liên kết để chỉnh sửa và cải thiện trực tiếp trên GitHub. Cũng quan trọng là nhận ra rằng không phải tất cả các đóng góp đều là code. Nó có thể là tài liệu, nó có thể là xem xét pull request, nhưng nó cũng có thể chỉ là cân nhắc vào các issue, và tất cả điều này nên được công nhận theo cùng một cách. Tại Jekyll, trong số 397 pull request được merge tổng cộng trong năm qua, __204__ là pull request tài liệu!
 
-## Create newcomer-friendly issues
+## Tạo các issue thân thiện với người mới
 
-For most people new to open source, the biggest hurdle is creating their first pull request. That's why initiatives such as [YourFirstPR](https://twitter.com/yourfirstpr) and [First Timers Only](http://www.firsttimersonly.com/) were started. Recently, [a GitHub bot that automatically creates first-timer friendly issues](https://github.com/hoodiehq/first-timers-bot) was launched, which makes it very easy for maintainers to convert otherwise small or trivial changes into viable pull requests that can be taken on by newcomers! So we decided to give it a shot, and we've created a couple of very easy `first timers only` issues:
+Đối với hầu hết những người mới với mã nguồn mở, rào cản lớn nhất là tạo pull request đầu tiên của họ. Đó là lý do tại sao các sáng kiến như [YourFirstPR](https://twitter.com/yourfirstpr) và [First Timers Only](http://www.firsttimersonly.com/) được bắt đầu. Gần đây, [một bot GitHub tự động tạo các issue thân thiện với người mới lần đầu](https://github.com/hoodiehq/first-timers-bot) đã được ra mắt, giúp người duy trì dễ dàng chuyển đổi các thay đổi nhỏ hoặc tầm thường thành các pull request khả thi có thể được người mới đảm nhận! Vì vậy, chúng tôi quyết định thử nó, và chúng tôi đã tạo một số issue `first timers only` rất dễ:
 
 - [Issue #6437](https://github.com/jekyll/jekyll/issues/6437)
 - [Issue #6438](https://github.com/jekyll/jekyll/issues/6438)
 - [Issue #6439](https://github.com/jekyll/jekyll/issues/6439)
 
-(There's also an up-to-date listing of all of our `first timers only` issues [here](https://github.com/jekyll/jekyll/issues?q=is%3Aissue+is%3Aopen+label%3Afirst-time-only))
+(Cũng có danh sách cập nhật của tất cả các issue `first timers only` của chúng tôi [tại đây](https://github.com/jekyll/jekyll/issues?q=is%3Aissue+is%3Aopen+label%3Afirst-time-only))
 
-These issues are designed to be taken on only by someone who has had little to no exposure to contributing to open source before, and additionally, project maintainers offer support in case a question arises.
+Những issue này được thiết kế để chỉ được đảm nhận bởi người có ít hoặc không có kinh nghiệm đóng góp vào mã nguồn mở trước đây, và ngoài ra, người duy trì dự án cung cấp hỗ trợ trong trường hợp có câu hỏi phát sinh.
 
-Jekyll is a very big and popular open source project, and we hope that with these special issues, we can help people who haven't contributed to open source before to catch a footing in these unsteady waters.
+Jekyll là một dự án mã nguồn mở rất lớn và phổ biến, và chúng tôi hy vọng rằng với những issue đặc biệt này, chúng tôi có thể giúp những người chưa đóng góp vào mã nguồn mở trước đây có chỗ đứng trong những vùng nước không ổn định này.
 
-## Be nice
+## Hãy tử tế
 
-I know this is a cliche and a overused phrase, but really, it works if you pull through with it. Come to terms with the fact that some people aren't as fast or reliable as you might want to think. Don't get angry when a contributor takes a day longer than you might like them to. Treat new contributors to your project with respect, but also with hospitality. Think twice before you send that comment with slurs in it.
+Tôi biết đây là một cliché và một cụm từ được sử dụng quá mức, nhưng thực sự, nó hoạt động nếu bạn thực hiện nó. Chấp nhận thực tế rằng một số người không nhanh hoặc đáng tin cậy như bạn có thể nghĩ. Đừng tức giận khi một người đóng góp mất nhiều thời gian hơn một ngày so với bạn muốn. Đối xử với những người đóng góp mới vào dự án của bạn với sự tôn trọng, nhưng cũng với lòng hiếu khách. Suy nghĩ hai lần trước khi bạn gửi bình luận đó với những lời lăng mạ trong đó.
 
-I've been contributing to open source for about 4 years now, and I've had my fair share of horrible, horrible experiences. But Jekyll has historically been a project that has always valued the people contributing to it over the code itself, and I hope we can keep it that way. I also hope that other project maintainers read this and take inspiration from this post. Every project should be more diverse.
+Tôi đã đóng góp vào mã nguồn mở khoảng 4 năm nay, và tôi đã có phần trải nghiệm khủng khiếp, khủng khiếp của mình. Nhưng Jekyll trong lịch sử luôn là một dự án luôn đánh giá cao những người đóng góp cho nó hơn chính code, và tôi hy vọng chúng ta có thể giữ nó như vậy. Tôi cũng hy vọng rằng các người duy trì dự án khác đọc điều này và lấy cảm hứng từ bài viết này. Mọi dự án nên đa dạng hơn.
