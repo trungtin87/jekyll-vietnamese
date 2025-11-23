@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
   font-size: 21px;
   font-weight: 300;
   color: #ddd;
@@ -370,7 +370,7 @@ footer {
       padding: 5px 0;
       @include border-radius(5px 5px 0 0);
       @include box-shadow(0 3px 10px rgba(0, 0, 0, .5));
-      font: 400 16px/24px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font: 400 16px/24px 'Open Sans', Arial, sans-serif;
       color: #444;
       text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
       background-color: #f7f7f7;
@@ -1428,7 +1428,7 @@ p.note {
     padding: 8px;
     width: 100%;
     padding: 5px 0;
-    font: 400 16px/24px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font: 400 16px/24px 'Open Sans', Arial, sans-serif;
     color: #444;
     text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
     background-color: #f7f7f7;
