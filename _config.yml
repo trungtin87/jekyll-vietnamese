@@ -1,7 +1,5 @@
 # Exclude lib directory from Jekyll build
 
-baseurl: /jekyll-vietnamese
-
 exclude:
   - lib/
   - features/
