@@ -2,6 +2,7 @@ version: 4.4.1
 name: Jekyll • Simple, blog-aware, static sites
 description: Transform your plain text into static websites and blogs
 url: https://jekyllrb.com
+base_url: "/jekyll-vietnamese"
 repository: https://github.com/jekyll/jekyll
 site_branch: master
 timezone: America/Los_Angeles
