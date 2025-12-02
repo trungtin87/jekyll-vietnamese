@@ -8,7 +8,7 @@
           <span class="prev disabled">Back</span>
         {% else -%}
           {% assign previous = forloop.index0 | minus: 1 -%}
-          <a href="{{ docs[previous].url }}" class="prev">Back</a>
+          <a href="{{ site.baseurl }}{{ docs[previous].url }}" class="prev">Back</a>
         {% endif -%}
       </div>
       <div class="right align-left">
@@ -16,7 +16,7 @@
         <span class="next disabled">Next</span>
       {% else -%}
         {% assign next = forloop.index0 | plus: 1 -%}
-        <a href="{{ docs[next].url }}" class="next">Next</a>
+        <a href="{{ site.baseurl }}{{ docs[next].url }}" class="next">Next</a>
       {% endif -%}
       </div>
     </div>
@@ -27,7 +27,7 @@
 
 <ol class="step-nav">
   {% for step in docs -%}
-  <li {%- if step.url == page.url %} class="current"{% endif %}><a href="{{ step.url }}">
+  <li {%- if step.url == page.url %} class="current"{% endif %}><a href="{{ site.baseurl }}{{ step.url }}">
     {{- step.title -}}
   </a></li>
   {% endfor -%}
