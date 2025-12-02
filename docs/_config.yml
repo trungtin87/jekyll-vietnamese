@@ -8,7 +8,7 @@ site_branch: master
 timezone: America/Los_Angeles
 twitter:
   username: jekyllrb
-logo: "/img/logo-2x.png"
+logo: "/img/logo-2x.jpeg"
 google_analytics_id: UA-50755011-1
 google_site_verification: onQcXpAvtHBrUI5LlroHNE_FP0b2qvFyPq7VZw36iEY
 cloudinary_url: https://res.cloudinary.com/jekyll/image/upload/f_auto,q_auto,w_404
