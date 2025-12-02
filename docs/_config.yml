@@ -1,8 +1,8 @@
 version: 4.4.1
 name: Jekyll • Simple, blog-aware, static sites
 description: Transform your plain text into static websites and blogs
-url: https://trungtin87.github.io
-root: ''
+url: https://trungtin87.github.io/jekyll-vietnamese
+#root: ''
 # Đường dẫn gốc (Base path) cho trang web
 baseurl: /jekyll-vietnamese
 
