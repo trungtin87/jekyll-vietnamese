@@ -1,16 +1,19 @@
 name: Micro Benchmark Runs
 
-on:
+on: 
   workflow_dispatch:
-    inputs:
-      path:
-        description: "Path to benchmark script relative to 'benchmark' directory."
-        required: true
-        default: "capture-assign.rb"
-      ruby_version:
-        description: "Ruby version to use (via `ruby/setup-ruby@v1`) action."
-        required: false
-        default: "2.7"
+
+#on:
+# workflow_dispatch:
+#    inputs:
+#      path:
+#        description: "Path to benchmark script relative to 'benchmark' directory."
+#        required: true
+#       default: "capture-assign.rb"
+#      ruby_version:
+#        description: "Ruby version to use (via `ruby/setup-ruby@v1`) action."
+#        required: false
+#        default: "2.7"
 
 jobs:
   benchmark:
