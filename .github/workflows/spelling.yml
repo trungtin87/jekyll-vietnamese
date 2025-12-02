@@ -33,19 +33,8 @@ name: Spell Check
 #
 #   For background, see: https://github.com/check-spelling/check-spelling/wiki/Feature:-Update-with-deploy-key
 
-on:
-  # Switch from `pull_request_target` event to reduce distraction from comments
-  # regarding errors reported in unmodified files.
-  pull_request:
-    branches:
-      - master
-      - "*-stable"
-    tags-ignore:
-      - "**"
-    types:
-      - 'opened'
-      - 'reopened'
-      - 'synchronize'
+on: 
+  workflow_dispatch:
 
 jobs:
   spelling:
