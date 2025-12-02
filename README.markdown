@@ -1,80 +1,56 @@
-# [Jekyll](https://jekyllrb.com/)
+# 🇻🇳 Jekyll Tiếng Việt (jekyll-vietnamese)
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll.svg)][ruby-gems]
-[![Build Status](https://github.com/jekyll/jekyll/workflows/Continuous%20Integration/badge.svg)][ci-workflow]
-[![Backers on Open Collective](https://opencollective.com/jekyll/backers/badge.svg)](#backers)
-[![Sponsors on Open Collective](https://opencollective.com/jekyll/sponsors/badge.svg)](#sponsors)
+## Giới thiệu ✨
 
-[ruby-gems]: https://rubygems.org/gems/jekyll
-[ci-workflow]: https://github.com/jekyll/jekyll/actions?query=workflow%3A%22Continuous+Integration%22+branch%3Amaster
+Chào mừng bạn đến với **Jekyll Tiếng Việt**!
 
-Jekyll là một trình tạo trang web tĩnh đơn giản, hỗ trợ blog, hoàn hảo cho các trang web cá nhân, dự án hoặc tổ chức. Hãy nghĩ về nó như một CMS dựa trên file, nhưng không có sự phức tạp. Jekyll lấy nội dung của bạn, render các template Markdown và Liquid, và tạo ra một trang web tĩnh hoàn chỉnh sẵn sàng để phục vụ bởi Apache, Nginx hoặc web server khác. Jekyll là engine đằng sau [GitHub Pages](https://pages.github.com), cho phép bạn host các trang web trực tiếp từ repository GitHub của mình.
+Đây là dự án tâm huyết nhằm dịch thuật và **Việt hóa toàn bộ tài liệu chính thức** của Jekyll—trình tạo website tĩnh (Static Site Generator) hàng đầu.
 
-## Triết lý
+**Mục tiêu của chúng tôi:** Giúp tất cả người Việt yêu thích lập trình, thiết kế web, hoặc đơn giản là muốn xây dựng blog/website cá nhân, có thể **học và làm chủ Jekyll một cách trọn vẹn mà không cần phải biết tiếng Anh.**
 
-Jekyll làm những gì bạn yêu cầu — không hơn, không kém. Nó không cố gắng tự ý đoán người dùng bằng cách đưa ra các giả định táo bạo, cũng không làm phiền họ với sự phức tạp và cấu hình không cần thiết. Nói một cách đơn giản, Jekyll tránh xa con đường của bạn và cho phép bạn tập trung vào những gì thực sự quan trọng: nội dung của bạn.
+Chúng tôi cam kết giữ lại sự chính xác về kỹ thuật, đồng thời bổ sung các ví dụ và ngữ cảnh gần gũi với người Việt Nam.
 
-Xem: [https://jekyllrb.com/philosophy](https://jekyllrb.com/philosophy)
+## 🚀 Bắt đầu ngay
 
-## Bắt đầu
+Tất cả các hướng dẫn chi tiết đã được dịch và Việt hóa hoàn toàn!
 
-* [Cài đặt](https://jekyllrb.com/docs/installation/) gem
-* Đọc về [Cách sử dụng](https://jekyllrb.com/docs/usage/) và [Cấu hình](https://jekyllrb.com/docs/configuration/)
-* Xem qua một số [Trang web](https://github.com/jekyll/jekyll/wiki/sites) hiện có
-* [Fork](https://github.com/jekyll/jekyll/fork) và [Đóng góp](https://jekyllrb.com/docs/contributing/) các sửa đổi của riêng bạn
-* Có câu hỏi? Hãy xem diễn đàn cộng đồng chính thức của chúng tôi [Jekyll Talk](https://talk.jekyllrb.com/) và [Kênh `#jekyll` trên Libera IRC](https://libera.chat)
+Bạn có thể truy cập trang web để bắt đầu học:
 
-## Tìm hiểu sâu hơn
+[**▶️ Truy cập Tài liệu Tiếng Việt tại đây**](https://trungtin87.github.io/jekyll-vietnamese)
 
-* [Di chuyển](https://import.jekyllrb.com/docs/home/) từ hệ thống trước đó của bạn
-* Tìm hiểu cách [Front Matter](https://jekyllrb.com/docs/front-matter/) hoạt động
-* Đặt thông tin trên trang web của bạn với [Variables](https://jekyllrb.com/docs/variables/)
-* Tùy chỉnh [Permalinks](https://jekyllrb.com/docs/permalinks/) mà các bài viết của bạn được tạo ra
-* Sử dụng các [Liquid Extensions](https://jekyllrb.com/docs/templates/) tích hợp sẵn để làm cho cuộc sống của bạn dễ dàng hơn
-* Sử dụng [Plugins](https://jekyllrb.com/docs/plugins/) tùy chỉnh để tạo nội dung cụ thể cho trang web của bạn
-* Xem [video hướng dẫn từ Giraffe Academy](https://jekyllrb.com/tutorials/video-walkthroughs/)
+---
 
-## Cần trợ giúp?
+## 🛠️ Trạng thái Dự án & Nội dung
 
-Nếu bạn không tìm thấy câu trả lời cho vấn đề của mình trong [tài liệu](https://jekyllrb.com/docs/) của chúng tôi, hoặc trong [phần khắc phục sự cố](https://jekyllrb.com/docs/troubleshooting/), hãy hỏi [cộng đồng](https://jekyllrb.com/docs/community/) để được trợ giúp.
+Dự án này đang trong quá trình dịch thuật liên tục. Các phần chính đã được dịch bao gồm:
 
-## Quy tắc ứng xử
+* **Bắt đầu:** Hướng dẫn cài đặt và thiết lập cơ bản.
+* **Cấu trúc:** Giải thích cấu trúc thư mục của Jekyll.
+* **Các Khái niệm:** Post, Page, Layout, Data File...
+* *(...Liệt kê thêm các phần lớn đã hoàn thành...)*
 
-Để có một cộng đồng cởi mở và chào đón hơn, Jekyll tuân thủ một
-[quy tắc ứng xử](https://jekyllrb.com/docs/conduct/) được điều chỉnh từ quy tắc ứng xử của Ruby on Rails.
+## 🤝 Cộng tác và Đóng góp
 
-Vui lòng tuân thủ quy tắc ứng xử này trong bất kỳ tương tác nào bạn có trong
-cộng đồng Jekyll. Nó được thực thi nghiêm ngặt trên tất cả các repository Jekyll chính thức,
-trang web và tài nguyên. Nếu bạn gặp ai đó vi phạm
-các điều khoản này, vui lòng cho một trong các [thành viên nhóm cốt lõi](https://jekyllrb.com/team/#core-team) của chúng tôi biết và chúng tôi sẽ giải quyết nó càng sớm càng tốt.
+Dự án này là tài sản chung của cộng đồng người Việt yêu công nghệ! Chúng tôi rất hoan nghênh mọi hình thức đóng góp để tài liệu được hoàn thiện và dễ hiểu hơn:
 
-## Ghi công
+1.  **Dịch thuật và Hiệu đính:** Sửa lỗi ngữ pháp, kiểm tra tính chính xác của thuật ngữ kỹ thuật, hoặc dịch các phần còn thiếu.
+2.  **Việt hóa Ví dụ:** Đề xuất các ví dụ hoặc ngữ cảnh thân thiện, gần gũi với người Việt.
+3.  **Báo lỗi (Issues):** Báo cáo lỗi dịch, lỗi kỹ thuật, hoặc đề xuất cải tiến.
 
-### Nhà tài trợ
+Vui lòng xem [CONTRIBUTING.md](LINK_ĐẾN_CONTRIBUTING_MD_NẾU_CÓ) để biết chi tiết về cách đóng góp.
 
-Hỗ trợ dự án này bằng cách trở thành nhà tài trợ. Logo của bạn sẽ hiển thị trong README này với liên kết đến trang web của bạn. [Trở thành nhà tài trợ!](https://opencollective.com/jekyll#sponsor)
-[![Jekyll Sponsor 0](https://opencollective.com/jekyll/sponsor/0/avatar.svg)](https://opencollective.com/jekyll/sponsor/0/website)
-[![Jekyll Sponsor 1](https://opencollective.com/jekyll/sponsor/1/avatar.svg)](https://opencollective.com/jekyll/sponsor/1/website)
-[![Jekyll Sponsor 2](https://opencollective.com/jekyll/sponsor/2/avatar.svg)](https://opencollective.com/jekyll/sponsor/2/website)
-[![Jekyll Sponsor 3](https://opencollective.com/jekyll/sponsor/3/avatar.svg)](https://opencollective.com/jekyll/sponsor/3/website)
-[![Jekyll Sponsor 4](https://opencollective.com/jekyll/sponsor/4/avatar.svg)](https://opencollective.com/jekyll/sponsor/4/website)
-[![Jekyll Sponsor 5](https://opencollective.com/jekyll/sponsor/5/avatar.svg)](https://opencollective.com/jekyll/sponsor/5/website)
-[![Jekyll Sponsor 6](https://opencollective.com/jekyll/sponsor/6/avatar.svg)](https://opencollective.com/jekyll/sponsor/6/website)
-[![Jekyll Sponsor 7](https://opencollective.com/jekyll/sponsor/7/avatar.svg)](https://opencollective.com/jekyll/sponsor/7/website)
-[![Jekyll Sponsor 8](https://opencollective.com/jekyll/sponsor/8/avatar.svg)](https://opencollective.com/jekyll/sponsor/8/website)
-[![Jekyll Sponsor 9](https://opencollective.com/jekyll/sponsor/9/avatar.svg)](https://opencollective.com/jekyll/sponsor/9/website)
+---
 
-### Người đóng góp
+## ⚖️ Ghi công và Bản quyền (The Crucial Part)
 
-Dự án này tồn tại nhờ tất cả những người đóng góp.
-[![Jekyll Contributors](https://opencollective.com/jekyll/contributors.svg?width=890&button=false)](../../graphs/contributors)
+Dự án **Jekyll Tiếng Việt** là một công trình phái sinh (Derivative Work) dựa trên tài liệu gốc của Jekyll.
 
-### Người ủng hộ
+* **Tài liệu Gốc:** Toàn bộ nội dung dịch thuật được dựa trên tài liệu chính thức của Jekyll, được duy trì bởi [Jekyll Core Team](https://github.com/jekyll/jekyll).
+* **Bản quyền Gốc:** Tài liệu gốc của Jekyll được cấp phép theo giấy phép [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) (**CC BY 4.0**).
+* **Bản quyền Dự án này:** Chúng tôi cũng tuân thủ giấy phép **CC BY 4.0**. Điều này có nghĩa là bạn có thể sử dụng, chia sẻ, và chỉnh sửa nội dung này, miễn là bạn ghi nhận công lao cho **Jekyll Core Team** và dự án **Jekyll Tiếng Việt**.
+* **Lưu ý:** Tất cả các lệnh, mã code, và tên thuật ngữ kỹ thuật đều thuộc về Jekyll và cộng đồng mã nguồn mở.
 
-Cảm ơn tất cả những người ủng hộ của chúng tôi! 🙏 [Trở thành người ủng hộ](https://opencollective.com/jekyll#backer)
+Cảm ơn Jekyll đã tạo ra một công cụ tuyệt vời và một bộ tài liệu mở để chúng tôi có thể Việt hóa!
 
-[![Jekyll Backers](https://opencollective.com/jekyll/backers.svg?width=890)](https://opencollective.com/jekyll#backers)
-
-## Giấy phép
-
-Xem file [LICENSE](https://github.com/jekyll/jekyll/blob/master/LICENSE).
+---
+*Dự án được khởi xướng và phát triển bởi [@trungtin87](https://github.com/trungtin87).*
