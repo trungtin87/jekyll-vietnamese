@@ -15,7 +15,7 @@
     </span>
     {% assign author = post.author -%}
     <a class="post-author" itemprop="author" itemscope itemtype="http://schema.org/Person" target="_blank" href="https://github.com/{{ author }}">
-      {% avatar user=author size=24 -%}
+      {%- comment -%}{% avatar user=author size=24 -%}{%- endcomment -%}
       <span class="author-name" itemprop="name">{{ author }}</span>
     </a>
   </div>

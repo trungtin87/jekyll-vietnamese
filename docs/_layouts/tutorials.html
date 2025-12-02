@@ -17,7 +17,7 @@ layout: default
                {{ page.date | date_to_long_string }}
               </span>
               <a href="https://github.com/{{ author }}" class="tutorial-author">
-                {% avatar user=author size=24 %}
+                {%- comment -%}{% avatar user=author size=24 %}{%- endcomment -%}
                 <span class="author-name">{{ author }}</span>
               </a>
             </div>

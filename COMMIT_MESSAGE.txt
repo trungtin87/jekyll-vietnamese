@@ -1,0 +1,12 @@
+Setup GitHub Pages deployment
+
+Changes made:
+- Updated .github/workflows/jekyll-vietnamese.yml to build from ./docs directory
+- Removed all other workflows (benchmark, ci, codeql, docs, jekyll-gh-pages, jekyll, release, spelling, third-party)
+- Enabled baseurl in docs/_config.yml for GitHub Pages
+- Created DEPLOY.md with deployment instructions
+
+To deploy:
+1. Push to master branch
+2. Enable GitHub Pages in repository settings (Settings > Pages > Source: GitHub Actions)
+3. Website will be available at: https://<username>.github.io/jekyll-vietnamese
